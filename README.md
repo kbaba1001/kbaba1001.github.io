@@ -10,6 +10,7 @@
 
 * Webアプリケーションの受託開発
   * Ruby, JavaScript, Clojure などの言語を用いた開発を行っています
+* [技術ブログ](https://blog.neumann.tokyo/)
 
 ## 代表連絡先
 
