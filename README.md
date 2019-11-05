@@ -75,3 +75,21 @@ IT以外の事業:
     * Rails における保守性を向上するためのテクニック集
 * [Clojure製Webフレームワーク Duct入門](https://www.amazon.co.jp/dp/B07J3KJZYS/) (技術書同人誌)
     * 数少ない日本語による Duct の入門書
+* [旅するエンジニア1](https://booth.pm/ja/items/1036892) (寄稿)
+    * 地方で活動するエンジニアとしてのエッセイ
+* [Nomadineers](https://anchor.fm/nomadineers) (Podcast)
+    * 旅するエンジニアのPodcastに度々出演し、エンジニアとしての生活や技術的なトピックについて話します
+
+### イラスト制作
+
+Instagram にて作成したイラスト・デッサンなどを公開しています。
+イラスト制作の依頼もお受けしております。
+
+[Instagram/kbaba1001](https://www.instagram.com/kbaba1001/)
+
+### 各種アカウント
+
+* [GitHub/kbaba1001](https://github.com/kbaba1001)
+* [Twitter/kbaba1001](https://twitter.com/kbaba1001)
+* [Facebook/kbaba1001](https://www.facebook.com/kbaba1001)
+* [Instagram/kbaba1001](https://www.instagram.com/kbaba1001/)
