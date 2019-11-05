@@ -67,15 +67,11 @@ IT以外の事業:
 
 ### 技術的なWeb記事、技術所同人誌など
 
-* Rails のアーキテクチャ設計を考える (Web記事)
-    * https://qiita.com/kbaba1001/items/e265ad1e40f238931468
+* [Rails のアーキテクチャ設計を考える](https://qiita.com/kbaba1001/items/e265ad1e40f238931468) (Web記事)
     * Rails における DDD アーキテクチャ設計についての考察
-* HanamiはRubyの救世主(メシア)となるか、愚かな星と散るのか (Web記事、寄稿)
-    * https://magazine.rubyist.net/articles/0056/0056-hanami.html
+* [HanamiはRubyの救世主(メシア)となるか、愚かな星と散るのか](https://magazine.rubyist.net/articles/0056/0056-hanami.html) (Web記事、寄稿)
     * Ruby 製 Web フレームワークである Hanami の解説
-* レガシーRails改善ガイド (技術書同人誌)
-    * https://www.amazon.co.jp/dp/B07W11LWTN
+* [レガシーRails改善ガイド](https://www.amazon.co.jp/dp/B07W11LWTN) (技術書同人誌)
     * Rails における保守性を向上するためのテクニック集
-* Clojure製Webフレームワーク Duct入門 (技術書同人誌)
-    * https://www.amazon.co.jp/dp/B07J3KJZYS/
+* [Clojure製Webフレームワーク Duct入門](https://www.amazon.co.jp/dp/B07J3KJZYS/) (技術書同人誌)
     * 数少ない日本語による Duct の入門書
