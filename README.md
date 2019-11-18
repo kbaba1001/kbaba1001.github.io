@@ -1,3 +1,11 @@
+* [企業理念](https://neumann.tokyo#corporate-philosophy)
+* [会社概要](https://neumann.tokyo#company-outline)
+* [社長について](https://neumann.tokyo#president)
+* [ブログ](https://blog.neumann.tokyo)
+* [English Blog](https://en-blog.neumann.tokyo)
+* [お問い合わせ](https://docs.google.com/forms/d/e/1FAIpQLSdHMxI-xN5SFX_XPGmmJ3dWh8P1jSwmKKSsJmiCQp1LJfgyxA/viewform?usp=sf_link)
+
+<a name="corporate-philosophy" />
 ## 企業理念
 
 リモートワークにより場所や時間に囚われない仕事をし、ITの力により人々の生活を豊かにする。
@@ -10,12 +18,13 @@
 
 弊社は静岡に本社を構えていますが将来的に海外展開も視野に入れているため、海外での知名度を優先しneumann.tokyoというドメインを用いています。
 
-## リモートワークとは
+### リモートワークとは
 
 リモートワーク（またはテレワーク）は会社に出社せず自宅などの好きな場所で仕事をすることです。
 仕事をする側は好きな環境で仕事をすることで集中力が高まります。
 仕事を発注する側にとってはオフィスの大きさや場所に関係なく発注することができます。 
 
+<a name="company-outline" />
 ## 会社概要
 
 |会社名|合同会社ノイマン|
@@ -25,18 +34,19 @@
 |代表社員|馬場一樹|
 |社員数|1名|
 
-## 主な事業内容
+### 主な事業内容
 
 * Webアプリケーションの受託開発
   * Ruby, JavaScript, Clojure などの言語を用いた開発を行っています
 * [ブログ](https://blog.neumann.tokyo/)
-* [English blog](https://en-blog.neumann.tokyo/)
+* [English Blog](https://en-blog.neumann.tokyo/)
 
-## 代表連絡先
+### 代表連絡先
 
 * 代表社員兼社長 馬場一樹
 * kbaba1001@neumann.tokyo
 
+<a name="president" />
 ## 社長について
 
 ### 職務経歴
