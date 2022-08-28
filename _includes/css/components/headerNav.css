@@ -1,0 +1,11 @@
+.header-nav-list {
+  display: flex;
+  padding-left: 0;
+  list-style: none;
+  gap: 0.5rem;
+}
+
+.header-nav-list-link {
+  color: var(--header-text-color);
+  font-size: 1.5rem;
+}

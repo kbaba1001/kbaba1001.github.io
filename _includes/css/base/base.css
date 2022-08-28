@@ -1,0 +1,17 @@
+:root {
+  --contents-width: 1000px;
+
+  --main-bg-color: #ffffff;
+  --main-text-color: #222222;
+  --header-bg-color: #222222;
+  --header-text-color: #ffffff;
+  --footer-bg-color: #363636;
+  --footer-text-color: #ffffff;
+  --accent-color: #2351a1;
+}
+
+body {
+  font-family: sans-serif;
+  font-size: 1.2rem;
+  background-color: var(--footer-bg-color);
+}

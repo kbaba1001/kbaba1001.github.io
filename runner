@@ -6,9 +6,9 @@ ARGS=${@:2}
 
 case ${1} in
 "install") ## install dependencies
-brew install deno
-deno run -A https://deno.land/x/lume/install.ts
-brew install node
+[ -n $(which deno) ] && brew install deno
+[ -n $(which lume) ] && deno run -A https://deno.land/x/lume/install.ts
+[ -n $(which node) ] && brew install node
 npm install
 npm run prepare
 ;;

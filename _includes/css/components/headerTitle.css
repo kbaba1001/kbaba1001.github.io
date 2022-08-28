@@ -1,0 +1,12 @@
+.header-title-logo {
+  width: 3rem;
+  height: 3rem;
+}
+
+.header-title-link {
+  color: var(--header-text-color);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
