@@ -21,11 +21,7 @@ npx prettier -w .
 npx prettier -w --parser=html $(find . -name "*.njk")
 ;;
 "build") ## build for production
-# mv ../food-kazuki-hp-production/.git ../
-# mv ../food-kazuki-hp-production/CNAME ../
-# lume --dest ../food-kazuki-hp-production/
-# mv ../.git ../food-kazuki-hp-production
-# mv ../CNAME ../food-kazuki-hp-production
+lume --dest docs
 ;;
 "help" | *)
 (
