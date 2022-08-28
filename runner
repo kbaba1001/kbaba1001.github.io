@@ -1,0 +1,37 @@
+#!/bin/bash
+set -Ceux
+
+# コマンド実行時の第2引数以下をARGに格納
+ARGS=${@:2}
+
+case ${1} in
+"install") ## install dependencies
+brew install deno
+deno run -A https://deno.land/x/lume/install.ts
+brew install node
+npm install
+npm run prepare
+;;
+"up") ## start server
+lume -s
+;;
+"fmt") ## format all files
+# deno fmt は html や scss に対応していないので prettier を使う
+npx prettier -w .
+npx prettier -w --parser=html $(find . -name "*.njk")
+;;
+"build") ## build for production
+# mv ../food-kazuki-hp-production/.git ../
+# mv ../food-kazuki-hp-production/CNAME ../
+# lume --dest ../food-kazuki-hp-production/
+# mv ../.git ../food-kazuki-hp-production
+# mv ../CNAME ../food-kazuki-hp-production
+;;
+"help" | *)
+(
+echo "HELP"
+echo "  COMMAND ) DESCRIPTION ) REQUIRE ) ARGS"
+\grep -E "\)\ *\##" ${0}
+) | column -t -s "\)"
+;;
+esac
