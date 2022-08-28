@@ -1,0 +1,35 @@
+.blog {
+  margin: 1rem 0;
+}
+
+.blog-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.blog-card {
+  border-bottom: 1px dotted var(--main-text-color);
+  padding: 1rem 0;
+}
+
+.blog-card-date {
+  font-size: 1rem;
+  color: var(--feeble-color);
+}
+
+.blog-card-title-link {
+  color: var(--main-text-color);
+}
+
+.blog-card-title {
+  margin: 0;
+  padding: 0;
+}
+
+.blog-card-description {
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--feeble-color);
+}

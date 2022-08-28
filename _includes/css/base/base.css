@@ -5,9 +5,10 @@
   --main-text-color: #222222;
   --header-bg-color: #222222;
   --header-text-color: #ffffff;
-  --footer-bg-color: #363636;
-  --footer-text-color: #ffffff;
+  --footer-bg-color: #d4d4d4;
+  --footer-text-color: #000000;
   --accent-color: #2351a1;
+  --feeble-color: #aaaaaa;
 }
 
 body {
