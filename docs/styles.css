@@ -356,9 +356,10 @@ template {
   --main-text-color: #222222;
   --header-bg-color: #222222;
   --header-text-color: #ffffff;
-  --footer-bg-color: #363636;
-  --footer-text-color: #ffffff;
+  --footer-bg-color: #d4d4d4;
+  --footer-text-color: #000000;
   --accent-color: #2351a1;
+  --feeble-color: #aaaaaa;
 }
 
 body {
@@ -450,8 +451,61 @@ body {
 
 .footer-content {
   font-size: 1rem;
+  margin: 1rem 0;
+  text-align: center;
 }
 
 .top {
   margin: 1rem 0;
+}
+
+.blog {
+  margin: 1rem 0;
+}
+
+.blog-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.blog-card {
+  border-bottom: 1px dotted var(--main-text-color);
+  padding: 1rem 0;
+}
+
+.blog-card-date {
+  font-size: 1rem;
+  color: var(--feeble-color);
+}
+
+.blog-card-title-link {
+  color: var(--main-text-color);
+}
+
+.blog-card-title {
+  margin: 0;
+  padding: 0;
+}
+
+.blog-card-description {
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--feeble-color);
+}
+
+.post {
+  margin: 1rem 0;
+}
+
+.post-date {
+  font-size: 1rem;
+  color: var(--feeble-color);
+}
+
+.post-index-link {
+  display: inline-block;
+  margin: 0.5rem 0;
+  color: var(--main-text-color);
 }
