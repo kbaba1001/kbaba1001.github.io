@@ -19,4 +19,26 @@ title: TOP
       >
     </li>
   </ul>
+
+  <section>
+    <h2>最新記事</h2>
+    {% set postslist = search.pages("type=posts", "date=desc") %}
+    <div class="blog">
+      <div class="blog-container">
+        {% for post in postslist %}
+        <div class="blog-card">
+          <div class="blog-card-date">
+            {{ post.data.date | date('DATE') }}
+          </div>
+          <a href="{{ post.data.url }}" class="blog-card-title-link">
+            <h2 class="blog-card-title">
+              {{ post.data.title }}
+            </h2>
+          </a>
+          <div class="blog-card-description">{{ post.data.description }}</div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
 </div>
