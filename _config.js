@@ -13,6 +13,7 @@ const site = lume();
 site.ignore("README.md", "CHANGELOG.md", "node_modules");
 site.copy("img");
 site.copy("CNAME");
+site.copy("site.webmanifest");
 site.use(attributes());
 site.use(base_path());
 site.use(code_highlight());
