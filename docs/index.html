@@ -4,6 +4,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js"></script>
+    <!-- and it's easy to individually load additional languages -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/languages/clojure.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/languages/bash.min.js"></script>
+
     <title>Clojure Camp - TOP</title>
   </head>
   <body class="layout">
@@ -20,7 +26,6 @@
     <div class="header-nav-container">
       <nav class="header-nav">
   <ul class="header-nav-list">
-    <li><a href="/blog" class="header-nav-list-link">Blog</a></li>
     <li>
       <a href="https://www.neumann.tokyo" class="header-nav-list-link" target="_blank" rel="noopener">
         運営企業
@@ -55,6 +60,40 @@
       <a href="https://github.com/neumann-tokyo/clojure-tutorial" target="_blank" rel="noopener">Clojure Tutorial</a>
     </li>
   </ul>
+
+  <section>
+    <h2>最新記事</h2>
+    
+    <div class="blog">
+      <div class="blog-container">
+        
+        <div class="blog-card">
+          <div class="blog-card-date">
+            2022-09-03
+          </div>
+          <a href="/posts/clojure-install/" class="blog-card-title-link">
+            <h2 class="blog-card-title">
+              3行で始める Clojure
+            </h2>
+          </a>
+          <div class="blog-card-description">Clojureのインストール方法などを解説します</div>
+        </div>
+        
+        <div class="blog-card">
+          <div class="blog-card-date">
+            2022-08-28
+          </div>
+          <a href="/posts/init/" class="blog-card-title-link">
+            <h2 class="blog-card-title">
+              サイト開設
+            </h2>
+          </a>
+          <div class="blog-card-description">がんばります</div>
+        </div>
+        
+      </div>
+    </div>
+  </section>
 </div>
 </main>
 </div>
