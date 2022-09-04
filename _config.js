@@ -7,16 +7,29 @@ import jsx from "lume/plugins/jsx.ts";
 import base_path from "lume/plugins/base_path.ts";
 import attributes from "lume/plugins/attributes.ts";
 import code_highlight from "lume/plugins/code_highlight.ts";
+import lang_clojure from "https://unpkg.com/@highlightjs/cdn-assets@11.6.0/es/languages/clojure.min.js";
+import lang_bash from "https://unpkg.com/@highlightjs/cdn-assets@11.6.0/es/languages/bash.min.js";
 
 const site = lume();
 
+site.remoteFile(
+  "_includes/css/code/default.css",
+  "https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.6.0/build/styles/github.min.css"
+);
 site.ignore("README.md", "CHANGELOG.md", "node_modules");
 site.copy("img");
 site.copy("CNAME");
 site.copy("site.webmanifest");
 site.use(attributes());
 site.use(base_path());
-site.use(code_highlight());
+site.use(
+  code_highlight({
+    languages: {
+      clojure: lang_clojure,
+      bash: lang_bash,
+    },
+  })
+);
 site.use(date());
 site.use(jsx());
 site.use(parcel_css());

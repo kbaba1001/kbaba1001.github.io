@@ -16,11 +16,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <link rel="stylesheet" href="/styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/default.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js"></script>
-    <!-- and it's easy to individually load additional languages -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/languages/clojure.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/languages/bash.min.js"></script>
 
     <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon/favicon-32x32.png">
@@ -40,8 +35,7 @@
     <title>Clojure Camp - 3行で始める Clojure</title>
   </head>
   <body class="layout">
-    
-<header class="layout-header">
+    <header class="layout-header">
   <div class="header">
     <div>
   <a href="/" class="header-title-link">
@@ -75,23 +69,46 @@
   </div>
 </header>
 <div class="layout-main">
-  <main class="layout-main-center">
-<div class="post">
-  <a href="/blog" class="post-index-link">一覧に戻る</a>
+  <main class="layout-main-center"><div class="post">
+  <a href="/" class="post-index-link">一覧に戻る</a>
   <div class="post-date">2022-09-03</div>
   <h2 class="post-title">3行で始める Clojure</h2>
   <div class="post-main"><ul>
-<li><a href="https://brew.sh">homebrew</a> 入れて <code>brew install clojure/tools/clojure leiningen</code> で Clojure をインストールできます
-<ul>
-<li>Linux でも Homebrew はインストールできます</li>
-<li>Windows の場合は WSL などの仮想 Linux 環境を使いましょう</li>
-</ul>
-</li>
+<li><a href="https://brew.sh">homebrew</a> 入れて <code>brew install clojure/tools/clojure leiningen</code> で Clojure をインストールできます</li>
 <li>VS Code に <a href="https://calva.io">calva</a> いれて <a href="https://calva.io/paredit/#editing">paredit</a> の <strong>Slurp Forward</strong> と <strong>Barf Forward</strong> を覚えたら開発できます</li>
-<li>ひとまず <a href="https://t.co/vk6C7m2xTA">https://practical.li</a> で初心者情報を見てみましょう</li>
+<li>ひとまず <a href="https://practical.li">Practicalli</a> で初心者情報を見てみましょう</li>
 </ul>
+<p>流石に 3 行だけだと初心者に優しくないので解説します。</p>
+<h3>Homebrew でインストール</h3>
+<p>MacOS だけでなく Linux でも Homebrew を使うことはできますので、これが一番楽な方法です。
+Windows の場合は WSL などの Linux 仮想環境を使ってください。</p>
+<pre><code class="language-bash hljs">brew install clojure/tools/clojure leiningen
+</code></pre>
+<p>で clojure と <a href="https://leiningen.org">leiningen</a> をインストールすることができます。
+leiningen は Clojure におけるビルドツールで Node.js でいうところの npm のようなものです。
+最近では leiningen を使わずにビルド環境を構築することもできるようになりましたが、依然として leiningen はデファクトスタンダードです。</p>
+<h3>VS Code + Calva そして paredit</h3>
+<p>VS Code に Calva というプラグインを入れることで Clojure の開発を快適に行うことができるようになります。
+もちろん Emacs や Vim などの他のエディタでも開発できます。</p>
+<p>重要なことは paredit というコードの書き方です。 Clojure はカッコが多い言語なのでカッコがずれるとうまく動きません。
+では Clojure を書く人はつねにカッコの位置に気をつけているかというと、実はそうでもありません。
+paredit をうまく使うことでカッコの存在をほとんど意識しなくなります。</p>
+<p>paredit には多くの機能がありますがはじめは <strong>Slurp Forward</strong> と <strong>Barf Forward</strong> だけ覚えれば十分です。
+Slurp Forward は今カーソルがある位置のカッコから隣のカッコをとりこむような動きをし、
+Barf Forward は逆に追い出すような動きをします。
+詳しくは <a href="https://calva.io/paredit/#editing">paredit</a> の gif 動画を見てください。イメージが湧くと思います。</p>
+<p>Clojure エンジニアはこのようにしてカッコの位置を自在に操ることで閉じカッコだけ失われるような状況を避けることができます。</p>
+<h3>Practicalli</h3>
+<p><a href="https://practical.li">Practicalli</a> は Clojure に関する初心者向け情報がまとまっています。
+英語のみですが入門としては良いのではないでしょうか。
+当 Clojure Camp もこのようなサイトを目指していますのでもう少し時間をください。</p>
+<h3>おすすめ書籍</h3>
+<p>英語ですが <a href="https://www.packtpub.com/product/the-clojure-workshop/9781838825485">The Clojure Workshop</a> は非常に網羅的で Clojure の初心者に最適な本です。
+ページ数もめちゃくちゃ多いですがその分内容もしっかりしています。</p>
+<p>日本語の書籍は残念ながら 2015 年頃からほとんど出版されていません。それでも <a href="https://www.amazon.co.jp/dp/4274069133">プログラミング Clojure 第 2 版</a> は一読の価値があります。ただ、初心者には少々とっつきづらい話が多いのと、 Core Async や Clojure Spec のような最近の話が書かれていないのがやはりいまいちでしょうか。英語ではこの本の第３版も出版されていますが、日本語では第 2 版までです。</p>
+<p>残念ながら現状 Clojure を学ぶ上で英語は避けて通れません。 Clojure Camp では日本語情報を充実させていきますのでもうしばらくお待ち下さい。</p>
 </div>
-  <a href="/blog" class="post-index-link">一覧に戻る</a>
+  <a href="/" class="post-index-link">一覧に戻る</a>
 </div>
 </main>
 </div>

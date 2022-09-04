@@ -11,6 +11,7 @@ case ${1} in
 [ -n $(which node) ] && brew install node
 npm install
 npm run prepare
+# you need to add PATH="$HOME/.deno/bin:$PATH"
 ;;
 "up") ## start server
 lume -s
