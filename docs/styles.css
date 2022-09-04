@@ -259,7 +259,8 @@ select { /* 1 */
   }
 
   .layout-main-center {
-    width: 100%;
+    width: 95%;
+    margin: auto;
   }
   .footer {
     width: 100%;
@@ -329,4 +330,14 @@ select { /* 1 */
   border: 1px solid var(--feeble-color);
   border-radius: 5px;
   padding: 0 5px;
-} */
+} */.about-sns-cards {
+  display: flex;
+  justify-content: space-evenly;
+}.about-sns-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}.about-sns-card-image {
+  width: 80%;
+  max-width: 200px;
+}
