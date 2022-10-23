@@ -1,7 +1,7 @@
 import lume from "lume/mod.ts";
 import postcss from "lume/plugins/postcss.ts";
 import terser from "lume/plugins/terser.ts";
-import parcel_css from "lume/plugins/parcel_css.ts";
+import lightningCss from "lume/plugins/lightningcss.ts";
 import date from "lume/plugins/date.ts";
 import jsx from "lume/plugins/jsx.ts";
 import base_path from "lume/plugins/base_path.ts";
@@ -32,7 +32,7 @@ site.use(
 );
 site.use(date());
 site.use(jsx());
-site.use(parcel_css());
+site.use(lightningCss());
 site.use(postcss());
 site.use(terser());
 
