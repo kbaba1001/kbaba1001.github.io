@@ -4,7 +4,7 @@ description: Clojure 製の Web サーバーライブラリである Duct につ
 date: 2022-10-24
 tags:
   - 初心者向け
-# draft: true
+draft: true
 ---
 
 Clojure 製の Web サーバー構築ライブラリとして [Duct](https://github.com/duct-framework/duct) というものがあります。
