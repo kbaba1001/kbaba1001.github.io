@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+    <!-- Google tag (gtag.js) -->
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-6CEJTP1EZJ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-6CEJTP1EZJ");
+    </script>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="/styles.css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <meta name="keywords" content="Clojure,ClojureScript,プログラミング初心者,駆け出しエンジニア">
+    <meta name="author" content="合同会社ノイマン馬場一樹">
+    <meta property="og:title" content="Clojure Camp - Duct で Web サーバーを構築しよう">
+    <meta property="og:url" content="https://clojure-camp.com">
+    <meta property="og:image" content="https://clojure-camp.com/img/logo.png">
+    <meta property="og:type" content="website">
+    <meta name="description" content="Clojure 製の Web サーバーライブラリである Duct について説明します">
+    <meta property="og:description" content="Clojure 製の Web サーバーライブラリである Duct について説明します">
+    <meta property="og:locale" content="ja_JP">
+
+    <title>Clojure Camp - Duct で Web サーバーを構築しよう</title>
+  </head>
+  <body class="layout">
+    <header class="layout-header">
+  <div class="header">
+    <div>
+  <a href="/" class="header-title-link">
+    <img src="/img/logo.png" alt="clojure log" loading="lazy" class="header-title-logo">
+    <h1 class="header-title-text">Clojure Camp</h1>
+  </a>
+</div>
+
+    <div class="header-nav-container">
+      <nav class="header-nav">
+  <ul class="header-nav-list">
+    <li>
+      <a href="/about" class="header-nav-list-link"> About </a>
+    </li>
+  </ul>
+</nav>
+
+    </div>
+  </div>
+</header>
+<div class="layout-main">
+  <main class="layout-main-center"><div class="post">
+  <a href="/" class="post-index-link">一覧に戻る</a>
+  <div class="post-date">2022-12-13</div>
+  <h2 class="post-title">Duct で Web サーバーを構築しよう</h2>
+  <div class="post-main"><p>Clojure 製の Web サーバー構築ライブラリとして <a href="https://github.com/duct-framework/duct">Duct</a> というものがあります。
+この分野については他にも <a href="http://pedestal.io">pedestal</a> とか <a href="https://biffweb.com">Biff</a> とかいくつかありますが、今回は Duct について話します。</p>
+<p>Duct の特徴</p>
+<ul>
+<li>関数同士の依存関係を config.edn という設定ファイルに記述することで疎結合にする</li>
+<li>defmethod をいい感じに使うことで上記を実現している</li>
+</ul>
+<p>言ってしまえばこれだけですが、初心者には意味不明でしょうし、ある程度 Web サーバーの設計に詳しい人でないとこのメリットもわかりません。
+どんな言語でも課題になるのは関数同士の依存関係、つまり関数の中から他の関数を呼び出すという普通の行為が結構密結合に感じることもあって、そういうのをなんとかできるのが Duct というわけです。
+なので、 Rails みたいなフルスタックな Web フレームワークにあるようなデータベースへのアクセスであるとか HTTP リクエストのルーティングの解決であるとかそういう機能は Duct にはありませんし、それが主眼でもありません。</p>
+<p>「何を言っているんだお前は」という感じだと思いますので、とりあえず使ってみましょう。</p>
+<h2>Duct のプロジェクトを用意する</h2>
+<p>本来なら <code>lein new duct</code> で Duct のプロジェクトを作り始める事ができるのですが、0 からスタートすると手間が多いのである程度作っておきました。
+次のリポジトリを見てください。</p>
+<p><a href="https://github.com/neumann-tokyo/duct-init">neumann-tokyo/duct-init</a></p>
+<p>次のような機能を実装済みです</p>
+<ul>
+<li>PostgreSQL によるデータベースアクセス関係
+<ul>
+<li>Docker で DB 起動可能</li>
+<li>hikaricp で connection pool 対応済み</li>
+</ul>
+</li>
+<li>database migration
+<ul>
+<li>コマンドラインで扱いやすいので <a href="https://github.com/weavejester/ragtime">ragtime</a> ではなく <a href="https://github.com/golang-migrate/migrate">golang-migrate/migrate</a> を採用</li>
+</ul>
+</li>
+<li><a href="https://github.com/metosin/reitit">metosin/reitit</a> による routing</li>
+<li>Handler のサンプル</li>
+<li>Test 用の config.edn とサンプル</li>
+</ul>
+<p>このリポジトリを clone したり Fork したりして使ってみてください。</p>
+<h2>duct-init リポジトリの使い方</h2>
+<h3>Setup</h3>
+<p>まず <a href="https://brew.sh">homebrew</a> と <a href="https://docs.docker.com">docker</a>、そして docker compose を使えるようにしておいてください。
+homebrew は Linux 環境でも動かすことができるのでインストールをおすすめします (Windows は WSL などの Linux 仮想環境を使ってください)。
+リポジトリの中で</p>
+<pre><code class="language-bash hljs">./runner setup
+</code></pre>
+<p>をすることで duct-init プロジェクトに必要なツールをインストールします。</p>
+<p>duct-init プロジェクトではタスクランナーとして <a href="https://github.com/neumann-tokyo/duct-init/blob/main/runner">runner</a> というシェルスクリプトを用意しています。
+<code>runner</code> の内容を理解する必要はありませんが、興味のある方はコードを読んでみてください。</p>
+<h3>Database の起動と migration</h3>
+<p>次のコマンドを実行すると docker compose を使って PostgreSQL が起動します。</p>
+<pre><code class="language-bash hljs">./runner up
+</code></pre>
+<p>この状態で別のターミナルで</p>
+<pre><code class="language-bash hljs">./runner migrate
+</code></pre>
+<p>を実行してください。
+Database の migration と seeds データの読み込みを行います。</p>
+<p>migration は <a href="https://github.com/neumann-tokyo/duct-init/tree/main/db">db/migrations</a> ディレクトリにあるファイルから実行します。</p>
+<pre><code>db
+├── migrations
+│   ├── 20221023001_init.down.sql
+│   └── 20221023001_init.up.sql
+└── seeds
+    └── dummy_data.sql
+</code></pre>
+<p><code>db/migrations</code> 以下に <code>[timestamp]_[name].{up,down}.sql</code> のフォーマットでファイルを置いてください。
+timestamp の古い SQL から順番に実行してデータベースのテーブルやカラムなどを作成します。</p>
+<p>migration を進めるときは <code>./runner migrate</code>、戻すときは <code>./runner migrate-down</code> を使います。</p>
+<p>seeds データは <code>db/seeds</code> ディレクトリ以下にある SQL ファイルをすべて開発用 DB に対して実行します。
+<code>./runner migrate</code> により seeds データは自動で読み込まれます。</p>
+<h3>サーバーの起動</h3>
+<p>準備が整ったのでアプリケーションサーバーを起動してみましょう。
+次のコマンドで <a href="https://leiningen.org">Leiningen</a> の REPL を起動することができます。</p>
+<pre><code>./runner repl
+</code></pre>
+<p>Leiningen は Clojure のパッケージ管理やタスク管理などをできるツールです。
+パッケージのインストールが終わると <code>dev</code> という名前空間で REPL が起動します。
+ここで、 <code>(go)</code> という関数を実行するとサーバーが 3000 ポートで起動します。</p>
+<pre><code class="language-clojure hljs">dev=&gt; (<span class="hljs-name">go</span>)
+<span class="hljs-symbol">:duct.server.http.jetty/starting-server</span> {<span class="hljs-symbol">:port</span> <span class="hljs-number">3000</span>}
+<span class="hljs-symbol">:initiated</span>
+</code></pre>
+<p>ファイルの変更をサーバーに反映したい場合は</p>
+<pre><code class="language-clojure hljs">dev=&gt; (<span class="hljs-name">reset</span>)
+<span class="hljs-symbol">:reloading</span> (<span class="hljs-name">...</span>)
+<span class="hljs-symbol">:resumed</span>
+</code></pre>
+<p>または</p>
+<pre><code class="language-clojure hljs">dev=&gt; (<span class="hljs-name">auto-reset</span>)
+</code></pre>
+<p>を使います。</p>
+<h3>テストの実行</h3>
+<p>テストを実行するには次のコマンドを使います。</p>
+<pre><code class="language-bash hljs">./runner <span class="hljs-built_in">test</span>
+</code></pre>
+<p>引数で名前空間を指定することで特定のテストだけ実行することもできます。</p>
+<pre><code class="language-bash hljs">./runner <span class="hljs-built_in">test</span> foo.bar-test
+</code></pre>
+<h2>まとめ</h2>
+<p>今回は <a href="https://github.com/neumann-tokyo/duct-init">neumann-tokyo/duct-init</a> の基本的な使い方を説明しました。
+duct の経験が多少ある方はリポジトリのコードを見て活用してみてください。</p>
+<p>引き続き、数回にわけて duct の入門記事を公開する予定です。</p>
+</div>
+  <a href="/" class="post-index-link">一覧に戻る</a>
+</div>
+</main>
+</div>
+<footer class="layout-footer">
+  <div class="footer">
+    <div class="footer-content">©2022 合同会社ノイマン</div>
+
+  </div>
+</footer>
+
+  
+
+</body></html>
