@@ -18,7 +18,7 @@
 }
 
 .blog-card-title-link {
-  color: var(--main-text-color);
+  color: var(--accent-color);
 }
 
 .blog-card-title {
@@ -31,7 +31,7 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  color: var(--feeble-color);
+  color: var(--main-text-color);
 }
 
 .blog-tags {

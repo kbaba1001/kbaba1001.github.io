@@ -1,5 +1,6 @@
 import lume from "lume/mod.ts";
 import feed from "lume/plugins/feed.ts";
+import pagefind from "lume/plugins/pagefind.ts";
 import postcss from "lume/plugins/postcss.ts";
 import terser from "lume/plugins/terser.ts";
 import lightningCss from "lume/plugins/lightningcss.ts";
@@ -29,6 +30,13 @@ site.use(feed({
     published: new Date('2023', '11', '18'),
     lang: "ja_JP",
     generator: true,
+  },
+}));
+site.use(pagefind({
+  indexing: {
+    rootSelector: "main",
+    verbose: false,
+    excludeSelectors: ["#posts-index"]
   },
 }));
 site.use(attributes());

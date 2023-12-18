@@ -7,10 +7,9 @@ ogimage: /img/horse.jpg
 
 <div class="top">
   <section>
-    <a href="/feed.rss" target="_blank"> RSSフィード </a>
-  </section>
-  <section>
-    <div class="blog">
+    <h1 class="top-h1">ブログ記事一覧</h1>
+    <div id="search"></div>
+    <div class="blog" id="posts-index">
       <div class="blog-container">
         {{ for post of search.pages("type=posts", "date=desc") }}
         <div class="blog-card">

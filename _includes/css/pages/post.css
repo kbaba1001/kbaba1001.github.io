@@ -2,9 +2,28 @@
   margin: 1rem 0;
 }
 
+.post-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
 .post-date {
   font-size: 1rem;
   color: var(--feeble-color);
+  display: inline-block;
+}
+.post-tag {
+  display: inline-block;
+  background-color: var(--tag-bg-color);
+  color: var(--tag-color);
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.post-title {
+  color: var(--accent-color);
+  text-decoration: double underline;
+  text-underline-offset: 8px;
 }
 
 .post-index-link {
