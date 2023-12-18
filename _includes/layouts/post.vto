@@ -1,11 +1,12 @@
 ---
-layout: layouts/main.njk
+layout: layouts/main.vto
 ---
 
 <div class="post">
   <a href="/" class="post-index-link">一覧に戻る</a>
-  <div class="post-date">{{ date | date("DATE") }}</div>
+  <div class="post-date">{{ date |> date("DATE") }}</div>
   <h2 class="post-title">{{ title }}</h2>
-  <div class="post-main">{{ content | safe }}</div>
+  <div class="post-main">{{ content }}</div>
+  {{ comp.marshmallowButton() }}
   <a href="/" class="post-index-link">一覧に戻る</a>
 </div>

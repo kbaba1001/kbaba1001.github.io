@@ -1,0 +1,36 @@
+---
+layout: layouts/main.vto
+title: TOP
+description: "kbaba1001のブログです"
+ogimage: /img/horse.jpg
+---
+
+<div class="top">
+  <section>
+    <a href="/feed.rss" target="_blank"> RSSフィード </a>
+  </section>
+  <section>
+    <div class="blog">
+      <div class="blog-container">
+        {{ for post of search.pages("type=posts", "date=desc") }}
+        <div class="blog-card">
+          <div class="blog-card-date">
+            {{ post.date |> date('DATE') }}
+          </div>
+          <a href="{{ post.url }}" class="blog-card-title-link">
+            <h2 class="blog-card-title">
+              {{ post.title }}
+            </h2>
+          </a>
+          <div class="blog-card-description">{{ post.description }}</div>
+          <ul class="blog-tags">
+            {{ for tag of post.tags }}
+            <li class="blog-tag">{{ tag }}</li>
+            {{ /for }}
+          </ul>
+        </div>
+        {{ /for }}
+      </div>
+    </div>
+  </section>
+</div>

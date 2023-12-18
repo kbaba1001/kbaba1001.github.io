@@ -1,4 +1,5 @@
 import lume from "lume/mod.ts";
+import feed from "lume/plugins/feed.ts";
 import postcss from "lume/plugins/postcss.ts";
 import terser from "lume/plugins/terser.ts";
 import lightningCss from "lume/plugins/lightningcss.ts";
@@ -20,6 +21,16 @@ site.ignore("README.md", "CHANGELOG.md", "node_modules");
 site.copy("img");
 site.copy("CNAME");
 site.copy("site.webmanifest");
+site.use(feed({
+  query: "type=posts",
+  info: {
+    title: "kbaba1001 ブログ",
+    description: "Clojure 好きなプログラマ kbaba1001 のブログ",
+    published: new Date('2023', '11', '18'),
+    lang: "ja_JP",
+    generator: true,
+  },
+}));
 site.use(attributes());
 site.use(base_path());
 site.use(

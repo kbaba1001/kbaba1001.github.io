@@ -1,0 +1,18 @@
+.marshmallow-button-container {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.marshmallow-button {
+  display: inline-block;
+  background-color: #cf8083;
+  color: white;
+  border-radius: 10px;
+  padding: 10px 20px;
+  text-decoration: none;
+}
+
+.marshmallow-note {
+  font-size: 0.8rem;
+  margin-top: 10px;
+}

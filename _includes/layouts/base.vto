@@ -1,24 +1,9 @@
 ---
-description: "Clojure Camp は Clojure/ClojureScript に関する情報を発信するWebマガジンです"
+description: "kbaba1001のブログです。"
 ---
 
 <html lang="ja">
   <head>
-    <!-- Google tag (gtag.js) -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-6CEJTP1EZJ"
-    ></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-
-      gtag("config", "G-6CEJTP1EZJ");
-    </script>
-
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta
@@ -46,22 +31,26 @@ description: "Clojure Camp は Clojure/ClojureScript に関する情報を発信
     />
     <link rel="manifest" href="/site.webmanifest" />
 
+    <meta name="author" content="kbaba1001" />
+    <meta property="og:title" content="{{ title }} - kbaba1001ブログ" />
+    <meta property="og:url" content="https://www.kbaba1001.com" />
     <meta
-      name="keywords"
-      content="Clojure,ClojureScript,プログラミング初心者,駆け出しエンジニア"
+      property="og:image"
+      content="https://www.kbaba1001.com{{ ogimage }}"
     />
-    <meta name="author" content="ノイマントーキョー株式会社馬場一樹" />
-    <meta property="og:title" content="Clojure Camp - {{ title }}" />
-    <meta property="og:url" content="https://clojure-camp.com" />
-    <meta property="og:image" content="https://clojure-camp.com/img/logo.png" />
+    <meta
+      property="twitter:image:src"
+      content="https://www.kbaba1001.com{{ ogimage }}"
+    />
+
     <meta property="og:type" content="website" />
     <meta name="description" content="{{ description }}" />
     <meta property="og:description" content="{{ description }}" />
     <meta property="og:locale" content="ja_JP" />
 
-    <title>Clojure Camp - {{ title }}</title>
+    <title>{{ title }} - kbaba1001ブログ</title>
   </head>
   <body class="layout">
-    {{ content | safe }}
+    {{ content }}
   </body>
 </html>

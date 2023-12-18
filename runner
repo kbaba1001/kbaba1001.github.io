@@ -7,19 +7,12 @@ ARGS=${@:2}
 case ${1} in
 "install") ## install dependencies
 [ -z $(which deno) ] && brew install deno
-[ -z $(which node) ] && brew install node
-[ -z $(which prettier) ] && npm install -g prettier
 ;;
 "up") ## start server
 deno task serve $ARGS
 ;;
-"lume") ##
-deno task lume $ARGS
-;;
 "fmt") ## format all files
-# deno fmt は html や scss に対応していないので prettier を使う
-npx prettier -w .
-npx prettier -w --parser=html $(find . -name "*.njk")
+deno task fmt
 ;;
 "build") ## build for production
 deno task build $ARGS

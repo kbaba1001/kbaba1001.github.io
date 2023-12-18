@@ -3,13 +3,15 @@
 
   --main-bg-color: #ffffff;
   --main-text-color: #222222;
-  --header-bg-color: #222222;
-  --header-text-color: #ffffff;
-  --footer-bg-color: #d4d4d4;
-  --footer-text-color: #000000;
-  --accent-color: #2351a1;
+  --header-bg-color: #f2edd9;
+  --header-text-color: #222222;
+  --footer-bg-color: #ffffff;
+  --footer-text-color: #222222;
+  --accent-color: #a12323;
   --feeble-color: #aaaaaa;
   --feeble-bg-color: #eeeeee;
+  --tag-color: #222222;
+  --tag-bg-color: #f2edd9;
 }
 
 body {

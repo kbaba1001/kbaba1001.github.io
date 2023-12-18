@@ -33,3 +33,19 @@
   text-overflow: ellipsis;
   color: var(--feeble-color);
 }
+
+.blog-tags {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 10px 0;
+  padding: 0;
+  list-style: none;
+  gap: 10px;
+}
+
+.blog-tag {
+  background-color: var(--tag-bg-color);
+  color: var(--tag-color);
+  padding: 5px 10px;
+  border-radius: 5px;
+}
