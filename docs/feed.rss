@@ -9,6 +9,29 @@
     <language>ja_JP</language>
     <generator>Lume v2.0.1</generator>
     <item>
+      <title>TypeScriptって面倒くさいだけでは...</title>
+      <link>https://www.kbaba1001.com/posts/2023122001_typescript/</link>
+      <guid isPermaLink="false">https://www.kbaba1001.com/posts/2023122001_typescript/</guid>
+      <description>型パズルの末に幸せはあるのか？</description>
+      <content:encoded>
+        <![CDATA[<p>猫も杓子も TypeScript 。というより全人類の総力が TypeScript に注がれてしまっているとさえ感じるけど、本当にこれは開発を助けてくれるようなものだろうか。
+        型パズル地獄になる割にはエラーになった際にどういう情報が足りてないのかいまいち分かりづらい。GraphQL とか gRPC とかで自動生成した型情報に至っては、型を見ただけではどういう情報が必要なのか全く読み解けないこともある。
+        型を書いたから処理が速くなるわけでもないし、どうしても JavaScript にない機能が使えるわけでもないし、なんか面倒臭さの見返りとして割に合ってなさすぎると感じている。</p>
+        <p>これなら JavaScript そのまま書いてる方が楽だし長期的に見ても開発しやすかったのでは……。と思わずにいられない。</p>
+        <p>なんで TypeScript 流行ってしまったんだろうなぁ……。</p>
+        <p>もちろん、 JavaScript は良くない仕様が多々あるし、 TypeScript で一部解決できたこともある。
+        でもそれは TypeScript のようなやり方じゃなくても良かった気もする。いや、もちろんそれは結果論でしかないんだけども、 「 TypeScript 面倒くさいし、手間に見合うメリットあるっけ？」って部分はもっとみんな気にした方がいいと思う。これを無視し続けていると、どうせまた5年後くらいに 「TypeScript の負債を改修する」みたいなタイトルの記事があふれかえるに決まっている。</p>
+        <p>じゃあ、 Dart の方がマシか？ ClojureScript だけが至高の言語か？ みたいなことを言いたいわけではなく、俺は TypeScript 書くのあんま好きじゃないなぁー、くらいの気持ちを表明したかっただけ。</p>
+        <p>JavaScript におけるメタプログラミングがよくわからないんだけど、この辺習得したらもう少し書きやすくなるんだろうか……。うーん、 Ruby や Clojure で何でもかけていた頃が懐かしい。</p>
+        <p>ここまで TypeScript が流行ってしまうと他の言語を新規に採用するのが難しくなってしまうな。
+        それならいっそのこと AI 系も Python じゃなくて JavaScript/TypeScript で何でもできるようになって欲しい。
+        そうしたらまだ <a href="https://github.com/squint-cljs/squint">squint</a> みたいなやつで ClojureScript で操作する未来もある。</p>
+        <p>Lisp が世界征服に失敗した世界を生きていくのは今日もしんどい。</p>
+        ]]>
+      </content:encoded>
+      <pubDate>Wed, 20 Dec 2023 00:00:00 GMT</pubDate>
+    </item>
+    <item>
       <title>ブログを作り直し、SNSをやめて和歌を読む</title>
       <link>https://www.kbaba1001.com/posts/2023121801_init/</link>
       <guid isPermaLink="false">https://www.kbaba1001.com/posts/2023121801_init/</guid>
