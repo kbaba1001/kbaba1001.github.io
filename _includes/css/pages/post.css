@@ -39,6 +39,10 @@
   padding: 0 5px;
 }
 
+.post-main img {
+  max-width: 100%;
+}
+
 /* .post-main pre code {
   display: inline-block;
   background-color: white;
