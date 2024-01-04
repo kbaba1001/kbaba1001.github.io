@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="/styles.css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <meta name="author" content="kbaba1001">
+    <meta property="og:title" content="Fastify と React の初期セットアップ用リポジトリを作った - kbaba1001ブログ">
+    <meta property="og:url" content="https://www.kbaba1001.com">
+    <meta property="og:image" content="https://www.kbaba1001.com/img/posts/2024010401_node-init.png">
+    <meta property="twitter:image:src" content="https://www.kbaba1001.com/img/posts/2024010401_node-init.png">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <meta property="og:type" content="website">
+    <meta name="description" content="">
+    <meta property="og:description" content="">
+    <meta property="og:locale" content="ja_JP">
+
+    <title>Fastify と React の初期セットアップ用リポジトリを作った - kbaba1001ブログ</title>
+  </head>
+  <body class="layout">
+    <header class="layout-header">
+  <div class="header">
+    <div class="header-title">
+  <img src="/img/horse.jpg" alt="kbaba1001 ブログ" loading="lazy" class="header-title-logo">
+  <a href="/" class="header-title-link">kbaba1001 ブログ</a>
+</div>
+
+    <div class="header-nav-container">
+      <nav class="header-nav">
+  <ul class="header-nav-list">
+    <li>
+      <a href="/" class="header-nav-list-link"> Top </a>
+    </li>
+    <li>
+      <a href="/about" class="header-nav-list-link"> About </a>
+    </li>
+    <li>
+      <a href="/feed.rss" class="header-nav-list-link"> RSS </a>
+    </li>
+  </ul>
+</nav>
+
+    </div>
+  </div>
+</header>
+<div class="layout-main">
+  <main class="layout-main-center"><div class="post">
+  <div>
+    <div class="post-date">2024-01-04</div>
+    
+    <div class="post-tag">IT</div>
+    
+  </div>
+  <h1 class="post-title">Fastify と React の初期セットアップ用リポジトリを作った</h1>
+  <div class="post-main"><ul>
+<li><a href="https://github.com/neumann-tokyo/fastify-init">GitHub - neumann-tokyo/fastify-init</a></li>
+<li><a href="https://github.com/neumann-tokyo/react-init">GitHub - neumann-tokyo/react-init</a></li>
+</ul>
+<p>express から Fastify に移行したいので初期セットアップ用のリポジトリを作った。
+ついでに React の SPA 構築用のものも用意した。</p>
+<h2>Fastify-init</h2>
+<ul>
+<li><a href="https://github.com/neumann-tokyo/fastify-init">GitHub - neumann-tokyo/fastify-init</a></li>
+</ul>
+<p>Node.js 21 以上の動作を想定。 <a href="https://code.visualstudio.com/docs/devcontainers/containers">VS Code の devcontainer</a> で開発できるようにしてある。</p>
+<p>devcontainer を立ち上げたときに一緒に docker compose で PostgreSQL が起動して即 DB が使える。 migration は <a href="https://github.com/golang-migrate/migrate">golang-migrate/migrate</a> で JS に依存せずに SQL ファイルからマイグレーションする設計にしてある。</p>
+<p>Formatter, Linter として Pritter や ESLint から <a href="https://biomejs.dev">Biome</a> に変えてみた。
+まだ CSS や HTML などは対応されてないけどいったん良さそう。早いので快適。
+pre-commit ツールも <a href="https://typicode.github.io/husky/">husky</a> から <a href="https://github.com/evilmartians/lefthook">leafhook</a> に変更した。</p>
+<p>テストツールはひとまず node test にしてある。</p>
+<h2>React-init</h2>
+<ul>
+<li><a href="https://github.com/neumann-tokyo/react-init">GitHub - neumann-tokyo/react-init</a></li>
+</ul>
+<p>vite, react-router-dom による React SPA 構成用の初期セットアップリポジトリ。</p>
+<p>chakra-ui で CSS を書かずにデザインを構築可能。</p>
+<p>こちらも biome による Lint, Format が動くようにしてある。</p>
+<p>テストは vitest, happy-dom で動くようにした。フロント用はこれが最近のトレンドとして良い気がする。</p>
+<p>一応、本番環境用に docker compose で nginx や ngrok が動くようにしてあるがこれは完全に自宅サーバー用。</p>
+</div>
+  <hr>
+<div class="marshmallow-button-container">
+  <a href="https://marshmallow-qa.com/94eo4q6jhldqu3x?t=9cXLh8&amp;utm_medium=url_text&amp;utm_source=promotion" target="_blank" class="marshmallow-button">
+    マシュマロからメッセージを送る
+  </a>
+  <div class="marshmallow-note">
+    ※どの記事のコメントかわかるように本文に記事タイトルなどを入れてください。
+  </div>
+</div>
+
+  <a href="/" class="post-index-link">一覧に戻る</a>
+</div>
+</main>
+</div>
+
+  
+
+</body></html>
