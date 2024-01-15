@@ -13,13 +13,9 @@ ogimage: /img/horse.jpg
       <div class="blog-container">
         {{ for post of search.pages("type=posts", "date=desc") }}
         <div class="blog-card">
-          <div class="blog-card-date">
-            {{ post.date |> date('DATE') }}
-          </div>
+          <div class="blog-card-date">{{ post.date |> date('DATE') }}</div>
           <a href="{{ post.url }}" class="blog-card-title-link">
-            <h2 class="blog-card-title">
-              {{ post.title }}
-            </h2>
+            <h2 class="blog-card-title">{{ post.title }}</h2>
           </a>
           <div class="blog-card-description">{{ post.description }}</div>
           <ul class="blog-tags">

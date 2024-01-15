@@ -4,20 +4,20 @@ date: 2024-01-05
 description: APIのプロトコルについて思うことなど
 ogimage: /img/posts/2024010501_grpc-trpc-graphql.png
 tags:
- - IT
+  - IT
 ---
 
 API のプロトコルを色々触ったので雑感まとめ。
 
 ## REST
 
-* [REST - MDN](https://developer.mozilla.org/en-US/docs/Glossary/REST)
+- [REST - MDN](https://developer.mozilla.org/en-US/docs/Glossary/REST)
 
 おそらく現在一番広く使われてる方式が REST だと思う。今更特に言うことはないので省略
 
 ## GraphQL
 
-* [GraphQL](https://graphql.org)
+- [GraphQL](https://graphql.org)
 
 schema 作って各言語で実装を自動生成する。
 最大の特徴はほしい情報をクライアント側からある程度指定できること。
@@ -25,10 +25,10 @@ schema 作って各言語で実装を自動生成する。
 
 ## gRPC
 
-* [gRPC](https://grpc.io)
+- [gRPC](https://grpc.io)
 
-GraphQL のようにクライアント側からの指定はできないものの、 schema (protoファイル) でサーバーとクライアントの
-やり取りするデータ、APIのインタフェースなど一通りのことを定義しておくことができるので、
+GraphQL のようにクライアント側からの指定はできないものの、 schema (proto ファイル) でサーバーとクライアントの
+やり取りするデータ、API のインタフェースなど一通りのことを定義しておくことができるので、
 ある程度やり取りの内容が決まっている場合には REST よりはかっちり作れるし GraphQL ほど手間でもない。
 わりといいとこ取りをしている気がする。
 
@@ -40,7 +40,7 @@ GraphQL のようにクライアント側からの指定はできないものの
 
 ## tRPC
 
-* [tRPC](https://trpc.io)
+- [tRPC](https://trpc.io)
 
 サーバー、クライアント共に TypeScript なのであれば tRPC が一番楽だと思う。
 TypeScript でインタフェースを定義してそれをサーバー、クライアントで共有する。

@@ -15,6 +15,7 @@
       "npm:postcss-import@15.1.0": "npm:postcss-import@15.1.0_postcss@8.4.32",
       "npm:postcss-nesting@12.0.1": "npm:postcss-nesting@12.0.1_postcss@8.4.32_postcss-selector-parser@6.0.13",
       "npm:postcss@8.4.32": "npm:postcss@8.4.32",
+      "npm:prettier": "npm:prettier@2.8.5",
       "npm:react-dom@18.2.0": "npm:react-dom@18.2.0_react@18.2.0",
       "npm:react@18.2.0": "npm:react@18.2.0",
       "npm:terser@5.26.0": "npm:terser@5.26.0"
@@ -328,6 +329,10 @@
           "picocolors": "picocolors@1.0.0",
           "source-map-js": "source-map-js@1.0.2"
         }
+      },
+      "prettier@2.8.5": {
+        "integrity": "sha512-3gzuxrHbKUePRBB4ZeU08VNkUcqEHaUaouNt0m7LGP4Hti/NuB07C7PPTM/LkWqXoJYJn2McEo5+kxPNrtQkLQ==",
+        "dependencies": {}
       },
       "punycode.js@2.3.1": {
         "integrity": "sha512-uxFIHU0YlHYhDQtV4R9J6a52SLx28BCjT+4ieh7IGbgwVJWO+km431c4yRlREUAsAmt/uMjQUyQHNEPf0M39CA==",
@@ -960,6 +965,7 @@
     "https://deno.land/x/lume@v2.0.1/plugins/paginate.ts": "fe6638777662eb7c41276d5a6f3e2ea02688ae51fac39b4c64ea33e386d4fe19",
     "https://deno.land/x/lume@v2.0.1/plugins/postcss.ts": "0b86f43b450092bf7e96b990635d3e133d44912ddc65fdb0caf90b751cb6a77c",
     "https://deno.land/x/lume@v2.0.1/plugins/search.ts": "8ec3a8f082b8ff1532bbe8f8bf76dfaa2d0feab7c2ec5c824d0ccc044c26f640",
+    "https://deno.land/x/lume@v2.0.1/plugins/sitemap.ts": "147e8b80345bc149ed3738b7b0ee57eb5f9caba222ebd8bfc0343fb810b28333",
     "https://deno.land/x/lume@v2.0.1/plugins/source_maps.ts": "2fb5a23d22768a92e04c6feefe2c704dd8d970780a90d0e069f784353f5c545f",
     "https://deno.land/x/lume@v2.0.1/plugins/terser.ts": "f3b452644d698e40ad4cc5c642b0aa162b02ca720783de09996f558d2cf02e1d",
     "https://deno.land/x/lume@v2.0.1/plugins/toml.ts": "60191e1e8fd0922def0b3f0eaad13988217511571a54659481759db4b0ca4f82",
