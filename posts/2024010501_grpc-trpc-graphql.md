@@ -4,7 +4,7 @@ date: 2024-01-05
 description: APIのプロトコルについて思うことなど
 ogimage: /img/posts/2024010501_grpc-trpc-graphql.png
 tags:
-  - IT
+  - Tech
 ---
 
 API のプロトコルを色々触ったので雑感まとめ。

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="/styles.css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <meta name="author" content="kbaba1001">
+    <meta property="og:title" content="妻に C 言語を教えることになった - kbaba1001ブログ">
+    <meta property="og:url" content="https://www.kbaba1001.com">
+    <meta property="og:image" content="https://www.kbaba1001.com/img/posts/2024011601_teach-c-language-to-my-wife.png">
+    <meta property="twitter:image:src" content="https://www.kbaba1001.com/img/posts/2024011601_teach-c-language-to-my-wife.png">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <meta property="og:type" content="website">
+    <meta name="description" content="">
+    <meta property="og:description" content="">
+    <meta property="og:locale" content="ja_JP">
+
+    <title>妻に C 言語を教えることになった - kbaba1001ブログ</title>
+  </head>
+  <body class="layout">
+    <header class="layout-header">
+  <div class="header">
+    <div class="header-title">
+  <img src="/img/horse.jpg" alt="kbaba1001 ブログ" loading="lazy" class="header-title-logo">
+  <a href="/" class="header-title-link">kbaba1001 ブログ</a>
+</div>
+
+    <div class="header-nav-container"><nav class="header-nav">
+  <ul class="header-nav-list">
+    <li>
+      <a href="/" class="header-nav-list-link"> Top </a>
+    </li>
+    <li>
+      <a href="/about" class="header-nav-list-link"> About </a>
+    </li>
+    <li>
+      <a href="/feed.rss" class="header-nav-list-link"> RSS </a>
+    </li>
+  </ul>
+</nav>
+</div>
+  </div>
+</header>
+<div class="layout-main">
+  <main class="layout-main-center"><div class="post">
+  <div>
+    <div class="post-date">2024-01-16</div>
+    
+    <div class="post-tag">Tech</div>
+    
+    <div class="post-tag">日常</div>
+    
+  </div>
+  <h1 class="post-title">妻に C 言語を教えることになった</h1>
+  <div class="post-main"><p>紆余曲折あって妻に C 言語を教えることになった。
+もともとの妻の希望としては、</p>
+<ul>
+<li>データサイエンティストになりたいからデータ分析とか統計学とか学びたい</li>
+<li>ついでにアルゴリズムとかも知りたい</li>
+</ul>
+<p>ということだったので、 Python / Excel / SQL あたりを教えてみたのだが、
+よく話してみるともうちょっと硬派なことをやりたそうだったので、
+いっそのこと C 言語とか TCP/IP とか Linux とかいわゆる情報系の大学でやるようなことを
+ひととおりやらせてみることにした。</p>
+<p>妻からカリキュラムを作って欲しいと言われたので google classroom で一通り作成することにした。</p>
+<p><img src="/img/posts/2024011601/google-classroom.png" alt="google classroom"></p>
+<p>なるべくネット上の無料で使える教材を使いたかったのだが、書籍のほうがわかりやすいということで何冊か買うことになった。</p>
+<ul>
+<li><a href="https://www.amazon.co.jp/dp/4295011088">統計学の基礎から学ぶ Excelデータ分析の全知識</a></li>
+<li><a href="https://amzn.asia/d/7rvthWq">入門 統計学(第2版): 検定から多変量解析・実験計画法・ベイズ統計学まで</a></li>
+<li><a href="https://amzn.asia/d/6jZ5Xlx">新・明解C言語 入門編 第2版</a></li>
+<li><a href="https://amzn.asia/d/eLdiWbB">スッキリわかるPython入門 第2版</a></li>
+<li><a href="https://amzn.asia/d/03PX0mL">現場ですぐに使える！ 最新Pythonプログラミング逆引き大全450の極意</a></li>
+</ul>
+<p>アルゴリズムやデータ構造を勉強するなら結局 C 言語が一番いいのかもしれない。
+Python のような動的型付け言語では型の概念が理解しづらいし、メモリも意識できない。
+アルゴリズムの説明もなんだかんだ言って C++ とかで説明しているのが多いし。</p>
+<p>ついでに Debian の CUI のみインストールさせて、そこから GUI 環境を構築するという課題をやらせるつもり。
+gentoo や Arch Linux ほど難しくはないしちょうどいい課題だと思うのだが、なぜかこれについてまとめているドキュメントがないんだよなぁ。。。
+自分で書きたいと思いつつなかなか進められていないのでこの機会に作ってしまおうかな。</p>
+<p>まだ買ってないけど良さそうだと思っている本:</p>
+<ul>
+<li><a href="https://amzn.asia/d/0vZBXR9">新・明解C言語で学ぶアルゴリズムとデータ構造第2版</a></li>
+<li><a href="https://amzn.asia/d/ixP2wm4">基礎から学ぶ React/React Hooks</a></li>
+<li><a href="https://amzn.asia/d/4LU5Ial">体験しながら学ぶ ネットワーク技術入門</a></li>
+<li><a href="https://amzn.asia/d/2IqlFSx">ネットワーク 入門・構築の教科書</a></li>
+<li><a href="https://amzn.asia/d/iWxHu0w">ヤマハルーター＆スイッチによるネットワーク構築 標準教科書</a></li>
+<li>Linux関係の入門書で何かしらおすすめがほしい (日経Linux読む方がいいかなぁ)
+<ul>
+<li><a href="https://amzn.asia/d/aDKwDma">日経Linux 2023年 7 月号</a></li>
+</ul>
+</li>
+</ul>
+<p>ここまで来ると Docker とか git とかも知っておいてほしい気もする。
+硬派にやるなら『コンピュータの構成と設計』とかもやっていい気もする。
+応用編として、画像処理、音声処理、AI とかかなぁ。</p>
+</div>
+  <hr>
+<div class="marshmallow-button-container">
+  <a href="https://marshmallow-qa.com/94eo4q6jhldqu3x?t=9cXLh8&amp;utm_medium=url_text&amp;utm_source=promotion" target="_blank" class="marshmallow-button">
+    マシュマロからメッセージを送る
+  </a>
+  <div class="marshmallow-note">
+    ※どの記事のコメントかわかるように本文に記事タイトルなどを入れてください。
+  </div>
+</div>
+
+  <a href="/" class="post-index-link">一覧に戻る</a>
+</div>
+</main>
+</div>
+
+  
+
+</body></html>

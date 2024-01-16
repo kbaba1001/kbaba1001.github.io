@@ -9,6 +9,58 @@
     <language>ja_JP</language>
     <generator>Lume v2.0.1</generator>
     <item>
+      <title>妻に C 言語を教えることになった</title>
+      <link>https://www.kbaba1001.com/posts/2024011601_teach-c-language-to-my-wife/</link>
+      <guid isPermaLink="false">https://www.kbaba1001.com/posts/2024011601_teach-c-language-to-my-wife/</guid>
+      <description/>
+      <content:encoded>
+        <![CDATA[<p>紆余曲折あって妻に C 言語を教えることになった。
+        もともとの妻の希望としては、</p>
+        <ul>
+        <li>データサイエンティストになりたいからデータ分析とか統計学とか学びたい</li>
+        <li>ついでにアルゴリズムとかも知りたい</li>
+        </ul>
+        <p>ということだったので、 Python / Excel / SQL あたりを教えてみたのだが、
+        よく話してみるともうちょっと硬派なことをやりたそうだったので、
+        いっそのこと C 言語とか TCP/IP とか Linux とかいわゆる情報系の大学でやるようなことを
+        ひととおりやらせてみることにした。</p>
+        <p>妻からカリキュラムを作って欲しいと言われたので google classroom で一通り作成することにした。</p>
+        <p><img src="https://www.kbaba1001.com/img/posts/2024011601/google-classroom.png" alt="google classroom"></p>
+        <p>なるべくネット上の無料で使える教材を使いたかったのだが、書籍のほうがわかりやすいということで何冊か買うことになった。</p>
+        <ul>
+        <li><a href="https://www.amazon.co.jp/dp/4295011088">統計学の基礎から学ぶ Excelデータ分析の全知識</a></li>
+        <li><a href="https://amzn.asia/d/7rvthWq">入門 統計学(第2版): 検定から多変量解析・実験計画法・ベイズ統計学まで</a></li>
+        <li><a href="https://amzn.asia/d/6jZ5Xlx">新・明解C言語 入門編 第2版</a></li>
+        <li><a href="https://amzn.asia/d/eLdiWbB">スッキリわかるPython入門 第2版</a></li>
+        <li><a href="https://amzn.asia/d/03PX0mL">現場ですぐに使える！ 最新Pythonプログラミング逆引き大全450の極意</a></li>
+        </ul>
+        <p>アルゴリズムやデータ構造を勉強するなら結局 C 言語が一番いいのかもしれない。
+        Python のような動的型付け言語では型の概念が理解しづらいし、メモリも意識できない。
+        アルゴリズムの説明もなんだかんだ言って C++ とかで説明しているのが多いし。</p>
+        <p>ついでに Debian の CUI のみインストールさせて、そこから GUI 環境を構築するという課題をやらせるつもり。
+        gentoo や Arch Linux ほど難しくはないしちょうどいい課題だと思うのだが、なぜかこれについてまとめているドキュメントがないんだよなぁ。。。
+        自分で書きたいと思いつつなかなか進められていないのでこの機会に作ってしまおうかな。</p>
+        <p>まだ買ってないけど良さそうだと思っている本:</p>
+        <ul>
+        <li><a href="https://amzn.asia/d/0vZBXR9">新・明解C言語で学ぶアルゴリズムとデータ構造第2版</a></li>
+        <li><a href="https://amzn.asia/d/ixP2wm4">基礎から学ぶ React/React Hooks</a></li>
+        <li><a href="https://amzn.asia/d/4LU5Ial">体験しながら学ぶ ネットワーク技術入門</a></li>
+        <li><a href="https://amzn.asia/d/2IqlFSx">ネットワーク 入門・構築の教科書</a></li>
+        <li><a href="https://amzn.asia/d/iWxHu0w">ヤマハルーター＆スイッチによるネットワーク構築 標準教科書</a></li>
+        <li>Linux関係の入門書で何かしらおすすめがほしい (日経Linux読む方がいいかなぁ)
+        <ul>
+        <li><a href="https://amzn.asia/d/aDKwDma">日経Linux 2023年 7 月号</a></li>
+        </ul>
+        </li>
+        </ul>
+        <p>ここまで来ると Docker とか git とかも知っておいてほしい気もする。
+        硬派にやるなら『コンピュータの構成と設計』とかもやっていい気もする。
+        応用編として、画像処理、音声処理、AI とかかなぁ。</p>
+        ]]>
+      </content:encoded>
+      <pubDate>Tue, 16 Jan 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
       <title>gRPC, tRPC, GraphQL, REST について</title>
       <link>https://www.kbaba1001.com/posts/2024010501_grpc-trpc-graphql/</link>
       <guid isPermaLink="false">https://www.kbaba1001.com/posts/2024010501_grpc-trpc-graphql/</guid>
