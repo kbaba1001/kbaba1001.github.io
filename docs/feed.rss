@@ -9,6 +9,37 @@
     <language>ja_JP</language>
     <generator>Lume v2.0.1</generator>
     <item>
+      <title>React関係で思うことなど</title>
+      <link>https://www.kbaba1001.com/posts/2024011602_react/</link>
+      <guid isPermaLink="false">https://www.kbaba1001.com/posts/2024011602_react/</guid>
+      <description/>
+      <content:encoded>
+        <![CDATA[<p>React 18.2.0 以降くらいから Next.js にあるような Server 向けの機能などが色々入るようで、
+        僕としてはなんかもうちょっと気楽に SPA 作れる UI ライブラリであれば十分なんだけどなぁ、という微妙な気持ち。</p>
+        <p>Next.js も触ってるけど面倒くさくて仕方がない。 Server Side Rendering ってそんなにいいものかなぁ。</p>
+        <p>最近入った機能だと Suspense は便利だと思ったけど、 server actions とか use server とかちょっと面倒くさいな。</p>
+        <p>まぁ、でも React の内部にデータベースへのアクセスなどのサーバーとしての機能も全部もたせたら便利なのかなぁ。
+        それってただのモノリスで、また時代が逆行する気がするけど。。。</p>
+        <p>じゃあ、 React 以外のライブラリはどうなんだろうか？</p>
+        <p>Preact は少し試したことがあるけど次のような感想。</p>
+        <ul>
+        <li>Signal は便利 (React で jotai や Recoil など使えば大差ないけど)</li>
+        <li>色々と React よりきれいな感じはする</li>
+        <li>React ライブラリはダックタイピングで動かすので TypeScript との相性は悪い</li>
+        <li>preact-cli は webpack なので微妙だった</li>
+        <li>結局 React でよくね？感はすごくある</li>
+        </ul>
+        <p>もう一つやりたいのは Svelte かなぁ。いまいち流行りきってない感じがあるけど、多分好みではあると思う。</p>
+        <p>Solid.js も結局 React でよくね？感を払拭できない。あんま流行ってない気もするし。</p>
+        <p>htmx もあんま自分好みじゃないしなぁ</p>
+        <p><img src="https://www.kbaba1001.com/img/posts/2024011602/google-trend.png" alt="google trend"></p>
+        <p>google trend も見てみたけど、React が圧倒的で次いで Vue, Svelte という感じ。
+        やや意外なことに Solid.js は htmx よりも人気がない。</p>
+        ]]>
+      </content:encoded>
+      <pubDate>Tue, 16 Jan 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
       <title>妻に C 言語を教えることになった</title>
       <link>https://www.kbaba1001.com/posts/2024011601_teach-c-language-to-my-wife/</link>
       <guid isPermaLink="false">https://www.kbaba1001.com/posts/2024011601_teach-c-language-to-my-wife/</guid>
