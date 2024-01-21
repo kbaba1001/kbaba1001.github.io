@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="/styles.css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <meta name="author" content="kbaba1001">
+    <meta property="og:title" content="自動交渉のライブラリを作った - kbaba1001ブログ">
+    <meta property="og:url" content="https://www.kbaba1001.com">
+    <meta property="og:image" content="https://www.kbaba1001.com/img/posts/2024012101_auto-negotiator.png">
+    <meta property="twitter:image:src" content="https://www.kbaba1001.com/img/posts/2024012101_auto-negotiator.png">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <meta property="og:type" content="website">
+    <meta name="description" content="">
+    <meta property="og:description" content="">
+    <meta property="og:locale" content="ja_JP">
+
+    <title>自動交渉のライブラリを作った - kbaba1001ブログ</title>
+  </head>
+  <body class="layout">
+    <header class="layout-header">
+  <div class="header">
+    <div class="header-title">
+  <img src="/img/horse.jpg" alt="kbaba1001 ブログ" loading="lazy" class="header-title-logo">
+  <a href="/" class="header-title-link">kbaba1001 ブログ</a>
+</div>
+
+    <div class="header-nav-container"><nav class="header-nav">
+  <ul class="header-nav-list">
+    <li>
+      <a href="/" class="header-nav-list-link"> Top </a>
+    </li>
+    <li>
+      <a href="/about" class="header-nav-list-link"> About </a>
+    </li>
+    <li>
+      <a href="/feed.rss" class="header-nav-list-link"> RSS </a>
+    </li>
+  </ul>
+</nav>
+</div>
+  </div>
+</header>
+<div class="layout-main">
+  <main class="layout-main-center"><div class="post">
+  <div>
+    <div class="post-date">2024-01-21</div>
+    
+    <div class="post-tag">Tech</div>
+    
+  </div>
+  <h1 class="post-title">自動交渉のライブラリを作った</h1>
+  <div class="post-main"><p><a href="https://github.com/neumann-tokyo/auto_negotiator">Auto Negotiator</a> というライブラリを TypeScript で作った。
+まだ npm にアップロードしてないけど数日以内には対応する予定。</p>
+<h2>自動交渉の概要</h2>
+<p>自動交渉については ↓ の記事などがわかりやすい（というかこれ以外あんまなかった）。</p>
+<p><a href="https://engineering.mercari.com/blog/entry/2017-12-07-103000/">自動交渉 AI から見る"AI 同士がつながる世界"</a></p>
+<p>自動交渉は交渉を行うエージェントを数体作成して、それらのエージェントの希望を考慮しつつ満場一致になる選択肢を導き出すというもの。</p>
+<p>例えば、夕食のメニューを考えるときに、</p>
+<ul>
+<li>主食
+<ul>
+<li>ご飯</li>
+<li>パン</li>
+<li>麺</li>
+</ul>
+</li>
+<li>メインディッシュ
+<ul>
+<li>ステーキ</li>
+<li>魚</li>
+<li>チキン</li>
+</ul>
+</li>
+</ul>
+<p>みたいな選択肢があって、エージェント A は <code>{主食: ご飯, メインディッシュ: ステーキ}</code> がよく、エージェント B は <code>{主食: ご飯, メインディッシュ: 魚}</code> がよいという意見を持っている場合に、エージェント A, B がある程度納得して同意（満場一致）できる献立を考えるというもの。</p>
+<h2>プログラムでの表現</h2>
+<p>自動交渉を行うには、エージェントとトピックが必要だ。
+ライブラリの本体とは別にサンプルコードも用意したので、以下はサンプルコードを元にして説明する。</p>
+<h3>トピック</h3>
+<p>まずトピックについて説明する。</p>
+<p><a href="https://github.com/neumann-tokyo/auto_negotiator/blob/main/sample/topic/dinner/agent1.ts">https://github.com/neumann-tokyo/auto_negotiator/blob/main/sample/topic/dinner/agent1.ts</a></p>
+<pre><code class="language-typescript hljs"><span class="hljs-keyword">import</span> { <span class="hljs-title class_">Topic</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">"../../../src/types"</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> <span class="hljs-attr">topic</span>: <span class="hljs-title class_">Topic</span> = {
+  <span class="hljs-attr">name</span>: <span class="hljs-string">"Dinner"</span>,
+  <span class="hljs-attr">description</span>: <span class="hljs-string">"What should we have dinner?"</span>,
+  <span class="hljs-attr">discount_factor</span>: <span class="hljs-number">0.1</span>,
+  <span class="hljs-attr">reservation</span>: <span class="hljs-number">0.3</span>,
+  <span class="hljs-attr">issues</span>: [
+    {
+      <span class="hljs-attr">name</span>: <span class="hljs-string">"Staple food"</span>,
+      <span class="hljs-attr">weight</span>: <span class="hljs-number">0.3</span>,
+      <span class="hljs-attr">items</span>: [
+        {
+          <span class="hljs-attr">name</span>: <span class="hljs-string">"Rice"</span>,
+          <span class="hljs-attr">evaluation</span>: <span class="hljs-number">7</span>,
+        },
+        {
+          <span class="hljs-attr">name</span>: <span class="hljs-string">"Noodles"</span>,
+          <span class="hljs-attr">evaluation</span>: <span class="hljs-number">2</span>,
+        },
+        {
+          <span class="hljs-attr">name</span>: <span class="hljs-string">"Bread"</span>,
+          <span class="hljs-attr">evaluation</span>: <span class="hljs-number">1</span>,
+        },
+      ],
+    },
+    {
+      <span class="hljs-attr">name</span>: <span class="hljs-string">"Main dish"</span>,
+      <span class="hljs-attr">weight</span>: <span class="hljs-number">0.7</span>,
+      <span class="hljs-attr">items</span>: [
+        {
+          <span class="hljs-attr">name</span>: <span class="hljs-string">"Steak"</span>,
+          <span class="hljs-attr">evaluation</span>: <span class="hljs-number">1</span>,
+        },
+        {
+          <span class="hljs-attr">name</span>: <span class="hljs-string">"Fish"</span>,
+          <span class="hljs-attr">evaluation</span>: <span class="hljs-number">1</span>,
+        },
+        {
+          <span class="hljs-attr">name</span>: <span class="hljs-string">"Chicken"</span>,
+          <span class="hljs-attr">evaluation</span>: <span class="hljs-number">8</span>,
+        },
+      ],
+    },
+  ],
+};
+</code></pre>
+<p>上記のように夕食の献立というトピックにたいして、どのような意見を持っているかを決める。
+まず、この agent1 は主食 (Staple food) とメインディッシュ (Main dish) に対して、それぞれ 0.3 と 0.7 の重み (weight) をつけている。
+weight は全体で合計が 1.0 になるように設定する必要があり、どの issue に大して優先したいかを示す。
+ようするに、 agent1 はメインディッシュに関して 70% 優先したいと考えている。逆に言えば主食に関しては譲歩しやすい。</p>
+<pre><code>  name: "Staple food",
+  weight: 0.3,
+
+  name: "Main dish",
+  weight: 0.7,
+</code></pre>
+<p>次に、issue の中について見てみると <code>items</code> に選択肢として Rice, Noodles, Bread があり、その evaluation が 7, 2, 1 となっている。
+evaluation については Integer でどのような数値を置いても良いが、合計が 10 や 100 になるようにするとわかりやすい。
+（内部で処理する際はこの数値に重みを付けて正規化する）</p>
+<pre><code class="language-typescript hljs">{
+  <span class="hljs-attr">name</span>: <span class="hljs-string">"Staple food"</span>,
+  <span class="hljs-attr">weight</span>: <span class="hljs-number">0.3</span>,
+  <span class="hljs-attr">items</span>: [
+    {
+      <span class="hljs-attr">name</span>: <span class="hljs-string">"Rice"</span>,
+      <span class="hljs-attr">evaluation</span>: <span class="hljs-number">7</span>,
+    },
+    {
+      <span class="hljs-attr">name</span>: <span class="hljs-string">"Noodles"</span>,
+      <span class="hljs-attr">evaluation</span>: <span class="hljs-number">2</span>,
+    },
+    {
+      <span class="hljs-attr">name</span>: <span class="hljs-string">"Bread"</span>,
+      <span class="hljs-attr">evaluation</span>: <span class="hljs-number">1</span>,
+    },
+  ],
+},
+</code></pre>
+<p>evaluation の値が大きいほどその選択肢にしたいという意思が強くなるため、上記の場合では agent1 は Rice を食べたいという意思が強いことがわかる。</p>
+<h3>エージェント</h3>
+<p>エージェントは他のエージェントからの提案やトピックを元にしてどのように自分の意見を主張していくかを決定づけるものだ。</p>
+<p>ソースコードを元に説明する。</p>
+<p><a href="https://github.com/neumann-tokyo/auto_negotiator/blob/main/sample/agents/sample-agent.ts">https://github.com/neumann-tokyo/auto_negotiator/blob/main/sample/agents/sample-agent.ts</a></p>
+<pre><code class="language-typescript hljs"><span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> helper <span class="hljs-keyword">from</span> <span class="hljs-string">"../../src/helper"</span>;
+<span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> types <span class="hljs-keyword">from</span> <span class="hljs-string">"../../src/types"</span>;
+
+<span class="hljs-comment">// この関数は試行のたびに呼び出される。</span>
+<span class="hljs-comment">// 引数には全体の状況や自分のトピックがはいってきて、自分の意見を返すとそれが他のエージェントにも伝わる。</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">sampleAgent</span>(<span class="hljs-params">{
+  data: { id, attempts, attemptsCount },
+  normalizedTopic,
+}: types.ActionFnParams</span>): types.<span class="hljs-property">ActionFnResponse</span> {
+  <span class="hljs-comment">// 現在の試行における他のエージェントからの提案などがはいっている</span>
+  <span class="hljs-keyword">const</span> currentAttempt = helper.<span class="hljs-title function_">currentAttempt</span>({ id, attempts });
+
+  <span class="hljs-comment">// 試行回数を元にして譲歩値を設定する。 1.0 - progress なので徐々に譲歩値は下がっていく。</span>
+  <span class="hljs-comment">// つまり、他からの意見に同意しやすくなる</span>
+  <span class="hljs-keyword">const</span> progress = helper.<span class="hljs-title function_">progress</span>({ id, attemptsCount });
+  <span class="hljs-keyword">const</span> concessionValue = <span class="hljs-number">1.0</span> - progress;
+
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> status <span class="hljs-keyword">of</span> currentAttempt) {
+    <span class="hljs-keyword">if</span> (status.<span class="hljs-property">type</span> === types.<span class="hljs-property">AtemptType</span>.<span class="hljs-property">Offer</span>) {
+      <span class="hljs-keyword">const</span> anotherConcessionValue = helper.<span class="hljs-title function_">choicesToConcessionValue</span>({
+        <span class="hljs-attr">choices</span>: status.<span class="hljs-property">choices</span>,
+      });
+
+      <span class="hljs-comment">// 相手からの提案のほうが自分の譲歩値より高いのであれば同意する</span>
+      <span class="hljs-keyword">if</span> (concessionValue &lt; anotherConcessionValue) {
+        <span class="hljs-keyword">return</span> {
+          id,
+          <span class="hljs-attr">choices</span>: status.<span class="hljs-property">choices</span>,
+          <span class="hljs-attr">concessionValue</span>: anotherConcessionValue,
+          <span class="hljs-attr">type</span>: types.<span class="hljs-property">AtemptType</span>.<span class="hljs-property">Accept</span>,
+        };
+      }
+    }
+  }
+
+  <span class="hljs-comment">// 同意できない場合に自分の意見を作成する</span>
+  <span class="hljs-keyword">const</span> { choices, threshold } = helper.<span class="hljs-title function_">concessionValueToChoices</span>({
+    normalizedTopic,
+    concessionValue,
+  });
+  <span class="hljs-keyword">return</span> {
+    id,
+    choices,
+    concessionValue,
+    <span class="hljs-attr">type</span>: types.<span class="hljs-property">AtemptType</span>.<span class="hljs-property">Offer</span>,
+  };
+}
+</code></pre>
+<p>上記はエージェントのサンプルでしかなく、もっと自由に作って良い。</p>
+<h3>自動交渉の実行</h3>
+<p>最後はエージェントとトピックを元にして自動交渉を行う。</p>
+<p><a href="https://github.com/neumann-tokyo/auto_negotiator/blob/main/sample/run.ts">https://github.com/neumann-tokyo/auto_negotiator/blob/main/sample/run.ts</a></p>
+<pre><code class="language-typescript hljs"><span class="hljs-keyword">import</span> { prettyPrint } <span class="hljs-keyword">from</span> <span class="hljs-string">"../src/helper"</span>;
+<span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> negotiator <span class="hljs-keyword">from</span> <span class="hljs-string">"../src/index"</span>;
+<span class="hljs-keyword">import</span> { sampleAgent } <span class="hljs-keyword">from</span> <span class="hljs-string">"./agents/sample-agent"</span>;
+<span class="hljs-keyword">import</span> { topic <span class="hljs-keyword">as</span> agent1Topic } <span class="hljs-keyword">from</span> <span class="hljs-string">"./topic/dinner/agent1"</span>;
+<span class="hljs-keyword">import</span> { topic <span class="hljs-keyword">as</span> agent2Topic } <span class="hljs-keyword">from</span> <span class="hljs-string">"./topic/dinner/agent2"</span>;
+<span class="hljs-keyword">import</span> { topic <span class="hljs-keyword">as</span> agent3Topic } <span class="hljs-keyword">from</span> <span class="hljs-string">"./topic/dinner/agent3"</span>;
+
+<span class="hljs-comment">// これは任意の値を設定して良い</span>
+<span class="hljs-keyword">const</span> channelName = <span class="hljs-string">"dinner"</span>;
+
+<span class="hljs-comment">// エージェントとそのトピックを登録する</span>
+negotiator.<span class="hljs-title function_">defineAgent</span>({
+  <span class="hljs-attr">channelName</span>: channelName,
+  <span class="hljs-attr">agentName</span>: <span class="hljs-string">"agent1"</span>,
+  <span class="hljs-attr">topic</span>: agent1Topic,
+  <span class="hljs-attr">actionFn</span>: sampleAgent,
+});
+negotiator.<span class="hljs-title function_">defineAgent</span>({
+  <span class="hljs-attr">channelName</span>: channelName,
+  <span class="hljs-attr">agentName</span>: <span class="hljs-string">"agent2"</span>,
+  <span class="hljs-attr">topic</span>: agent2Topic,
+  <span class="hljs-attr">actionFn</span>: sampleAgent,
+});
+negotiator.<span class="hljs-title function_">defineAgent</span>({
+  <span class="hljs-attr">channelName</span>: channelName,
+  <span class="hljs-attr">agentName</span>: <span class="hljs-string">"agent3"</span>,
+  <span class="hljs-attr">topic</span>: agent3Topic,
+  <span class="hljs-attr">actionFn</span>: sampleAgent,
+});
+
+<span class="hljs-comment">// 自動交渉を行う。試行回数（attemptsCount）は 30 回、エージェント数 (agentsCount) は 3 体</span>
+<span class="hljs-keyword">const</span> result = negotiator.<span class="hljs-title function_">negotiate</span>({
+  channelName,
+  <span class="hljs-attr">attemptsCount</span>: <span class="hljs-number">30</span>,
+  <span class="hljs-attr">agentsCount</span>: <span class="hljs-number">3</span>,
+});
+
+<span class="hljs-comment">// 結果の表示</span>
+<span class="hljs-title function_">prettyPrint</span>(result);
+</code></pre>
+<p>自動交渉の結果は次のようになる。</p>
+<p><a href="https://github.com/neumann-tokyo/auto_negotiator/blob/main/sample/result.json">https://github.com/neumann-tokyo/auto_negotiator/blob/main/sample/result.json</a></p>
+<pre><code class="language-json hljs"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"isAgreed"</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">7</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"attemptsCount"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">8</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"conclusion"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
+    <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">"choices"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
+        <span class="hljs-punctuation">{</span>
+          <span class="hljs-attr">"issueName"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Staple food"</span><span class="hljs-punctuation">,</span>
+          <span class="hljs-attr">"item"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+            <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Rice"</span><span class="hljs-punctuation">,</span>
+            <span class="hljs-attr">"evaluation"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">7</span><span class="hljs-punctuation">,</span>
+            <span class="hljs-attr">"normalizedEvaluation"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">0.21000000000000002</span>
+          <span class="hljs-punctuation">}</span>
+        <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-punctuation">{</span>
+          <span class="hljs-attr">"issueName"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Main dish"</span><span class="hljs-punctuation">,</span>
+          <span class="hljs-attr">"item"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+            <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Chicken"</span><span class="hljs-punctuation">,</span>
+            <span class="hljs-attr">"evaluation"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">8</span><span class="hljs-punctuation">,</span>
+            <span class="hljs-attr">"normalizedEvaluation"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">0.5599999999999999</span>
+          <span class="hljs-punctuation">}</span>
+        <span class="hljs-punctuation">}</span>
+      <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"concessionValue"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">0.7666666666666666</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"type"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"offer"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"agentName"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"agent1"</span>
+    <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">"choices"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
+        <span class="hljs-punctuation">{</span>
+          <span class="hljs-attr">"issueName"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Staple food"</span><span class="hljs-punctuation">,</span>
+          <span class="hljs-attr">"item"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+            <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Rice"</span><span class="hljs-punctuation">,</span>
+            <span class="hljs-attr">"evaluation"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">7</span><span class="hljs-punctuation">,</span>
+            <span class="hljs-attr">"normalizedEvaluation"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">0.21000000000000002</span>
+          <span class="hljs-punctuation">}</span>
+        <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-punctuation">{</span>
+          <span class="hljs-attr">"issueName"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Main dish"</span><span class="hljs-punctuation">,</span>
+          <span class="hljs-attr">"item"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+            <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Chicken"</span><span class="hljs-punctuation">,</span>
+            <span class="hljs-attr">"evaluation"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">8</span><span class="hljs-punctuation">,</span>
+            <span class="hljs-attr">"normalizedEvaluation"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">0.5599999999999999</span>
+          <span class="hljs-punctuation">}</span>
+        <span class="hljs-punctuation">}</span>
+      <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"concessionValue"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">0.77</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"type"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"accept"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"agentName"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"agent2"</span>
+    <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">"choices"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
+        <span class="hljs-punctuation">{</span>
+          <span class="hljs-attr">"issueName"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Staple food"</span><span class="hljs-punctuation">,</span>
+          <span class="hljs-attr">"item"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+            <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Rice"</span><span class="hljs-punctuation">,</span>
+            <span class="hljs-attr">"evaluation"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">7</span><span class="hljs-punctuation">,</span>
+            <span class="hljs-attr">"normalizedEvaluation"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">0.21000000000000002</span>
+          <span class="hljs-punctuation">}</span>
+        <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-punctuation">{</span>
+          <span class="hljs-attr">"issueName"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Main dish"</span><span class="hljs-punctuation">,</span>
+          <span class="hljs-attr">"item"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+            <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Chicken"</span><span class="hljs-punctuation">,</span>
+            <span class="hljs-attr">"evaluation"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">8</span><span class="hljs-punctuation">,</span>
+            <span class="hljs-attr">"normalizedEvaluation"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">0.5599999999999999</span>
+          <span class="hljs-punctuation">}</span>
+        <span class="hljs-punctuation">}</span>
+      <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"concessionValue"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">0.77</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"type"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"accept"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"agentName"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"agent3"</span>
+    <span class="hljs-punctuation">}</span>
+  <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"allAttempts"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
+    <span class="hljs-comment">// 長いので省略</span>
+  <span class="hljs-punctuation">]</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<p><code>"isAgreed": true</code> かつ <code>"attemptsCount": 8</code> なので 8 回目の試行で同意できたことがわかる。
+このとき、主食は Rice メインディッシュは Chicken で同意したようだ。</p>
+<h2>まとめ</h2>
+<p>まだ細かい不具合や機能追加などを行っている途中なのだが、一応動くものができてきた。
+こういう bot がやり取りするようなシステムは初めて作ったので面白かった。</p>
+<p>「Agent がメッセージを送り合う」という特性上、それって channel があれば楽そうだなぁと思った結果、調べたところ Node.js には Channel 機能が組み込まれていた。</p>
+<p><a href="https://nodejs.org/api/diagnostics_channel.html">Node.js v21.6.0 - Diagnostics Channel</a></p>
+<p>便利になったものだ。go言語の goroutines とか clojure の core.async みたいなことが簡易的とはいえ Node.js でできるのはありがたい。</p>
+</div>
+  <hr>
+<div class="marshmallow-button-container">
+  <a href="https://marshmallow-qa.com/94eo4q6jhldqu3x?t=9cXLh8&amp;utm_medium=url_text&amp;utm_source=promotion" target="_blank" class="marshmallow-button">
+    マシュマロからメッセージを送る
+  </a>
+  <div class="marshmallow-note">
+    ※どの記事のコメントかわかるように本文に記事タイトルなどを入れてください。
+  </div>
+</div>
+
+  <a href="/" class="post-index-link">一覧に戻る</a>
+</div>
+</main>
+</div>
+
+  
+
+</body></html>

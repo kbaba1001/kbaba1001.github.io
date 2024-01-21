@@ -11,8 +11,8 @@ tags:
 紆余曲折あって妻に C 言語を教えることになった。
 もともとの妻の希望としては、
 
-* データサイエンティストになりたいからデータ分析とか統計学とか学びたい
-* ついでにアルゴリズムとかも知りたい
+- データサイエンティストになりたいからデータ分析とか統計学とか学びたい
+- ついでにアルゴリズムとかも知りたい
 
 ということだったので、 Python / Excel / SQL あたりを教えてみたのだが、
 よく話してみるともうちょっと硬派なことをやりたそうだったので、
@@ -25,11 +25,11 @@ tags:
 
 なるべくネット上の無料で使える教材を使いたかったのだが、書籍のほうがわかりやすいということで何冊か買うことになった。
 
-* [統計学の基礎から学ぶ Excelデータ分析の全知識](https://www.amazon.co.jp/dp/4295011088)
-* [入門 統計学(第2版): 検定から多変量解析・実験計画法・ベイズ統計学まで](https://amzn.asia/d/7rvthWq)
-* [新・明解C言語 入門編 第2版](https://amzn.asia/d/6jZ5Xlx)
-* [スッキリわかるPython入門 第2版](https://amzn.asia/d/eLdiWbB)
-* [現場ですぐに使える！ 最新Pythonプログラミング逆引き大全450の極意](https://amzn.asia/d/03PX0mL)
+- [統計学の基礎から学ぶ Excel データ分析の全知識](https://www.amazon.co.jp/dp/4295011088)
+- [入門 統計学(第 2 版): 検定から多変量解析・実験計画法・ベイズ統計学まで](https://amzn.asia/d/7rvthWq)
+- [新・明解 C 言語 入門編 第 2 版](https://amzn.asia/d/6jZ5Xlx)
+- [スッキリわかる Python 入門 第 2 版](https://amzn.asia/d/eLdiWbB)
+- [現場ですぐに使える！ 最新 Python プログラミング逆引き大全 450 の極意](https://amzn.asia/d/03PX0mL)
 
 アルゴリズムやデータ構造を勉強するなら結局 C 言語が一番いいのかもしれない。
 Python のような動的型付け言語では型の概念が理解しづらいし、メモリも意識できない。
@@ -41,13 +41,13 @@ gentoo や Arch Linux ほど難しくはないしちょうどいい課題だと�
 
 まだ買ってないけど良さそうだと思っている本:
 
-* [新・明解C言語で学ぶアルゴリズムとデータ構造第2版](https://amzn.asia/d/0vZBXR9)
-* [基礎から学ぶ React/React Hooks](https://amzn.asia/d/ixP2wm4)
-* [体験しながら学ぶ ネットワーク技術入門](https://amzn.asia/d/4LU5Ial)
-* [ネットワーク 入門・構築の教科書](https://amzn.asia/d/2IqlFSx)
-* [ヤマハルーター＆スイッチによるネットワーク構築 標準教科書](https://amzn.asia/d/iWxHu0w)
-* Linux関係の入門書で何かしらおすすめがほしい (日経Linux読む方がいいかなぁ)
-    * [日経Linux 2023年 7 月号](https://amzn.asia/d/aDKwDma)
+- [新・明解 C 言語で学ぶアルゴリズムとデータ構造第 2 版](https://amzn.asia/d/0vZBXR9)
+- [基礎から学ぶ React/React Hooks](https://amzn.asia/d/ixP2wm4)
+- [体験しながら学ぶ ネットワーク技術入門](https://amzn.asia/d/4LU5Ial)
+- [ネットワーク 入門・構築の教科書](https://amzn.asia/d/2IqlFSx)
+- [ヤマハルーター＆スイッチによるネットワーク構築 標準教科書](https://amzn.asia/d/iWxHu0w)
+- Linux 関係の入門書で何かしらおすすめがほしい (日経 Linux 読む方がいいかなぁ)
+  - [日経 Linux 2023 年 7 月号](https://amzn.asia/d/aDKwDma)
 
 ここまで来ると Docker とか git とかも知っておいてほしい気もする。
 硬派にやるなら『コンピュータの構成と設計』とかもやっていい気もする。

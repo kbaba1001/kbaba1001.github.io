@@ -430,6 +430,12 @@
       }
     }
   },
+  "redirects": {
+    "https://unpkg.com/highlight.js/lib/languages/bash.js": "https://unpkg.com/highlight.js@11.9.0/lib/languages/bash.js",
+    "https://unpkg.com/highlight.js/lib/languages/clojure.js": "https://unpkg.com/highlight.js@11.9.0/lib/languages/clojure.js",
+    "https://unpkg.com/highlight.js/lib/languages/javascript.js": "https://unpkg.com/highlight.js@11.9.0/lib/languages/javascript.js",
+    "https://unpkg.com/highlight.js/lib/languages/typescript.js": "https://unpkg.com/highlight.js@11.9.0/lib/languages/typescript.js"
+  },
   "remote": {
     "https://deno.land/std@0.170.0/_util/asserts.ts": "d0844e9b62510f89ce1f9878b046f6a57bf88f208a10304aab50efcb48365272",
     "https://deno.land/std@0.170.0/_util/os.ts": "8a33345f74990e627b9dfe2de9b040004b08ea5146c7c9e8fe9a29070d193934",
@@ -999,6 +1005,15 @@
     "https://deno.land/x/xml@2.1.3/utils/stringifier.ts": "c701b506835237c0c6c0a08fd94e0a012b644def3f4c819c64788daf2e649ea3",
     "https://deno.land/x/xml@2.1.3/utils/types.ts": "ecaf7785e54a6f1da6f8e56da2bce9853407ceb7d5b3b70f0a60a0890151fe4c",
     "https://unpkg.com/@highlightjs/cdn-assets@11.6.0/es/languages/bash.min.js": "c68e0c10c8e21aa56ae617cea288b30215bc3941c36d11821f89f350628bf377",
-    "https://unpkg.com/@highlightjs/cdn-assets@11.6.0/es/languages/clojure.min.js": "0a3ac754c1f48cc176e03bceca5a1682d33033719e4fb587a2916f9c62efe125"
+    "https://unpkg.com/@highlightjs/cdn-assets@11.6.0/es/languages/clojure.min.js": "0a3ac754c1f48cc176e03bceca5a1682d33033719e4fb587a2916f9c62efe125",
+    "https://unpkg.com/@highlightjs/cdn-assets@11.9.0/es/languages/bash.min.js": "374f36dbcb38a7a664fd415bd179bb25f65a58c5a39a85485d408f50a83ad5fb",
+    "https://unpkg.com/@highlightjs/cdn-assets@11.9.0/es/languages/clojure.min.js": "795e144a21256c7469bad1b5055f8caaaccc4981510e6fb680cbba33ecad548d",
+    "https://unpkg.com/@highlightjs/cdn-assets@11.9.0/es/languages/javascript.min.js": "51b4bb186035728fec96b688d6f37cdf1857189dee6ea21e5d8ac45a8b3cbb64",
+    "https://unpkg.com/@highlightjs/cdn-assets@11.9.0/es/languages/json.min.js": "7cd4f778d78d5d835fda5326de71bb90ef55d7b5d5b59e3eae54ed12879d6317",
+    "https://unpkg.com/@highlightjs/cdn-assets@11.9.0/es/languages/typescript.min.js": "bece8768520311968f3a0c0f8b3b8c0ce2d4fe1ffff77e2b14f5d6d2e45855f7",
+    "https://unpkg.com/highlight.js@11.9.0/lib/languages/bash.js": "b45df957f872a969cf5c7aeb61470bea549f96614baf458cafcf877466f74bc8",
+    "https://unpkg.com/highlight.js@11.9.0/lib/languages/clojure.js": "d57805170607e3c457bdb194e2249fbd7f5f9cda7b5b0b6abb1c3ee566bb63bf",
+    "https://unpkg.com/highlight.js@11.9.0/lib/languages/javascript.js": "b9871c93188ce7804b6b4fdb1154cc41d8cc21953619408e93643521ce0fe1d3",
+    "https://unpkg.com/highlight.js@11.9.0/lib/languages/typescript.js": "9f9ff86b80b63b8623973eb4cdacc9ce26871a409139e4800a7a4bf9d4440956"
   }
 }

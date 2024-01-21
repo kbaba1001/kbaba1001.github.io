@@ -1,5 +1,8 @@
-import lang_bash from "https://unpkg.com/@highlightjs/cdn-assets@11.6.0/es/languages/bash.min.js";
-import lang_clojure from "https://unpkg.com/@highlightjs/cdn-assets@11.6.0/es/languages/clojure.min.js";
+import lang_bash from "https://unpkg.com/@highlightjs/cdn-assets@11.9.0/es/languages/bash.min.js";
+import lang_clojure from "https://unpkg.com/@highlightjs/cdn-assets@11.9.0/es/languages/clojure.min.js";
+import lang_javascript from "https://unpkg.com/@highlightjs/cdn-assets@11.9.0/es/languages/javascript.min.js";
+import lang_json from "https://unpkg.com/@highlightjs/cdn-assets@11.9.0/es/languages/json.min.js";
+import lang_typescript from "https://unpkg.com/@highlightjs/cdn-assets@11.9.0/es/languages/typescript.min.js";
 import lume from "lume/mod.ts";
 import attributes from "lume/plugins/attributes.ts";
 import base_path from "lume/plugins/base_path.ts";
@@ -51,6 +54,9 @@ site.use(
     languages: {
       clojure: lang_clojure,
       bash: lang_bash,
+      typescript: lang_typescript,
+      javascript: lang_javascript,
+      json: lang_json,
     },
   })
 );
