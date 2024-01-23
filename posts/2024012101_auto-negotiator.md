@@ -7,12 +7,16 @@ tags:
   - Tech
 ---
 
-[Auto Negotiator](https://github.com/neumann-tokyo/auto_negotiator) というライブラリを TypeScript で作った。
-まだ npm にアップロードしてないけど数日以内には対応する予定。
+[Auto Negotiator](https://github.com/neumann-tokyo/auto_negotiator)
+というライブラリを TypeScript で作った。
+
+npm package はこちら:
+[auto_negotiator](https://www.npmjs.com/package/auto_negotiator)
 
 ## 自動交渉の概要
 
-自動交渉については ↓ の記事などがわかりやすい（というかこれ以外あんまなかった）。
+自動交渉については ↓
+の記事などがわかりやすい（というかこれ以外あんまなかった）。
 
 [自動交渉 AI から見る"AI 同士がつながる世界"](https://engineering.mercari.com/blog/entry/2017-12-07-103000/)
 
@@ -29,7 +33,11 @@ tags:
   - 魚
   - チキン
 
-みたいな選択肢があって、エージェント A は `{主食: ご飯, メインディッシュ: ステーキ}` がよく、エージェント B は `{主食: ご飯, メインディッシュ: 魚}` がよいという意見を持っている場合に、エージェント A, B がある程度納得して同意（満場一致）できる献立を考えるというもの。
+みたいな選択肢があって、エージェント A は
+`{主食: ご飯, メインディッシュ: ステーキ}` がよく、エージェント B は
+`{主食: ご飯, メインディッシュ: 魚}`
+がよいという意見を持っている場合に、エージェント A, B
+がある程度納得して同意（満場一致）できる献立を考えるというもの。
 
 ## プログラムでの表現
 
@@ -92,9 +100,11 @@ export const topic: Topic = {
 ```
 
 上記のように夕食の献立というトピックにたいして、どのような意見を持っているかを決める。
-まず、この agent1 は主食 (Staple food) とメインディッシュ (Main dish) に対して、それぞれ 0.3 と 0.7 の重み (weight) をつけている。
-weight は全体で合計が 1.0 になるように設定する必要があり、どの issue に大して優先したいかを示す。
-ようするに、 agent1 はメインディッシュに関して 70% 優先したいと考えている。逆に言えば主食に関しては譲歩しやすい。
+まず、この agent1 は主食 (Staple food) とメインディッシュ (Main dish)
+に対して、それぞれ 0.3 と 0.7 の重み (weight) をつけている。 weight
+は全体で合計が 1.0 になるように設定する必要があり、どの issue
+に大して優先したいかを示す。 ようするに、 agent1 はメインディッシュに関して 70%
+優先したいと考えている。逆に言えば主食に関しては譲歩しやすい。
 
 ```
   name: "Staple food",
@@ -104,8 +114,10 @@ weight は全体で合計が 1.0 になるように設定する必要があり�
   weight: 0.7,
 ```
 
-次に、issue の中について見てみると `items` に選択肢として Rice, Noodles, Bread があり、その evaluation が 7, 2, 1 となっている。
-evaluation については Integer でどのような数値を置いても良いが、合計が 10 や 100 になるようにするとわかりやすい。
+次に、issue の中について見てみると `items` に選択肢として Rice, Noodles, Bread
+があり、その evaluation が 7, 2, 1 となっている。 evaluation については Integer
+でどのような数値を置いても良いが、合計が 10 や 100
+になるようにするとわかりやすい。
 （内部で処理する際はこの数値に重みを付けて正規化する）
 
 ```typescript
@@ -129,7 +141,9 @@ evaluation については Integer でどのような数値を置いても良い
 },
 ```
 
-evaluation の値が大きいほどその選択肢にしたいという意思が強くなるため、上記の場合では agent1 は Rice を食べたいという意思が強いことがわかる。
+evaluation
+の値が大きいほどその選択肢にしたいという意思が強くなるため、上記の場合では
+agent1 は Rice を食べたいという意思が強いことがわかる。
 
 ### エージェント
 
@@ -325,16 +339,20 @@ prettyPrint(result);
 }
 ```
 
-`"isAgreed": true` かつ `"attemptsCount": 8` なので 8 回目の試行で同意できたことがわかる。
-このとき、主食は Rice メインディッシュは Chicken で同意したようだ。
+`"isAgreed": true` かつ `"attemptsCount": 8` なので 8
+回目の試行で同意できたことがわかる。 このとき、主食は Rice メインディッシュは
+Chicken で同意したようだ。
 
 ## まとめ
 
 まだ細かい不具合や機能追加などを行っている途中なのだが、一応動くものができてきた。
 こういう bot がやり取りするようなシステムは初めて作ったので面白かった。
 
-「Agent がメッセージを送り合う」という特性上、それって channel があれば楽そうだなぁと思った結果、調べたところ Node.js には Channel 機能が組み込まれていた。
+「Agent がメッセージを送り合う」という特性上、それって channel
+があれば楽そうだなぁと思った結果、調べたところ Node.js には Channel
+機能が組み込まれていた。
 
 [Node.js v21.6.0 - Diagnostics Channel](https://nodejs.org/api/diagnostics_channel.html)
 
-便利になったものだ。go 言語の goroutines とか clojure の core.async みたいなことが簡易的とはいえ Node.js でできるのはありがたい。
+便利になったものだ。go 言語の goroutines とか clojure の core.async
+みたいなことが簡易的とはいえ Node.js でできるのはありがたい。
