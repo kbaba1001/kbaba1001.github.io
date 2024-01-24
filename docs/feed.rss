@@ -9,6 +9,71 @@
     <language>ja_JP</language>
     <generator>Lume v2.0.1</generator>
     <item>
+      <title>いにしえのホームページを Clojure の最先端技術で作りたい</title>
+      <link>https://www.kbaba1001.com/posts/2024012501_homepage/</link>
+      <guid isPermaLink="false">https://www.kbaba1001.com/posts/2024012501_homepage/</guid>
+      <description/>
+      <content:encoded>
+        <![CDATA[<p>このブログを運用し始めて約１か月。</p>
+        <p>さっそくアクセスカウンターとか掲示板とか欲しくなってきた。 Twitter
+        もやめてしまったのでどうせならマイクロポストの機能もほしい。</p>
+        <p>そんな感じの個人サイトを Clojure で作ろうかと思っている。</p>
+        <h3>サーバーサイド開発について</h3>
+        <p>サーバーサイドを今まで <a href="https://github.com/duct-framework/duct">Duct</a>
+        で作ってきたのだが、別に Duct 使わなくてもいいんじゃないかなと思えてきた。 Duct
+        は <code>defmethod</code> を活用して関数を疎結合にしてシステムを構築するのだが、</p>
+        <ul>
+        <li>別に毎回そこまで疎結合じゃなくてもいい</li>
+        <li>むしろコードジャンプできなくて辛い</li>
+        <li>edn ファイルでシステムを定義するのが面倒くさい</li>
+        </ul>
+        <p>というあたりでやめようと思った。</p>
+        <p>ではどうするかというと、他の言語でよくやるのと同じようにオートリロードできれば十分だと思う。
+        調べたら
+        <a href="https://ring-clojure.github.io/ring/ring.middleware.reload.html">ring にはそもそもオートリロードの機能がある</a>
+        ようなのでこれを使いたい。
+        <a href="https://github.com/weavejester/ring-refresh">ring-refresh</a>
+        というライブラリもあるし。
+        <a href="https://practical.li/clojure-web-services/projects/leiningen/todo-app/reloading-the-application/">使い方</a></p>
+        <p>あとは <a href="https://github.com/metosin/reitit">reitit</a>
+        とかでルーティングを作れば十分だろう。 DB
+        コネクションの各ファイルへの受け渡しだけなんとかする。 必要であればここだけ
+        <a href="https://github.com/clojure/core.async">core.async</a> の
+        <a href="https://clojuredocs.org/clojure.core.async/pipeline">pipeline</a>
+        とかで疎結合にしておけばいい。</p>
+        <p>参考:
+        <a href="https://boxofpapers.hatenablog.com/entry/core_async">Clojure + core.async による非同期＆並列プロセスの世界</a></p>
+        <h3>フロントエンド開発について</h3>
+        <p>今まで <a href="https://github.com/thheller/shadow-cljs">shadow-cljs</a> +
+        <a href="https://github.com/lilactown/helix">helix</a>
+        構成を試してきてこれはかなり快適だったのだが、新しい試みとして
+        <a href="https://github.com/squint-cljs/squint">Squint</a> を試したいと思っている。</p>
+        <p>Squint は ClojureScript を js に変換するコンパイラで、最大の特徴として <strong>Java
+        に依存していない!!</strong>。 つまり TypeScript のコンパイラなどと同様に package.json
+        に書いておけば、それだけで cljs を js に変換できる。 shadow-cljs
+        がやりたかったことをもう一歩進めた感じだ。 Squint は js
+        に寄っているが、もっと標準的な ClojureScript に寄せた
+        <a href="https://github.com/squint-cljs/cherry">Cherry</a> というのもある。 Squint を使えば
+        React や Vite などのフロントエンド開発で使われるツールを
+        そのまま使うことができる。<a href="https://github.com/squint-cljs/squint/tree/main/examples/vite-react">examples/vite-react</a></p>
+        <p>これらは <a href="https://github.com/babashka/babashka">babashka</a> の作成者として有名な
+        borkdude
+        さんの作品で、彼は本当にこういうものを作るのが上手だしまめに作っていると思う。
+        尊敬しかない。</p>
+        <p>Squint
+        はまだ本番環境で使うことを推奨していないようだけど、まぁ個人サイトのフロントエンドを作るくらいなら後で
+        Squint の仕様が変わったとしてもあまり困らない気がする。 Clojure コミュニティの
+        Slack 見ているとすでに結構出来上がっている雰囲気あるし。</p>
+        <p>Squint は CljureScript の歴史を変える可能性があるプロダクトだと思っているので
+        ぜひとも試してみたい。 今までの ClojureScript では面倒になる <code>Promise</code>,
+        <code>async/await</code> まわりも楽にかけそうだし、 <code>jsx</code> との統合も魅力的だ。 一方で nREPL
+        や Macros も使える。</p>
+        <p>最高では～！</p>
+        ]]>
+      </content:encoded>
+      <pubDate>Thu, 25 Jan 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
       <title>久々に買ってみた技術書</title>
       <link>https://www.kbaba1001.com/posts/2024012201_technologies-books/</link>
       <guid isPermaLink="false">https://www.kbaba1001.com/posts/2024012201_technologies-books/</guid>
@@ -630,29 +695,6 @@
         ]]>
       </content:encoded>
       <pubDate>Fri, 22 Dec 2023 00:00:00 GMT</pubDate>
-    </item>
-    <item>
-      <title>TypeScriptって面倒くさいだけでは...</title>
-      <link>https://www.kbaba1001.com/posts/2023122001_typescript/</link>
-      <guid isPermaLink="false">https://www.kbaba1001.com/posts/2023122001_typescript/</guid>
-      <description>型パズルの末に幸せはあるのか？</description>
-      <content:encoded>
-        <![CDATA[<p>猫も杓子も TypeScript 。というより全人類の総力が TypeScript に注がれてしまっているとさえ感じるけど、本当にこれは開発を助けてくれるようなものだろうか。
-        型パズル地獄になる割にはエラーになった際にどういう情報が足りてないのかいまいち分かりづらい。GraphQL とか gRPC とかで自動生成した型情報に至っては、型を見ただけではどういう情報が必要なのか全く読み解けないこともある。
-        型を書いたから処理が速くなるわけでもないし、どうしても JavaScript にない機能が使えるわけでもないし、なんか面倒臭さの見返りとして割に合ってなさすぎると感じている。</p>
-        <p>これなら JavaScript そのまま書いてる方が楽だし長期的に見ても開発しやすかったのでは……。と思わずにいられない。</p>
-        <p>なんで TypeScript 流行ってしまったんだろうなぁ……。</p>
-        <p>もちろん、 JavaScript は良くない仕様が多々あるし、 TypeScript で一部解決できたこともある。
-        でもそれは TypeScript のようなやり方じゃなくても良かった気もする。いや、もちろんそれは結果論でしかないんだけども、 「 TypeScript 面倒くさいし、手間に見合うメリットあるっけ？」って部分はもっとみんな気にした方がいいと思う。これを無視し続けていると、どうせまた 5 年後くらいに 「TypeScript の負債を改修する」みたいなタイトルの記事があふれかえるに決まっている。</p>
-        <p>じゃあ、 Dart の方がマシか？ ClojureScript だけが至高の言語か？ みたいなことを言いたいわけではなく、俺は TypeScript 書くのあんま好きじゃないなぁー、くらいの気持ちを表明したかっただけ。</p>
-        <p>JavaScript におけるメタプログラミングがよくわからないんだけど、この辺習得したらもう少し書きやすくなるんだろうか……。うーん、 Ruby や Clojure で何でもかけていた頃が懐かしい。</p>
-        <p>ここまで TypeScript が流行ってしまうと他の言語を新規に採用するのが難しくなってしまうな。
-        それならいっそのこと AI 系も Python じゃなくて JavaScript/TypeScript で何でもできるようになって欲しい。
-        そうしたらまだ <a href="https://github.com/squint-cljs/squint">squint</a> みたいなやつで ClojureScript で操作する未来もある。</p>
-        <p>Lisp が世界征服に失敗した世界を生きていくのは今日もしんどい。</p>
-        ]]>
-      </content:encoded>
-      <pubDate>Wed, 20 Dec 2023 00:00:00 GMT</pubDate>
     </item>
   </channel>
 </rss>

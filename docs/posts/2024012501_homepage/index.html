@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="/styles.css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <meta name="author" content="kbaba1001">
+    <meta property="og:title" content="いにしえのホームページを Clojure の最先端技術で作りたい - kbaba1001ブログ">
+    <meta property="og:url" content="https://www.kbaba1001.com">
+    <meta property="og:image" content="https://www.kbaba1001.com/img/posts/2024012501_homepage.png">
+    <meta property="twitter:image:src" content="https://www.kbaba1001.com/img/posts/2024012501_homepage.png">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <meta property="og:type" content="website">
+    <meta name="description" content="">
+    <meta property="og:description" content="">
+    <meta property="og:locale" content="ja_JP">
+
+    <title>いにしえのホームページを Clojure の最先端技術で作りたい - kbaba1001ブログ</title>
+  </head>
+  <body class="layout">
+    <header class="layout-header">
+  <div class="header">
+    <div class="header-title">
+  <img src="/img/horse.jpg" alt="kbaba1001 ブログ" loading="lazy" class="header-title-logo">
+  <a href="/" class="header-title-link">kbaba1001 ブログ</a>
+</div>
+
+    <div class="header-nav-container"><nav class="header-nav">
+  <ul class="header-nav-list">
+    <li>
+      <a href="/" class="header-nav-list-link"> Top </a>
+    </li>
+    <li>
+      <a href="/about" class="header-nav-list-link"> About </a>
+    </li>
+    <li>
+      <a href="/feed.rss" class="header-nav-list-link"> RSS </a>
+    </li>
+  </ul>
+</nav>
+</div>
+  </div>
+</header>
+<div class="layout-main">
+  <main class="layout-main-center"><div class="post">
+  <div>
+    <div class="post-date">2024-01-25</div>
+    
+    <div class="post-tag">Tech</div>
+    
+  </div>
+  <h1 class="post-title">いにしえのホームページを Clojure の最先端技術で作りたい</h1>
+  <div class="post-main"><p>このブログを運用し始めて約１か月。</p>
+<p>さっそくアクセスカウンターとか掲示板とか欲しくなってきた。 Twitter
+もやめてしまったのでどうせならマイクロポストの機能もほしい。</p>
+<p>そんな感じの個人サイトを Clojure で作ろうかと思っている。</p>
+<h3>サーバーサイド開発について</h3>
+<p>サーバーサイドを今まで <a href="https://github.com/duct-framework/duct">Duct</a>
+で作ってきたのだが、別に Duct 使わなくてもいいんじゃないかなと思えてきた。 Duct
+は <code>defmethod</code> を活用して関数を疎結合にしてシステムを構築するのだが、</p>
+<ul>
+<li>別に毎回そこまで疎結合じゃなくてもいい</li>
+<li>むしろコードジャンプできなくて辛い</li>
+<li>edn ファイルでシステムを定義するのが面倒くさい</li>
+</ul>
+<p>というあたりでやめようと思った。</p>
+<p>ではどうするかというと、他の言語でよくやるのと同じようにオートリロードできれば十分だと思う。
+調べたら
+<a href="https://ring-clojure.github.io/ring/ring.middleware.reload.html">ring にはそもそもオートリロードの機能がある</a>
+ようなのでこれを使いたい。
+<a href="https://github.com/weavejester/ring-refresh">ring-refresh</a>
+というライブラリもあるし。
+<a href="https://practical.li/clojure-web-services/projects/leiningen/todo-app/reloading-the-application/">使い方</a></p>
+<p>あとは <a href="https://github.com/metosin/reitit">reitit</a>
+とかでルーティングを作れば十分だろう。 DB
+コネクションの各ファイルへの受け渡しだけなんとかする。 必要であればここだけ
+<a href="https://github.com/clojure/core.async">core.async</a> の
+<a href="https://clojuredocs.org/clojure.core.async/pipeline">pipeline</a>
+とかで疎結合にしておけばいい。</p>
+<p>参考:
+<a href="https://boxofpapers.hatenablog.com/entry/core_async">Clojure + core.async による非同期＆並列プロセスの世界</a></p>
+<h3>フロントエンド開発について</h3>
+<p>今まで <a href="https://github.com/thheller/shadow-cljs">shadow-cljs</a> +
+<a href="https://github.com/lilactown/helix">helix</a>
+構成を試してきてこれはかなり快適だったのだが、新しい試みとして
+<a href="https://github.com/squint-cljs/squint">Squint</a> を試したいと思っている。</p>
+<p>Squint は ClojureScript を js に変換するコンパイラで、最大の特徴として <strong>Java
+に依存していない!!</strong>。 つまり TypeScript のコンパイラなどと同様に package.json
+に書いておけば、それだけで cljs を js に変換できる。 shadow-cljs
+がやりたかったことをもう一歩進めた感じだ。 Squint は js
+に寄っているが、もっと標準的な ClojureScript に寄せた
+<a href="https://github.com/squint-cljs/cherry">Cherry</a> というのもある。 Squint を使えば
+React や Vite などのフロントエンド開発で使われるツールを
+そのまま使うことができる。<a href="https://github.com/squint-cljs/squint/tree/main/examples/vite-react">examples/vite-react</a></p>
+<p>これらは <a href="https://github.com/babashka/babashka">babashka</a> の作成者として有名な
+borkdude
+さんの作品で、彼は本当にこういうものを作るのが上手だしまめに作っていると思う。
+尊敬しかない。</p>
+<p>Squint
+はまだ本番環境で使うことを推奨していないようだけど、まぁ個人サイトのフロントエンドを作るくらいなら後で
+Squint の仕様が変わったとしてもあまり困らない気がする。 Clojure コミュニティの
+Slack 見ているとすでに結構出来上がっている雰囲気あるし。</p>
+<p>Squint は CljureScript の歴史を変える可能性があるプロダクトだと思っているので
+ぜひとも試してみたい。 今までの ClojureScript では面倒になる <code>Promise</code>,
+<code>async/await</code> まわりも楽にかけそうだし、 <code>jsx</code> との統合も魅力的だ。 一方で nREPL
+や Macros も使える。</p>
+<p>最高では～！</p>
+</div>
+  <hr>
+<div class="marshmallow-button-container">
+  <a href="https://marshmallow-qa.com/94eo4q6jhldqu3x?t=9cXLh8&amp;utm_medium=url_text&amp;utm_source=promotion" target="_blank" class="marshmallow-button">
+    マシュマロからメッセージを送る
+  </a>
+  <div class="marshmallow-note">
+    ※どの記事のコメントかわかるように本文に記事タイトルなどを入れてください。
+  </div>
+</div>
+
+  <a href="/" class="post-index-link">一覧に戻る</a>
+</div>
+</main>
+</div>
+
+  
+
+</body></html>
