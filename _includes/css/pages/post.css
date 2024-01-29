@@ -41,6 +41,10 @@
   max-width: 100%;
 }
 
+.post-learge-font {
+  font-size: 2rem;
+}
+
 /* .post-main pre code {
   display: inline-block;
   background-color: white;

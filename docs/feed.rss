@@ -9,6 +9,33 @@
     <language>ja_JP</language>
     <generator>Lume v2.0.1</generator>
     <item>
+      <title>いつの間にか AtCoder で Babashka が動くようになっていた</title>
+      <link>https://www.kbaba1001.com/posts/2024012902_babashka-at-coder/</link>
+      <guid isPermaLink="false">https://www.kbaba1001.com/posts/2024012902_babashka-at-coder/</guid>
+      <description/>
+      <content:encoded>
+        <![CDATA[<p><img src="https://www.kbaba1001.com/img/posts/2024012902/atcoder.png" alt="AtCoder"></p>
+        <div class="post-learge-font">
+        <p>いつの間にか <a href="https://atcoder.jp/">AtCoder</a> で
+        <a href="https://github.com/babashka/babashka">Babashka</a> が使えるようになっている！！！</p>
+        <p>めちゃくちゃ嬉しい！！</p>
+        <p>AtCoder 始めます！！</p>
+        </div>
+        <p>どういうことかというと、今まで AtCoder で普通の Clojure
+        の実行はできていたのですが、どうも起動時間も含めて実行速度
+        として計算されていたらしく、とんでもなく不利でした。</p>
+        <p>一方 Babashka は GraalVM を使った起動がめちゃくちゃ速い Clojure
+        の実行環境で、これが AtCoder で使えたらいいのになぁと多くの Clojurians
+        は思ってました。</p>
+        <div class="post-learge-font">
+        <p>で、それが叶いました。</p>
+        <p>最高ー！！</p>
+        </div>
+        ]]>
+      </content:encoded>
+      <pubDate>Mon, 29 Jan 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
       <title>2 月 25 日 (日) に「１か月間全力で個人サイトを作ろうハッカソン、発表会」を開催します</title>
       <link>https://www.kbaba1001.com/posts/2024012901_hackathon/</link>
       <guid isPermaLink="false">https://www.kbaba1001.com/posts/2024012901_hackathon/</guid>
@@ -724,20 +751,6 @@
         ]]>
       </content:encoded>
       <pubDate>Sun, 31 Dec 2023 00:00:00 GMT</pubDate>
-    </item>
-    <item>
-      <title>クリスマスと餃子</title>
-      <link>https://www.kbaba1001.com/posts/2023122501_christmas/</link>
-      <guid isPermaLink="false">https://www.kbaba1001.com/posts/2023122501_christmas/</guid>
-      <description/>
-      <content:encoded>
-        <![CDATA[<p><img src="https://www.kbaba1001.com/img/posts/2023122501_christmas.jpg" alt="クリスマスと餃子"></p>
-        <p>12 月 23 日くらいからずっと餃子を作って焼いたり煮たりしていた。</p>
-        <p>家で餃子を包むのは初めてだったけど手分けして包むのは結構楽しかった。
-        今年の年末年始はなるべく家に引きこもっていたい。</p>
-        ]]>
-      </content:encoded>
-      <pubDate>Mon, 25 Dec 2023 00:00:00 GMT</pubDate>
     </item>
   </channel>
 </rss>
