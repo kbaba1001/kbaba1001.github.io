@@ -101,7 +101,7 @@ code.hljs{font-family:Source Code Pro,monospace;font-size:1rem}
 .post-header{align-items:center;gap:1rem;display:flex}
 .post-date{color:var(--feeble-color);font-size:1rem;display:inline-block}
 .post-tag{background-color:var(--tag-bg-color);color:var(--tag-color);border-radius:5px;padding:5px 10px;display:inline-block}
-.post-title{color:var(--accent-color);text-underline-offset:8px;-webkit-text-decoration:underline double;text-decoration:underline double}
+.post-title{color:var(--accent-color)}
 .post-index-link{color:var(--main-text-color);margin:.5rem 0;display:inline-block}
 .post-main code{background-color:var(--feeble-bg-color);border-radius:5px;padding:0 5px;display:inline-block}
 .post-main img{max-width:100%}

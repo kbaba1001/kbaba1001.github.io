@@ -22,8 +22,6 @@
 
 .post-title {
   color: var(--accent-color);
-  text-decoration: double underline;
-  text-underline-offset: 8px;
 }
 
 .post-index-link {
