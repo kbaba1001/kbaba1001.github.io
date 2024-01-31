@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="/styles.css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <meta name="author" content="kbaba1001">
+    <meta property="og:title" content="自宅サーバーに github、 dropbox、 ngrok みたいなのがほしい - kbaba1001ブログ">
+    <meta property="og:url" content="https://www.kbaba1001.com/posts/2024013101_on-premises/">
+    <meta property="og:image" content="https://www.kbaba1001.com/img/posts/2024012902_babashka-at-coder.png">
+    <meta property="twitter:image:src" content="https://www.kbaba1001.com/img/posts/2024012902_babashka-at-coder.png">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <meta property="og:type" content="website">
+    <meta name="description" content="">
+    <meta property="og:description" content="">
+    <meta property="og:locale" content="ja_JP">
+
+    <title>自宅サーバーに github、 dropbox、 ngrok みたいなのがほしい - kbaba1001ブログ</title>
+  </head>
+  <body class="layout">
+    <header class="layout-header">
+  <div class="header">
+    <div class="header-title">
+  <img src="/img/horse.jpg" alt="kbaba1001 ブログ" loading="lazy" class="header-title-logo">
+  <a href="/" class="header-title-link">kbaba1001 ブログ</a>
+</div>
+
+    <div class="header-nav-container"><nav class="header-nav">
+  <ul class="header-nav-list">
+    <li>
+      <a href="/" class="header-nav-list-link"> Top </a>
+    </li>
+    <li>
+      <a href="/about" class="header-nav-list-link"> About </a>
+    </li>
+    <li>
+      <a href="/feed.rss" class="header-nav-list-link"> RSS </a>
+    </li>
+  </ul>
+</nav>
+</div>
+  </div>
+</header>
+<div class="layout-main">
+  <main class="layout-main-center"><div class="post">
+  <div>
+    <div class="post-date">2024-01-31</div>
+    
+    <div class="post-tag">Tech</div>
+    
+    <div class="post-tag">日常</div>
+    
+  </div>
+  <h1 class="post-title">自宅サーバーに github、 dropbox、 ngrok みたいなのがほしい</h1>
+  <div class="post-main"><p>自宅サーバーの活用について考えるとやっぱりファイル共有みたいなことがしたいし、
+どうせなら git サーバーとして push/pull したい。 固定 IP が面倒くさくて ngrok
+を使っているが、そこそこお値段がするのでどうせならここもオープンソースにしたい。</p>
+<p>みたいなことを考えた結果、次を導入しようと思っている。</p>
+<ul>
+<li>ファイル共有: <a href="https://onionshare.org">OnionShare</a></li>
+<li>git サーバー: <a href="https://github.com/gitbucket/gitbucket">GitBucket</a></li>
+<li>トンネリング: <a href="https://github.com/fatedier/frp">frp</a></li>
+</ul>
+<h3>ファイル共有 (Dropbox alternatives)</h3>
+<p>あまりクラウドに置いておきたくないデータがいくつかあり、そういうのを自宅サーバーに置いておきたいのだが、
+単に SSH するだけだとファイルの閲覧が不便だったりするので、 Dropbox
+的に使えるやつがほしくなった。</p>
+<p><a href="https://min.io">Minio</a> が GUI ツールもあるのでそれでもいいのだが、調べたら
+<a href="https://onionshare.org">OnionShare</a>
+というのがスマホアプリもあって良さそうな気がしたので試してみたい。</p>
+<h3>git サーバー (Github alternatives)</h3>
+<p><a href="https://about.gitlab.com">GitLab</a>
+とかが有名だがそんなに高機能じゃなくていいのと、
+前から少し気になっていることもあり
+<a href="https://github.com/gitbucket/gitbucket">GitBucket</a> を導入予定。
+これは確か日本人が作っていたはず。</p>
+<h3>トンネリング (ngrok alternatives)</h3>
+<p><a href="https://ngrok.com">ngrok</a> の production apps プランを使っているのだが、１つの
+domain を作るたびに月 $15
+かかるので何個かやっているとそれなりの出費になってきた。</p>
+<p>調べたらめちゃくちゃしっかりしたまとめが作ってあった。
+<a href="https://github.com/anderspitman/awesome-tunneling">awesome-tunneling</a></p>
+<p>これによると、 CloudFlare Tunnel がおすすめ、 self-host したいなら
+<a href="https://github.com/fatedier/frp">frp</a> という感じなのでおすすめに従って、 frp
+を試してみようと思う。</p>
+<h3>雑感</h3>
+<p>自宅サーバーがあると電気代を無駄にしたくないので活用したくなる。</p>
+</div>
+  <hr>
+<div class="marshmallow-button-container">
+  <a href="https://marshmallow-qa.com/94eo4q6jhldqu3x?t=9cXLh8&amp;utm_medium=url_text&amp;utm_source=promotion" target="_blank" class="marshmallow-button">
+    マシュマロからメッセージを送る
+  </a>
+  <div class="marshmallow-note">
+    ※どの記事のコメントかわかるように本文に記事タイトルなどを入れてください。
+  </div>
+</div>
+
+  <a href="/" class="post-index-link">一覧に戻る</a>
+</div>
+</main>
+</div>
+
+  
+
+</body></html>
