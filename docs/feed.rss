@@ -9,6 +9,44 @@
     <language>ja_JP</language>
     <generator>Lume v2.0.1</generator>
     <item>
+      <title>サーバー内での docker compose up をローカルから行う方法</title>
+      <link>https://www.kbaba1001.com/posts/2024020101_docker-context/</link>
+      <guid isPermaLink="false">https://www.kbaba1001.com/posts/2024020101_docker-context/</guid>
+      <description/>
+      <content:encoded>
+        <![CDATA[<p>まずサーバーで docker や docker compose が動くようにしておく。 その後、</p>
+        <pre><code class="language-bash">$ DOCKER_HOST=&quot;ssh://user@remotehost&quot; docker compose up -d
+        </code></pre>
+        <p>するだけで遠隔サーバーで docker container を起動できる。</p>
+        <p>知らなかった...。</p>
+        <p>さらに docker context を使うと DOCKER_HOST を変えなくても指定した環境で docker
+        compose up できる。</p>
+        <pre><code class="language-bash">$ docker context create remote --docker &quot;host=ssh://user@remotemachine&quot;
+        $ docker --context remote compose up -d
+        </code></pre>
+        <div class="post-learge-font">
+        便利すぎでは～！！
+        </div>
+        <p>もちろん <code>~/.ssh/config</code> に設定した Host 名も使える。 僕の場合、 <code>~/.ssh/config</code>
+        に次のような設定がある。</p>
+        <pre><code class="language-bash">host monday
+        HostName xxx.xxx.xxx.xxx
+        User xxxxxxxx
+        ForwardAgent yes
+        IdentityFile ~/.ssh/id_ed25519
+        </code></pre>
+        <p>ので</p>
+        <pre><code class="language-bash">$ DOCKER_HOST=&quot;ssh://monday&quot; docker compose up -d
+        </code></pre>
+        <p>でよい。</p>
+        <p>参考:
+        <a href="https://www.docker.com/blog/how-to-deploy-on-remote-docker-hosts-with-docker-compose/">How to deploy on remote Docker hosts with docker-compose</a></p>
+        <p>本格的に運用するなら k3s とかで k8s 環境を作ったほうが良さそう。</p>
+        ]]>
+      </content:encoded>
+      <pubDate>Thu, 01 Feb 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
       <title>自宅サーバーに github、 dropbox、 ngrok みたいなのがほしい</title>
       <link>https://www.kbaba1001.com/posts/2024013101_on-premises/</link>
       <guid isPermaLink="false">https://www.kbaba1001.com/posts/2024013101_on-premises/</guid>
@@ -90,12 +128,12 @@
         <p>いにしえの個人サイトといえば、</p>
         <ul>
         <li>アクセスカウンター</li>
-        <li>Web拍手</li>
+        <li>Web 拍手</li>
         <li>掲示板</li>
         <li>チャット</li>
         <li>相互リンク</li>
         </ul>
-        <p>など当時の技術（だいたいCGI）をフル動員した個人サイトがたくさんあったものです。
+        <p>など当時の技術（だいたい CGI）をフル動員した個人サイトがたくさんあったものです。
         徐々に Twitter などの SNS に移り変わっていきましたが、それまでは皆 HTML とか CSS
         とか 自力で勉強して個人サイトを作ってました。
         今にして思えばすごい時代です。プログラマでもない人たちがこれら技術を自力でなんとか勉強して
@@ -117,11 +155,11 @@
         <ul>
         <li>「<a href="https://connpass.com/event/309089/">１か月間全力で個人サイトを作ろうハッカソン、発表会</a>」に申し込んでください。</li>
         <li>参加費等はありません。</li>
-        <li>いつでも参加表明して頂いて大丈夫です（例えば発表会の前日から数時間で作った、でもOKです）</li>
+        <li>いつでも参加表明して頂いて大丈夫です（例えば発表会の前日から数時間で作った、でも OK です）</li>
         </ul>
         <h3>発表会当日</h3>
         <ul>
-        <li>オンライン (google meet) で開催します。(URLは connpass
+        <li>オンライン (google meet) で開催します。(URL は connpass
         の参加者にのみ公開します)</li>
         <li>顔出しは任意です。</li>
         <li>作品を参加者自身でプレゼンして頂きます。
@@ -133,7 +171,7 @@
         </ul>
         <h3>作品の条件</h3>
         <ul>
-        <li><strong>インターネット上に公開されており、 URL (またはIPアドレス)
+        <li><strong>インターネット上に公開されており、 URL (または IP アドレス)
         でアクセスできることを必須とします。</strong></li>
         <li>個人サイトのコンテツ内容は自由です。 R-18
         を含む場合はそのページを開く前に年齢確認をするなど配慮をお願いします。
@@ -146,7 +184,7 @@
         <ul>
         <li>発表会の最後に、各参加者の発表会の内容を元にして主催者の独断で優勝者を決めます</li>
         <li>評価基準として技術点、個人サイトらしさ、コンテンツの面白さ、将来性などを考慮します</li>
-        <li>優勝者には景品として◯◯◯◯を差し上げます (TODO 景品決める)</li>
+        <li>優勝者には景品として ◯◯◯◯ を差し上げます (TODO 景品決める)</li>
         </ul>
         ]]>
       </content:encoded>
@@ -226,7 +264,7 @@
         <![CDATA[<p>久しぶりに Web 系の技術書を買ってみた。</p>
         <p><img src="https://www.kbaba1001.com/img/posts/2024012201/tech-books.jpg" alt="tech-books"></p>
         <ul>
-        <li>RustとWebAssemblyによるゲーム開発</li>
+        <li>Rust と WebAssembly によるゲーム開発</li>
         <li>Web パフォーマンスチューニング ISUCON</li>
         <li>フロントエンド開発のためのセキュリティ入門</li>
         <li>フロントエンド開発のためのテスト入門</li>
@@ -240,7 +278,7 @@
         <p>『Web パフォーマンスチューニング ISUCON』は Amazon で見つけて衝動買い。
         パフォーマンスチューニングも意外と知らないことある気がした。
         CDN とかあんま詳しくないし。</p>
-        <p>『RustとWebAssemblyによるゲーム開発』は Rust と WebAssembly の知識が両方 0 なのだが、
+        <p>『Rust と WebAssembly によるゲーム開発』は Rust と WebAssembly の知識が両方 0 なのだが、
         WebAssembly に GC がないので Rust のような GC がなくても現代的な開発ができる言語が人気ときいて
         やってみたくなったため。
         ゲーム開発をする予定はないけど、フロントではちょっと重い処理をなんとか速くしたいみたいなときに
@@ -705,42 +743,6 @@
         ]]>
       </content:encoded>
       <pubDate>Fri, 05 Jan 2024 00:00:00 GMT</pubDate>
-    </item>
-    <item>
-      <title>Fastify と React の初期セットアップ用リポジトリを作った</title>
-      <link>https://www.kbaba1001.com/posts/2024010401_node-init/</link>
-      <guid isPermaLink="false">https://www.kbaba1001.com/posts/2024010401_node-init/</guid>
-      <description/>
-      <content:encoded>
-        <![CDATA[<ul>
-        <li><a href="https://github.com/neumann-tokyo/fastify-init">GitHub - neumann-tokyo/fastify-init</a></li>
-        <li><a href="https://github.com/neumann-tokyo/react-init">GitHub - neumann-tokyo/react-init</a></li>
-        </ul>
-        <p>express から Fastify に移行したいので初期セットアップ用のリポジトリを作った。
-        ついでに React の SPA 構築用のものも用意した。</p>
-        <h2>Fastify-init</h2>
-        <ul>
-        <li><a href="https://github.com/neumann-tokyo/fastify-init">GitHub - neumann-tokyo/fastify-init</a></li>
-        </ul>
-        <p>Node.js 21 以上の動作を想定。 <a href="https://code.visualstudio.com/docs/devcontainers/containers">VS Code の devcontainer</a> で開発できるようにしてある。</p>
-        <p>devcontainer を立ち上げたときに一緒に docker compose で PostgreSQL が起動して即 DB が使える。 migration は <a href="https://github.com/golang-migrate/migrate">golang-migrate/migrate</a> で JS に依存せずに SQL ファイルからマイグレーションする設計にしてある。</p>
-        <p>Formatter, Linter として Pritter や ESLint から <a href="https://biomejs.dev/">Biome</a> に変えてみた。
-        まだ CSS や HTML などは対応されてないけどいったん良さそう。早いので快適。
-        pre-commit ツールも <a href="https://typicode.github.io/husky/">husky</a> から <a href="https://github.com/evilmartians/lefthook">leafhook</a> に変更した。</p>
-        <p>テストツールはひとまず node test にしてある。</p>
-        <p>DB へのアクセス関係のツールはまだ入れてないけど、個人的な好みとしては <a href="https://kysely.dev/">Kysely</a> が良いと思う。</p>
-        <h2>React-init</h2>
-        <ul>
-        <li><a href="https://github.com/neumann-tokyo/react-init">GitHub - neumann-tokyo/react-init</a></li>
-        </ul>
-        <p>vite, react-router-dom による React SPA 構成用の初期セットアップリポジトリ。</p>
-        <p>chakra-ui で CSS を書かずにデザインを構築可能。</p>
-        <p>こちらも biome による Lint, Format が動くようにしてある。</p>
-        <p>テストは vitest, happy-dom で動くようにした。フロント用はこれが最近のトレンドとして良い気がする。</p>
-        <p>一応、本番環境用に docker compose で nginx や ngrok が動くようにしてあるがこれは完全に自宅サーバー用。</p>
-        ]]>
-      </content:encoded>
-      <pubDate>Thu, 04 Jan 2024 00:00:00 GMT</pubDate>
     </item>
   </channel>
 </rss>
