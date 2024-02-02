@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="/styles.css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <meta name="author" content="kbaba1001">
+    <meta property="og:title" content="NextCloudで家庭内に閉じたチャットとファイル共有システムを構築した - kbaba1001ブログ">
+    <meta property="og:url" content="https://www.kbaba1001.com/posts/2024020201_nextcloud/">
+    <meta property="og:image" content="https://www.kbaba1001.com/img/posts/2024020201_nextcloud.png">
+    <meta property="twitter:image:src" content="https://www.kbaba1001.com/img/posts/2024020201_nextcloud.png">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <meta property="og:type" content="website">
+    <meta name="description" content="">
+    <meta property="og:description" content="">
+    <meta property="og:locale" content="ja_JP">
+
+    <title>NextCloudで家庭内に閉じたチャットとファイル共有システムを構築した - kbaba1001ブログ</title>
+  </head>
+  <body class="layout">
+    <header class="layout-header">
+  <div class="header">
+    <div class="header-title">
+  <img src="/img/horse.jpg" alt="kbaba1001 ブログ" loading="lazy" class="header-title-logo">
+  <a href="/" class="header-title-link">kbaba1001 ブログ</a>
+</div>
+
+    <div class="header-nav-container"><nav class="header-nav">
+  <ul class="header-nav-list">
+    <li>
+      <a href="/" class="header-nav-list-link"> Top </a>
+    </li>
+    <li>
+      <a href="/about" class="header-nav-list-link"> About </a>
+    </li>
+    <li>
+      <a href="/feed.rss" class="header-nav-list-link"> RSS </a>
+    </li>
+  </ul>
+</nav>
+</div>
+  </div>
+</header>
+<div class="layout-main">
+  <main class="layout-main-center"><div class="post">
+  <div>
+    <div class="post-date">2024-02-02</div>
+    
+    <div class="post-tag">Tech</div>
+    
+    <div class="post-tag">日常</div>
+    
+  </div>
+  <h1 class="post-title">NextCloudで家庭内に閉じたチャットとファイル共有システムを構築した</h1>
+  <div class="post-main"><p><a href="https://nextcloud.com">Nextcloud</a> というオンプレで使えるグループウェアを Conoha
+のサーバーで動かして、家庭内の会話などがクラウドサービスの会社にバレないようになった。</p>
+<p>主に使いたかったのはチャットとファイル共有。</p>
+<h2>チャット</h2>
+<p><img src="/img/posts/2024020201/nextcloud.png" alt="nextcloud"></p>
+<p>チャットの画面。妻との会話が主だがトピックごとに整理する予定。</p>
+<p>さらに Twitter
+という自分だけのルームを作ったのでここで独り言も言うことができる。便利。</p>
+<p>いろいろ試したけど、ちゃんと音声通話も問題なくできた。</p>
+<p>google play や apple store に
+<a href="https://play.google.com/store/apps/details?id=com.nextcloud.talk2">Nextcloud Talk</a>
+というアプリがあり、これを使えばスマホでも快適に会話ができる。</p>
+<h2>ファイル共有</h2>
+<p><img src="/img/posts/2024020201/nextcloud2.png" alt="nextcloud2"></p>
+<p>google drive
+みたいな感じで使える。マークダウンもエディタで表示してくれて便利そう。
+素晴らしい。</p>
+<p><a href="https://play.google.com/store/apps/details?id=com.nextcloud.client">スマホアプリ</a>
+もある。</p>
+<h2>導入手順</h2>
+<p>Nextcloud は導入が非常に簡単だったのが最高だった。</p>
+<p>基本的に
+<a href="https://github.com/nextcloud/all-in-one?tab=readme-ov-file#how-to-use-this">all-in-one</a>
+の手順に従っただけ。</p>
+<ul>
+<li>docker をインストール</li>
+<li>docker で ipv6 を使えるように設定変更</li>
+<li>docker run で nextcloud を動かす</li>
+<li>ufw で Firewall 設定を変更</li>
+<li>ブラウザで https://xxxxx:8080 にアクセスして初期設定</li>
+<li>上記の管理画面 (Nextcloud AIO) は Nextcloud
+をセットアップするための管理画面なので、適当に全文検索の拡張入れたりタイムゾーンを設定したりして
+Nextcloud 本体をインストールした</li>
+<li>その後、 443 ポートで Nextcloud
+が動くのでドメインなど設定して、一般アカウントを追加</li>
+</ul>
+<p>この all-in-one の docker
+が非常に優秀で何もしなくてもセットアップできてしまった。 全部終わると 10
+個くらいのコンテナが動いていた。</p>
+<p>これくらいの手軽さでできるならちょっとした少人数の会社のグループウェアとして使っても良さそう。</p>
+</div>
+  <hr>
+<div class="marshmallow-button-container">
+  <a href="https://marshmallow-qa.com/94eo4q6jhldqu3x?t=9cXLh8&amp;utm_medium=url_text&amp;utm_source=promotion" target="_blank" class="marshmallow-button">
+    マシュマロからメッセージを送る
+  </a>
+  <div class="marshmallow-note">
+    ※どの記事のコメントかわかるように本文に記事タイトルなどを入れてください。
+  </div>
+</div>
+
+  <a href="/" class="post-index-link">一覧に戻る</a>
+</div>
+</main>
+</div>
+
+  
+
+</body></html>
