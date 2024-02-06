@@ -123,6 +123,12 @@
         </li>
         </ul>
         <p>総合的に考えて今の第一候補は TypeSense 。</p>
+        <h2>SQL Builder, ORM 的なやつ</h2>
+        <p><a href="https://kysely.dev/">kysely</a> が deno
+        でも動くようなので、特にトラブルなければこれかなぁ。 Timescale DB
+        との相性が若干不安ではあるが...。</p>
+        <p>kysely そのものは必要十分な機能を備えていてわりと気に入っている。 Prisma
+        が苦手な人には特におすすめかも知れない。</p>
         ]]>
       </content:encoded>
       <pubDate>Tue, 06 Feb 2024 00:00:00 GMT</pubDate>
