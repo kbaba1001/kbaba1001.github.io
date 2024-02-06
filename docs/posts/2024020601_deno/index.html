@@ -139,6 +139,9 @@ PostgreSQL を拡張したデータベースなので使いやすそうだなと
 <h2>全文検索</h2>
 <p>また、今どき全文検索も必須の機能となってきたのだが、
 日本語対応も含めて考えるとデフォルトの PostgreSQL では心もとない。</p>
+<p>単に Google Meet クローンを作るだけなら全文検索はいらない気もするけど、
+なんとなくチャット機能も作りたいので、実際には Discord
+クローンみたいになりそうだ。</p>
 <p>で、次のような候補を考えた。</p>
 <ul>
 <li><a href="https://github.com/pgbigm/pg_bigm">pg_bigm</a>
@@ -172,6 +175,22 @@ Cloud SQL がサポートしてない。</li>
 との相性が若干不安ではあるが...。</p>
 <p>kysely そのものは必要十分な機能を備えていてわりと気に入っている。 Prisma
 が苦手な人には特におすすめかも知れない。</p>
+<h2>TypeScript でやるのか？ 一応そのつもり...</h2>
+<p><a href="https://www.kbaba1001.com/posts/2023122001_typescript/">TypeScriptって面倒くさいだけでは...</a>
+で書いた通り TypeScript があまり好きではないのだが、今回は一応 TypeScript
+前提で考えている。</p>
+<p>理由としては</p>
+<ul>
+<li>コード生成機能を使うようなものがない（GraphQL, gRPC, Prisma
+など）はずなので、自分で型を定義する分にはマシではなかろうか</li>
+<li>テスト減らしたい</li>
+<li>Clojure
+でもそうなんだけど関数の引数として何を期待しているかくらいは明示的にしたい事がある
+(とはいえ今更 prop-types はなぁ...)</li>
+<li>Deno なら Repl とか環境セットアップが面倒くさくない</li>
+</ul>
+<p>らへん。</p>
+<p>どうしても生産性落ちそうだったら JS にするかもしれない。</p>
 </div>
   <hr>
 <div class="marshmallow-button-container">
