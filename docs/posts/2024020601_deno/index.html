@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="/styles.css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <meta name="author" content="kbaba1001">
+    <meta property="og:title" content="Deno で Google Meet みたいなやつを作ってみようと思っている - kbaba1001ブログ">
+    <meta property="og:url" content="https://www.kbaba1001.com/posts/2024020601_deno/">
+    <meta property="og:image" content="https://www.kbaba1001.com/img/posts/2024020601_deno.png">
+    <meta property="twitter:image:src" content="https://www.kbaba1001.com/img/posts/2024020601_deno.png">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <meta property="og:type" content="website">
+    <meta name="description" content="">
+    <meta property="og:description" content="">
+    <meta property="og:locale" content="ja_JP">
+
+    <title>Deno で Google Meet みたいなやつを作ってみようと思っている - kbaba1001ブログ</title>
+  </head>
+  <body class="layout">
+    <header class="layout-header">
+  <div class="header">
+    <div class="header-title">
+  <img src="/img/horse.jpg" alt="kbaba1001 ブログ" loading="lazy" class="header-title-logo">
+  <a href="/" class="header-title-link">kbaba1001 ブログ</a>
+</div>
+
+    <div class="header-nav-container"><nav class="header-nav">
+  <ul class="header-nav-list">
+    <li>
+      <a href="/" class="header-nav-list-link"> Top </a>
+    </li>
+    <li>
+      <a href="/about" class="header-nav-list-link"> About </a>
+    </li>
+    <li>
+      <a href="/feed.rss" class="header-nav-list-link"> RSS </a>
+    </li>
+  </ul>
+</nav>
+</div>
+  </div>
+</header>
+<div class="layout-main">
+  <main class="layout-main-center"><div class="post">
+  <div>
+    <div class="post-date">2024-02-06</div>
+    
+    <div class="post-tag">Tech</div>
+    
+  </div>
+  <h1 class="post-title">Deno で Google Meet みたいなやつを作ってみようと思っている</h1>
+  <div class="post-main"><p>Google Meet みたいなブラウザで動作するビデオ会議ツールを作りたい。</p>
+<p>そこで Node で作っても良いのだが、 以前から少しずつ使っている Deno
+をそろそろ本格的に使っていきたいので試しにサーバー、フロント共に Deno
+でやってみることにした。</p>
+<p>ある程度動くものができたらオープンソースにする予定。</p>
+<h2>Deno の API サーバー事情</h2>
+<p>Deno には <code>Deno.serve</code> というシンプルなサーバーが組み込まれている。</p>
+<ul>
+<li><a href="https://docs.deno.com/runtime/tutorials/http_server">Simple HTTP Web Server</a></li>
+</ul>
+<p>しかしこれは Routing の機能などがないので、そこは別途何とかするしかない。</p>
+<p>色々調べたのだが、現状、それなりにメンテされてそうで使われてそうなライブラリは次</p>
+<ul>
+<li><a href="https://oakserver.github.io/oak/">oak</a></li>
+<li><a href="https://hono.dev">Hono</a></li>
+</ul>
+<p>他にも色々あったけど、2年くらい前にコミットが止まっているものが多くてやめた。</p>
+<p>Deno
+は少し使ってみればわかるけど、本体にまだまだ変更が入るのでライブラリを作ってもメンテするのが大変なのよね。。。
+そのため放置されがちなのは理解できる。</p>
+<p>今回は Hono
+を採用することにした。以前から少しブログなどで注目されているのを知っていたし、日本人が作っているので応援したいため。</p>
+<h2>Deno で React のフロントエンドを作る</h2>
+<p>どうせならフロントエンドも Deno で開発したい。 npm が使えるようになったので Vite
+も使えるようだが、次のライブラリを入れたほうが便利そうだったので採用した。</p>
+<ul>
+<li><a href="https://github.com/anatoo/vite-deno-plugin">vite-deno-plugin</a></li>
+</ul>
+<p><a href="https://github.com/anatoo/vite-deno-plugin/tree/main/examples/react">React Example</a>
+が用意されているのでこれをコピーして土台とした。</p>
+<h3>その他、採用予定のライブラリ</h3>
+<ul>
+<li><a href="https://github.com/molefrog/wouter">wouter</a></li>
+<li><a href="https://www.kuma-ui.com">Kuma UI</a></li>
+<li><a href="https://jotai.org">jotai</a></li>
+<li><a href="https://github.com/jotaijs/jotai-tanstack-query">jotai-tanstack-query</a></li>
+<li><a href="https://github.com/jotaijs/jotai-uncontrolled">jotai-uncontrolled</a>
+<ul>
+<li><a href="https://zenn.dev/dai_shi/articles/01813b22907dcf">Document</a></li>
+</ul>
+</li>
+</ul>
+<p>この辺を使う予定。</p>
+<p>wouter は Preact 対応してあるということで Deno
+界隈ではちょっと使われ始めているライブラリのようだ。 不十分だったら React Router
+に変えようと思う。</p>
+<p>Kuma UI は Chakra UI からの置き換えを考えている。 Kuma UI は Chakra UI
+ほど機能がないのだが、 CSS の読み込みの仕組みを改善していて速いとのこと。</p>
+<p>jotai
+は以前から使っているのだが、もっと本格的に使っていきたいのでプラグインも入れる予定。</p>
+<h2>他の Web フレームワーク</h2>
+<ul>
+<li><a href="https://fresh.deno.dev">Fresh</a>
+<ul>
+<li>Deno の公式(たぶん) の Web Framework</li>
+<li>サーバー、フロント共に作れるが次の理由で今回は不採用
+<ul>
+<li>Streaming 対応が不安なため</li>
+<li>サーバーとフロントを分離した設計にしたいため</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="https://github.com/exhibitionist-digital/ultra">Ultra</a>
+<ul>
+<li>Fresh に似ているけど React が使える</li>
+</ul>
+</li>
+</ul>
+<h2>Streaming Data とデータベース</h2>
+<p>ビデオ会議ツールを作るために
+<a href="https://developer.mozilla.org/en-US/docs/Web/API/Streams_API">Web Streams API</a>
+を使って Streaming データをサーバーとフロントでやり取りする設計を考えている。</p>
+<p>そこで、 Streaming
+データをどのようにデータベースに保存するかが重要になってくる。 普通の RDBMS
+でも良いのだが、以前からちょっと気になっている
+<a href="https://www.timescale.com">Timescale DB</a> を使ってみようと思っている。 これは
+PostgreSQL を拡張したデータベースなので使いやすそうだなと思っている。</p>
+<p>Docker でもクラウドでも使える。</p>
+<h2>全文検索</h2>
+<p>また、今どき全文検索も必須の機能となってきたのだが、
+日本語対応も含めて考えるとデフォルトの PostgreSQL では心もとない。</p>
+<p>で、次のような候補を考えた。</p>
+<ul>
+<li><a href="https://github.com/pgbigm/pg_bigm">pg_bigm</a>
+<ul>
+<li>PostgreSQL のプラグイン。 AWS RDS や GCP Cloud SQL
+でも使えるが、他に比べると遅いらしい。あんま開発もされてなさそう。</li>
+</ul>
+</li>
+<li><a href="https://pgroonga.github.io">PGroonga</a>
+<ul>
+<li>これも PostgreSQL のプラグイン。速いのだが pg_bigm と違って AWS RDS や GCP
+Cloud SQL がサポートしてない。</li>
+<li>なぜか Supabase
+では使えるのだが、他のクラウドサービスでも使えるように営業を頑張ってほしいところ……。</li>
+</ul>
+</li>
+<li><a href="https://typesense.org">TypeSense</a>
+<ul>
+<li>これはプラグインではなく ElasticSearch や Algoria
+のような独立した全文検索エンジン</li>
+<li>Docker
+のイメージもありオンプレでも使えるし、クラウドサービスも提供されている</li>
+<li>ドキュメントを読んだ感じ ElasticSearch ほど面倒なクエリではなさそう</li>
+</ul>
+</li>
+</ul>
+<p>総合的に考えて今の第一候補は TypeSense 。</p>
+</div>
+  <hr>
+<div class="marshmallow-button-container">
+  <a href="https://marshmallow-qa.com/94eo4q6jhldqu3x?t=9cXLh8&amp;utm_medium=url_text&amp;utm_source=promotion" target="_blank" class="marshmallow-button">
+    マシュマロからメッセージを送る
+  </a>
+  <div class="marshmallow-note">
+    ※どの記事のコメントかわかるように本文に記事タイトルなどを入れてください。
+  </div>
+</div>
+
+  <a href="/" class="post-index-link">一覧に戻る</a>
+</div>
+</main>
+</div>
+
+  
+
+</body></html>

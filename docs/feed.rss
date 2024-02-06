@@ -9,6 +9,125 @@
     <language>ja_JP</language>
     <generator>Lume v2.0.1</generator>
     <item>
+      <title>Deno で Google Meet みたいなやつを作ってみようと思っている</title>
+      <link>https://www.kbaba1001.com/posts/2024020601_deno/</link>
+      <guid isPermaLink="false">https://www.kbaba1001.com/posts/2024020601_deno/</guid>
+      <description/>
+      <content:encoded>
+        <![CDATA[<p>Google Meet みたいなブラウザで動作するビデオ会議ツールを作りたい。</p>
+        <p>そこで Node で作っても良いのだが、 以前から少しずつ使っている Deno
+        をそろそろ本格的に使っていきたいので試しにサーバー、フロント共に Deno
+        でやってみることにした。</p>
+        <p>ある程度動くものができたらオープンソースにする予定。</p>
+        <h2>Deno の API サーバー事情</h2>
+        <p>Deno には <code>Deno.serve</code> というシンプルなサーバーが組み込まれている。</p>
+        <ul>
+        <li><a href="https://docs.deno.com/runtime/tutorials/http_server">Simple HTTP Web Server</a></li>
+        </ul>
+        <p>しかしこれは Routing の機能などがないので、そこは別途何とかするしかない。</p>
+        <p>色々調べたのだが、現状、それなりにメンテされてそうで使われてそうなライブラリは次</p>
+        <ul>
+        <li><a href="https://oakserver.github.io/oak/">oak</a></li>
+        <li><a href="https://hono.dev/">Hono</a></li>
+        </ul>
+        <p>他にも色々あったけど、2年くらい前にコミットが止まっているものが多くてやめた。</p>
+        <p>Deno
+        は少し使ってみればわかるけど、本体にまだまだ変更が入るのでライブラリを作ってもメンテするのが大変なのよね。。。
+        そのため放置されがちなのは理解できる。</p>
+        <p>今回は Hono
+        を採用することにした。以前から少しブログなどで注目されているのを知っていたし、日本人が作っているので応援したいため。</p>
+        <h2>Deno で React のフロントエンドを作る</h2>
+        <p>どうせならフロントエンドも Deno で開発したい。 npm が使えるようになったので Vite
+        も使えるようだが、次のライブラリを入れたほうが便利そうだったので採用した。</p>
+        <ul>
+        <li><a href="https://github.com/anatoo/vite-deno-plugin">vite-deno-plugin</a></li>
+        </ul>
+        <p><a href="https://github.com/anatoo/vite-deno-plugin/tree/main/examples/react">React Example</a>
+        が用意されているのでこれをコピーして土台とした。</p>
+        <h3>その他、採用予定のライブラリ</h3>
+        <ul>
+        <li><a href="https://github.com/molefrog/wouter">wouter</a></li>
+        <li><a href="https://www.kuma-ui.com/">Kuma UI</a></li>
+        <li><a href="https://jotai.org/">jotai</a></li>
+        <li><a href="https://github.com/jotaijs/jotai-tanstack-query">jotai-tanstack-query</a></li>
+        <li><a href="https://github.com/jotaijs/jotai-uncontrolled">jotai-uncontrolled</a>
+        <ul>
+        <li><a href="https://zenn.dev/dai_shi/articles/01813b22907dcf">Document</a></li>
+        </ul>
+        </li>
+        </ul>
+        <p>この辺を使う予定。</p>
+        <p>wouter は Preact 対応してあるということで Deno
+        界隈ではちょっと使われ始めているライブラリのようだ。 不十分だったら React Router
+        に変えようと思う。</p>
+        <p>Kuma UI は Chakra UI からの置き換えを考えている。 Kuma UI は Chakra UI
+        ほど機能がないのだが、 CSS の読み込みの仕組みを改善していて速いとのこと。</p>
+        <p>jotai
+        は以前から使っているのだが、もっと本格的に使っていきたいのでプラグインも入れる予定。</p>
+        <h2>他の Web フレームワーク</h2>
+        <ul>
+        <li><a href="https://fresh.deno.dev/">Fresh</a>
+        <ul>
+        <li>Deno の公式(たぶん) の Web Framework</li>
+        <li>サーバー、フロント共に作れるが次の理由で今回は不採用
+        <ul>
+        <li>Streaming 対応が不安なため</li>
+        <li>サーバーとフロントを分離した設計にしたいため</li>
+        </ul>
+        </li>
+        </ul>
+        </li>
+        <li><a href="https://github.com/exhibitionist-digital/ultra">Ultra</a>
+        <ul>
+        <li>Fresh に似ているけど React が使える</li>
+        </ul>
+        </li>
+        </ul>
+        <h2>Streaming Data とデータベース</h2>
+        <p>ビデオ会議ツールを作るために
+        <a href="https://developer.mozilla.org/en-US/docs/Web/API/Streams_API">Web Streams API</a>
+        を使って Streaming データをサーバーとフロントでやり取りする設計を考えている。</p>
+        <p>そこで、 Streaming
+        データをどのようにデータベースに保存するかが重要になってくる。 普通の RDBMS
+        でも良いのだが、以前からちょっと気になっている
+        <a href="https://www.timescale.com/">Timescale DB</a> を使ってみようと思っている。 これは
+        PostgreSQL を拡張したデータベースなので使いやすそうだなと思っている。</p>
+        <p>Docker でもクラウドでも使える。</p>
+        <h2>全文検索</h2>
+        <p>また、今どき全文検索も必須の機能となってきたのだが、
+        日本語対応も含めて考えるとデフォルトの PostgreSQL では心もとない。</p>
+        <p>で、次のような候補を考えた。</p>
+        <ul>
+        <li><a href="https://github.com/pgbigm/pg_bigm">pg_bigm</a>
+        <ul>
+        <li>PostgreSQL のプラグイン。 AWS RDS や GCP Cloud SQL
+        でも使えるが、他に比べると遅いらしい。あんま開発もされてなさそう。</li>
+        </ul>
+        </li>
+        <li><a href="https://pgroonga.github.io/">PGroonga</a>
+        <ul>
+        <li>これも PostgreSQL のプラグイン。速いのだが pg_bigm と違って AWS RDS や GCP
+        Cloud SQL がサポートしてない。</li>
+        <li>なぜか Supabase
+        では使えるのだが、他のクラウドサービスでも使えるように営業を頑張ってほしいところ……。</li>
+        </ul>
+        </li>
+        <li><a href="https://typesense.org/">TypeSense</a>
+        <ul>
+        <li>これはプラグインではなく ElasticSearch や Algoria
+        のような独立した全文検索エンジン</li>
+        <li>Docker
+        のイメージもありオンプレでも使えるし、クラウドサービスも提供されている</li>
+        <li>ドキュメントを読んだ感じ ElasticSearch ほど面倒なクエリではなさそう</li>
+        </ul>
+        </li>
+        </ul>
+        <p>総合的に考えて今の第一候補は TypeSense 。</p>
+        ]]>
+      </content:encoded>
+      <pubDate>Tue, 06 Feb 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
       <title>NextCloudで家庭内に閉じたチャットとファイル共有システムを構築した</title>
       <link>https://www.kbaba1001.com/posts/2024020201_nextcloud/</link>
       <guid isPermaLink="false">https://www.kbaba1001.com/posts/2024020201_nextcloud/</guid>
@@ -690,58 +809,6 @@
         <p><img src="https://www.kbaba1001.com/img/posts/2024011602/google-trend.png" alt="google trend"></p>
         <p>google trend も見てみたけど、React が圧倒的で次いで Vue, Svelte という感じ。
         やや意外なことに Solid.js は htmx よりも人気がない。</p>
-        ]]>
-      </content:encoded>
-      <pubDate>Tue, 16 Jan 2024 00:00:00 GMT</pubDate>
-    </item>
-    <item>
-      <title>妻に C 言語を教えることになった</title>
-      <link>https://www.kbaba1001.com/posts/2024011601_teach-c-language-to-my-wife/</link>
-      <guid isPermaLink="false">https://www.kbaba1001.com/posts/2024011601_teach-c-language-to-my-wife/</guid>
-      <description/>
-      <content:encoded>
-        <![CDATA[<p>紆余曲折あって妻に C 言語を教えることになった。
-        もともとの妻の希望としては、</p>
-        <ul>
-        <li>データサイエンティストになりたいからデータ分析とか統計学とか学びたい</li>
-        <li>ついでにアルゴリズムとかも知りたい</li>
-        </ul>
-        <p>ということだったので、 Python / Excel / SQL あたりを教えてみたのだが、
-        よく話してみるともうちょっと硬派なことをやりたそうだったので、
-        いっそのこと C 言語とか TCP/IP とか Linux とかいわゆる情報系の大学でやるようなことを
-        ひととおりやらせてみることにした。</p>
-        <p>妻からカリキュラムを作って欲しいと言われたので google classroom で一通り作成することにした。</p>
-        <p><img src="https://www.kbaba1001.com/img/posts/2024011601/google-classroom.png" alt="google classroom"></p>
-        <p>なるべくネット上の無料で使える教材を使いたかったのだが、書籍のほうがわかりやすいということで何冊か買うことになった。</p>
-        <ul>
-        <li><a href="https://www.amazon.co.jp/dp/4295011088">統計学の基礎から学ぶ Excel データ分析の全知識</a></li>
-        <li><a href="https://amzn.asia/d/7rvthWq">入門 統計学(第 2 版): 検定から多変量解析・実験計画法・ベイズ統計学まで</a></li>
-        <li><a href="https://amzn.asia/d/6jZ5Xlx">新・明解 C 言語 入門編 第 2 版</a></li>
-        <li><a href="https://amzn.asia/d/eLdiWbB">スッキリわかる Python 入門 第 2 版</a></li>
-        <li><a href="https://amzn.asia/d/03PX0mL">現場ですぐに使える！ 最新 Python プログラミング逆引き大全 450 の極意</a></li>
-        </ul>
-        <p>アルゴリズムやデータ構造を勉強するなら結局 C 言語が一番いいのかもしれない。
-        Python のような動的型付け言語では型の概念が理解しづらいし、メモリも意識できない。
-        アルゴリズムの説明もなんだかんだ言って C++ とかで説明しているのが多いし。</p>
-        <p>ついでに Debian の CUI のみインストールさせて、そこから GUI 環境を構築するという課題をやらせるつもり。
-        gentoo や Arch Linux ほど難しくはないしちょうどいい課題だと思うのだが、なぜかこれについてまとめているドキュメントがないんだよなぁ。。。
-        自分で書きたいと思いつつなかなか進められていないのでこの機会に作ってしまおうかな。</p>
-        <p>まだ買ってないけど良さそうだと思っている本:</p>
-        <ul>
-        <li><a href="https://amzn.asia/d/0vZBXR9">新・明解 C 言語で学ぶアルゴリズムとデータ構造第 2 版</a></li>
-        <li><a href="https://amzn.asia/d/ixP2wm4">基礎から学ぶ React/React Hooks</a></li>
-        <li><a href="https://amzn.asia/d/4LU5Ial">体験しながら学ぶ ネットワーク技術入門</a></li>
-        <li><a href="https://amzn.asia/d/2IqlFSx">ネットワーク 入門・構築の教科書</a></li>
-        <li><a href="https://amzn.asia/d/iWxHu0w">ヤマハルーター＆スイッチによるネットワーク構築 標準教科書</a></li>
-        <li>Linux 関係の入門書で何かしらおすすめがほしい (日経 Linux 読む方がいいかなぁ)
-        <ul>
-        <li><a href="https://amzn.asia/d/aDKwDma">日経 Linux 2023 年 7 月号</a></li>
-        </ul>
-        </li>
-        </ul>
-        <p>ここまで来ると Docker とか git とかも知っておいてほしい気もする。
-        硬派にやるなら『コンピュータの構成と設計』とかもやっていい気もする。
-        応用編として、画像処理、音声処理、AI とかかなぁ。</p>
         ]]>
       </content:encoded>
       <pubDate>Tue, 16 Jan 2024 00:00:00 GMT</pubDate>
