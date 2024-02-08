@@ -9,6 +9,32 @@
     <language>ja_JP</language>
     <generator>Lume v2.0.1</generator>
     <item>
+      <title>Google アカウントからもメッセージを送れるようになりました</title>
+      <link>https://www.kbaba1001.com/posts/2024020901_add-google-form/</link>
+      <guid isPermaLink="false">https://www.kbaba1001.com/posts/2024020901_add-google-form/</guid>
+      <description/>
+      <content:encoded>
+        <![CDATA[<p>試験的に Google Form でのメッセージも受け付けるようにしました。</p>
+        <p>↓の「Google アカウントからメッセージを送る」からどうぞ。</p>
+        <p>よろしくお願いします。</p>
+        ]]>
+      </content:encoded>
+      <pubDate>Fri, 09 Feb 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>マシュマロの設定をゆるくしました</title>
+      <link>https://www.kbaba1001.com/posts/2024020801_change-marshmallow-setting/</link>
+      <guid isPermaLink="false">https://www.kbaba1001.com/posts/2024020801_change-marshmallow-setting/</guid>
+      <description/>
+      <content:encoded>
+        <![CDATA[<p>今までマシュマロのプレミアム会員じゃないとコメントが送れない設定になっていたようなので、
+        ログインユーザーであればメッセージを送れるように変更しました。</p>
+        <p>よろしくお願いします。</p>
+        ]]>
+      </content:encoded>
+      <pubDate>Thu, 08 Feb 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
       <title>Deno で Google Meet みたいなやつを作ってみようと思っている</title>
       <link>https://www.kbaba1001.com/posts/2024020601_deno/</link>
       <guid isPermaLink="false">https://www.kbaba1001.com/posts/2024020601_deno/</guid>
@@ -483,360 +509,6 @@
         ]]>
       </content:encoded>
       <pubDate>Mon, 22 Jan 2024 00:00:00 GMT</pubDate>
-    </item>
-    <item>
-      <title>自動交渉のライブラリを作った</title>
-      <link>https://www.kbaba1001.com/posts/2024012101_auto-negotiator/</link>
-      <guid isPermaLink="false">https://www.kbaba1001.com/posts/2024012101_auto-negotiator/</guid>
-      <description/>
-      <content:encoded>
-        <![CDATA[<p><a href="https://github.com/neumann-tokyo/auto_negotiator">Auto Negotiator</a>
-        というライブラリを TypeScript で作った。</p>
-        <p>npm package はこちら:
-        <a href="https://www.npmjs.com/package/auto_negotiator">auto_negotiator</a></p>
-        <h2>自動交渉の概要</h2>
-        <p>自動交渉については ↓
-        の記事などがわかりやすい（というかこれ以外あんまなかった）。</p>
-        <p><a href="https://engineering.mercari.com/blog/entry/2017-12-07-103000/">自動交渉 AI から見る&quot;AI 同士がつながる世界&quot;</a></p>
-        <p>自動交渉は交渉を行うエージェントを数体作成して、それらのエージェントの希望を考慮しつつ満場一致になる選択肢を導き出すというもの。</p>
-        <p>例えば、夕食のメニューを考えるときに、</p>
-        <ul>
-        <li>主食
-        <ul>
-        <li>ご飯</li>
-        <li>パン</li>
-        <li>麺</li>
-        </ul>
-        </li>
-        <li>メインディッシュ
-        <ul>
-        <li>ステーキ</li>
-        <li>魚</li>
-        <li>チキン</li>
-        </ul>
-        </li>
-        </ul>
-        <p>みたいな選択肢があって、エージェント A は
-        <code>{主食: ご飯, メインディッシュ: ステーキ}</code> がよく、エージェント B は
-        <code>{主食: ご飯, メインディッシュ: 魚}</code>
-        がよいという意見を持っている場合に、エージェント A, B
-        がある程度納得して同意（満場一致）できる献立を考えるというもの。</p>
-        <h2>プログラムでの表現</h2>
-        <p>自動交渉を行うには、エージェントとトピックが必要だ。
-        ライブラリの本体とは別にサンプルコードも用意したので、以下はサンプルコードを元にして説明する。</p>
-        <h3>トピック</h3>
-        <p>まずトピックについて説明する。</p>
-        <p><a href="https://github.com/neumann-tokyo/auto_negotiator/blob/main/sample/topic/dinner/agent1.ts">https://github.com/neumann-tokyo/auto_negotiator/blob/main/sample/topic/dinner/agent1.ts</a></p>
-        <pre><code class="language-typescript">import { Topic } from &quot;../../../src/types&quot;;
-        
-        export const topic: Topic = {
-        name: &quot;Dinner&quot;,
-        description: &quot;What should we have dinner?&quot;,
-        discount_factor: 0.1,
-        reservation: 0.3,
-        issues: [
-        {
-        name: &quot;Staple food&quot;,
-        weight: 0.3,
-        items: [
-        {
-        name: &quot;Rice&quot;,
-        evaluation: 7,
-        },
-        {
-        name: &quot;Noodles&quot;,
-        evaluation: 2,
-        },
-        {
-        name: &quot;Bread&quot;,
-        evaluation: 1,
-        },
-        ],
-        },
-        {
-        name: &quot;Main dish&quot;,
-        weight: 0.7,
-        items: [
-        {
-        name: &quot;Steak&quot;,
-        evaluation: 1,
-        },
-        {
-        name: &quot;Fish&quot;,
-        evaluation: 1,
-        },
-        {
-        name: &quot;Chicken&quot;,
-        evaluation: 8,
-        },
-        ],
-        },
-        ],
-        };
-        </code></pre>
-        <p>上記のように夕食の献立というトピックにたいして、どのような意見を持っているかを決める。
-        まず、この agent1 は主食 (Staple food) とメインディッシュ (Main dish)
-        に対して、それぞれ 0.3 と 0.7 の重み (weight) をつけている。 weight
-        は全体で合計が 1.0 になるように設定する必要があり、どの issue
-        に大して優先したいかを示す。 ようするに、 agent1 はメインディッシュに関して 70%
-        優先したいと考えている。逆に言えば主食に関しては譲歩しやすい。</p>
-        <pre><code>  name: &quot;Staple food&quot;,
-        weight: 0.3,
-        
-        name: &quot;Main dish&quot;,
-        weight: 0.7,
-        </code></pre>
-        <p>次に、issue の中について見てみると <code>items</code> に選択肢として Rice, Noodles, Bread
-        があり、その evaluation が 7, 2, 1 となっている。 evaluation については Integer
-        でどのような数値を置いても良いが、合計が 10 や 100
-        になるようにするとわかりやすい。
-        （内部で処理する際はこの数値に重みを付けて正規化する）</p>
-        <pre><code class="language-typescript">{
-        name: &quot;Staple food&quot;,
-        weight: 0.3,
-        items: [
-        {
-        name: &quot;Rice&quot;,
-        evaluation: 7,
-        },
-        {
-        name: &quot;Noodles&quot;,
-        evaluation: 2,
-        },
-        {
-        name: &quot;Bread&quot;,
-        evaluation: 1,
-        },
-        ],
-        },
-        </code></pre>
-        <p>evaluation
-        の値が大きいほどその選択肢にしたいという意思が強くなるため、上記の場合では
-        agent1 は Rice を食べたいという意思が強いことがわかる。</p>
-        <h3>エージェント</h3>
-        <p>エージェントは他のエージェントからの提案やトピックを元にしてどのように自分の意見を主張していくかを決定づけるものだ。</p>
-        <p>ソースコードを元に説明する。</p>
-        <p><a href="https://github.com/neumann-tokyo/auto_negotiator/blob/main/sample/agents/sample-agent.ts">https://github.com/neumann-tokyo/auto_negotiator/blob/main/sample/agents/sample-agent.ts</a></p>
-        <pre><code class="language-typescript">import * as helper from &quot;../../src/helper&quot;;
-        import * as types from &quot;../../src/types&quot;;
-        
-        // この関数は試行のたびに呼び出される。
-        // 引数には全体の状況や自分のトピックがはいってきて、自分の意見を返すとそれが他のエージェントにも伝わる。
-        export function sampleAgent({
-        data: { id, attempts, attemptsCount },
-        normalizedTopic,
-        }: types.ActionFnParams): types.ActionFnResponse {
-        // 現在の試行における他のエージェントからの提案などがはいっている
-        const currentAttempt = helper.currentAttempt({ id, attempts });
-        
-        // 試行回数を元にして譲歩値を設定する。 1.0 - progress なので徐々に譲歩値は下がっていく。
-        // つまり、他からの意見に同意しやすくなる
-        const progress = helper.progress({ id, attemptsCount });
-        const concessionValue = 1.0 - progress;
-        
-        for (const status of currentAttempt) {
-        if (status.type === types.AtemptType.Offer) {
-        const anotherConcessionValue = helper.choicesToConcessionValue({
-        choices: status.choices,
-        });
-        
-        // 相手からの提案のほうが自分の譲歩値より高いのであれば同意する
-        if (concessionValue &lt; anotherConcessionValue) {
-        return {
-        id,
-        choices: status.choices,
-        concessionValue: anotherConcessionValue,
-        type: types.AtemptType.Accept,
-        };
-        }
-        }
-        }
-        
-        // 同意できない場合に自分の意見を作成する
-        const { choices, threshold } = helper.concessionValueToChoices({
-        normalizedTopic,
-        concessionValue,
-        });
-        return {
-        id,
-        choices,
-        concessionValue,
-        type: types.AtemptType.Offer,
-        };
-        }
-        </code></pre>
-        <p>上記はエージェントのサンプルでしかなく、もっと自由に作って良い。</p>
-        <h3>自動交渉の実行</h3>
-        <p>最後はエージェントとトピックを元にして自動交渉を行う。</p>
-        <p><a href="https://github.com/neumann-tokyo/auto_negotiator/blob/main/sample/run.ts">https://github.com/neumann-tokyo/auto_negotiator/blob/main/sample/run.ts</a></p>
-        <pre><code class="language-typescript">import { prettyPrint } from &quot;../src/helper&quot;;
-        import * as negotiator from &quot;../src/index&quot;;
-        import { sampleAgent } from &quot;./agents/sample-agent&quot;;
-        import { topic as agent1Topic } from &quot;./topic/dinner/agent1&quot;;
-        import { topic as agent2Topic } from &quot;./topic/dinner/agent2&quot;;
-        import { topic as agent3Topic } from &quot;./topic/dinner/agent3&quot;;
-        
-        // これは任意の値を設定して良い
-        const channelName = &quot;dinner&quot;;
-        
-        // エージェントとそのトピックを登録する
-        negotiator.defineAgent({
-        channelName: channelName,
-        agentName: &quot;agent1&quot;,
-        topic: agent1Topic,
-        actionFn: sampleAgent,
-        });
-        negotiator.defineAgent({
-        channelName: channelName,
-        agentName: &quot;agent2&quot;,
-        topic: agent2Topic,
-        actionFn: sampleAgent,
-        });
-        negotiator.defineAgent({
-        channelName: channelName,
-        agentName: &quot;agent3&quot;,
-        topic: agent3Topic,
-        actionFn: sampleAgent,
-        });
-        
-        // 自動交渉を行う。試行回数（attemptsCount）は 30 回、エージェント数 (agentsCount) は 3 体
-        const result = negotiator.negotiate({
-        channelName,
-        attemptsCount: 30,
-        agentsCount: 3,
-        });
-        
-        // 結果の表示
-        prettyPrint(result);
-        </code></pre>
-        <p>自動交渉の結果は次のようになる。</p>
-        <p><a href="https://github.com/neumann-tokyo/auto_negotiator/blob/main/sample/result.json">https://github.com/neumann-tokyo/auto_negotiator/blob/main/sample/result.json</a></p>
-        <pre><code class="language-json">{
-        &quot;isAgreed&quot;: true,
-        &quot;id&quot;: 7,
-        &quot;attemptsCount&quot;: 8,
-        &quot;conclusion&quot;: [
-        {
-        &quot;choices&quot;: [
-        {
-        &quot;issueName&quot;: &quot;Staple food&quot;,
-        &quot;item&quot;: {
-        &quot;name&quot;: &quot;Rice&quot;,
-        &quot;evaluation&quot;: 7,
-        &quot;normalizedEvaluation&quot;: 0.21000000000000002
-        }
-        },
-        {
-        &quot;issueName&quot;: &quot;Main dish&quot;,
-        &quot;item&quot;: {
-        &quot;name&quot;: &quot;Chicken&quot;,
-        &quot;evaluation&quot;: 8,
-        &quot;normalizedEvaluation&quot;: 0.5599999999999999
-        }
-        }
-        ],
-        &quot;concessionValue&quot;: 0.7666666666666666,
-        &quot;type&quot;: &quot;offer&quot;,
-        &quot;agentName&quot;: &quot;agent1&quot;
-        },
-        {
-        &quot;choices&quot;: [
-        {
-        &quot;issueName&quot;: &quot;Staple food&quot;,
-        &quot;item&quot;: {
-        &quot;name&quot;: &quot;Rice&quot;,
-        &quot;evaluation&quot;: 7,
-        &quot;normalizedEvaluation&quot;: 0.21000000000000002
-        }
-        },
-        {
-        &quot;issueName&quot;: &quot;Main dish&quot;,
-        &quot;item&quot;: {
-        &quot;name&quot;: &quot;Chicken&quot;,
-        &quot;evaluation&quot;: 8,
-        &quot;normalizedEvaluation&quot;: 0.5599999999999999
-        }
-        }
-        ],
-        &quot;concessionValue&quot;: 0.77,
-        &quot;type&quot;: &quot;accept&quot;,
-        &quot;agentName&quot;: &quot;agent2&quot;
-        },
-        {
-        &quot;choices&quot;: [
-        {
-        &quot;issueName&quot;: &quot;Staple food&quot;,
-        &quot;item&quot;: {
-        &quot;name&quot;: &quot;Rice&quot;,
-        &quot;evaluation&quot;: 7,
-        &quot;normalizedEvaluation&quot;: 0.21000000000000002
-        }
-        },
-        {
-        &quot;issueName&quot;: &quot;Main dish&quot;,
-        &quot;item&quot;: {
-        &quot;name&quot;: &quot;Chicken&quot;,
-        &quot;evaluation&quot;: 8,
-        &quot;normalizedEvaluation&quot;: 0.5599999999999999
-        }
-        }
-        ],
-        &quot;concessionValue&quot;: 0.77,
-        &quot;type&quot;: &quot;accept&quot;,
-        &quot;agentName&quot;: &quot;agent3&quot;
-        }
-        ],
-        &quot;allAttempts&quot;: [
-        // 長いので省略
-        ]
-        }
-        </code></pre>
-        <p><code>&quot;isAgreed&quot;: true</code> かつ <code>&quot;attemptsCount&quot;: 8</code> なので 8
-        回目の試行で同意できたことがわかる。 このとき、主食は Rice メインディッシュは
-        Chicken で同意したようだ。</p>
-        <h2>まとめ</h2>
-        <p>まだ細かい不具合や機能追加などを行っている途中なのだが、一応動くものができてきた。
-        こういう bot がやり取りするようなシステムは初めて作ったので面白かった。</p>
-        <p>「Agent がメッセージを送り合う」という特性上、それって channel
-        があれば楽そうだなぁと思った結果、調べたところ Node.js には Channel
-        機能が組み込まれていた。</p>
-        <p><a href="https://nodejs.org/api/diagnostics_channel.html">Node.js v21.6.0 - Diagnostics Channel</a></p>
-        <p>便利になったものだ。go 言語の goroutines とか clojure の core.async
-        みたいなことが簡易的とはいえ Node.js でできるのはありがたい。</p>
-        ]]>
-      </content:encoded>
-      <pubDate>Sun, 21 Jan 2024 00:00:00 GMT</pubDate>
-    </item>
-    <item>
-      <title>React関係で思うことなど</title>
-      <link>https://www.kbaba1001.com/posts/2024011602_react/</link>
-      <guid isPermaLink="false">https://www.kbaba1001.com/posts/2024011602_react/</guid>
-      <description/>
-      <content:encoded>
-        <![CDATA[<p>React 18.2.0 以降くらいから Next.js にあるような Server 向けの機能などが色々入るようで、
-        僕としてはなんかもうちょっと気楽に SPA 作れる UI ライブラリであれば十分なんだけどなぁ、という微妙な気持ち。</p>
-        <p>Next.js も触ってるけど面倒くさくて仕方がない。 Server Side Rendering ってそんなにいいものかなぁ。</p>
-        <p>最近入った機能だと Suspense は便利だと思ったけど、 server actions とか use server とかちょっと面倒くさいな。</p>
-        <p>まぁ、でも React の内部にデータベースへのアクセスなどのサーバーとしての機能も全部もたせたら便利なのかなぁ。
-        それってただのモノリスで、また時代が逆行する気がするけど。。。</p>
-        <p>じゃあ、 React 以外のライブラリはどうなんだろうか？</p>
-        <p>Preact は少し試したことがあるけど次のような感想。</p>
-        <ul>
-        <li>Signal は便利 (React で jotai や Recoil など使えば大差ないけど)</li>
-        <li>色々と React よりきれいな感じはする</li>
-        <li>React ライブラリはダックタイピングで動かすので TypeScript との相性は悪い</li>
-        <li>preact-cli は webpack なので微妙だった</li>
-        <li>結局 React でよくね？感はすごくある</li>
-        </ul>
-        <p>もう一つやりたいのは Svelte かなぁ。いまいち流行りきってない感じがあるけど、多分好みではあると思う。</p>
-        <p>Solid.js も結局 React でよくね？感を払拭できない。あんま流行ってない気もするし。</p>
-        <p>htmx もあんま自分好みじゃないしなぁ</p>
-        <p><img src="https://www.kbaba1001.com/img/posts/2024011602/google-trend.png" alt="google trend"></p>
-        <p>google trend も見てみたけど、React が圧倒的で次いで Vue, Svelte という感じ。
-        やや意外なことに Solid.js は htmx よりも人気がない。</p>
-        ]]>
-      </content:encoded>
-      <pubDate>Tue, 16 Jan 2024 00:00:00 GMT</pubDate>
     </item>
   </channel>
 </rss>
