@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="/styles.css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <meta name="author" content="kbaba1001">
+    <meta property="og:title" content="【悲報】日本語ローカル LLM がアホすぎる件 - kbaba1001ブログ">
+    <meta property="og:url" content="https://www.kbaba1001.com/posts/2024020902_japanese-local-llm/">
+    <meta property="og:image" content="https://www.kbaba1001.com/img/posts/2024020902_japanese-local-llm.png">
+    <meta property="twitter:image:src" content="https://www.kbaba1001.com/img/posts/2024020902_japanese-local-llm.png">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <meta property="og:type" content="website">
+    <meta name="description" content="">
+    <meta property="og:description" content="">
+    <meta property="og:locale" content="ja_JP">
+
+    <title>【悲報】日本語ローカル LLM がアホすぎる件 - kbaba1001ブログ</title>
+  </head>
+  <body class="layout">
+    <header class="layout-header">
+  <div class="header">
+    <div class="header-title">
+  <img src="/img/horse.jpg" alt="kbaba1001 ブログ" loading="lazy" class="header-title-logo">
+  <a href="/" class="header-title-link">kbaba1001 ブログ</a>
+</div>
+
+    <div class="header-nav-container"><nav class="header-nav">
+  <ul class="header-nav-list">
+    <li>
+      <a href="/" class="header-nav-list-link"> Top </a>
+    </li>
+    <li>
+      <a href="/about" class="header-nav-list-link"> About </a>
+    </li>
+    <li>
+      <a href="/feed.rss" class="header-nav-list-link"> RSS </a>
+    </li>
+  </ul>
+</nav>
+</div>
+  </div>
+</header>
+<div class="layout-main">
+  <main class="layout-main-center"><div class="post">
+  <div>
+    <div class="post-date">2024-02-09</div>
+    
+    <div class="post-tag">Tech</div>
+    
+  </div>
+  <h1 class="post-title">【悲報】日本語ローカル LLM がアホすぎる件</h1>
+  <div class="post-main"><p>ChatGPT を活用した Chatbot 制作の話はよく聞くのだが、それならローカル LLM
+でも作れるんじゃないかと思ってやってみた話。</p>
+<h2>ローカル LLM の世界</h2>
+<p>ローカルで動作する LLM は色々あるっぽいけど今回は Meta 社が作っている
+<a href="https://llama.meta.com">Llama 2</a> 系で実験することにした。</p>
+<p>Llama 2 は gpt-3.5 レベルの性能があるらしい。</p>
+<p>しかし、日本語対応してないので東工大が作っている
+<a href="https://huggingface.co/tokyotech-llm">Swallow</a> を使うことにした。
+詳しいドキュメント:
+<a href="https://zenn.dev/tokyotech_lm/articles/d6cb3a8fdfc907">Zenn - Swallow: LLaMA-2 日本語継続事前学習モデル</a></p>
+<h2>ローカル LLM の実行</h2>
+<p><a href="https://huggingface.co/tokyotech-llm/Swallow-7b-hf">Swallow の README</a>
+にあるように Python でコードを書いてローカル LLM を動かしても良いのだが、
+少々煩雑だと思う。</p>
+<p>できれば Web API の形で呼び出したい。調べたらちょうどよいのがあった。</p>
+<ul>
+<li><a href="https://github.com/jasonacox/TinyLLM">TinyLLM</a></li>
+</ul>
+<p>これは Llama 2 系のローカル LLM を Chatbot として動くように少々手を加えたもの。</p>
+<p>実質内部で使っているのは</p>
+<ul>
+<li><a href="https://llama-cpp-python.readthedocs.io/en/latest/">llama-cpp-python</a></li>
+<li><a href="https://docs.vllm.ai/en/latest/">vLLM</a></li>
+</ul>
+<p>なので、詳しくなってきたらこの辺を直接使うつもり。 似たようなプロジェクトで
+<a href="https://ollama.ai">Ollama</a> というのもある。</p>
+<h2>TinyLLM (llama-cpp-python) を動かすための準備</h2>
+<p>TinyLLM (というか llama-cpp-python ) でモデルを使うために Swallow
+のリポジトリから gguf ファイルを作る必要がある。</p>
+<p>変換器を作ってくれている人がいたのでこれを使うことにした。</p>
+<ul>
+<li><a href="https://github.com/3eeps/cherry-py">cherry-py</a> の convert_hf_to_gguf.py</li>
+</ul>
+<pre><code class="language-bash hljs">pip install gguf numpy torch sentencepiece
+python convert_hf_to_gguf.py ../Swallow-7b-hf/ 0
+</code></pre>
+<p>みたいな感じで動かすことができる。</p>
+<h2>TinyLLM (llama-cpp-python) を動かす</h2>
+<p>llama-cpp-python を動かす用の docker-compose.yml
+を書いたりしてよしなに動かした。</p>
+<p>TinyLLM には <a href="https://github.com/jasonacox/TinyLLM/blob/main/chat.py">chat.py</a>
+という動作確認用のファイルが用意されているのでこれを日本語にして使うことにした。</p>
+<p>で、実行結果がこちら：</p>
+<p><img src="/img/posts/2024020902/swallow-llm.png" alt="swallow-llm.png"></p>
+<div class="post-learge-font">
+Σ(･ω･ﾉ)ﾉ ！？
+</div>
+<p>いや、2 ちゃんねるじゃねぇか。。。</p>
+<p>事前にベースのプロンプトとして次の文字を入れてある。</p>
+<pre><code>"あなたの名前はポピンズです。あなたは非常に知的なアシスタントです。
+回答は簡潔かつ正確に答えてください。現在時刻は2024年02月09日です。"
+</code></pre>
+<p>その上で、 <code>あなたの名前はなんですか？</code>
+と聞いた際の回答が上記なのでひどすぎる。。。 会話になってないし。</p>
+<p>今回使用している
+<a href="https://huggingface.co/tokyotech-llm/Swallow-7b-hf">Swallow-7b-hf</a>
+は一番頭が悪いモデルではあるものの、この結果はちょっと残念すぎる。。。
+もう少しまともに動いてほしかった。</p>
+<p>というか思いっきり 2 ちゃんねるの ID
+とか投稿日とか見えてるけどいいのかこれは。。。</p>
+<p>色々と思うことがあるけど残念な気持ちだ。</p>
+<h2>次はどうするか</h2>
+<ul>
+<li>一番頭のいいモデルである
+<a href="https://huggingface.co/tokyotech-llm/Swallow-70b-hf">Swallow-70b-hf</a>
+を試す予定</li>
+<li>動作が早くなるらしいので vLLM も試したい</li>
+<li>Python に詳しくないので JavaScript から実行するのも試したい</li>
+</ul>
+</div>
+  <hr>
+<div class="marshmallow-button-container">
+  <a href="https://marshmallow-qa.com/94eo4q6jhldqu3x?t=9cXLh8&amp;utm_medium=url_text&amp;utm_source=promotion" target="_blank" class="marshmallow-button">
+    マシュマロからメッセージを送る
+  </a>
+  <a href="https://docs.google.com/forms/d/e/1FAIpQLSc-lKGGtcv5D3j-RBJ_CKLlqiCWxU6UqR8I4HkbuEQkbrHIIA/viewform?usp=sf_link" target="_blank" class="google-form-button">
+    Google アカウントからメッセージを送る
+  </a>
+  <div class="marshmallow-note">
+    ※どの記事のコメントかわかるように本文に記事タイトルなどを入れてください。
+  </div>
+</div>
+
+  <a href="/" class="post-index-link">一覧に戻る</a>
+</div>
+</main>
+</div>
+
+  
+
+</body></html>
