@@ -9,6 +9,49 @@
     <language>ja_JP</language>
     <generator>Lume v2.0.1</generator>
     <item>
+      <title>日本語ローカル LLM 「ELYZA」と vLLM を試す</title>
+      <link>https://www.kbaba1001.com/posts/2024021301_japanese-local-llm2/</link>
+      <guid isPermaLink="false">https://www.kbaba1001.com/posts/2024021301_japanese-local-llm2/</guid>
+      <description/>
+      <content:encoded>
+        <![CDATA[<p>前回の
+        <a href="https://www.kbaba1001.com/posts/2024020902_japanese-local-llm/">【悲報】日本語ローカル LLM がアホすぎる件</a>
+        から次のことを試した。</p>
+        <ul>
+        <li>一番頭のいいモデルである
+        <a href="https://huggingface.co/tokyotech-llm/Swallow-70b-hf">Swallow-70b-hf</a> を試す</li>
+        <li><a href="https://huggingface.co/elyza/ELYZA-japanese-Llama-2-13b-fast-instruct">elyza/ELYZA-japanese-Llama-2-13b-fast-instruct</a>
+        を試す</li>
+        <li><a href="https://github.com/vllm-project/vllm">vLLM</a> を試す</li>
+        </ul>
+        <h2>Swallow-70b-hf</h2>
+        <p>自分の GPU (GeForce GTX 1080 Ti)
+        では重すぎて１時間待っても3文字くらいしか応答がなかった。
+        ちょっと実用性がないので採用を諦めた。</p>
+        <h2>ELYZA-japanese-Llama-2-13b-fast-instruct</h2>
+        <p>Swallow は前回かなり残念な感じだったので別のモデルを試すことにした。 そこで
+        ELYZA 社の上記のモデル。</p>
+        <p><img src="https://www.kbaba1001.com/img/posts/2024021301/elyza.png" alt="ELYZA"></p>
+        <div class="post-learge-font">
+        まともな回答してる！
+        <p>これだよ、これ！！</p>
+        </div>
+        <p>前回の Swallow は何だったのかと思うほどきちんとした回答が返ってきた。
+        応答速度も数分かかるものの許容範囲レベル。 ひとまずモデルとしては
+        ELYZA-japanese-Llama-2-13b-fast-instruct で決定することにした。</p>
+        <h2>vLLM による高速化</h2>
+        <p>vLLM はローカル LLM を高速化できるライブラリ。</p>
+        <p><a href="https://docs.vllm.ai/en/latest/serving/deploying_with_docker.html">vllm/vllm-openai</a>
+        という Docker イメージがあるので試しに使ってみたが、 GPU
+        メモリーリークを起こして動かなかった。 自分の GPU
+        が貧弱なためか、設定を変える必要があるのかいまいちよくわからない。</p>
+        <p>ノート PC の GPU でもメモリーリークしたので多分設定を変える必要がある。</p>
+        <p>引き続き試すとして、一旦は llama-cpp-python で動かすことにする。</p>
+        ]]>
+      </content:encoded>
+      <pubDate>Tue, 13 Feb 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
       <title>Google アカウントからもメッセージを送れるようになりました</title>
       <link>https://www.kbaba1001.com/posts/2024020901_add-google-form/</link>
       <guid isPermaLink="false">https://www.kbaba1001.com/posts/2024020901_add-google-form/</guid>
@@ -96,6 +139,8 @@
         <li>動作が早くなるらしいので vLLM も試したい</li>
         <li>Python に詳しくないので JavaScript から実行するのも試したい</li>
         </ul>
+        <p>続き:
+        <a href="https://www.kbaba1001.com/posts/2024021301_japanese-local-llm2/">日本語ローカル LLM 「ELYZA」と vLLM を試す</a></p>
         ]]>
       </content:encoded>
       <pubDate>Fri, 09 Feb 2024 00:00:00 GMT</pubDate>
@@ -292,7 +337,7 @@
         <li>docker で ipv6 を使えるように設定変更</li>
         <li>docker run で nextcloud を動かす</li>
         <li>ufw で Firewall 設定を変更</li>
-        <li>ブラウザで https://xxxxx:8080 にアクセスして初期設定</li>
+        <li>ブラウザで <a href="https://xxxxx:8080/">https://xxxxx:8080</a> にアクセスして初期設定</li>
         <li>上記の管理画面 (Nextcloud AIO) は Nextcloud
         をセットアップするための管理画面なので、適当に全文検索の拡張入れたりタイムゾーンを設定したりして
         Nextcloud 本体をインストールした</li>
@@ -488,71 +533,6 @@
         ]]>
       </content:encoded>
       <pubDate>Mon, 29 Jan 2024 00:00:00 GMT</pubDate>
-    </item>
-    <item>
-      <title>いにしえのホームページを Clojure の最先端技術で作りたい</title>
-      <link>https://www.kbaba1001.com/posts/2024012501_homepage/</link>
-      <guid isPermaLink="false">https://www.kbaba1001.com/posts/2024012501_homepage/</guid>
-      <description/>
-      <content:encoded>
-        <![CDATA[<p>このブログを運用し始めて約１か月。</p>
-        <p>さっそくアクセスカウンターとか掲示板とか欲しくなってきた。 Twitter
-        もやめてしまったのでどうせならマイクロポストの機能もほしい。</p>
-        <p>そんな感じの個人サイトを Clojure で作ろうかと思っている。</p>
-        <h3>サーバーサイド開発について</h3>
-        <p>サーバーサイドを今まで <a href="https://github.com/duct-framework/duct">Duct</a>
-        で作ってきたのだが、別に Duct 使わなくてもいいんじゃないかなと思えてきた。 Duct
-        は <code>defmethod</code> を活用して関数を疎結合にしてシステムを構築するのだが、</p>
-        <ul>
-        <li>別に毎回そこまで疎結合じゃなくてもいい</li>
-        <li>むしろコードジャンプできなくて辛い</li>
-        <li>edn ファイルでシステムを定義するのが面倒くさい</li>
-        </ul>
-        <p>というあたりでやめようと思った。</p>
-        <p>ではどうするかというと、他の言語でよくやるのと同じようにオートリロードできれば十分だと思う。
-        調べたら
-        <a href="https://ring-clojure.github.io/ring/ring.middleware.reload.html">ring にはそもそもオートリロードの機能がある</a>
-        ようなのでこれを使いたい。
-        <a href="https://github.com/weavejester/ring-refresh">ring-refresh</a>
-        というライブラリもあるし。
-        <a href="https://practical.li/clojure-web-services/projects/leiningen/todo-app/reloading-the-application/">使い方</a></p>
-        <p>あとは <a href="https://github.com/metosin/reitit">reitit</a>
-        とかでルーティングを作れば十分だろう。 DB
-        コネクションの各ファイルへの受け渡しだけなんとかする。 必要であればここだけ
-        <a href="https://github.com/clojure/core.async">core.async</a> の
-        <a href="https://clojuredocs.org/clojure.core.async/pipeline">pipeline</a>
-        とかで疎結合にしておけばいい。</p>
-        <p>参考:
-        <a href="https://boxofpapers.hatenablog.com/entry/core_async">Clojure + core.async による非同期＆並列プロセスの世界</a></p>
-        <h3>フロントエンド開発について</h3>
-        <p>今まで <a href="https://github.com/thheller/shadow-cljs">shadow-cljs</a> +
-        <a href="https://github.com/lilactown/helix">helix</a>
-        構成を試してきてこれはかなり快適だったのだが、新しい試みとして
-        <a href="https://github.com/squint-cljs/squint">Squint</a> を試したいと思っている。</p>
-        <p>Squint は ClojureScript を js に変換するコンパイラで、最大の特徴として <strong>Java
-        に依存していない!!</strong>。 つまり TypeScript のコンパイラなどと同様に package.json
-        に書いておけば、それだけで cljs を js に変換できる。 shadow-cljs
-        がやりたかったことをもう一歩進めた感じだ。 Squint は js
-        に寄っているが、もっと標準的な ClojureScript に寄せた
-        <a href="https://github.com/squint-cljs/cherry">Cherry</a> というのもある。 Squint を使えば
-        React や Vite などのフロントエンド開発で使われるツールを
-        そのまま使うことができる。<a href="https://github.com/squint-cljs/squint/tree/main/examples/vite-react">examples/vite-react</a></p>
-        <p>これらは <a href="https://github.com/babashka/babashka">babashka</a> の作成者として有名な
-        borkdude
-        さんの作品で、彼は本当にこういうものを作るのが上手だしまめに作っていると思う。
-        尊敬しかない。</p>
-        <p>Squint
-        はまだ本番環境で使うことを推奨していないようだけど、まぁ個人サイトのフロントエンドを作るくらいなら後で
-        Squint の仕様が変わったとしてもあまり困らない気がする。 Clojure コミュニティの
-        Slack 見ているとすでに結構出来上がっている雰囲気あるし。</p>
-        <p>Squint は CljureScript の歴史を変える可能性があるプロダクトだと思っているので
-        ぜひとも試してみたい。 今までの ClojureScript では面倒になる <code>Promise</code>,
-        <code>async/await</code> まわりも楽にかけそうだし、 <code>jsx</code> との統合も魅力的だ。 一方で nREPL
-        や Macros も使える。</p>
-        <p>最高では～！</p>
-        ]]>
-      </content:encoded>
-      <pubDate>Thu, 25 Jan 2024 00:00:00 GMT</pubDate>
     </item>
   </channel>
 </rss>

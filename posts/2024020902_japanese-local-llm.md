@@ -5,6 +5,7 @@ description:
 ogimage: /img/posts/2024020902_japanese-local-llm.png
 tags:
   - Tech
+  - AI
 ---
 
 ChatGPT を活用した Chatbot 制作の話はよく聞くのだが、それならローカル LLM
@@ -103,3 +104,6 @@ TinyLLM には [chat.py](https://github.com/jasonacox/TinyLLM/blob/main/chat.py)
   を試す予定
 - 動作が早くなるらしいので vLLM も試したい
 - Python に詳しくないので JavaScript から実行するのも試したい
+
+続き:
+[日本語ローカル LLM 「ELYZA」と vLLM を試す](/posts/2024021301_japanese-local-llm2/)

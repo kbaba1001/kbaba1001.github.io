@@ -16,49 +16,55 @@ import postcss from "lume/plugins/postcss.ts";
 import sitemap from "lume/plugins/sitemap.ts";
 import terser from "lume/plugins/terser.ts";
 
-const site = lume();
+const markdown = {
+	options: {
+		linkify: true,
+	},
+};
+
+const site = lume({}, { markdown });
 
 site.remoteFile(
-  "_includes/css/code/default.css",
-  "https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.6.0/build/styles/github.min.css"
+	"_includes/css/code/default.css",
+	"https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.6.0/build/styles/github.min.css",
 );
 site.ignore("README.md", "CHANGELOG.md", "node_modules");
 site.copy("img");
 site.copy("CNAME");
 site.copy("site.webmanifest");
 site.use(
-  feed({
-    query: "type=posts",
-    info: {
-      title: "kbaba1001 ブログ",
-      description: "Clojure 好きなプログラマ kbaba1001 のブログ",
-      published: new Date("2023", "11", "18"),
-      lang: "ja_JP",
-      generator: true,
-    },
-  })
+	feed({
+		query: "type=posts",
+		info: {
+			title: "kbaba1001 ブログ",
+			description: "Clojure 好きなプログラマ kbaba1001 のブログ",
+			published: new Date("2023", "11", "18"),
+			lang: "ja_JP",
+			generator: true,
+		},
+	}),
 );
 site.use(
-  pagefind({
-    indexing: {
-      rootSelector: "main",
-      verbose: false,
-      excludeSelectors: ["#posts-index"],
-    },
-  })
+	pagefind({
+		indexing: {
+			rootSelector: "main",
+			verbose: false,
+			excludeSelectors: ["#posts-index"],
+		},
+	}),
 );
 site.use(attributes());
 site.use(base_path());
 site.use(
-  code_highlight({
-    languages: {
-      clojure: lang_clojure,
-      bash: lang_bash,
-      typescript: lang_typescript,
-      javascript: lang_javascript,
-      json: lang_json,
-    },
-  })
+	code_highlight({
+		languages: {
+			clojure: lang_clojure,
+			bash: lang_bash,
+			typescript: lang_typescript,
+			javascript: lang_javascript,
+			json: lang_json,
+		},
+	}),
 );
 site.use(date());
 site.use(jsx());

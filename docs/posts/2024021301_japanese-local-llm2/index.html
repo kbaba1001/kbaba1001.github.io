@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="/styles.css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <meta name="author" content="kbaba1001">
+    <meta property="og:title" content="日本語ローカル LLM 「ELYZA」と vLLM を試す - kbaba1001ブログ">
+    <meta property="og:url" content="https://www.kbaba1001.com/posts/2024021301_japanese-local-llm2/">
+    <meta property="og:image" content="https://www.kbaba1001.com/img/posts/2024021301_japanese-local-llm2.png">
+    <meta property="twitter:image:src" content="https://www.kbaba1001.com/img/posts/2024021301_japanese-local-llm2.png">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <meta property="og:type" content="website">
+    <meta name="description" content="">
+    <meta property="og:description" content="">
+    <meta property="og:locale" content="ja_JP">
+
+    <title>日本語ローカル LLM 「ELYZA」と vLLM を試す - kbaba1001ブログ</title>
+  </head>
+  <body class="layout">
+    <header class="layout-header">
+  <div class="header">
+    <div class="header-title">
+  <img src="/img/horse.jpg" alt="kbaba1001 ブログ" loading="lazy" class="header-title-logo">
+  <a href="/" class="header-title-link">kbaba1001 ブログ</a>
+</div>
+
+    <div class="header-nav-container"><nav class="header-nav">
+  <ul class="header-nav-list">
+    <li>
+      <a href="/" class="header-nav-list-link"> Top </a>
+    </li>
+    <li>
+      <a href="/about" class="header-nav-list-link"> About </a>
+    </li>
+    <li>
+      <a href="/feed.rss" class="header-nav-list-link"> RSS </a>
+    </li>
+  </ul>
+</nav>
+</div>
+  </div>
+</header>
+<div class="layout-main">
+  <main class="layout-main-center"><div class="post">
+  <div>
+    <div class="post-date">2024-02-13</div>
+    
+    <div class="post-tag" data-pagefind-filter="tag">Tech</div>
+    
+    <div class="post-tag" data-pagefind-filter="tag">AI</div>
+    
+  </div>
+  <h1 class="post-title">日本語ローカル LLM 「ELYZA」と vLLM を試す</h1>
+  <div class="post-main"><p>前回の
+<a href="/posts/2024020902_japanese-local-llm/">【悲報】日本語ローカル LLM がアホすぎる件</a>
+から次のことを試した。</p>
+<ul>
+<li>一番頭のいいモデルである
+<a href="https://huggingface.co/tokyotech-llm/Swallow-70b-hf">Swallow-70b-hf</a> を試す</li>
+<li><a href="https://huggingface.co/elyza/ELYZA-japanese-Llama-2-13b-fast-instruct">elyza/ELYZA-japanese-Llama-2-13b-fast-instruct</a>
+を試す</li>
+<li><a href="https://github.com/vllm-project/vllm">vLLM</a> を試す</li>
+</ul>
+<h2>Swallow-70b-hf</h2>
+<p>自分の GPU (GeForce GTX 1080 Ti)
+では重すぎて１時間待っても3文字くらいしか応答がなかった。
+ちょっと実用性がないので採用を諦めた。</p>
+<h2>ELYZA-japanese-Llama-2-13b-fast-instruct</h2>
+<p>Swallow は前回かなり残念な感じだったので別のモデルを試すことにした。 そこで
+ELYZA 社の上記のモデル。</p>
+<p><img src="/img/posts/2024021301/elyza.png" alt="ELYZA"></p>
+<div class="post-learge-font">
+まともな回答してる！
+<p>これだよ、これ！！</p>
+</div>
+<p>前回の Swallow は何だったのかと思うほどきちんとした回答が返ってきた。
+応答速度も数分かかるものの許容範囲レベル。 ひとまずモデルとしては
+ELYZA-japanese-Llama-2-13b-fast-instruct で決定することにした。</p>
+<h2>vLLM による高速化</h2>
+<p>vLLM はローカル LLM を高速化できるライブラリ。</p>
+<p><a href="https://docs.vllm.ai/en/latest/serving/deploying_with_docker.html">vllm/vllm-openai</a>
+という Docker イメージがあるので試しに使ってみたが、 GPU
+メモリーリークを起こして動かなかった。 自分の GPU
+が貧弱なためか、設定を変える必要があるのかいまいちよくわからない。</p>
+<p>ノート PC の GPU でもメモリーリークしたので多分設定を変える必要がある。</p>
+<p>引き続き試すとして、一旦は llama-cpp-python で動かすことにする。</p>
+</div>
+  <hr>
+<div class="marshmallow-button-container">
+  <a href="https://marshmallow-qa.com/94eo4q6jhldqu3x?t=9cXLh8&amp;utm_medium=url_text&amp;utm_source=promotion" target="_blank" class="marshmallow-button">
+    マシュマロからメッセージを送る
+  </a>
+  <a href="https://docs.google.com/forms/d/e/1FAIpQLSc-lKGGtcv5D3j-RBJ_CKLlqiCWxU6UqR8I4HkbuEQkbrHIIA/viewform?usp=sf_link" target="_blank" class="google-form-button">
+    Google アカウントからメッセージを送る
+  </a>
+  <div class="marshmallow-note">
+    ※どの記事のコメントかわかるように本文に記事タイトルなどを入れてください。
+  </div>
+</div>
+
+  <a href="/" class="post-index-link">一覧に戻る</a>
+</div>
+</main>
+</div>
+
+  
+
+</body></html>

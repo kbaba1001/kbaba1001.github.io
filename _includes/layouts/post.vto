@@ -6,7 +6,7 @@ layout: layouts/main.vto
   <div>
     <div class="post-date">{{ date |> date("DATE") }}</div>
     {{ for tag of tags }}
-    <div class="post-tag">{{ tag }}</div>
+    <div class="post-tag" data-pagefind-filter="tag">{{ tag }}</div>
     {{ /for }}
   </div>
   <h1 class="post-title">{{ title }}</h1>
