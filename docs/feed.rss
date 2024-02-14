@@ -9,6 +9,25 @@
     <language>ja_JP</language>
     <generator>Lume v2.0.1</generator>
     <item>
+      <title>実写版映画『ゴールデンカムイ』を見てきた</title>
+      <link>https://www.kbaba1001.com/posts/2024021401_golden-kamuy/</link>
+      <guid isPermaLink="false">https://www.kbaba1001.com/posts/2024021401_golden-kamuy/</guid>
+      <description/>
+      <content:encoded>
+        <![CDATA[<iframe width="560" height="315" src="https://www.youtube.com/embed/2loIAVv7GYQ?si=wWUiwoibaFyC_hh-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <p>実写版映画『<a href="https://kamuy-movie.com/">ゴールデンカムイ</a>』を見てきた。</p>
+        <div class="post-learge-font">
+        ほんま、ありがとう！ 最高でした
+        </div>
+        <p>原作の良いシーンたくさん入ってたし、全体的にクオリティ高いし。
+        メインキャラはもちろんのこと脇役もチョイ役も原作っぽさがあってとにかく最高。</p>
+        <p>今まで見た漫画原作の実写化の中で一番良かったかもしれない。</p>
+        <p>もちろん、熊も出てくる。</p>
+        ]]>
+      </content:encoded>
+      <pubDate>Wed, 14 Feb 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
       <title>日本語ローカル LLM 「ELYZA」と vLLM を試す</title>
       <link>https://www.kbaba1001.com/posts/2024021301_japanese-local-llm2/</link>
       <guid isPermaLink="false">https://www.kbaba1001.com/posts/2024021301_japanese-local-llm2/</guid>
@@ -456,80 +475,6 @@
         <p>で、それが叶いました。</p>
         <p>最高ー！！</p>
         </div>
-        ]]>
-      </content:encoded>
-      <pubDate>Mon, 29 Jan 2024 00:00:00 GMT</pubDate>
-    </item>
-    <item>
-      <title>2 月 25 日 (日) に「１か月間全力で個人サイトを作ろうハッカソン、発表会」を開催します</title>
-      <link>https://www.kbaba1001.com/posts/2024012901_hackathon/</link>
-      <guid isPermaLink="false">https://www.kbaba1001.com/posts/2024012901_hackathon/</guid>
-      <description/>
-      <content:encoded>
-        <![CDATA[<p><img src="https://www.kbaba1001.com/img/posts/2024012901_hackathon.jpg" alt="2024012901_hackathon.jpg"></p>
-        <p>個人サイトを<strong>全力で</strong>作りましょう！</p>
-        <p><strong>全力</strong>とは自分の持てる技術の全てを費やすという意味です。</p>
-        <p>いにしえの個人サイトといえば、</p>
-        <ul>
-        <li>アクセスカウンター</li>
-        <li>Web 拍手</li>
-        <li>掲示板</li>
-        <li>チャット</li>
-        <li>相互リンク</li>
-        </ul>
-        <p>など当時の技術（だいたい CGI）をフル動員した個人サイトがたくさんあったものです。
-        徐々に Twitter などの SNS に移り変わっていきましたが、それまでは皆 HTML とか CSS
-        とか 自力で勉強して個人サイトを作ってました。
-        今にして思えばすごい時代です。プログラマでもない人たちがこれら技術を自力でなんとか勉強して
-        いたわけですから。</p>
-        <p>さて、そんな中なぜ今更個人サイトを作るのかというと、個人的に 昨今 Twitter が X
-        になったりしてなんとなく SNS やクラウドサービスに
-        疑問を持つような機会が増えてきました。
-        結局信用できるのは自分で運用しているものだけかなぁ、みたいな気持ちがあります。</p>
-        <p>現在このブログは静的サイトジェネレータを使って Github Pages で公開していますが、
-        もっと掲示板などの機能を作ってみたくなってきました。</p>
-        <p>一人で作っても良いのですが、誰か一緒にやりたい方がいたら嬉しいのでハッカソンにすることにしました。</p>
-        <h2>ハッカソンの概要</h2>
-        <p>今からだいたい１ヶ月後の 2 月 25 日 (日) に
-        「<a href="https://connpass.com/event/309089/">１か月間全力で個人サイトを作ろうハッカソン、発表会</a>」
-        を開催します。</p>
-        <p>このときに、各参加者に自分で作った個人サイトを発表していただきます。</p>
-        <p>なので、 2 月 25 日 (日)までに各自、全力で個人サイトを作ってください。</p>
-        <h3>参加方法</h3>
-        <ul>
-        <li>「<a href="https://connpass.com/event/309089/">１か月間全力で個人サイトを作ろうハッカソン、発表会</a>」に申し込んでください。</li>
-        <li>参加費等はありません。</li>
-        <li>いつでも参加表明して頂いて大丈夫です（例えば発表会の前日から数時間で作った、でも OK です）</li>
-        </ul>
-        <h3>発表会当日</h3>
-        <ul>
-        <li>オンライン (google meet) で開催します。(URL は connpass
-        の参加者にのみ公開します)</li>
-        <li>顔出しは任意です。</li>
-        <li>作品を参加者自身でプレゼンして頂きます。
-        <ul>
-        <li>発表時間は参加人数にもよりますが 15 分程度を想定</li>
-        </ul>
-        </li>
-        <li>主催者の独断で審査を行い、優勝者を決めます。</li>
-        </ul>
-        <h3>作品の条件</h3>
-        <ul>
-        <li><strong>インターネット上に公開されており、 URL (または IP アドレス)
-        でアクセスできることを必須とします。</strong></li>
-        <li>個人サイトのコンテツ内容は自由です。 R-18
-        を含む場合はそのページを開く前に年齢確認をするなど配慮をお願いします。
-        <ul>
-        <li>発表会では全年齢向けのページのみ表示し、審査の対象とします</li>
-        </ul>
-        </li>
-        </ul>
-        <h3>審査について</h3>
-        <ul>
-        <li>発表会の最後に、各参加者の発表会の内容を元にして主催者の独断で優勝者を決めます</li>
-        <li>評価基準として技術点、個人サイトらしさ、コンテンツの面白さ、将来性などを考慮します</li>
-        <li>優勝者には景品として ◯◯◯◯ を差し上げます (TODO 景品決める)</li>
-        </ul>
         ]]>
       </content:encoded>
       <pubDate>Mon, 29 Jan 2024 00:00:00 GMT</pubDate>
