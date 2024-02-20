@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="/styles.css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <meta name="author" content="kbaba1001">
+    <meta property="og:title" content="github template repository を作りたい - kbaba1001ブログ">
+    <meta property="og:url" content="https://www.kbaba1001.com/posts/2024022102_github-template-repository/">
+    <meta property="og:image" content="https://www.kbaba1001.com/img/posts/2024022102_github-template-repository.png">
+    <meta property="twitter:image:src" content="https://www.kbaba1001.com/img/posts/2024022102_github-template-repository.png">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <meta property="og:type" content="website">
+    <meta name="description" content="">
+    <meta property="og:description" content="">
+    <meta property="og:locale" content="ja_JP">
+
+    <title>github template repository を作りたい - kbaba1001ブログ</title>
+  </head>
+  <body class="layout">
+    <header class="layout-header">
+  <div class="header">
+    <div class="header-title">
+  <img src="/img/horse.jpg" alt="kbaba1001 ブログ" loading="lazy" class="header-title-logo">
+  <a href="/" class="header-title-link">kbaba1001 ブログ</a>
+</div>
+
+    <div class="header-nav-container"><nav class="header-nav">
+  <ul class="header-nav-list">
+    <li>
+      <a href="/" class="header-nav-list-link"> Top </a>
+    </li>
+    <li>
+      <a href="/about" class="header-nav-list-link"> About </a>
+    </li>
+    <li>
+      <a href="/feed.rss" class="header-nav-list-link"> RSS </a>
+    </li>
+  </ul>
+</nav>
+</div>
+  </div>
+</header>
+<div class="layout-main">
+  <main class="layout-main-center"><div class="post">
+  <div>
+    <div class="post-date">2024-02-21</div>
+    
+    <div class="post-tag" data-pagefind-filter="tag">Tech</div>
+    
+  </div>
+  <h1 class="post-title">github template repository を作りたい</h1>
+  <div class="post-main"><p>今更ながら
+<a href="https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-template-repository">github template repository</a>
+なるものを知った。
+リポジトリを作るときにテンプレートを選ぶと初期セットアップできるようだ。</p>
+<p>便利じゃん。。。</p>
+<p>今まで <a href="https://github.com/neumann-tokyo">ノイマントーキョーのリポジトリ</a> に
+<code>*-init</code> の名前で 初期セットアップリポジトリを作ってきていたのでこれらを
+template repository 化しようと思う。 正直、あんま使ってないのもあるけど。</p>
+<p>npm
+コマンドとかでテンプレート化しようと思っていたけど、ちょっと面倒くさいしなぁと思っていたので
+github template repository は良さそう。 npm パッケージとして公開しなくていいし、
+Clojure などの言語でも使えるし。 というか Clojure こそテンプレート必要では...。</p>
+<h2>共通化しておきたいもの</h2>
+<p>Webシステムを使うときに次のものはだいたい必要になるのでひと通り揃えておきたい。</p>
+<ul>
+<li>[サーバー側] データベースへのアクセスと SQL Builder 的なライブラリ</li>
+<li>[サーバー側] REST API (または RPC) 構築用のルーティングライブラリ</li>
+<li>[サーバー側] <a href="https://github.com/golang-migrate/migrate">migrate</a>
+によるデータベースのマイグレーション</li>
+<li>[サーバー側] データベースの seeds データの読み込みの仕組み</li>
+<li>[フロント側] React, jotai,
+<a href="https://github.com/jotaijs/jotai-tanstack-query">jotai-tanstack-query</a>,
+ルーティング (<a href="https://github.com/molefrog/wouter">Wouter</a> か
+<a href="https://reactrouter.com/en/main">ReactRouter</a> かなぁ), Chakra UI</li>
+<li>[フロント側] REST Client (または RPC Client) のセットアップ</li>
+<li>formatter, linter, および git pre-commit で左記を自動実行するための仕組み
+(<a href="https://github.com/evilmartians/lefthook">lefthook</a> みたいなやつ)
+<ul>
+<li>最近だと <a href="https://biomejs.dev">Biome</a> が気に入っているのだが Deno
+プロジェクトだったら標準の deno fmt とかでも良さそうなので悩みどころ</li>
+</ul>
+</li>
+<li><a href="https://code.visualstudio.com/docs/devcontainers/containers">devcontainer</a>
+による実行環境</li>
+<li>docker-compose によるデータベースなどのセットアップ</li>
+<li>テスト関係</li>
+<li>vite などのビルド系ツールのセットアップ</li>
+<li>基本的な機能
+<ul>
+<li>JWT を用いた email/password による認証機能</li>
+<li>認可機能</li>
+<li>上記の管理機能</li>
+</ul>
+</li>
+</ul>
+</div>
+  <hr>
+<div class="marshmallow-button-container">
+  <a href="https://marshmallow-qa.com/94eo4q6jhldqu3x?t=9cXLh8&amp;utm_medium=url_text&amp;utm_source=promotion" target="_blank" class="marshmallow-button">
+    マシュマロからメッセージを送る
+  </a>
+  <a href="https://docs.google.com/forms/d/e/1FAIpQLSc-lKGGtcv5D3j-RBJ_CKLlqiCWxU6UqR8I4HkbuEQkbrHIIA/viewform?usp=sf_link" target="_blank" class="google-form-button">
+    Google アカウントからメッセージを送る
+  </a>
+  <div class="marshmallow-note">
+    ※どの記事のコメントかわかるように本文に記事タイトルなどを入れてください。
+  </div>
+</div>
+
+  <a href="/" class="post-index-link">一覧に戻る</a>
+</div>
+</main>
+</div>
+
+  
+
+</body></html>

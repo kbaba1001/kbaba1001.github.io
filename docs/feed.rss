@@ -9,6 +9,61 @@
     <language>ja_JP</language>
     <generator>Lume v2.0.1</generator>
     <item>
+      <title>github template repository を作りたい</title>
+      <link>https://www.kbaba1001.com/posts/2024022102_github-template-repository/</link>
+      <guid isPermaLink="false">https://www.kbaba1001.com/posts/2024022102_github-template-repository/</guid>
+      <description/>
+      <content:encoded>
+        <![CDATA[<p>今更ながら
+        <a href="https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-template-repository">github template repository</a>
+        なるものを知った。
+        リポジトリを作るときにテンプレートを選ぶと初期セットアップできるようだ。</p>
+        <p>便利じゃん。。。</p>
+        <p>今まで <a href="https://github.com/neumann-tokyo">ノイマントーキョーのリポジトリ</a> に
+        <code>*-init</code> の名前で 初期セットアップリポジトリを作ってきていたのでこれらを
+        template repository 化しようと思う。 正直、あんま使ってないのもあるけど。</p>
+        <p>npm
+        コマンドとかでテンプレート化しようと思っていたけど、ちょっと面倒くさいしなぁと思っていたので
+        github template repository は良さそう。 npm パッケージとして公開しなくていいし、
+        Clojure などの言語でも使えるし。 というか Clojure こそテンプレート必要では...。</p>
+        <h2>共通化しておきたいもの</h2>
+        <p>Webシステムを使うときに次のものはだいたい必要になるのでひと通り揃えておきたい。</p>
+        <ul>
+        <li>[サーバー側] データベースへのアクセスと SQL Builder 的なライブラリ</li>
+        <li>[サーバー側] REST API (または RPC) 構築用のルーティングライブラリ</li>
+        <li>[サーバー側] <a href="https://github.com/golang-migrate/migrate">migrate</a>
+        によるデータベースのマイグレーション</li>
+        <li>[サーバー側] データベースの seeds データの読み込みの仕組み</li>
+        <li>[フロント側] React, jotai,
+        <a href="https://github.com/jotaijs/jotai-tanstack-query">jotai-tanstack-query</a>,
+        ルーティング (<a href="https://github.com/molefrog/wouter">Wouter</a> か
+        <a href="https://reactrouter.com/en/main">ReactRouter</a> かなぁ), Chakra UI</li>
+        <li>[フロント側] REST Client (または RPC Client) のセットアップ</li>
+        <li>formatter, linter, および git pre-commit で左記を自動実行するための仕組み
+        (<a href="https://github.com/evilmartians/lefthook">lefthook</a> みたいなやつ)
+        <ul>
+        <li>最近だと <a href="https://biomejs.dev/">Biome</a> が気に入っているのだが Deno
+        プロジェクトだったら標準の deno fmt とかでも良さそうなので悩みどころ</li>
+        </ul>
+        </li>
+        <li><a href="https://code.visualstudio.com/docs/devcontainers/containers">devcontainer</a>
+        による実行環境</li>
+        <li>docker-compose によるデータベースなどのセットアップ</li>
+        <li>テスト関係</li>
+        <li>vite などのビルド系ツールのセットアップ</li>
+        <li>基本的な機能
+        <ul>
+        <li>JWT を用いた email/password による認証機能</li>
+        <li>認可機能</li>
+        <li>上記の管理機能</li>
+        </ul>
+        </li>
+        </ul>
+        ]]>
+      </content:encoded>
+      <pubDate>Wed, 21 Feb 2024 04:32:00 GMT</pubDate>
+    </item>
+    <item>
       <title>Windowsの「ペイント」の進歩がすごい</title>
       <link>https://www.kbaba1001.com/posts/2024022101_paint/</link>
       <guid isPermaLink="false">https://www.kbaba1001.com/posts/2024022101_paint/</guid>
@@ -33,7 +88,7 @@
         <p>ある程度無料で使えるみたいだし、めちゃくちゃいいじゃん。</p>
         ]]>
       </content:encoded>
-      <pubDate>Wed, 21 Feb 2024 00:00:00 GMT</pubDate>
+      <pubDate>Wed, 21 Feb 2024 04:00:00 GMT</pubDate>
     </item>
     <item>
       <title>実写版映画『ゴールデンカムイ』を見てきた</title>
@@ -435,49 +490,6 @@
         ]]>
       </content:encoded>
       <pubDate>Thu, 01 Feb 2024 00:00:00 GMT</pubDate>
-    </item>
-    <item>
-      <title>自宅サーバーに github、 dropbox、 ngrok みたいなのがほしい</title>
-      <link>https://www.kbaba1001.com/posts/2024013101_on-premises/</link>
-      <guid isPermaLink="false">https://www.kbaba1001.com/posts/2024013101_on-premises/</guid>
-      <description/>
-      <content:encoded>
-        <![CDATA[<p>自宅サーバーの活用について考えるとやっぱりファイル共有みたいなことがしたいし、
-        どうせなら git サーバーとして push/pull したい。 固定 IP が面倒くさくて ngrok
-        を使っているが、そこそこお値段がするのでどうせならここもオープンソースにしたい。</p>
-        <p>みたいなことを考えた結果、次を導入しようと思っている。</p>
-        <ul>
-        <li>ファイル共有: <a href="https://onionshare.org/">OnionShare</a></li>
-        <li>git サーバー: <a href="https://github.com/gitbucket/gitbucket">GitBucket</a></li>
-        <li>トンネリング: <a href="https://github.com/fatedier/frp">frp</a></li>
-        </ul>
-        <h3>ファイル共有 (Dropbox alternatives)</h3>
-        <p>あまりクラウドに置いておきたくないデータがいくつかあり、そういうのを自宅サーバーに置いておきたいのだが、
-        単に SSH するだけだとファイルの閲覧が不便だったりするので、 Dropbox
-        的に使えるやつがほしくなった。</p>
-        <p><a href="https://min.io/">Minio</a> が GUI ツールもあるのでそれでもいいのだが、調べたら
-        <a href="https://onionshare.org/">OnionShare</a>
-        というのがスマホアプリもあって良さそうな気がしたので試してみたい。</p>
-        <h3>git サーバー (Github alternatives)</h3>
-        <p><a href="https://about.gitlab.com/">GitLab</a>
-        とかが有名だがそんなに高機能じゃなくていいのと、
-        前から少し気になっていることもあり
-        <a href="https://github.com/gitbucket/gitbucket">GitBucket</a> を導入予定。
-        これは確か日本人が作っていたはず。</p>
-        <h3>トンネリング (ngrok alternatives)</h3>
-        <p><a href="https://ngrok.com/">ngrok</a> の production apps プランを使っているのだが、１つの
-        domain を作るたびに月 $15
-        かかるので何個かやっているとそれなりの出費になってきた。</p>
-        <p>調べたらめちゃくちゃしっかりしたまとめが作ってあった。
-        <a href="https://github.com/anderspitman/awesome-tunneling">awesome-tunneling</a></p>
-        <p>これによると、 CloudFlare Tunnel がおすすめ、 self-host したいなら
-        <a href="https://github.com/fatedier/frp">frp</a> という感じなのでおすすめに従って、 frp
-        を試してみようと思う。</p>
-        <h3>雑感</h3>
-        <p>自宅サーバーがあると電気代を無駄にしたくないので活用したくなる。</p>
-        ]]>
-      </content:encoded>
-      <pubDate>Wed, 31 Jan 2024 00:00:00 GMT</pubDate>
     </item>
   </channel>
 </rss>
