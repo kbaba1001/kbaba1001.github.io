@@ -9,6 +9,33 @@
     <language>ja_JP</language>
     <generator>Lume v2.0.1</generator>
     <item>
+      <title>Windowsの「ペイント」の進歩がすごい</title>
+      <link>https://www.kbaba1001.com/posts/2024022101_paint/</link>
+      <guid isPermaLink="false">https://www.kbaba1001.com/posts/2024022101_paint/</guid>
+      <description/>
+      <content:encoded>
+        <![CDATA[<p>久々にペイントを起動したらめちゃくちゃ機能が増えていて驚いた。</p>
+        <p><img src="https://www.kbaba1001.com/img/posts/2024022101/paint01.png" alt="ペイント"></p>
+        <p>なんかレイヤーとか使えるし。
+        図形描画機能もイラストレーターみたいに後からストロークや色などを変えることができる。
+        ベクターデータになっているということだろうか？</p>
+        <h3>背景を自動削除できる</h3>
+        <p>驚いたのがこの機能。</p>
+        <p><img src="https://www.kbaba1001.com/img/posts/2024022101/paint02.png" alt="ペイント"></p>
+        <p>こんな感じの写真があったときに、</p>
+        <p><img src="https://www.kbaba1001.com/img/posts/2024022101/paint03.png" alt="ペイント"></p>
+        <p>左上の赤丸のボタンを押すとワンクリックで背景を消してくれる。</p>
+        <p>すごい。 かなりきれいに消えてるから活用方法ありそう。</p>
+        <h3>AI 生成</h3>
+        <p><a href="https://www.lifehacker.jp/article/2402-how-to-create-ai-art-in-microsoft-paint-with-cocreator/">Windowsのペイント、ついに画像生成AIを搭載。その名も「Cocreator（コクリエーター）」</a>
+        によると画像生成機能がつくらしい。</p>
+        <p>すごい。</p>
+        <p>ある程度無料で使えるみたいだし、めちゃくちゃいいじゃん。</p>
+        ]]>
+      </content:encoded>
+      <pubDate>Wed, 21 Feb 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
       <title>実写版映画『ゴールデンカムイ』を見てきた</title>
       <link>https://www.kbaba1001.com/posts/2024021401_golden-kamuy/</link>
       <guid isPermaLink="false">https://www.kbaba1001.com/posts/2024021401_golden-kamuy/</guid>
@@ -451,33 +478,6 @@
         ]]>
       </content:encoded>
       <pubDate>Wed, 31 Jan 2024 00:00:00 GMT</pubDate>
-    </item>
-    <item>
-      <title>いつの間にか AtCoder で Babashka が動くようになっていた</title>
-      <link>https://www.kbaba1001.com/posts/2024012902_babashka-at-coder/</link>
-      <guid isPermaLink="false">https://www.kbaba1001.com/posts/2024012902_babashka-at-coder/</guid>
-      <description/>
-      <content:encoded>
-        <![CDATA[<p><img src="https://www.kbaba1001.com/img/posts/2024012902/atcoder.png" alt="AtCoder"></p>
-        <div class="post-learge-font">
-        <p>いつの間にか <a href="https://atcoder.jp/">AtCoder</a> で
-        <a href="https://github.com/babashka/babashka">Babashka</a> が使えるようになっている！！！</p>
-        <p>めちゃくちゃ嬉しい！！</p>
-        <p>AtCoder 始めます！！</p>
-        </div>
-        <p>どういうことかというと、今まで AtCoder で普通の Clojure
-        の実行はできていたのですが、どうも起動時間も含めて実行速度
-        として計算されていたらしく、とんでもなく不利でした。</p>
-        <p>一方 Babashka は GraalVM を使った起動がめちゃくちゃ速い Clojure
-        の実行環境で、これが AtCoder で使えたらいいのになぁと多くの Clojurians
-        は思ってました。</p>
-        <div class="post-learge-font">
-        <p>で、それが叶いました。</p>
-        <p>最高ー！！</p>
-        </div>
-        ]]>
-      </content:encoded>
-      <pubDate>Mon, 29 Jan 2024 00:00:00 GMT</pubDate>
     </item>
   </channel>
 </rss>
