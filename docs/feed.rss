@@ -9,6 +9,28 @@
     <language>ja_JP</language>
     <generator>Lume v2.0.1</generator>
     <item>
+      <title>掲示板を作り、既存のコメントシステムの廃止しました</title>
+      <link>https://www.kbaba1001.com/posts/2024022103_bbs/</link>
+      <guid isPermaLink="false">https://www.kbaba1001.com/posts/2024022103_bbs/</guid>
+      <description/>
+      <content:encoded>
+        <![CDATA[<p>前からリクエストが多かった<a href="https://github.com/kbaba1001/kbaba1001.github.io/discussions">掲示板機能</a>を作りました。</p>
+        <p>リンク先を見れば分かる通り、 GitHub Discussions です。
+        そういえばこんな機能できてたなぁと思ったので使えるようにしました。</p>
+        <p>前々からマシュマロや google form でのコメントがいまいちだなぁと思っていたので、
+        GitHub Discussions に気がついたのは良い考えだなと我ながら思います。
+        なにせお金がかかりませんし、システムのメンテナンスの必要もありません。
+        そもそもこのブログ自体も GitHub Pages で動いてますので相性抜群です。
+        情報の集約にもなります。</p>
+        <p>というわけで今までのマシュマロおよび google form でのコメント機能は廃止します。
+        今後は上記の掲示板にメッセージを頂けたら幸いです。</p>
+        <p>GitHub アカウントがない方はどうするか？ 作ってください。
+        アカウントがなくても閲覧のみならできます。</p>
+        ]]>
+      </content:encoded>
+      <pubDate>Wed, 21 Feb 2024 16:15:00 GMT</pubDate>
+    </item>
+    <item>
       <title>github template repository を作りたい</title>
       <link>https://www.kbaba1001.com/posts/2024022102_github-template-repository/</link>
       <guid isPermaLink="false">https://www.kbaba1001.com/posts/2024022102_github-template-repository/</guid>
@@ -452,44 +474,6 @@
         ]]>
       </content:encoded>
       <pubDate>Fri, 02 Feb 2024 00:00:00 GMT</pubDate>
-    </item>
-    <item>
-      <title>サーバー内での docker compose up をローカルから行う方法</title>
-      <link>https://www.kbaba1001.com/posts/2024020101_docker-context/</link>
-      <guid isPermaLink="false">https://www.kbaba1001.com/posts/2024020101_docker-context/</guid>
-      <description/>
-      <content:encoded>
-        <![CDATA[<p>まずサーバーで docker や docker compose が動くようにしておく。 その後、</p>
-        <pre><code class="language-bash">$ DOCKER_HOST=&quot;ssh://user@remotehost&quot; docker compose up -d
-        </code></pre>
-        <p>するだけで遠隔サーバーで docker container を起動できる。</p>
-        <p>知らなかった...。</p>
-        <p>さらに docker context を使うと DOCKER_HOST を変えなくても指定した環境で docker
-        compose up できる。</p>
-        <pre><code class="language-bash">$ docker context create remote --docker &quot;host=ssh://user@remotemachine&quot;
-        $ docker --context remote compose up -d
-        </code></pre>
-        <div class="post-learge-font">
-        便利すぎでは～！！
-        </div>
-        <p>もちろん <code>~/.ssh/config</code> に設定した Host 名も使える。 僕の場合、 <code>~/.ssh/config</code>
-        に次のような設定がある。</p>
-        <pre><code class="language-bash">host monday
-        HostName xxx.xxx.xxx.xxx
-        User xxxxxxxx
-        ForwardAgent yes
-        IdentityFile ~/.ssh/id_ed25519
-        </code></pre>
-        <p>ので</p>
-        <pre><code class="language-bash">$ DOCKER_HOST=&quot;ssh://monday&quot; docker compose up -d
-        </code></pre>
-        <p>でよい。</p>
-        <p>参考:
-        <a href="https://www.docker.com/blog/how-to-deploy-on-remote-docker-hosts-with-docker-compose/">How to deploy on remote Docker hosts with docker-compose</a></p>
-        <p>本格的に運用するなら k3s とかで k8s 環境を作ったほうが良さそう。</p>
-        ]]>
-      </content:encoded>
-      <pubDate>Thu, 01 Feb 2024 00:00:00 GMT</pubDate>
     </item>
   </channel>
 </rss>
