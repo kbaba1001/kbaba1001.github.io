@@ -9,6 +9,26 @@
     <language>ja_JP</language>
     <generator>Lume v2.0.1</generator>
     <item>
+      <title>最近買った本</title>
+      <link>https://www.kbaba1001.com/posts/2024022301_books/</link>
+      <guid isPermaLink="false">https://www.kbaba1001.com/posts/2024022301_books/</guid>
+      <description/>
+      <content:encoded>
+        <![CDATA[<h2>入門コンピュータ科学</h2>
+        <p><img src="https://www.kbaba1001.com/img/posts/2024022301/computer-book.jpg" alt=""></p>
+        <p>妻がコンピュータの歴史や仕組みが知りたいというので買ってみた。
+        パラパラめくってみた感じ、大学の情報工学科で習うようなことが
+        一通り書いてある感じだった。</p>
+        <p>基本情報処理技術者試験とか好きな人には良さそう。</p>
+        <h2>オイラーの贈物、数学ガール</h2>
+        <p><img src="https://www.kbaba1001.com/img/posts/2024022301/ei-pi-book.jpg" alt=""></p>
+        <p>オイラーの公式について復習したくて買ってみた。 複素平面っていいよね。
+        想像上の数字に過ぎない複素数が現実世界に影響を与えているのが良い。</p>
+        ]]>
+      </content:encoded>
+      <pubDate>Fri, 23 Feb 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
       <title>掲示板を作り、既存のコメントシステムの廃止しました</title>
       <link>https://www.kbaba1001.com/posts/2024022103_bbs/</link>
       <guid isPermaLink="false">https://www.kbaba1001.com/posts/2024022103_bbs/</guid>
@@ -424,56 +444,6 @@
         ]]>
       </content:encoded>
       <pubDate>Tue, 06 Feb 2024 00:00:00 GMT</pubDate>
-    </item>
-    <item>
-      <title>NextCloudで家庭内に閉じたチャットとファイル共有システムを構築した</title>
-      <link>https://www.kbaba1001.com/posts/2024020201_nextcloud/</link>
-      <guid isPermaLink="false">https://www.kbaba1001.com/posts/2024020201_nextcloud/</guid>
-      <description/>
-      <content:encoded>
-        <![CDATA[<p><a href="https://nextcloud.com/">Nextcloud</a> というオンプレで使えるグループウェアを Conoha
-        のサーバーで動かして、家庭内の会話などがクラウドサービスの会社にバレないようになった。</p>
-        <p>主に使いたかったのはチャットとファイル共有。</p>
-        <h2>チャット</h2>
-        <p><img src="https://www.kbaba1001.com/img/posts/2024020201/nextcloud.png" alt="nextcloud"></p>
-        <p>チャットの画面。妻との会話が主だがトピックごとに整理する予定。</p>
-        <p>さらに Twitter
-        という自分だけのルームを作ったのでここで独り言も言うことができる。便利。</p>
-        <p>いろいろ試したけど、ちゃんと音声通話も問題なくできた。</p>
-        <p>google play や apple store に
-        <a href="https://play.google.com/store/apps/details?id=com.nextcloud.talk2">Nextcloud Talk</a>
-        というアプリがあり、これを使えばスマホでも快適に会話ができる。</p>
-        <h2>ファイル共有</h2>
-        <p><img src="https://www.kbaba1001.com/img/posts/2024020201/nextcloud2.png" alt="nextcloud2"></p>
-        <p>google drive
-        みたいな感じで使える。マークダウンもエディタで表示してくれて便利そう。
-        素晴らしい。</p>
-        <p><a href="https://play.google.com/store/apps/details?id=com.nextcloud.client">スマホアプリ</a>
-        もある。</p>
-        <h2>導入手順</h2>
-        <p>Nextcloud は導入が非常に簡単だったのが最高だった。</p>
-        <p>基本的に
-        <a href="https://github.com/nextcloud/all-in-one?tab=readme-ov-file#how-to-use-this">all-in-one</a>
-        の手順に従っただけ。</p>
-        <ul>
-        <li>docker をインストール</li>
-        <li>docker で ipv6 を使えるように設定変更</li>
-        <li>docker run で nextcloud を動かす</li>
-        <li>ufw で Firewall 設定を変更</li>
-        <li>ブラウザで <a href="https://xxxxx:8080/">https://xxxxx:8080</a> にアクセスして初期設定</li>
-        <li>上記の管理画面 (Nextcloud AIO) は Nextcloud
-        をセットアップするための管理画面なので、適当に全文検索の拡張入れたりタイムゾーンを設定したりして
-        Nextcloud 本体をインストールした</li>
-        <li>その後、 443 ポートで Nextcloud
-        が動くのでドメインなど設定して、一般アカウントを追加</li>
-        </ul>
-        <p>この all-in-one の docker
-        が非常に優秀で何もしなくてもセットアップできてしまった。 全部終わると 10
-        個くらいのコンテナが動いていた。</p>
-        <p>これくらいの手軽さでできるならちょっとした少人数の会社のグループウェアとして使っても良さそう。</p>
-        ]]>
-      </content:encoded>
-      <pubDate>Fri, 02 Feb 2024 00:00:00 GMT</pubDate>
     </item>
   </channel>
 </rss>
