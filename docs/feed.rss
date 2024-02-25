@@ -9,6 +9,114 @@
     <language>ja_JP</language>
     <generator>Lume v2.0.1</generator>
     <item>
+      <title>frp で自宅サーバーを公開する</title>
+      <link>https://www.kbaba1001.com/posts/2024022301_frp/</link>
+      <guid isPermaLink="false">https://www.kbaba1001.com/posts/2024022301_frp/</guid>
+      <description/>
+      <content:encoded>
+        <![CDATA[<p><a href="https://ngrok.com/">ngrok</a>
+        は素晴らしいサービスなのだが本番用の固定ドメインを使おうとするとドメイン毎に毎月
+        $15 かかるので何個も作っているとそれなりの出費になるので代替方法として
+        <a href="https://github.com/fatedier/frp">frp</a> を使ってみることにした。</p>
+        <p>frp は ngrok みたいなトンネリングを自分でやるためのライブラリだ。</p>
+        <h2>概要</h2>
+        <p><img src="https://www.kbaba1001.com/img/posts/2024022401/frp.png" alt="frp"></p>
+        <p>frp にはサーバー用の frps とクライアント用の frpc がある。 frps
+        はグローバルIPから安定してアクセスできる場所に置く必要がある。つまり ngrok
+        の場合はこの部分をサービスとしてやっているということになる。</p>
+        <p>frps のあるサーバーでは 443 ポートなど使いたいポートについては Firewall
+        を開けておく必要があるが frpc を置く方のサーバー（つまり自宅サーバーなど）では
+        Firewall を設定する必要はなく、 frpc の設定だけやってあれば良い。</p>
+        <p>今回やりたいことは２つ</p>
+        <ul>
+        <li>自宅サーバーにインターネット越しに SSH でログインする</li>
+        <li>自宅サーバーからホームページをインターネットに公開する</li>
+        </ul>
+        <h2>frps の設定</h2>
+        <p>以前安かったときに契約した ConoHa のサーバーがあるのでこれを frps
+        用に使うことにした。 固定IP が使えて frps
+        の実行ファイルが動かせればなんでもいい気がするので、 Cloud Run とか Faas
+        とかでもいけるかもしれない。</p>
+        <p>frps.toml を次のように設定する。</p>
+        <pre><code>bindPort = 7000
+        vhostHTTPSPort = 443
+        </code></pre>
+        <p>次で起動</p>
+        <pre><code>./frps -c frps.toml
+        </code></pre>
+        <p>ポート 7000, 2222, 443 を使うので開けておく。 (Linux の Firewall は最近は ufw
+        を使っている。簡単なので便利。)</p>
+        <h2>frpc の設定: SSH</h2>
+        <p>次に自宅サーバーで次のような設定をしておく。</p>
+        <p><code>frpc.toml</code></p>
+        <pre><code>serverAddr = &quot;xxx.xxx.xxx.xxx&quot; # ConoHa サーバーのグローバル IP アドレス or 左記を割り当てたドメイン
+        serverPort = 7000
+        
+        [[proxies]]
+        name = &quot;ssh&quot;
+        type = &quot;tcp&quot;
+        localIP = &quot;127.0.0.1&quot;
+        localPort = 22
+        remotePort = 2222
+        </code></pre>
+        <p>で、次で起動</p>
+        <pre><code>./frpc -c frpc.toml
+        </code></pre>
+        <p>上記の設定の場合、自宅サーバーでポート 22 で SSH 接続できるようにしておいて、
+        frps 経由では 2222 ポートでアクセスできるように設定してある。</p>
+        <p>手元のマシンの SSH
+        設定を次のようにすればインターネットのどこからでも自宅サーバーにアクセスできる。</p>
+        <p><code>~/.ssh/config</code></p>
+        <pre><code>host my-server
+        HostName xxx.xxx.xxx.xxx
+        User alice
+        Port 2222
+        ForwardAgent yes
+        </code></pre>
+        <p>User とか IdentityFile の設定とかは適当にやっておく。</p>
+        <h2>frpc の設定: https サーバー</h2>
+        <p>インターネットにサイトを公開するのであれば HTTPS で公開したい。 frp には
+        https2http というプラグインがあってこれを使うと http で動いているローカルの
+        アプリケーションサーバーに対して https で公開できるようになる。</p>
+        <h3>HTTPS の証明書ファイルの生成</h3>
+        <p>今回は HTTPS 化のために <a href="https://letsencrypt.org/">Let's Encrypt</a> を使う。 Let's
+        Encrypt は certbot という Linux コマンドで証明書ファイルを作ることができる。</p>
+        <pre><code class="language-bash">certbot certonly --manual -d *.kbaba1001.com --preferred-challenges dns --config-dir ./letsencrypt/config --work-dir ./letsencrypt/work --logs-dir ./letsencrypt/logs
+        </code></pre>
+        <p>こんな感じで設定ファイルを作ることができる。（ディレクトリは予め作っておく）</p>
+        <p>ドメインでのTXT設定が求められるのでそれは対応すること。</p>
+        <p>上記の場合は <code>./letsencrypt/config/live/kbaba1001.com/cert.pem</code>
+        などのような形で証明書ファイルができる。</p>
+        <h3>frpc の設定</h3>
+        <p>新しい frpc.toml を作って次のように設定する。</p>
+        <pre><code>serverAddr = &quot;xxx.xxx.xxx.xxx&quot;
+        serverPort = 7000
+        vhostHTTPSPort = 443
+        
+        [[proxies]]
+        name = &quot;tunnel_https2http&quot;
+        type = &quot;https&quot;
+        customDomains = [&quot;tunnel.kbaba1001.com&quot;]
+        
+        [proxies.plugin]
+        type = &quot;https2http&quot;
+        localAddr = &quot;127.0.0.1:8000&quot;
+        crtPath = &quot;./letsencrypt/config/live/kbaba1001.com/cert.pem&quot;
+        keyPath = &quot;./letsencrypt/config/live/kbaba1001.com/privkey.pem&quot;
+        hostHeaderRewrite = &quot;127.0.0.1&quot;
+        requestHeaders.set.x-from-where = &quot;frp&quot;
+        </code></pre>
+        <p><code>frpc -c frpc.toml</code> で起動しておいて、ブラウザから
+        <code>https://tunnel.kbaba1001.com</code> にアクセスすれば 通信が Proxy
+        されて自宅サーバーの localhost:8000 にリクエストが飛ぶようになる。</p>
+        <h2>まとめ</h2>
+        <p>frps
+        を動かすサーバーが必要になるものの、お金をあまりかけずに自宅サーバーを公開するには良い方法だと思う。</p>
+        ]]>
+      </content:encoded>
+      <pubDate>Fri, 23 Feb 2024 23:30:00 GMT</pubDate>
+    </item>
+    <item>
       <title>最近買った本</title>
       <link>https://www.kbaba1001.com/posts/2024022301_books/</link>
       <guid isPermaLink="false">https://www.kbaba1001.com/posts/2024022301_books/</guid>
@@ -300,150 +408,6 @@
         ]]>
       </content:encoded>
       <pubDate>Thu, 08 Feb 2024 00:00:00 GMT</pubDate>
-    </item>
-    <item>
-      <title>Deno で Google Meet みたいなやつを作ってみようと思っている</title>
-      <link>https://www.kbaba1001.com/posts/2024020601_deno/</link>
-      <guid isPermaLink="false">https://www.kbaba1001.com/posts/2024020601_deno/</guid>
-      <description/>
-      <content:encoded>
-        <![CDATA[<p>Google Meet みたいなブラウザで動作するビデオ会議ツールを作りたい。</p>
-        <p>そこで Node で作っても良いのだが、 以前から少しずつ使っている Deno
-        をそろそろ本格的に使っていきたいので試しにサーバー、フロント共に Deno
-        でやってみることにした。</p>
-        <p>ある程度動くものができたらオープンソースにする予定。</p>
-        <h2>Deno の API サーバー事情</h2>
-        <p>Deno には <code>Deno.serve</code> というシンプルなサーバーが組み込まれている。</p>
-        <ul>
-        <li><a href="https://docs.deno.com/runtime/tutorials/http_server">Simple HTTP Web Server</a></li>
-        </ul>
-        <p>しかしこれは Routing の機能などがないので、そこは別途何とかするしかない。</p>
-        <p>色々調べたのだが、現状、それなりにメンテされてそうで使われてそうなライブラリは次</p>
-        <ul>
-        <li><a href="https://oakserver.github.io/oak/">oak</a></li>
-        <li><a href="https://hono.dev/">Hono</a></li>
-        </ul>
-        <p>他にも色々あったけど、2年くらい前にコミットが止まっているものが多くてやめた。</p>
-        <p>Deno
-        は少し使ってみればわかるけど、本体にまだまだ変更が入るのでライブラリを作ってもメンテするのが大変なのよね。。。
-        そのため放置されがちなのは理解できる。</p>
-        <p>今回は Hono
-        を採用することにした。以前から少しブログなどで注目されているのを知っていたし、日本人が作っているので応援したいため。</p>
-        <h2>Deno で React のフロントエンドを作る</h2>
-        <p>どうせならフロントエンドも Deno で開発したい。 npm が使えるようになったので Vite
-        も使えるようだが、次のライブラリを入れたほうが便利そうだったので採用した。</p>
-        <ul>
-        <li><a href="https://github.com/anatoo/vite-deno-plugin">vite-deno-plugin</a></li>
-        </ul>
-        <p><a href="https://github.com/anatoo/vite-deno-plugin/tree/main/examples/react">React Example</a>
-        が用意されているのでこれをコピーして土台とした。</p>
-        <h3>その他、採用予定のライブラリ</h3>
-        <ul>
-        <li><a href="https://github.com/molefrog/wouter">wouter</a></li>
-        <li><a href="https://www.kuma-ui.com/">Kuma UI</a></li>
-        <li><a href="https://jotai.org/">jotai</a></li>
-        <li><a href="https://github.com/jotaijs/jotai-tanstack-query">jotai-tanstack-query</a></li>
-        <li><a href="https://github.com/jotaijs/jotai-uncontrolled">jotai-uncontrolled</a>
-        <ul>
-        <li><a href="https://zenn.dev/dai_shi/articles/01813b22907dcf">Document</a></li>
-        </ul>
-        </li>
-        </ul>
-        <p>この辺を使う予定。</p>
-        <p>wouter は Preact 対応してあるということで Deno
-        界隈ではちょっと使われ始めているライブラリのようだ。 不十分だったら React Router
-        に変えようと思う。</p>
-        <p>Kuma UI は Chakra UI からの置き換えを考えている。 Kuma UI は Chakra UI
-        ほど機能がないのだが、 CSS の読み込みの仕組みを改善していて速いとのこと。</p>
-        <p>jotai
-        は以前から使っているのだが、もっと本格的に使っていきたいのでプラグインも入れる予定。</p>
-        <h2>他の Web フレームワーク</h2>
-        <ul>
-        <li><a href="https://fresh.deno.dev/">Fresh</a>
-        <ul>
-        <li>Deno の公式(たぶん) の Web Framework</li>
-        <li>サーバー、フロント共に作れるが次の理由で今回は不採用
-        <ul>
-        <li>Streaming 対応が不安なため</li>
-        <li>サーバーとフロントを分離した設計にしたいため</li>
-        </ul>
-        </li>
-        </ul>
-        </li>
-        <li><a href="https://github.com/exhibitionist-digital/ultra">Ultra</a>
-        <ul>
-        <li>Fresh に似ているけど React が使える</li>
-        </ul>
-        </li>
-        </ul>
-        <h2>Streaming Data とデータベース</h2>
-        <p>ビデオ会議ツールを作るために
-        <a href="https://developer.mozilla.org/en-US/docs/Web/API/Streams_API">Web Streams API</a>
-        を使って Streaming データをサーバーとフロントでやり取りする設計を考えている。</p>
-        <p>そこで、 Streaming
-        データをどのようにデータベースに保存するかが重要になってくる。 普通の RDBMS
-        でも良いのだが、以前からちょっと気になっている
-        <a href="https://www.timescale.com/">Timescale DB</a> を使ってみようと思っている。 これは
-        PostgreSQL を拡張したデータベースなので使いやすそうだなと思っている。</p>
-        <p>Docker でもクラウドでも使える。</p>
-        <h2>全文検索</h2>
-        <p>また、今どき全文検索も必須の機能となってきたのだが、
-        日本語対応も含めて考えるとデフォルトの PostgreSQL では心もとない。</p>
-        <p>単に Google Meet クローンを作るだけなら全文検索はいらない気もするけど、
-        なんとなくチャット機能も作りたいので、実際には Discord
-        クローンみたいになりそうだ。</p>
-        <p>で、次のような候補を考えた。</p>
-        <ul>
-        <li><a href="https://github.com/pgbigm/pg_bigm">pg_bigm</a>
-        <ul>
-        <li>PostgreSQL のプラグイン。 AWS RDS や GCP Cloud SQL
-        でも使えるが、他に比べると遅いらしい。あんま開発もされてなさそう。</li>
-        </ul>
-        </li>
-        <li><a href="https://pgroonga.github.io/">PGroonga</a>
-        <ul>
-        <li>これも PostgreSQL のプラグイン。速いのだが pg_bigm と違って AWS RDS や GCP
-        Cloud SQL がサポートしてない。</li>
-        <li>なぜか Supabase
-        では使えるのだが、他のクラウドサービスでも使えるように営業を頑張ってほしいところ……。</li>
-        </ul>
-        </li>
-        <li><a href="https://typesense.org/">TypeSense</a>
-        <ul>
-        <li>これはプラグインではなく ElasticSearch や Algoria
-        のような独立した全文検索エンジン</li>
-        <li>Docker
-        のイメージもありオンプレでも使えるし、クラウドサービスも提供されている</li>
-        <li>ドキュメントを読んだ感じ ElasticSearch ほど面倒なクエリではなさそう</li>
-        </ul>
-        </li>
-        </ul>
-        <p>総合的に考えて今の第一候補は TypeSense 。</p>
-        <h2>SQL Builder, ORM 的なやつ</h2>
-        <p><a href="https://kysely.dev/">kysely</a> が deno
-        でも動くようなので、特にトラブルなければこれかなぁ。 Timescale DB
-        との相性が若干不安ではあるが...。</p>
-        <p>kysely そのものは必要十分な機能を備えていてわりと気に入っている。 Prisma
-        が苦手な人には特におすすめかも知れない。</p>
-        <h2>TypeScript でやるのか？ 一応そのつもり...</h2>
-        <p><a href="https://www.kbaba1001.com/posts/2023122001_typescript/">TypeScriptって面倒くさいだけでは...</a>
-        で書いた通り TypeScript があまり好きではないのだが、今回は一応 TypeScript
-        前提で考えている。</p>
-        <p>理由としては</p>
-        <ul>
-        <li>コード生成機能を使うようなものがない（GraphQL, gRPC, Prisma
-        など）はずなので、自分で型を定義する分にはマシではなかろうか</li>
-        <li>テスト減らしたい</li>
-        <li>Clojure
-        でもそうなんだけど関数の引数として何を期待しているかくらいは明示的にしたい事がある
-        (とはいえ今更 prop-types はなぁ...)</li>
-        <li>Deno なら Repl とか環境セットアップが面倒くさくない</li>
-        </ul>
-        <p>らへん。</p>
-        <p>どうしても生産性落ちそうだったら JS にするかもしれない。</p>
-        ]]>
-      </content:encoded>
-      <pubDate>Tue, 06 Feb 2024 00:00:00 GMT</pubDate>
     </item>
   </channel>
 </rss>
