@@ -9,6 +9,47 @@
     <language>ja_JP</language>
     <generator>Lume v2.0.1</generator>
     <item>
+      <title>ローカル LLM を自宅サーバーで動かして Chatbot を作る</title>
+      <link>https://www.kbaba1001.com/posts/2024022501_llama-chatbot/</link>
+      <guid isPermaLink="false">https://www.kbaba1001.com/posts/2024022501_llama-chatbot/</guid>
+      <description/>
+      <content:encoded>
+        <![CDATA[<p>今までローカル LLM を色々と試してきたわけだが、ついに集大成として Chatbot
+        を作るに至った。</p>
+        <p><img src="https://www.kbaba1001.com/img/posts/2024022501/poppins1.png" alt="Poppins1"></p>
+        <p>結局、結論としては、</p>
+        <ul>
+        <li>モデル:
+        <a href="https://huggingface.co/elyza/ELYZA-japanese-Llama-2-13b-fast-instruct">elyza/ELYZA-japanese-Llama-2-13b-fast-instruct</a>
+        を使う
+        <ul>
+        <li>正確には GGUF がほしいので
+        <a href="https://huggingface.co/mmnga/ELYZA-japanese-Llama-2-13b-fast-instruct-gguf">こちら</a>
+        の <code>ELYZA-japanese-Llama-2-13b-fast-instruct-q4_K_S.gguf</code> を使うことにした</li>
+        </ul>
+        </li>
+        <li>サーバー: <a href="https://github.com/abetlen/llama-cpp-python">llama-cpp-python</a> を
+        docker で動かす。
+        <ul>
+        <li><a href="https://github.com/jasonacox/TinyLLM/tree/main/llmserver">TinyLLM</a>
+        をめちゃくちゃ参考にした</li>
+        <li><a href="https://github.com/vllm-project/vllm">vLLM</a> は設定が悪いのか GPU
+        メモリエラーになるのでひとまず諦めた</li>
+        </ul>
+        </li>
+        <li>クライアント: <a href="https://nlux.dev/">nlux</a> というのが React で動くチャットボットの
+        UI をすぐに作れるので採用した</li>
+        </ul>
+        <h2>動かしてみる</h2>
+        <p><img src="https://www.kbaba1001.com/img/posts/2024022501/poppins2.png" alt="Poppins2"></p>
+        <p>そこそこまともに回答してくれる。</p>
+        <h2>ソースコードサンプル</h2>
+        <p>そのうち作る。</p>
+        ]]>
+      </content:encoded>
+      <pubDate>Sun, 25 Feb 2024 14:15:00 GMT</pubDate>
+    </item>
+    <item>
       <title>frp で自宅サーバーを公開する</title>
       <link>https://www.kbaba1001.com/posts/2024022301_frp/</link>
       <guid isPermaLink="false">https://www.kbaba1001.com/posts/2024022301_frp/</guid>
@@ -395,19 +436,6 @@
         ]]>
       </content:encoded>
       <pubDate>Fri, 09 Feb 2024 00:00:00 GMT</pubDate>
-    </item>
-    <item>
-      <title>マシュマロの設定をゆるくしました</title>
-      <link>https://www.kbaba1001.com/posts/2024020801_change-marshmallow-setting/</link>
-      <guid isPermaLink="false">https://www.kbaba1001.com/posts/2024020801_change-marshmallow-setting/</guid>
-      <description/>
-      <content:encoded>
-        <![CDATA[<p>今までマシュマロのプレミアム会員じゃないとコメントが送れない設定になっていたようなので、
-        ログインユーザーであればメッセージを送れるように変更しました。</p>
-        <p>よろしくお願いします。</p>
-        ]]>
-      </content:encoded>
-      <pubDate>Thu, 08 Feb 2024 00:00:00 GMT</pubDate>
     </item>
   </channel>
 </rss>
