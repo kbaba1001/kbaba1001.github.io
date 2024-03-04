@@ -28,7 +28,7 @@ site.remoteFile(
 	"_includes/css/code/default.css",
 	"https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.6.0/build/styles/github.min.css",
 );
-site.ignore("README.md", "CHANGELOG.md", "node_modules");
+site.ignore("README.md", "CHANGELOG.md", "node_modules", "tools");
 site.copy("img");
 site.copy("CNAME");
 site.copy("site.webmanifest");

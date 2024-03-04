@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="/styles.css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <meta name="author" content="kbaba1001">
+    <meta property="og:title" content="Deno.testを諦めてmochaを入れた - kbaba1001ブログ">
+    <meta property="og:url" content="https://www.kbaba1001.com/posts/202403041204_give-up-deno-test/">
+    <meta property="og:image" content="https://www.kbaba1001.com/img/posts/202403041204_give-up-deno-test.png">
+    <meta property="twitter:image:src" content="https://www.kbaba1001.com/img/posts/202403041204_give-up-deno-test.png">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <meta property="og:type" content="website">
+    <meta name="description" content="kbaba1001のブログです。">
+    <meta property="og:description" content="kbaba1001のブログです。">
+    <meta property="og:locale" content="ja_JP">
+
+    <title>Deno.testを諦めてmochaを入れた - kbaba1001ブログ</title>
+  </head>
+  <body class="layout">
+    <header class="layout-header">
+  <div class="header">
+    <div class="header-title">
+  <img src="/img/horse.jpg" alt="kbaba1001 ブログ" loading="lazy" class="header-title-logo">
+  <a href="/" class="header-title-link">kbaba1001 ブログ</a>
+</div>
+
+    <div class="header-nav-container"><nav class="header-nav">
+  <ul class="header-nav-list">
+    <li>
+      <a href="/" class="header-nav-list-link"> Top </a>
+    </li>
+    <li>
+      <a href="/about" class="header-nav-list-link"> About </a>
+    </li>
+    <li>
+      <a href="https://github.com/kbaba1001/kbaba1001.github.io/discussions" class="header-nav-list-link" target="_blank"> 掲示板 </a>
+    </li>
+    <li>
+      <a href="/feed.rss" class="header-nav-list-link"> RSS </a>
+    </li>
+  </ul>
+</nav>
+</div>
+  </div>
+</header>
+<div class="layout-main">
+  <main class="layout-main-center"><div class="post">
+  <div>
+    <div class="post-date">2024-03-04</div>
+    
+    <div class="post-tag" data-pagefind-filter="tag">Tech</div>
+    
+  </div>
+  <h1 class="post-title">Deno.testを諦めてmochaを入れた</h1>
+  <div class="post-main"><p>BDD という概念にうんざりしている（たぶんそういう人多いと思うけど）。 RSpec
+で散々やってきた BDD という概念は今となっては何だったのかと思うほどだ。</p>
+<p>それはともかく。</p>
+<p>最近 Deno で本格的な Web システムを作ろうとしているのだが、
+ドキュメントが少ないこともあり結構小さなことで躓くことが多い</p>
+<p>テストもその一つ。</p>
+<p>そもそも
+<a href="https://docs.deno.com/runtime/manual/basics/testing/">Denoにはデフォルトでテストランナーがついている</a>。
+最近は Node
+にもテストランナーが搭載されているし、デフォルトで事足りるならそれがいい。</p>
+<p>しかし、結果的にはちょっとバグがあってだめだった。</p>
+<pre><code class="language-javascript hljs"><span class="hljs-title class_">Deno</span>.<span class="hljs-title function_">test</span>(<span class="hljs-string">"database"</span>, <span class="hljs-keyword">async</span> (t) =&gt; {
+  <span class="hljs-keyword">const</span> client = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Client</span>({
+    <span class="hljs-attr">user</span>: <span class="hljs-string">"user"</span>,
+    <span class="hljs-attr">database</span>: <span class="hljs-string">"test"</span>,
+    <span class="hljs-attr">hostname</span>: <span class="hljs-string">"localhost"</span>,
+    <span class="hljs-attr">port</span>: <span class="hljs-number">5432</span>,
+  });
+  <span class="hljs-keyword">await</span> client.<span class="hljs-title function_">connect</span>();
+
+  <span class="hljs-keyword">await</span> t.<span class="hljs-title function_">step</span>(<span class="hljs-string">"insert user"</span>, <span class="hljs-keyword">async</span> () =&gt; {
+    <span class="hljs-keyword">const</span> users = <span class="hljs-keyword">await</span> client.<span class="hljs-property">queryObject</span> &lt; <span class="hljs-title class_">User</span> &gt;
+      (<span class="hljs-string">"INSERT INTO users (name) VALUES ('Deno') RETURNING *"</span>);
+    <span class="hljs-title function_">assertEquals</span>(users.<span class="hljs-property">rows</span>.<span class="hljs-property">length</span>, <span class="hljs-number">1</span>);
+    <span class="hljs-title function_">assertEquals</span>(users.<span class="hljs-property">rows</span>[<span class="hljs-number">0</span>].<span class="hljs-property">name</span>, <span class="hljs-string">"Deno"</span>);
+  });
+});
+</code></pre>
+<p>こういう <code>t.step</code> で <code>async/await</code> をするようなコードを書くとうまく動かない。</p>
+<p><a href="https://github.com/denoland/deno/issues/15425">https://github.com/denoland/deno/issues/15425</a> によると Windows
+の問題かもしれない。 Docker 使っているんだけどなぁ。</p>
+<p>まぁこれだけなら <code>t.step</code> を使わなければいいだけなのだが、 <code>afterAll</code>
+的なことをしたくてこの辺の機能もちょっといまいちうまく動いてくれなかった。</p>
+<p>この辺は新しい機能のようなのでいったん使うのを諦めて、
+<a href="https://mochajs.org">Mocha</a> を使うことにした。</p>
+<p>なぜ Mocha にしたかというと、</p>
+<ul>
+<li>サーバーのテストなのでなるべくシンプルにしたい</li>
+<li>近頃万能感がある vitest は軽く試した感じ Deno でうまく動かなかったので不採用</li>
+<li>記法的には <a href="https://github.com/avajs/ava">ava</a>
+も良さそうだったけど、軽く試した感じ Deno で（省略</li>
+<li>Jest でもいい気がするけど先に Mocha でうまく動いたので試してない</li>
+</ul>
+<p>Mocha を使ったことがなかったので知らなかったけどこれは BDD 的な構成と Runner
+を提供するだけで Assert はないようなので、 Assert は普通に Deno
+の標準のものを使うことにした。</p>
+<h3>補足: DB アクセス</h3>
+<p><a href="https://kysely.dev">Kysely</a> を使っている。
+多少ちゃんと動くようになるまで時間がかかったけどなんとかなった。
+テストの場合、全てのテストケースが終わった後で明示的に <code>await db.destroy();</code>
+を呼んでやる必要があった。 こっちの話もそのうち書くかも。</p>
+</div>
+  <hr>
+<div class="comment-button-container">
+  <a href="https://github.com/kbaba1001/kbaba1001.github.io/discussions" target="_blank" class="comment-button">
+    掲示板にコメントする
+  </a>
+  <div class="comment-note">
+    ※どの記事のコメントかわかるように本文に記事タイトルなどを入れてください。
+  </div>
+</div>
+
+  <a href="/" class="post-index-link">一覧に戻る</a>
+</div>
+</main>
+</div>
+
+  
+
+</body></html>

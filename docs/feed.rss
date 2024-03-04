@@ -9,6 +9,66 @@
     <language>ja_JP</language>
     <generator>Lume v2.0.1</generator>
     <item>
+      <title>Deno.testを諦めてmochaを入れた</title>
+      <link>https://www.kbaba1001.com/posts/202403041204_give-up-deno-test/</link>
+      <guid isPermaLink="false">https://www.kbaba1001.com/posts/202403041204_give-up-deno-test/</guid>
+      <content:encoded>
+        <![CDATA[<p>BDD という概念にうんざりしている（たぶんそういう人多いと思うけど）。 RSpec
+        で散々やってきた BDD という概念は今となっては何だったのかと思うほどだ。</p>
+        <p>それはともかく。</p>
+        <p>最近 Deno で本格的な Web システムを作ろうとしているのだが、
+        ドキュメントが少ないこともあり結構小さなことで躓くことが多い</p>
+        <p>テストもその一つ。</p>
+        <p>そもそも
+        <a href="https://docs.deno.com/runtime/manual/basics/testing/">Denoにはデフォルトでテストランナーがついている</a>。
+        最近は Node
+        にもテストランナーが搭載されているし、デフォルトで事足りるならそれがいい。</p>
+        <p>しかし、結果的にはちょっとバグがあってだめだった。</p>
+        <pre><code class="language-javascript">Deno.test(&quot;database&quot;, async (t) =&gt; {
+        const client = new Client({
+        user: &quot;user&quot;,
+        database: &quot;test&quot;,
+        hostname: &quot;localhost&quot;,
+        port: 5432,
+        });
+        await client.connect();
+        
+        await t.step(&quot;insert user&quot;, async () =&gt; {
+        const users = await client.queryObject &lt; User &gt;
+        (&quot;INSERT INTO users (name) VALUES ('Deno') RETURNING *&quot;);
+        assertEquals(users.rows.length, 1);
+        assertEquals(users.rows[0].name, &quot;Deno&quot;);
+        });
+        });
+        </code></pre>
+        <p>こういう <code>t.step</code> で <code>async/await</code> をするようなコードを書くとうまく動かない。</p>
+        <p><a href="https://github.com/denoland/deno/issues/15425">https://github.com/denoland/deno/issues/15425</a> によると Windows
+        の問題かもしれない。 Docker 使っているんだけどなぁ。</p>
+        <p>まぁこれだけなら <code>t.step</code> を使わなければいいだけなのだが、 <code>afterAll</code>
+        的なことをしたくてこの辺の機能もちょっといまいちうまく動いてくれなかった。</p>
+        <p>この辺は新しい機能のようなのでいったん使うのを諦めて、
+        <a href="https://mochajs.org/">Mocha</a> を使うことにした。</p>
+        <p>なぜ Mocha にしたかというと、</p>
+        <ul>
+        <li>サーバーのテストなのでなるべくシンプルにしたい</li>
+        <li>近頃万能感がある vitest は軽く試した感じ Deno でうまく動かなかったので不採用</li>
+        <li>記法的には <a href="https://github.com/avajs/ava">ava</a>
+        も良さそうだったけど、軽く試した感じ Deno で（省略</li>
+        <li>Jest でもいい気がするけど先に Mocha でうまく動いたので試してない</li>
+        </ul>
+        <p>Mocha を使ったことがなかったので知らなかったけどこれは BDD 的な構成と Runner
+        を提供するだけで Assert はないようなので、 Assert は普通に Deno
+        の標準のものを使うことにした。</p>
+        <h3>補足: DB アクセス</h3>
+        <p><a href="https://kysely.dev/">Kysely</a> を使っている。
+        多少ちゃんと動くようになるまで時間がかかったけどなんとかなった。
+        テストの場合、全てのテストケースが終わった後で明示的に <code>await db.destroy();</code>
+        を呼んでやる必要があった。 こっちの話もそのうち書くかも。</p>
+        ]]>
+      </content:encoded>
+      <pubDate>Mon, 04 Mar 2024 12:04:55 GMT</pubDate>
+    </item>
+    <item>
       <title>変わった形のメガネを買った</title>
       <link>https://www.kbaba1001.com/posts/2024022503_glasses/</link>
       <guid isPermaLink="false">https://www.kbaba1001.com/posts/2024022503_glasses/</guid>
@@ -356,19 +416,6 @@
         ]]>
       </content:encoded>
       <pubDate>Tue, 13 Feb 2024 00:00:00 GMT</pubDate>
-    </item>
-    <item>
-      <title>Google アカウントからもメッセージを送れるようになりました</title>
-      <link>https://www.kbaba1001.com/posts/2024020901_add-google-form/</link>
-      <guid isPermaLink="false">https://www.kbaba1001.com/posts/2024020901_add-google-form/</guid>
-      <description/>
-      <content:encoded>
-        <![CDATA[<p>試験的に Google Form でのメッセージも受け付けるようにしました。</p>
-        <p>↓の「Google アカウントからメッセージを送る」からどうぞ。</p>
-        <p>よろしくお願いします。</p>
-        ]]>
-      </content:encoded>
-      <pubDate>Fri, 09 Feb 2024 00:00:00 GMT</pubDate>
     </item>
   </channel>
 </rss>
