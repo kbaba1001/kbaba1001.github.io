@@ -9,6 +9,32 @@
     <language>ja_JP</language>
     <generator>Lume v2.0.1</generator>
     <item>
+      <title>今後の勉強科目について</title>
+      <link>https://www.kbaba1001.com/posts/202403060942_study-subjects/</link>
+      <guid isPermaLink="false">https://www.kbaba1001.com/posts/202403060942_study-subjects/</guid>
+      <content:encoded>
+        <![CDATA[<p><img src="https://www.kbaba1001.com/img/posts/202403060943/books.jpg" alt="books"></p>
+        <p>家の中にあった本で今後勉強しようと思っているものを積み上げてみた。</p>
+        <p>基本的に勉強しようと思っている科目は次。</p>
+        <ul>
+        <li>英語 (TOEFL)</li>
+        <li>大学の数学 (全体的に復習)</li>
+        <li>コンピュータ科学 (復習。知識のならし)</li>
+        <li>医療の基礎</li>
+        </ul>
+        <p>英語は会話と英検をメインでやってたけど、今後アカデミックな方向に行きたいという気持ちが多少あるので
+        TOEFL を受けることにした。 大学院などで TOEFL
+        の成績表を出すことを求められることもあるらしいので。</p>
+        <p>数学は前から復習したいと思っていたのでやる。</p>
+        <p>コンピュータ科学は流石にだいたいわかるが、細かいところの知識をならしたいので１冊読んでおくことにする。
+        普段使う Web 関係以外は忘れているところもあるような気もする。</p>
+        <p>医療関係の本。興味本位もあるし以前仕事で少し関わっていたこともあるのでその復習を兼ねて。</p>
+        <p>その他、歴史とか古文とかなんとなく文化系の勉強もしていて、この辺は完全に趣味になりそうだけどやっておいて損はないかなぁという感じ。</p>
+        ]]>
+      </content:encoded>
+      <pubDate>Wed, 06 Mar 2024 09:42:41 GMT</pubDate>
+    </item>
+    <item>
       <title>Deno.testを諦めてmochaを入れた</title>
       <link>https://www.kbaba1001.com/posts/202403041204_give-up-deno-test/</link>
       <guid isPermaLink="false">https://www.kbaba1001.com/posts/202403041204_give-up-deno-test/</guid>
@@ -373,49 +399,6 @@
         ]]>
       </content:encoded>
       <pubDate>Wed, 14 Feb 2024 00:00:00 GMT</pubDate>
-    </item>
-    <item>
-      <title>日本語ローカル LLM 「ELYZA」と vLLM を試す</title>
-      <link>https://www.kbaba1001.com/posts/2024021301_japanese-local-llm2/</link>
-      <guid isPermaLink="false">https://www.kbaba1001.com/posts/2024021301_japanese-local-llm2/</guid>
-      <description/>
-      <content:encoded>
-        <![CDATA[<p>前回の
-        <a href="https://www.kbaba1001.com/posts/2024020902_japanese-local-llm/">【悲報】日本語ローカル LLM がアホすぎる件</a>
-        から次のことを試した。</p>
-        <ul>
-        <li>一番頭のいいモデルである
-        <a href="https://huggingface.co/tokyotech-llm/Swallow-70b-hf">Swallow-70b-hf</a> を試す</li>
-        <li><a href="https://huggingface.co/elyza/ELYZA-japanese-Llama-2-13b-fast-instruct">elyza/ELYZA-japanese-Llama-2-13b-fast-instruct</a>
-        を試す</li>
-        <li><a href="https://github.com/vllm-project/vllm">vLLM</a> を試す</li>
-        </ul>
-        <h2>Swallow-70b-hf</h2>
-        <p>自分の GPU (GeForce GTX 1080 Ti)
-        では重すぎて１時間待っても3文字くらいしか応答がなかった。
-        ちょっと実用性がないので採用を諦めた。</p>
-        <h2>ELYZA-japanese-Llama-2-13b-fast-instruct</h2>
-        <p>Swallow は前回かなり残念な感じだったので別のモデルを試すことにした。 そこで
-        ELYZA 社の上記のモデル。</p>
-        <p><img src="https://www.kbaba1001.com/img/posts/2024021301/elyza.png" alt="ELYZA"></p>
-        <div class="post-learge-font">
-        まともな回答してる！
-        <p>これだよ、これ！！</p>
-        </div>
-        <p>前回の Swallow は何だったのかと思うほどきちんとした回答が返ってきた。
-        応答速度も数分かかるものの許容範囲レベル。 ひとまずモデルとしては
-        ELYZA-japanese-Llama-2-13b-fast-instruct で決定することにした。</p>
-        <h2>vLLM による高速化</h2>
-        <p>vLLM はローカル LLM を高速化できるライブラリ。</p>
-        <p><a href="https://docs.vllm.ai/en/latest/serving/deploying_with_docker.html">vllm/vllm-openai</a>
-        という Docker イメージがあるので試しに使ってみたが、 GPU
-        メモリーリークを起こして動かなかった。 自分の GPU
-        が貧弱なためか、設定を変える必要があるのかいまいちよくわからない。</p>
-        <p>ノート PC の GPU でもメモリーリークしたので多分設定を変える必要がある。</p>
-        <p>引き続き試すとして、一旦は llama-cpp-python で動かすことにする。</p>
-        ]]>
-      </content:encoded>
-      <pubDate>Tue, 13 Feb 2024 00:00:00 GMT</pubDate>
     </item>
   </channel>
 </rss>
