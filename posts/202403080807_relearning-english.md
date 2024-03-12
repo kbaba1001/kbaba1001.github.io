@@ -3,7 +3,7 @@ title: 英語勉強の再開
 date: 2024-03-08 08:07:22
 ogimage: /img/posts/202403080807_relearning-english.png
 tags:
-  - 日常
+  - 英語勉強
 ---
 
 英語を勉強し直そうと思っている。主に TOEFL 対策のために。
