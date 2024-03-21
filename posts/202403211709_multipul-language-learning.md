@@ -22,6 +22,6 @@ tags:
 
 ちなみにヒンディ語はこんな感じ
 
-![hindi](img/posts/202403211709/hindi.jpg)
+![hindi](/img/posts/202403211709/hindi.jpg)
 
 まださっぱりわからないが、少しずつ読めるようになるはず
