@@ -9,6 +9,26 @@
     <language>ja_JP</language>
     <generator>Lume v2.0.1</generator>
     <item>
+      <title>多言語学習</title>
+      <link>https://www.kbaba1001.com/posts/202403211709_multipul-language-learning/</link>
+      <guid isPermaLink="false">https://www.kbaba1001.com/posts/202403211709_multipul-language-learning/</guid>
+      <content:encoded>
+        <![CDATA[<p><img src="https://www.kbaba1001.com/img/posts/202403211709/books.jpg" alt="multiple language"></p>
+        <p>前から少し興味があったヒンディ語の入門書を見つけたので買ってみた。
+        語順が日本語とほぼ同じらしく、文字を覚えたらあとは早いかもしれない。</p>
+        <p>フランス語の本は妻用。</p>
+        <p>こあら式英語は前から買っていてこの本は３冊目のはず。
+        いつも細かい表現の違いを解説してくれていて助かっている。</p>
+        <p>古今和歌集は前から欲しかったのでようやく買えた感じ。
+        なんとなくで古文語を読んでいるが解説の力もあり理解しやすい。</p>
+        <p>ちなみにヒンディ語はこんな感じ</p>
+        <p><img src="https://www.kbaba1001.com/posts/202403211709_multipul-language-learning/img/posts/202403211709/hindi.jpg" alt="hindi"></p>
+        <p>まださっぱりわからないが、少しずつ読めるようになるはず</p>
+        ]]>
+      </content:encoded>
+      <pubDate>Thu, 21 Mar 2024 17:09:12 GMT</pubDate>
+    </item>
+    <item>
       <title>TOEFLを受けることにした</title>
       <link>https://www.kbaba1001.com/posts/202403130629_toelf/</link>
       <guid isPermaLink="false">https://www.kbaba1001.com/posts/202403130629_toelf/</guid>
@@ -350,61 +370,6 @@
         ]]>
       </content:encoded>
       <pubDate>Wed, 21 Feb 2024 16:15:00 GMT</pubDate>
-    </item>
-    <item>
-      <title>github template repository を作りたい</title>
-      <link>https://www.kbaba1001.com/posts/2024022102_github-template-repository/</link>
-      <guid isPermaLink="false">https://www.kbaba1001.com/posts/2024022102_github-template-repository/</guid>
-      <description/>
-      <content:encoded>
-        <![CDATA[<p>今更ながら
-        <a href="https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-template-repository">github template repository</a>
-        なるものを知った。
-        リポジトリを作るときにテンプレートを選ぶと初期セットアップできるようだ。</p>
-        <p>便利じゃん。。。</p>
-        <p>今まで <a href="https://github.com/neumann-tokyo">ノイマントーキョーのリポジトリ</a> に
-        <code>*-init</code> の名前で 初期セットアップリポジトリを作ってきていたのでこれらを
-        template repository 化しようと思う。 正直、あんま使ってないのもあるけど。</p>
-        <p>npm
-        コマンドとかでテンプレート化しようと思っていたけど、ちょっと面倒くさいしなぁと思っていたので
-        github template repository は良さそう。 npm パッケージとして公開しなくていいし、
-        Clojure などの言語でも使えるし。 というか Clojure こそテンプレート必要では...。</p>
-        <h2>共通化しておきたいもの</h2>
-        <p>Webシステムを使うときに次のものはだいたい必要になるのでひと通り揃えておきたい。</p>
-        <ul>
-        <li>[サーバー側] データベースへのアクセスと SQL Builder 的なライブラリ</li>
-        <li>[サーバー側] REST API (または RPC) 構築用のルーティングライブラリ</li>
-        <li>[サーバー側] <a href="https://github.com/golang-migrate/migrate">migrate</a>
-        によるデータベースのマイグレーション</li>
-        <li>[サーバー側] データベースの seeds データの読み込みの仕組み</li>
-        <li>[フロント側] React, jotai,
-        <a href="https://github.com/jotaijs/jotai-tanstack-query">jotai-tanstack-query</a>,
-        ルーティング (<a href="https://github.com/molefrog/wouter">Wouter</a> か
-        <a href="https://reactrouter.com/en/main">ReactRouter</a> かなぁ), Chakra UI</li>
-        <li>[フロント側] REST Client (または RPC Client) のセットアップ</li>
-        <li>formatter, linter, および git pre-commit で左記を自動実行するための仕組み
-        (<a href="https://github.com/evilmartians/lefthook">lefthook</a> みたいなやつ)
-        <ul>
-        <li>最近だと <a href="https://biomejs.dev/">Biome</a> が気に入っているのだが Deno
-        プロジェクトだったら標準の deno fmt とかでも良さそうなので悩みどころ</li>
-        </ul>
-        </li>
-        <li><a href="https://code.visualstudio.com/docs/devcontainers/containers">devcontainer</a>
-        による実行環境</li>
-        <li>docker-compose によるデータベースなどのセットアップ</li>
-        <li>テスト関係</li>
-        <li>vite などのビルド系ツールのセットアップ</li>
-        <li>基本的な機能
-        <ul>
-        <li>JWT を用いた email/password による認証機能</li>
-        <li>認可機能</li>
-        <li>上記の管理機能</li>
-        </ul>
-        </li>
-        </ul>
-        ]]>
-      </content:encoded>
-      <pubDate>Wed, 21 Feb 2024 04:32:00 GMT</pubDate>
     </item>
   </channel>
 </rss>
