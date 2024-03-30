@@ -9,6 +9,21 @@
     <language>ja_JP</language>
     <generator>Lume v2.0.1</generator>
     <item>
+      <title>ガラスペンを買ってもらった</title>
+      <link>https://www.kbaba1001.com/posts/202403301453_got-glass-pen/</link>
+      <guid isPermaLink="false">https://www.kbaba1001.com/posts/202403301453_got-glass-pen/</guid>
+      <content:encoded>
+        <![CDATA[<p><img src="https://www.kbaba1001.com/img/posts/202403301453/glass-pen.jpg" alt="ガラスペン"></p>
+        <p>前々からおしゃれアイテムとして非常に気になっていたガラスペンを妻に買ってもらった。</p>
+        <p>嬉しいーー！！</p>
+        <p>利便性で言えばボールペンや万年筆のほうが断然良いのだが、見た目の美しさは他の文具の追従を許さない。
+        全てガラスでできているので当然落としたら割れる。</p>
+        <p>お値段もそこそこするので大事に使おうと思う。</p>
+        ]]>
+      </content:encoded>
+      <pubDate>Sat, 30 Mar 2024 14:53:28 GMT</pubDate>
+    </item>
+    <item>
       <title>多言語学習</title>
       <link>https://www.kbaba1001.com/posts/202403211709_multipul-language-learning/</link>
       <guid isPermaLink="false">https://www.kbaba1001.com/posts/202403211709_multipul-language-learning/</guid>
@@ -348,28 +363,6 @@
         ]]>
       </content:encoded>
       <pubDate>Fri, 23 Feb 2024 00:00:00 GMT</pubDate>
-    </item>
-    <item>
-      <title>掲示板を作り、既存のコメントシステムの廃止しました</title>
-      <link>https://www.kbaba1001.com/posts/2024022103_bbs/</link>
-      <guid isPermaLink="false">https://www.kbaba1001.com/posts/2024022103_bbs/</guid>
-      <description/>
-      <content:encoded>
-        <![CDATA[<p>前からリクエストが多かった<a href="https://github.com/kbaba1001/kbaba1001.github.io/discussions">掲示板機能</a>を作りました。</p>
-        <p>リンク先を見れば分かる通り、 GitHub Discussions です。
-        そういえばこんな機能できてたなぁと思ったので使えるようにしました。</p>
-        <p>前々からマシュマロや google form でのコメントがいまいちだなぁと思っていたので、
-        GitHub Discussions に気がついたのは良い考えだなと我ながら思います。
-        なにせお金がかかりませんし、システムのメンテナンスの必要もありません。
-        そもそもこのブログ自体も GitHub Pages で動いてますので相性抜群です。
-        情報の集約にもなります。</p>
-        <p>というわけで今までのマシュマロおよび google form でのコメント機能は廃止します。
-        今後は上記の掲示板にメッセージを頂けたら幸いです。</p>
-        <p>GitHub アカウントがない方はどうするか？ 作ってください。
-        アカウントがなくても閲覧のみならできます。</p>
-        ]]>
-      </content:encoded>
-      <pubDate>Wed, 21 Feb 2024 16:15:00 GMT</pubDate>
     </item>
   </channel>
 </rss>
