@@ -9,6 +9,42 @@
     <language>ja_JP</language>
     <generator>Lume v2.0.1</generator>
     <item>
+      <title>馬場日記003</title>
+      <link>https://www.kbaba1001.com/posts/202404011858_baba-diary-03/</link>
+      <guid isPermaLink="false">https://www.kbaba1001.com/posts/202404011858_baba-diary-03/</guid>
+      <content:encoded>
+        <![CDATA[<p><img src="https://www.kbaba1001.com/img/commics/baba-diary_002.png" alt="馬場日記002"></p>
+        <h2>英語以外を学ぶには</h2>
+        <p>日本って英語コンプレックスが著しくて、なんかみんな英語喋れないわりに英語勉強させたがるコンプレックスビジネスに騙されている気がする。
+        本屋に限らず YouTube 広告とかでも英語や英会話のものが多い。</p>
+        <p>一方で他の言語の教材は少ない。いや、逆に言えば他の言語の教材の量が標準的で、英語の量が異常なだけかもしれない。</p>
+        <p>それはともかく。</p>
+        <p>日本語で英語以外の言語を勉強するには資料が足りないことがあるので、そういうときは英語で外国語を勉強するようにしている。
+        例えば、英語ネイティブ話者向けの中国語動画はたくさんある。（中国語は感じなので日本語で勉強したほうが楽という例外的言語ではあるが）
+        最近のAIの進歩は凄まじく動画の自動翻訳もかなり正確になってきたので最悪英語そのものがわからなくても外国語の勉強はできそうだ。</p>
+        <p>Discord などの通話アプリを使えば外国人と話すこともできる。Language Exchange
+        しているような Discord サーバーであれば特に話しやすい。 海外の Discord
+        サーバーに飛び込む日本人は珍しいので、面白がってもらえるかもしれない。</p>
+        <h2>SNSをやめて和歌を始めた</h2>
+        <p>かつては「 SNS と共に生き、 SNS と共に死ぬ」くらいに思っていた SNS
+        であるが、やめてしまえばなんのことはなく遠い存在になってしまった。
+        あの依存症はいったい何だったのか。炎上とかバズとかどうでもいいことだった。</p>
+        <p>そんな頃、和歌の日本語の美しさに感動した。
+        わりと古文語も訳してしまえば、しょうもないことを言っていることもあるのだが、
+        それをいい感じの短歌にまとめて格好つけているのが好きだ。</p>
+        <p>例えば、</p>
+        <pre><code>梅の花立ちよるばかりありしより人のとがむる香にぞしみぬる
+        </code></pre>
+        <p>という歌は浮気の言い訳の歌だったりする。</p>
+        <p>他にも恋の歌というのは基本的に男性が女性を口説いている歌で、
+        女性からのお断りの歌もたくさんある。 （受け入れるより断ることのほうが多いため）</p>
+        <p>意訳して読むと結構 Twitter (X) っぽいところがあり SNS 代わりに
+        古今和歌集を読んでいる。</p>
+        ]]>
+      </content:encoded>
+      <pubDate>Mon, 01 Apr 2024 18:58:00 GMT</pubDate>
+    </item>
+    <item>
       <title>馬場日記002</title>
       <link>https://www.kbaba1001.com/posts/202404011838_baba-diary-02/</link>
       <guid isPermaLink="false">https://www.kbaba1001.com/posts/202404011838_baba-diary-02/</guid>
@@ -255,47 +291,6 @@
         ]]>
       </content:encoded>
       <pubDate>Sun, 25 Feb 2024 18:00:00 GMT</pubDate>
-    </item>
-    <item>
-      <title>ローカル LLM を自宅サーバーで動かして Chatbot を作る</title>
-      <link>https://www.kbaba1001.com/posts/2024022501_llama-chatbot/</link>
-      <guid isPermaLink="false">https://www.kbaba1001.com/posts/2024022501_llama-chatbot/</guid>
-      <description/>
-      <content:encoded>
-        <![CDATA[<p>今までローカル LLM を色々と試してきたわけだが、ついに集大成として Chatbot
-        を作るに至った。</p>
-        <p><img src="https://www.kbaba1001.com/img/posts/2024022501/poppins1.png" alt="Poppins1"></p>
-        <p>結局、結論としては、</p>
-        <ul>
-        <li>モデル:
-        <a href="https://huggingface.co/elyza/ELYZA-japanese-Llama-2-13b-fast-instruct">elyza/ELYZA-japanese-Llama-2-13b-fast-instruct</a>
-        を使う
-        <ul>
-        <li>正確には GGUF がほしいので
-        <a href="https://huggingface.co/mmnga/ELYZA-japanese-Llama-2-13b-fast-instruct-gguf">こちら</a>
-        の <code>ELYZA-japanese-Llama-2-13b-fast-instruct-q4_K_S.gguf</code> を使うことにした</li>
-        </ul>
-        </li>
-        <li>サーバー: <a href="https://github.com/abetlen/llama-cpp-python">llama-cpp-python</a> を
-        docker で動かす。
-        <ul>
-        <li><a href="https://github.com/jasonacox/TinyLLM/tree/main/llmserver">TinyLLM</a>
-        をめちゃくちゃ参考にした</li>
-        <li><a href="https://github.com/vllm-project/vllm">vLLM</a> は設定が悪いのか GPU
-        メモリエラーになるのでひとまず諦めた</li>
-        </ul>
-        </li>
-        <li>クライアント: <a href="https://nlux.dev/">nlux</a> というのが React で動くチャットボットの
-        UI をすぐに作れるので採用した</li>
-        </ul>
-        <h2>動かしてみる</h2>
-        <p><img src="https://www.kbaba1001.com/img/posts/2024022501/poppins2.png" alt="Poppins2"></p>
-        <p>そこそこまともに回答してくれる。</p>
-        <h2>ソースコードサンプル</h2>
-        <p>そのうち作る。</p>
-        ]]>
-      </content:encoded>
-      <pubDate>Sun, 25 Feb 2024 14:15:00 GMT</pubDate>
     </item>
   </channel>
 </rss>
