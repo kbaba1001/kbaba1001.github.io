@@ -9,6 +9,33 @@
     <language>ja_JP</language>
     <generator>Lume v2.0.1</generator>
     <item>
+      <title>馬場日記001</title>
+      <link>https://www.kbaba1001.com/posts/202404011304_baba-diary-01/</link>
+      <guid isPermaLink="false">https://www.kbaba1001.com/posts/202404011304_baba-diary-01/</guid>
+      <content:encoded>
+        <![CDATA[<p><img src="https://www.kbaba1001.com/img/commics/baba-diary_000.png" alt="馬場日記001"></p>
+        <p>日常のことなど漫画にしてみようと思う。</p>
+        <h3>中国</h3>
+        <p>昔、中国語を勉強していた頃、よく行っていた中華料理屋の無愛想な店員さんに中国語で話しかけたことがあった。
+        相手はとても驚いて、笑顔で色々話してくれた。 中国の深センに行ったのは 2017 年 11
+        月なのでもう結構前になってしまった。
+        中国の人は話好きな人が多く、良くも悪くも日本人より人との距離が近い感じがした。
+        というか日本人が知らない人に話しかけなさすぎるんだけども。。。</p>
+        <p><img src="https://www.kbaba1001.com/img/posts/202404011305/china.jpg" alt="中国のレストラン"></p>
+        <p>上は深センで撮影した中華料理店。激安の持ち帰りで、こういう店がたくさんあった。
+        経済飯と呼んでいた。</p>
+        <h3>ネパール</h3>
+        <p>しばらくネパールの新卒をインターンとして会社で雇っていたので、ネパールに行ってみたことがある。
+        その際に歓迎の証として、ネパールの伝統的な帽子や女性物の靴（結婚式で履くものらしい）をもらった。
+        帰国後に近所のカレー屋にその帽子を被って行ってみたら、店員さんがネパール人だったようで驚かれた。
+        ネパールではこの帽子はタクシードライバーのおじさんとかが被っているが、どういう物なのかはよくわからない。</p>
+        <p><img src="https://www.kbaba1001.com/img/posts/202404011305/biryani.jpg" alt="モモとビリヤニ"></p>
+        <p>これはネパール旅行中に描いたモモとビリヤニのイラスト。モモはネパールで人気の料理で、餃子のような食べ物。</p>
+        ]]>
+      </content:encoded>
+      <pubDate>Mon, 01 Apr 2024 13:05:00 GMT</pubDate>
+    </item>
+    <item>
       <title>ガラスペンを買ってもらった</title>
       <link>https://www.kbaba1001.com/posts/202403301453_got-glass-pen/</link>
       <guid isPermaLink="false">https://www.kbaba1001.com/posts/202403301453_got-glass-pen/</guid>
@@ -343,26 +370,6 @@
         ]]>
       </content:encoded>
       <pubDate>Fri, 23 Feb 2024 23:30:00 GMT</pubDate>
-    </item>
-    <item>
-      <title>最近買った本</title>
-      <link>https://www.kbaba1001.com/posts/2024022301_books/</link>
-      <guid isPermaLink="false">https://www.kbaba1001.com/posts/2024022301_books/</guid>
-      <description/>
-      <content:encoded>
-        <![CDATA[<h2>入門コンピュータ科学</h2>
-        <p><img src="https://www.kbaba1001.com/img/posts/2024022301/computer-book.jpg" alt=""></p>
-        <p>妻がコンピュータの歴史や仕組みが知りたいというので買ってみた。
-        パラパラめくってみた感じ、大学の情報工学科で習うようなことが
-        一通り書いてある感じだった。</p>
-        <p>基本情報処理技術者試験とか好きな人には良さそう。</p>
-        <h2>オイラーの贈物、数学ガール</h2>
-        <p><img src="https://www.kbaba1001.com/img/posts/2024022301/ei-pi-book.jpg" alt=""></p>
-        <p>オイラーの公式について復習したくて買ってみた。 複素平面っていいよね。
-        想像上の数字に過ぎない複素数が現実世界に影響を与えているのが良い。</p>
-        ]]>
-      </content:encoded>
-      <pubDate>Fri, 23 Feb 2024 00:00:00 GMT</pubDate>
     </item>
   </channel>
 </rss>
