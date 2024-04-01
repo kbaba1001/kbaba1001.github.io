@@ -1,0 +1,13 @@
+.tags-links {
+  display: flex;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+
+.tags-link {
+  background-color: var(--tag-link-bg-color);
+  color: var(--tag-link-color);
+  padding: 0.3rem 0.5rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
+}

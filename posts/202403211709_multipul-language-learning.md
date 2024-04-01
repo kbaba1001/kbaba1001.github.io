@@ -3,8 +3,7 @@ title: 多言語学習
 date: 2024-03-21 17:09:12
 ogimage: /img/posts/202403211709_multipul-language-learning.png
 tags:
-  - 英語勉強
-  - 多言語勉強
+  - 勉強
 ---
 
 ![multiple language](/img/posts/202403211709/books.jpg)

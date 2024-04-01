@@ -6,26 +6,7 @@ ogimage: /img/horse.jpg
 ---
 
 <div class="top">
-  <section>
-    <h1 class="top-h1">ブログ記事一覧</h1>
-    <div id="search"></div>
-    <div class="blog" id="posts-index">
-      <div class="blog-container">
-        {{ for post of search.pages("type=posts", "date=desc") }}
-        <div class="blog-card">
-          <div class="blog-card-date">{{ post.date |> date('DATE') }}</div>
-          <a href="{{ post.url }}" class="blog-card-title-link">
-            <h2 class="blog-card-title">{{ post.title }}</h2>
-          </a>
-          <div class="blog-card-description">{{ post.description }}</div>
-          <ul class="blog-tags">
-            {{ for tag of post.tags }}
-            <li class="blog-tag">{{ tag }}</li>
-            {{ /for }}
-          </ul>
-        </div>
-        {{ /for }}
-      </div>
-    </div>
-  </section>
+  <h1 class="top-h1">ブログ記事一覧</h1>
+  {{ comp.postsList({query: "type=posts"}) }}
+  </div>
 </div>

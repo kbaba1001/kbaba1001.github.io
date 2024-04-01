@@ -12,6 +12,8 @@
   --feeble-bg-color: #eeeeee;
   --tag-color: #222222;
   --tag-bg-color: #f2edd9;
+  --tag-link-color: #ffffff;
+  --tag-link-bg-color: #a12323;
 }
 
 body {
