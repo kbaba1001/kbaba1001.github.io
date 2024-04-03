@@ -4,8 +4,9 @@ layout: layouts/base.vto
 
 <header class="layout-header">
   <div class="header">
-    {{ comp.headerTitle() }}
-    <div class="header-nav-container">{{ comp.headerNav() }}</div>
+    <div class="grid-header-title">{{ comp.headerTitle() }}</div>
+    <div class="grid-header-nav">{{ comp.headerNav() }}</div>
+    <div class="grid-header-tags">{{ comp.tagsLinks() }}</div>
   </div>
 </header>
 <div class="layout-main">
