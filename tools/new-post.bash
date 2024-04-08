@@ -9,7 +9,7 @@ TITLE_EN=${2}
 TIME=$(date "+%Y%m%d%H%M")
 TIME_LONG=$(date "+%Y-%m-%d %H:%M:%S")
 
-deno run --allow-read --allow-write tools/og-image-generator.ts ${TITLE} "tools/kbaba1001-bg.png" 20 "img/posts/${TIME}_${TITLE_EN}.png"
+deno run --allow-read --allow-write tools/og-image-generator.ts ${TITLE} "tools/kbaba1001-bg.png" 16 "img/posts/${TIME}_${TITLE_EN}.png"
 
 echo "---
 title: ${TITLE}
