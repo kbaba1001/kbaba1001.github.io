@@ -9,6 +9,41 @@
     <language>ja_JP</language>
     <generator>Lume v2.0.1</generator>
     <item>
+      <title>外国語勉強、プログラミング、イラストなどの進捗</title>
+      <link>https://www.kbaba1001.com/posts/202404170848_progress-of-learning-programming-and-drawing/</link>
+      <guid isPermaLink="false">https://www.kbaba1001.com/posts/202404170848_progress-of-learning-programming-and-drawing/</guid>
+      <content:encoded>
+        <![CDATA[<p>日常について。</p>
+        <h2>イラスト・漫画制作</h2>
+        <p>最近は絵とか漫画とかばかり描いていて、私生活の時間に他のこと出来ていない。 5
+        月末までに外国語勉強とか木工 DIY についての
+        <a href="https://media.thisisgallery.com/20211759">Zine</a>
+        を作ろうとしていて執筆が忙しい。</p>
+        <p>漫画は下書き無しで書けるようになったので原稿を書くこと自体はスピードが上がっているが、
+        ストーリーを考えるのは時間がかかる。
+        エッセイとはいえネームの形でまとめるのはそれなりに大変。</p>
+        <h2>外国語勉強</h2>
+        <p>全部ストップしているが最近は</p>
+        <ul>
+        <li>TOEFL 関係の語彙の強化</li>
+        <li>ヒンディー語の勉強</li>
+        <li><a href="https://www.yamakawa.co.jp/product/59116">英文詳説日本史</a> の読み合わせ</li>
+        </ul>
+        <p>などをしていた。もう少し時間に余裕が出てきたら再開したい。</p>
+        <h2>プログラミング</h2>
+        <p>以前書いた次の記事の事を進めたい。</p>
+        <ul>
+        <li><a href="https://www.kbaba1001.com/posts/2024020601_deno/">Deno で Google Meet みたいなやつを作ってみようと思っている</a></li>
+        <li><a href="https://www.kbaba1001.com/posts/2024012501_homepage/">いにしえのホームページを Clojure の最先端技術で作りたい</a></li>
+        </ul>
+        <p>こっちもストップしている。 Deno
+        は少し触っているので週１回でも作るようにしないとなぁ…。
+        モチベはあるので時間の確保だけが問題。</p>
+        ]]>
+      </content:encoded>
+      <pubDate>Wed, 17 Apr 2024 08:48:04 GMT</pubDate>
+    </item>
+    <item>
       <title>水彩紙の手帳を買ったので絵日記にしている</title>
       <link>https://www.kbaba1001.com/posts/202404161013_water-color-paper-note/</link>
       <guid isPermaLink="false">https://www.kbaba1001.com/posts/202404161013_water-color-paper-note/</guid>
@@ -264,25 +299,6 @@
         ]]>
       </content:encoded>
       <pubDate>Mon, 01 Apr 2024 19:36:00 GMT</pubDate>
-    </item>
-    <item>
-      <title>馬場日記005「文通をしている」</title>
-      <link>https://www.kbaba1001.com/posts/202404011932_baba-diary-05/</link>
-      <guid isPermaLink="false">https://www.kbaba1001.com/posts/202404011932_baba-diary-05/</guid>
-      <content:encoded>
-        <![CDATA[<p><img src="https://www.kbaba1001.com/img/commics/baba-diary_004.png" alt="馬場日記004"></p>
-        <h2>文通をしている</h2>
-        <p>ジモティや Instagram
-        で文通相手を探すというネット文化があることを発見して文通相手を探しているが、
-        今のところずっと連絡を取っている相手は実際にあったことがある人だけで、
-        手紙だけのやり取りはなかなか続かないというのが現状である。</p>
-        <p>基本的に男は筆無精だからか変態が多いのか、女性限定で文通相手を探している人も多い。
-        たぶん手紙をデコったりとか共感する文章を書いたりとかが苦手な男性が多くて
-        女性からするとつまらないのだと思う。</p>
-        <p>私は自分の女児力を爆発させた手紙を描きたいのでこういうとき自分が男なのが残念だなと思う。</p>
-        ]]>
-      </content:encoded>
-      <pubDate>Mon, 01 Apr 2024 19:32:00 GMT</pubDate>
     </item>
   </channel>
 </rss>
