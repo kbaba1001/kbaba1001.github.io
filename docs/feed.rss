@@ -9,6 +9,44 @@
     <language>ja_JP</language>
     <generator>Lume v2.0.1</generator>
     <item>
+      <title>馬場日記012「作りたい物がない」</title>
+      <link>https://www.kbaba1001.com/posts/202404170926_baba-diary012/</link>
+      <guid isPermaLink="false">https://www.kbaba1001.com/posts/202404170926_baba-diary012/</guid>
+      <content:encoded>
+        <![CDATA[<p><img src="https://www.kbaba1001.com/img/commics/baba-diary_012.png" alt="馬場日記012"></p>
+        <p>なんか説教臭い漫画が増えてて面白くないなと思ったので、
+        今回からせめて自分の顔を馬にすることにした。</p>
+        <h2>プログラミングを習得したいけど、作りたいものがない</h2>
+        <p>時々こんな相談を受けるのだが、ある程度プログラミングを習得しないと何が作れるかもわからないわけで
+        最初から作りたいものがはっきりしている人のほうが稀ではないだろうか。</p>
+        <p>新しいアイディアがあったとしても、それを形にするのは難しい。
+        その上、人に使ってもらったり、そこからお金を稼いだりするのはなおさら難しい。
+        継続してサービスをメンテナンスするのは新規にサービスを作るのとは別のスキルが必要だし、
+        開発者としてのモチベーションの維持も重要になってくる。</p>
+        <p>私自身としてはプログラミングは好きだが、ビジネスにはあまり興味がなく、
+        「新規サービスを立ち上げて一発当ててやろう」みたいな気持ちにはどうしてもなれない。
+        どちらかというとビジネスは煩わしく、私はプログラムを書くことに集中したい。
+        なので、長年受託開発のみやってきたし、今でもできれば要件定義とか
+        マーケティングとかは他の人にやってもらいたい。</p>
+        <p>だから、私の回答としては「作りたいものは無くても良い」ということになる。</p>
+        <h2>既存システムのコピーを作ろう</h2>
+        <p>とはいえ、何かしらテーマがないのとプログラミングの習得が難しいというのも事実だ。
+        初歩的なことは本や Web の Tutorial
+        でも学べるけど、やはり自力でシステムを作るのが一番勉強になる。</p>
+        <p>なので僕のおすすめは既存のシステムのコピーを作ってみること。</p>
+        <p>例えば、メルカリや Amazon のような通販サイトや、
+        テトリスやブロック崩しのような簡単なゲームなどを作ってみるのが良い。
+        お金が絡む機能については実際の決算は行わないようにして、
+        「勉強用に作ったサイトです」という名目で Web に公開しても良いと思う。</p>
+        <p>Web システムを開発する（そして仕事にする）のであれば、
+        通販サイトや受発注システムを作ってみるのはとても勉強になる。 SNS
+        のコピーでもいいけど、もう少しシステムっぽいものの方が DB や設計の勉強になるし、
+        業務アプリ（いわゆるERP）は参考資料が多々ある。</p>
+        ]]>
+      </content:encoded>
+      <pubDate>Wed, 17 Apr 2024 09:26:04 GMT</pubDate>
+    </item>
+    <item>
       <title>外国語勉強、プログラミング、イラストなどの進捗</title>
       <link>https://www.kbaba1001.com/posts/202404170848_progress-of-learning-programming-and-drawing/</link>
       <guid isPermaLink="false">https://www.kbaba1001.com/posts/202404170848_progress-of-learning-programming-and-drawing/</guid>
@@ -277,28 +315,6 @@
         ]]>
       </content:encoded>
       <pubDate>Mon, 01 Apr 2024 19:45:00 GMT</pubDate>
-    </item>
-    <item>
-      <title>馬場日記006「英語習得方法」</title>
-      <link>https://www.kbaba1001.com/posts/202404011932_baba-diary-06/</link>
-      <guid isPermaLink="false">https://www.kbaba1001.com/posts/202404011932_baba-diary-06/</guid>
-      <content:encoded>
-        <![CDATA[<p><img src="https://www.kbaba1001.com/img/commics/baba-diary_005.png" alt="馬場日記005"></p>
-        <h2>英語習得方法</h2>
-        <p>学生時代に全く英語ができなかったのだが、英語日記を書くようにしてから非常に上達した。</p>
-        <p>文章を書くことで「文法を覚える」のではなく「文法を使う」感覚を身につけることが出来た。</p>
-        <p>添削は <a href="https://idiy.biz/">IDIY</a> を使っていたが今なら ChatGPT などの AI
-        に添削してもらっても良いと思う。 AI
-        だと即座にレスポンスがもらえるのが良いし、IDIY程はお金がかからない。</p>
-        <p>英語日記だけだとどうしても過去文ばかり書くことになって、疑問文やその返答ができないので
-        そこは英会話とか英語独り言とかで訓練する。</p>
-        <p>中国語とかヒンディ語とか他の言語の勉強するときも日記という手法は取り入れたいと思っている。</p>
-        <p>英語日記を活用する手法はジャーナリングというらしく Hapa
-        英会話でも推奨されている。</p>
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/Rc79KemxXEk?si=h5ugMDEO6KIZLRj5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        ]]>
-      </content:encoded>
-      <pubDate>Mon, 01 Apr 2024 19:36:00 GMT</pubDate>
     </item>
   </channel>
 </rss>
