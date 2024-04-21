@@ -9,6 +9,51 @@
     <language>ja_JP</language>
     <generator>Lume v2.0.1</generator>
     <item>
+      <title>パワポで漫画を作る</title>
+      <link>https://www.kbaba1001.com/posts/202404220805_power-point-commic/</link>
+      <guid isPermaLink="false">https://www.kbaba1001.com/posts/202404220805_power-point-commic/</guid>
+      <content:encoded>
+        <![CDATA[<p><img src="https://www.kbaba1001.com/img/posts/202404220805_power-point-commic.png" alt="パワポで漫画を作る"></p>
+        <p>Power Point や google slide
+        を使って漫画のプロットやネーム（ストーリーのメモ書き）を作っている。</p>
+        <h2>プロット</h2>
+        <p><img src="https://www.kbaba1001.com/img/posts/202404220805/plot.png" alt="プロット"></p>
+        <p>長い話を書くときはプロットを作ってからネームを作り、その後下書きやペン入れをするという3段階で書いている。</p>
+        <p>プロットもパワポで作り、漫画の1ページを1スライドに割り当てるようにしている。
+        これならプロットが出来た時点で全体のページ数もはっきりと分かり、絵以外の情報はすべて書くようにしている。</p>
+        <p>スライドの箇条書き１行が漫画の１コマに相当するように文字を書いていく。
+        そうするとネームを作るときはコマ割りや絵の構図を考えるだけで良くなる。</p>
+        <h2>ネーム</h2>
+        <p><img src="https://www.kbaba1001.com/img/posts/202404220805/name.png" alt="漫画ネーム"></p>
+        <p>ネームもパワポで作る。手順としてはこんな感じ：</p>
+        <ul>
+        <li>スライドの用紙サイズを A4 サイズに設定する</li>
+        <li>A4 の漫画原稿用紙をスキャンして、スライドの背景に設定する</li>
+        <li>4 コマや 3 コマなどよく使うコマ割りをレイアウト機能に登録しておく (google
+        slide にはこの機能なさそう)</li>
+        <li>ネームを作る</li>
+        <li>ネームが出来たら A4
+        で印刷して、本番の原稿用紙やお絵かきソフトなどで漫画を書いていく</li>
+        </ul>
+        <p>Clip Studio
+        という漫画を描くツールがあるのだが、自分の漫画はエッセイ漫画で絵がゆるいので、
+        多機能なツールは必要なく、 Clip Studio のサブスク料金を払うには少し高い。</p>
+        <p>パワーポイントや Gimp などを駆使してなるべくお金をかけずに漫画を作っている。</p>
+        <p>パワーポイントはページの入れ替えもできるし、図形描画ツールも揃っているし、
+        案外漫画を書くのに向いている。
+        印刷所によってはパワポデータで入稿できる場所もある（画質はどうしても下がるけど）。</p>
+        <h2>マンガ本編</h2>
+        <p>漫画原稿用紙でアナログデータを作成し、PDFにまとめて入稿、みたいな事をしている。
+        Adobe の PhotoShop や inDesign のデータのほうが画質が良いらしいのだが、 Adobe
+        製品も高いので他の方法をしている。</p>
+        <p>最近は <a href="https://vivliostyle.org/ja/">Vivliostyle</a> という CSS 組版できるツールを
+        試そうと思っているが、原稿が忙しくてまだ出来ていない。 Vivliostyle で十分な画質
+        がだせるならいいなぁ</p>
+        ]]>
+      </content:encoded>
+      <pubDate>Mon, 22 Apr 2024 08:05:09 GMT</pubDate>
+    </item>
+    <item>
       <title>馬場日記013「仕事」</title>
       <link>https://www.kbaba1001.com/posts/202404170927_baba-diary013/</link>
       <guid isPermaLink="false">https://www.kbaba1001.com/posts/202404170927_baba-diary013/</guid>
@@ -309,18 +354,6 @@
         ]]>
       </content:encoded>
       <pubDate>Wed, 03 Apr 2024 08:09:00 GMT</pubDate>
-    </item>
-    <item>
-      <title>馬場日記008「勉強する理由」</title>
-      <link>https://www.kbaba1001.com/posts/202404012005_baba-diary-08/</link>
-      <guid isPermaLink="false">https://www.kbaba1001.com/posts/202404012005_baba-diary-08/</guid>
-      <content:encoded>
-        <![CDATA[<p><img src="https://www.kbaba1001.com/img/commics/baba-diary_007.png" alt="馬場日記007"></p>
-        <p>説教回。勉強する理由について漠然と思っていることを漫画にしてみた。</p>
-        <p>学校の勉強が役に立たないという言う大人は本当に恥知らずなので改めたほうがいいと思う。</p>
-        ]]>
-      </content:encoded>
-      <pubDate>Mon, 01 Apr 2024 20:05:00 GMT</pubDate>
     </item>
   </channel>
 </rss>
