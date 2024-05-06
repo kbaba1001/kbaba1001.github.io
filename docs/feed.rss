@@ -1,13 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:wfw="http://wellformedweb.org/CommentAPI/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" xmlns:slash="http://purl.org/rss/1.0/modules/slash/" version="2.0">
   <channel>
-    <title>kbaba1001 ブログ</title>
+    <title>ハッカーと漫画家</title>
     <link>https://www.kbaba1001.com/</link>
     <atom:link href="https://www.kbaba1001.com/feed.rss" rel="self" type="application/rss+xml"/>
     <description>Clojure 好きなプログラマ kbaba1001 のブログ</description>
     <lastBuildDate>Sun, 17 Dec 2023 15:00:00 GMT</lastBuildDate>
     <language>ja_JP</language>
     <generator>Lume v2.0.1</generator>
+    <item>
+      <title>ブログタイトル変更</title>
+      <link>https://www.kbaba1001.com/posts/202405070712_change-blog-title/</link>
+      <guid isPermaLink="false">https://www.kbaba1001.com/posts/202405070712_change-blog-title/</guid>
+      <content:encoded>
+        <![CDATA[<p><img src="https://www.kbaba1001.com/img/posts/202405070712_change-blog-title.png" alt="ブログタイトル変更"></p>
+        <p>ブログのタイトルを「kbaba1001ブログ」から「ハッカーと漫画家」に変更しました。</p>
+        <p>Paul Graham 氏の
+        <a href="https://shop.ohmsha.co.jp/shopdetail/000000001697/">ハッカーと画家</a>
+        のオマージュです。 この本は Lisp
+        好きな人は読んでいる人も多いと思いますが、私も例に漏れず好きですねぇ。 Paul
+        Graham さんの皮肉たっぷりな所が良いし川合史朗さんの翻訳も素晴らしい。</p>
+        <p>今後も漫画は描いていきたいのでハッカーと漫画家を名乗ることにしました。</p>
+        <p>今後ともよろしくお願いします。</p>
+        ]]>
+      </content:encoded>
+      <pubDate>Tue, 07 May 2024 07:12:02 GMT</pubDate>
+    </item>
     <item>
       <title>パワポで漫画を作る</title>
       <link>https://www.kbaba1001.com/posts/202404220805_power-point-commic/</link>
@@ -300,60 +318,6 @@
         ]]>
       </content:encoded>
       <pubDate>Fri, 05 Apr 2024 08:31:00 GMT</pubDate>
-    </item>
-    <item>
-      <title>馬場日記009「絵の上達方法」</title>
-      <link>https://www.kbaba1001.com/posts/202404030809_baba-diary-09/</link>
-      <guid isPermaLink="false">https://www.kbaba1001.com/posts/202404030809_baba-diary-09/</guid>
-      <content:encoded>
-        <![CDATA[<p><img src="https://www.kbaba1001.com/img/commics/baba-diary_009.png" alt="馬場日記009"></p>
-        <p><a href="http://shirobako-anime.com/">SHIROBAKO</a>
-        というアニメ制作についてのアニメで杉江さんというキャラ（老兵のようなアニメーター）のセリフを今でも覚えている。</p>
-        <p>「速く描くにはうまくなる。うまく描くにはいっぱい描く。いっぱい描くには速く描く」</p>
-        <p>という禅問答のような言葉で、杉江さんがあまり教えるのがうまくないことを示しているような感じがして好きなセリフだ。
-        実際このことを言われた絵麻ちゃんという若手のアニメーターは、速く描くことを意識しすぎて作監から手抜きだと思われてしまう。</p>
-        <p>一方で、技術の卓越した人はこんな感じというのもわかる。
-        速くかけるからいっぱいかけてうまくなるし、うまいから仕事が早く終わるというのもある。
-        ある程度技術力（速さや画力、仕事量）がついてくると好循環に乗ることができるというのは
-        どの仕事でも真理のように思う。</p>
-        <p>絵の初心者だった頃、この言葉だけを信じていたわけでもないけど、クロッキーやデッサンを山ほどやったのは確かだった。
-        特にクロッキーはたくさんした。ヌードポーズ集をはじめとしてファッション誌や格闘雑誌なども見ながらやった。
-        1500枚というと少ない感じもするが、クロッキー帳 10
-        冊を描くのは結構たいへんだった。
-        というか当時はクロッキーが習慣化していて気づいたら10冊を超えていたという感じで、
-        漫画では15冊と描いたが厳密に何冊あったのかは途中からカウントがよくわからなくなって、
-        もしかしたら20冊くらいあったかもしれない。</p>
-        <p>デッサンに関しては、まちのデッサン教室に半年くらい通ったけど、先生が教えるのが下手であまり参考にならなかった。
-        大きい紙に書くとか 6H ～ 6B
-        くらいまで幅広く鉛筆を使うとか、初歩的なことを習得した程度だった。
-        技術に関してはデッサンの入門書のほうがよほど役に立った。
-        やはり人物（というか女性）を描きたかったのでヌードポーズ集やファッション誌を見ながら鉛筆デッサン（模写）することも多かった。
-        とはいえこれは 50 枚くらいだろうか。もう少しやったほうがいい気がする。</p>
-        <p>ここまでモノクロでの訓練しかしてないので、最近はカラーデッサンのようなことをしている。</p>
-        <p>たぶん、<a href="https://www.youtube.com/@saitonaoki2">さいとうなおきの YouTube</a>
-        とかだともっと効率が良い練習方法を紹介していると思うけど、
-        あまり何も考えずにひたすらクロッキーやデッサンをするという脳筋な方法でもそれなりに画力がつくというのは
-        よい経験になった。 そもそも最近の初学者は最初から iPad
-        とかでデジタルで描くような気もするし、そうなるとツールの力で画力を上げる
-        という方法（3D人形つかうとか）も使えそうなので、ごりごりクロッキーをするのは無駄が多いと思うが、
-        自分には合っていた。</p>
-        <p>どうも自分は方法論に傾倒するとドツボにはまる傾向にある。策に溺れるとでも言おうか。
-        ある程度愚直に物量をこなしたほうが結果的によいこともある、というのが私なりの経験である。
-        語学とか画力とかはこのパターンだった。数学やプログラミングは頭で理解してやるほうが早かったように思う。</p>
-        <p>この馬場日記という漫画もストーリーを考えるところから清書するまでだいたい 1
-        時間くらいで描いている。
-        下書きはほとんどせずに一発書きだが、エッセイ漫画だしゆるくかけるのが楽しい。</p>
-        <h2>最近描いた絵</h2>
-        <p>SNSをやめてしまってから、あまり絵の公開の場がないのでここに載せておく。</p>
-        <p><img src="https://www.kbaba1001.com/img/posts/202404030809/illustration6.jpg" alt="illustration6">
-        <img src="https://www.kbaba1001.com/img/posts/202404030809/illustration5.jpg" alt="illustration5">
-        <img src="https://www.kbaba1001.com/img/posts/202404030809/illustration4.jpg" alt="illustration4">
-        <img src="https://www.kbaba1001.com/img/posts/202404030809/illustration3.jpg" alt="illustration3">
-        <img src="https://www.kbaba1001.com/img/posts/202404030809/illustration2.jpg" alt="illustration2">
-        <img src="https://www.kbaba1001.com/img/posts/202404030809/illustration1.jpg" alt="illustration1"></p>
-        ]]>
-      </content:encoded>
-      <pubDate>Wed, 03 Apr 2024 08:09:00 GMT</pubDate>
     </item>
   </channel>
 </rss>
