@@ -36,7 +36,7 @@ site.use(
 	feed({
 		query: "type=posts",
 		info: {
-			title: "kbaba1001 ブログ",
+			title: "ハッカーと漫画家",
 			description: "Clojure 好きなプログラマ kbaba1001 のブログ",
 			published: new Date("2023", "11", "18"),
 			lang: "ja_JP",
