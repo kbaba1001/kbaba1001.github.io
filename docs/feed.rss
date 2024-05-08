@@ -9,6 +9,44 @@
     <language>ja_JP</language>
     <generator>Lume v2.0.1</generator>
     <item>
+      <title>コミティア149にサークル参加申し込みしました</title>
+      <link>https://www.kbaba1001.com/posts/202405080932_comitia-149/</link>
+      <guid isPermaLink="false">https://www.kbaba1001.com/posts/202405080932_comitia-149/</guid>
+      <content:encoded>
+        <![CDATA[<p><img src="https://www.kbaba1001.com/img/posts/202405080932/circle-cut.png" alt="サークルカット"></p>
+        <p>2024年8月18日開催予定の <a href="https://www.comitia.co.jp/">コミティア149</a>
+        に参加申込しました。
+        まだ当選するかどうかわかりませんが、当選すれば上記のサークルカットで参加します。</p>
+        <p><img src="https://www.kbaba1001.com/img/posts/202405080932/language.png" alt="らんげ～じ！"></p>
+        <p>上記の、言語学習や海外交流などをテーマに妻と私の二人で描いた 104
+        ページのエッセイ漫画本が出ます。
+        こちらは原稿は完成していて入稿間際なので確実に出ます。</p>
+        <p>まだ開催日まで時間があるのでもう１、２冊くらい出したいところですね。</p>
+        <p>通販や電子書籍化についてはまだ検討中なので後日ご案内します。</p>
+        <h3>原稿の話</h3>
+        <p>今回、原稿は基本的にアナログで作成しました。漫画原稿用紙を使って作成した後、写植のみパソコンでスキャンして行うという方式でした。
+        エッセイ漫画なのでがっつりトーンを使うわけでもなく、あまりソフトにお金をかけたくないという理由もあり、このやり方で今後もやっていこうと思います。</p>
+        <p>私は昔から GIMP と InkScape をがっつり使ってきたので今回もそれらを使っています。
+        最近はフリーで使える漫画フォントなんかもあり、便利になってきた感じがします。</p>
+        <p>表紙やサークルカットは完全に InkScape
+        で作成しましたが、だいぶパスの扱いにも慣れてきました。
+        ベクターデータだと拡大縮小とかが楽で印刷向きという気がします。</p>
+        <p>GIMP も縦書きに対応してくれると嬉しいんですが。。。 Script-Fu
+        というプラグインを作る機能は Lisp で書けるので今度挑戦してみるつもりです。
+        漫画を書くために便利な機能をいくつか作れたらいいなぁ。</p>
+        <ul>
+        <li>縦書き</li>
+        <li>トーン生成</li>
+        <li>集中線ツール</li>
+        </ul>
+        <p>この辺があると嬉しいのだけども。他の人が作ったやつも参考にしたい。</p>
+        <p><a href="http://reddog.s35.xrea.com/wiki/?CategoryGimpPlugin">http://reddog.s35.xrea.com/wiki/?CategoryGimpPlugin</a>
+        このサイト参考になりそう</p>
+        ]]>
+      </content:encoded>
+      <pubDate>Wed, 08 May 2024 09:32:36 GMT</pubDate>
+    </item>
+    <item>
       <title>ブログタイトル変更</title>
       <link>https://www.kbaba1001.com/posts/202405070712_change-blog-title/</link>
       <guid isPermaLink="false">https://www.kbaba1001.com/posts/202405070712_change-blog-title/</guid>
@@ -287,37 +325,6 @@
         ]]>
       </content:encoded>
       <pubDate>Fri, 05 Apr 2024 15:56:56 GMT</pubDate>
-    </item>
-    <item>
-      <title>馬場日記010「ガラスペン」</title>
-      <link>https://www.kbaba1001.com/posts/202404050831_baba-diary-010/</link>
-      <guid isPermaLink="false">https://www.kbaba1001.com/posts/202404050831_baba-diary-010/</guid>
-      <content:encoded>
-        <![CDATA[<p><img src="https://www.kbaba1001.com/img/commics/baba-diary_010.png" alt="馬場日記010"></p>
-        <p><a href="https://www.kbaba1001.com/posts/202403301453_got-glass-pen">以前の記事</a>
-        で書いたように妻にガラスペンを買ってもらった。</p>
-        <p>私は文房具マニアで色々なペンとか画材とか持っているのだが、できるだけ使うようにしている。
-        買って使わないというのは一番やりたくない。</p>
-        <p>文房具沼はガラスペンの他にインク沼、シーリングスタンプ沼、シール沼など色々あるが、
-        ガラスペンはかなり高級な部類に入る。
-        3,000円くらいから20,000円くらいまで様々だが、基本的に職人さんが手作業で作っているらしく、
-        ペン先の書き心地とか微妙な太さとか全部違うようだ。</p>
-        <p>↓参考</p>
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/r0vhkuwr9vk?si=0CIr__QKf_mAfby3" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        <p>ガラスペンは都度インクにつけて書く必要があるので、ペン先を洗うようの水も用意する必要があって、
-        ぶっちゃけかなり手間だ。外出先で使うには不便すぎるので基本的に家でしか使えない。
-        書くことができる文字も万年筆やボールペンに比べると太く、1.0mm くらいある。
-        日本語は細いペンで書いたほうが綺麗に見えやすいように思うので、太字だと本当に上手じゃないと綺麗に見えない。
-        そもそもガラスペンはボールペンが開発される前に使われていた物らしく、
-        実用性で言えばそれらに全く敵わないのだが、
-        その見た目の美しさとレトロブームで最近とても人気だ。</p>
-        <p>私も存在はそれこそ子供の頃から知っていて、ある意味ずっと憧れていた品だったのだが、
-        文具としてはちょっと高すぎるということもあり、店舗で眺めるだけにとどめていた。
-        妻から「買ってみたら」と言われて、ちょっと嬉しかった。
-        憧れの品を実際に使ってみるというのは結構いい経験だなと思った。</p>
-        ]]>
-      </content:encoded>
-      <pubDate>Fri, 05 Apr 2024 08:31:00 GMT</pubDate>
     </item>
   </channel>
 </rss>
