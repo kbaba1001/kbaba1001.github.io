@@ -9,6 +9,39 @@
     <language>ja_JP</language>
     <generator>Lume v2.0.1</generator>
     <item>
+      <title>Denoでシステムを作り始めた</title>
+      <link>https://www.kbaba1001.com/posts/202405102219_start-to-make-a-system-by-deno/</link>
+      <guid isPermaLink="false">https://www.kbaba1001.com/posts/202405102219_start-to-make-a-system-by-deno/</guid>
+      <content:encoded>
+        <![CDATA[<p>とりあえずサインイン機能だけ出来た。</p>
+        <p><img src="https://www.kbaba1001.com/img/posts/202405102219/sign-in-user.gif" alt="進捗"></p>
+        <p>今回は</p>
+        <ul>
+        <li>Backend: Deno + Hono</li>
+        <li>Frontend: Deno + Vite + React</li>
+        <li>言語: TypeScript</li>
+        </ul>
+        <p>という構成。</p>
+        <p>ドキュメントが少なくてハマることが多い。
+        試しに使ってみたライブラリが Deno でうまく動かなかったりとかも若干ある。</p>
+        <p>まだまだ Deno は縛りプレイっぽさがあるけど、 Web 標準はありがたいし速いしなんとか使いこなしたい。</p>
+        <p>ソースコードは後日公開する予定。
+        動画でちらっと見えてるけど、まだ初期の部分なのでテンプレートとして作っていて、
+        他でも使い回せるようにしている。
+        サインイン機能 + 簡単な TODO リストの CRUD くらいまで作っておくつもり。
+        そのくらいあればサンプルとしては十分だろう。</p>
+        <p>サーバー側では PostgreSQL + Kysely 構成もあり、結構実践的な作りになっている。</p>
+        <p>Hono の RTC で色々楽をしたかったけど、なんかかえって面倒くさい気がしたのでいったんただの REST にしている。
+        そうなると Swagger とか若干欲しくなるなぁ。。。
+        <a href="https://github.com/scalar/scalar/tree/main/packages/hono-api-reference">hono-api-reference</a> この辺が便利かもなぁ
+        あるいは <a href="https://github.com/honojs/middleware/tree/main/packages/trpc-server">tRPC</a>。</p>
+        <p>まぁこういうのはある程度出来てからでもいい気もする。
+        公開用の API と内部用の API は別だろうし。</p>
+        ]]>
+      </content:encoded>
+      <pubDate>Fri, 10 May 2024 22:19:26 GMT</pubDate>
+    </item>
+    <item>
       <title>Podcastでネパールインターン受け入れのこと等を話しました</title>
       <link>https://www.kbaba1001.com/posts/202405081003_podcast-about-nepal-internships/</link>
       <guid isPermaLink="false">https://www.kbaba1001.com/posts/202405081003_podcast-about-nepal-internships/</guid>
@@ -304,21 +337,6 @@
         ]]>
       </content:encoded>
       <pubDate>Mon, 08 Apr 2024 08:13:12 GMT</pubDate>
-    </item>
-    <item>
-      <title>馬場日記011「読書録」</title>
-      <link>https://www.kbaba1001.com/posts/202404060815_baba-diary-011/</link>
-      <guid isPermaLink="false">https://www.kbaba1001.com/posts/202404060815_baba-diary-011/</guid>
-      <content:encoded>
-        <![CDATA[<p><img src="https://www.kbaba1001.com/img/commics/baba-diary_011.png" alt="馬場日記011「読書録」"></p>
-        <p>前の記事 <a href="https://www.kbaba1001.com/posts/202404051556_reading_record/">読書録を書き始めた</a>
-        で書いた読書録を漫画にしました。</p>
-        <p><a href="https://www.kbaba1001.com/posts/202404051556_reading_record/"><img src="https://www.kbaba1001.com/img/posts/202404051556_reading_record.jpg" alt="読書録"></a></p>
-        <p>1冊をなるべく早く読んで読書録を書くという読書方法で、積読消化に役立っている。
-        次に読む本の書影だけノートに張っておけば TODO リストにもなって便利。</p>
-        ]]>
-      </content:encoded>
-      <pubDate>Sat, 06 Apr 2024 08:15:00 GMT</pubDate>
     </item>
   </channel>
 </rss>
