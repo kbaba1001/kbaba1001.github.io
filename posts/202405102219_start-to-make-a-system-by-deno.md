@@ -4,6 +4,7 @@ date: 2024-05-10 22:19:26
 ogimage: /img/posts/202405102219_start-to-make-a-system-by-deno.png
 tags:
   - Tech
+  - FAM
 ---
 
 とりあえずサインイン機能だけ出来た。

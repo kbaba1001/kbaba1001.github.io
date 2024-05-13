@@ -9,6 +9,27 @@
     <language>ja_JP</language>
     <generator>Lume v2.0.1</generator>
     <item>
+      <title>FAM開発。多言語対応とか</title>
+      <link>https://www.kbaba1001.com/posts/202405131843_developing-fam-about-i18n-etc/</link>
+      <guid isPermaLink="false">https://www.kbaba1001.com/posts/202405131843_developing-fam-about-i18n-etc/</guid>
+      <content:encoded>
+        <![CDATA[<p><a href="https://www.kbaba1001.com/posts/202405102219_start-to-make-a-system-by-deno">前回</a> に引き続き Deno でシステムを作っている。
+        まだ準備段階だがこのシステムを FAM と呼んでいる。</p>
+        <p><img src="https://www.kbaba1001.com/img/posts/202405131843/todo.gif" alt="TODO"></p>
+        <p>今回実装した機能:</p>
+        <ul>
+        <li>多言語対応 (i18n)</li>
+        <li>タイムゾーンの変更</li>
+        <li>日付の表示フォーマットの変更</li>
+        <li>ダークモード対応</li>
+        <li>簡単なTODOリスト (CRUD のサンプルとして)</li>
+        </ul>
+        <p>ソースコードの公開はまだしてないけど後日行う予定。</p>
+        ]]>
+      </content:encoded>
+      <pubDate>Mon, 13 May 2024 18:43:18 GMT</pubDate>
+    </item>
+    <item>
       <title>Denoでシステムを作り始めた</title>
       <link>https://www.kbaba1001.com/posts/202405102219_start-to-make-a-system-by-deno/</link>
       <guid isPermaLink="false">https://www.kbaba1001.com/posts/202405102219_start-to-make-a-system-by-deno/</guid>
@@ -291,52 +312,6 @@
         ]]>
       </content:encoded>
       <pubDate>Tue, 16 Apr 2024 10:13:23 GMT</pubDate>
-    </item>
-    <item>
-      <title>ステッドラーのカラーグラファイト鉛筆12色セットがとても良い</title>
-      <link>https://www.kbaba1001.com/posts/202404080813_staedtler_color_graphite_is_so_good/</link>
-      <guid isPermaLink="false">https://www.kbaba1001.com/posts/202404080813_staedtler_color_graphite_is_so_good/</guid>
-      <content:encoded>
-        <![CDATA[<p><img src="https://www.kbaba1001.com/img/posts/202404080813/color_graphite.jpg" alt="ステッドラーのカラーグラファイト鉛筆12色セット"></p>
-        <p>↑ステッドラーのカラーグラファイト鉛筆12色セット</p>
-        <h2>ステッドラーのカラーグラファイト鉛筆12色セット</h2>
-        <p>水彩色鉛筆で絵を描いているのだが、
-        「ステッドラーのカラーグラファイト鉛筆12色セット」が欠かせない
-        存在になっているので感想を書かせてほしい。</p>
-        <h3>暗い色がきれいに出る色鉛筆</h3>
-        <p>まずはカラー表を見てほしい。</p>
-        <p><img src="https://www.kbaba1001.com/img/posts/202404080813/color_list_graphite.jpg" alt="カラーグラファイト"></p>
-        <p>比較のために普通のパステルカラーの色鉛筆のカラー表も貼る</p>
-        <p><img src="https://www.kbaba1001.com/img/posts/202404080813/derwent_academy_water_colour.jpg" alt="ダーウェント"></p>
-        <p>比べてみるとカラーグラファイトの色は圧倒的に暗い。
-        しかも水に溶かす時と溶かさない時で発色がぜんぜん違う。
-        水に溶かしたほうが鮮やかに見える。</p>
-        <p>通常の色鉛筆はパステルカラーの明るい色のみが多く、
-        カラーグラファイトのような暗い色が綺麗にでるのは珍しい。
-        これを使って影や陰を塗るとコントラストが効いた締まりのある絵を描くことができる。</p>
-        <h3>ベースを普通の水彩色鉛筆で塗り、陰をカラーグラファイトで塗る</h3>
-        <p>次の絵はベースの色を普通の水彩色鉛筆で塗って、暗い部分をカラーグラファイトで塗ったもの</p>
-        <p><img src="https://www.kbaba1001.com/img/posts/202404080813/IMG_0146.jpg" alt="cafe"></p>
-        <p>天井や奥の棚などはもともとの鮮やかな水彩色鉛筆の色を残しているが、
-        ほかは結構カラーグラファイトを入れている。</p>
-        <p>カラーグラファイトも発色の良い溶かしの部分を塗ってから、溶かさずに塗り直すことで
-        紙の凸凹を活かして存在感を出すようにした。</p>
-        <p><img src="https://www.kbaba1001.com/img/posts/202404030809/illustration3.jpg" alt="car"></p>
-        <p>こちらも明るい色をベースにして陰影をダーウェントで塗ったもの。
-        松の葉などに至ってはオイルパステルも使っている。
-        通常の色鉛筆だけではここまでのコントラストは出せないと思う。</p>
-        <h2>ベースの色塗りに使っているダーウェント</h2>
-        <p><img src="https://www.kbaba1001.com/img/posts/202404080813/derwent.jpg" alt="Derwent"></p>
-        <p>文房具店でたまたま安く売られていて買ってみたダーウェントの使い勝手が良く
-        ベースの明るい色を塗るときに使っている。</p>
-        <h2>カラーグラファイトの嫌な点</h2>
-        <p>他のステッドラーの水彩色鉛筆もそうなのだが、鉛筆の側面が全部グレーだから、
-        色を塗りたいときに何色なのか分かりづらい。</p>
-        <p>一応鉛筆の上のところで色が区別できるけど分かりづらいので、
-        デザインは変えてほしい。</p>
-        ]]>
-      </content:encoded>
-      <pubDate>Mon, 08 Apr 2024 08:13:12 GMT</pubDate>
     </item>
   </channel>
 </rss>
