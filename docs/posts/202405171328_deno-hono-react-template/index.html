@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="/styles.css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <meta name="author" content="kbaba1001">
+    <meta property="og:title" content="DenoでHonoやReactを使ったテンプレートを作ってみた - ハッカーと漫画家">
+    <meta property="og:url" content="https://www.kbaba1001.com/posts/202405171328_deno-hono-react-template/">
+    <meta property="og:image" content="https://www.kbaba1001.com/img/posts/202405171328_deno-hono-react-template.png">
+    <meta property="twitter:image:src" content="https://www.kbaba1001.com/img/posts/202405171328_deno-hono-react-template.png">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <meta property="og:type" content="website">
+    <meta name="description" content="Clojure と漫画が好きな kbaba1001 のブログです。">
+    <meta property="og:description" content="Clojure と漫画が好きな kbaba1001 のブログです。">
+    <meta property="og:locale" content="ja_JP">
+
+    <!-- Google tag (gtag.js) -->
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-MJ8FZT12VZ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-MJ8FZT12VZ");
+    </script>
+
+    <title>DenoでHonoやReactを使ったテンプレートを作ってみた - ハッカーと漫画家</title>
+  </head>
+  <body class="layout">
+    <header class="layout-header">
+  <div class="header">
+    <div class="grid-header-title"><div class="header-title">
+  <img src="/img/horse.jpg" alt="ハッカーと漫画家" loading="lazy" class="header-title-logo">
+  <a href="/" class="header-title-link">ハッカーと漫画家</a>
+</div>
+</div>
+    <div class="grid-header-nav"><nav class="header-nav-container">
+  <ul class="header-nav-list">
+    <li>
+      <a href="/about" class="header-nav-list-link"> About </a>
+    </li>
+    <li>
+      <a href="https://github.com/kbaba1001/kbaba1001.github.io/discussions" class="header-nav-list-link" target="_blank">
+        掲示板
+      </a>
+    </li>
+    <li>
+      <a href="/feed.rss" class="header-nav-list-link"> RSS </a>
+    </li>
+  </ul>
+</nav>
+</div>
+    <div class="grid-header-tags"><div class="tags-links">
+  <a class="tags-link" href="/tags/commic">漫画</a>
+  <a class="tags-link" href="/tags/daily-life">日常</a>
+  <a class="tags-link" href="/tags/tech">Tech</a>
+  <a class="tags-link" href="/tags/study">勉強</a>
+</div>
+</div>
+  </div>
+</header>
+<div class="layout-main">
+  <main class="layout-main-center"><div class="post">
+  <div>
+    <div class="post-date">2024-05-17</div>
+    
+    <div class="post-tag" data-pagefind-filter="tag">Tech</div>
+    
+    <div class="post-tag" data-pagefind-filter="tag">FAM</div>
+    
+  </div>
+  <h1 class="post-title">DenoでHonoやReactを使ったテンプレートを作ってみた</h1>
+  <div class="post-main"><p><img src="/img/posts/202405171328/template.gif" alt="gif"></p>
+<p>Deno で本格的な Web システムを作るためテンプレートを作ってみた。</p>
+<ul>
+<li><a href="https://github.com/neumann-tokyo/deno-vite-react-template">deno-vite-react-template</a></li>
+<li><a href="https://github.com/neumann-tokyo/deno-hono-api-template">deno-hono-api-template</a></li>
+</ul>
+<p>backend と frontend で完全に分かれていて RESTful API で通信するようにした。</p>
+<h2>仕様</h2>
+<ul>
+<li><a href="https://github.com/neumann-tokyo/deno-vite-react-template">deno-vite-react-template</a>
+<ul>
+<li>Deno, Vite, React による構成 (<a href="https://github.com/anatoo/vite-deno-plugin">vite-deno-plugin</a> を使った)</li>
+<li>Routing Library として <a href="https://github.com/molefrog/wouter">wouter</a></li>
+<li>UI Library として <a href="https://chakra-ui.com">Chakra UI</a></li>
+<li>全体的に <a href="https://jotai.org">jotai</a>, <a href="https://github.com/jotaijs/jotai-tanstack-query">jotai-tanstack-query</a> を活用してAPI通信のキャッシュなど行っている</li>
+<li><a href="https://www.npmjs.com/package/react-if">react-if</a> は便利なので皆使ってほしい</li>
+</ul>
+</li>
+<li><a href="https://github.com/neumann-tokyo/deno-hono-api-template">deno-hono-api-template</a>
+<ul>
+<li><a href="https://hono.dev">Hono</a> による RESTful API サーバー
+<ul>
+<li>RPC も使いたかったけど今回は汎用性を考えて不採用</li>
+</ul>
+</li>
+<li>PostgreSQL</li>
+<li><a href="https://github.com/golang-migrate/migrate">migrate</a> によるマイグレーション管理</li>
+<li><a href="https://kysely.dev">kysely</a> による SQL ビルディング
+<ul>
+<li>Deno でも <a href="https://github.com/RobinBlomberg/kysely-codegen">kysely-codegen</a> がなんとか動いた</li>
+</ul>
+</li>
+<li><a href="https://deno.land/x/djwt@v3.0.2">djwt</a> による JWT 認証</li>
+<li><a href="https://github.com/aaronhuggins/deno_mocha">deno_mocha</a> によるテスト
+<ul>
+<li>deno test では afterAll などにバグがあったため</li>
+</ul>
+</li>
+<li><a href="https://zod.dev">zod</a> によるバリデーション</li>
+</ul>
+</li>
+<li>共通
+<ul>
+<li>VS Code Devcontainer で開発できるようにしてある</li>
+<li>Linter, Formatter に <a href="https://biomejs.dev">Biome</a> を使用。 Biome は速くてよい</li>
+<li><a href="https://github.com/spencermountain/spacetime">spacetime</a> 便利</li>
+</ul>
+</li>
+</ul>
+<h2>機能</h2>
+<ul>
+<li>email/password によるサインイン</li>
+<li>多言語対応 ( i18n )</li>
+<li>タイムゾーンや日付の表示形式の変更</li>
+<li>ダークモード</li>
+<li>認可 (Roles, Permissions)</li>
+<li>Todo リスト (CRUD のサンプルとして)</li>
+<li>招待 URL によるサインアップ</li>
+<li>各種テスト (frontend 側が途中)</li>
+</ul>
+<h2>設計的な部分</h2>
+<h3>email/password によるサインイン</h3>
+<p>JWT による email / password サインイン。
+特筆することはないけど、 <a href="https://hono.dev/middleware/builtin/jwt">Hono の middleware の jwt</a> がなんとなく使いづらかったので
+<a href="https://deno.land/x/djwt@v3.0.2">djwt</a> というライブラリで自作した。
+djwt はシークレットキー以外にも公開鍵秘密鍵での JWT の sign/verify が出来たのでそれを採用してみた。</p>
+<p><a href="https://github.com/neumann-tokyo/deno-hono-api-template/blob/main/tools/generate-jwt-key.ts">generate-jwt-key.ts</a> を用意したのでこれで鍵が作れる。</p>
+<h3>多言語対応 ( i18n )</h3>
+<p>色々ライブラリを調べたけど、結果的には jotai を活用して単語帳を作ることにした。</p>
+<ul>
+<li><a href="https://github.com/neumann-tokyo/deno-vite-react-template/blob/main/src/atoms/i18n/japanese-messages.ts">英語日本語の対応表</a></li>
+</ul>
+<p>この単語帳を次のコンポーネントで扱えるようにする</p>
+<ul>
+<li><a href="https://github.com/neumann-tokyo/deno-vite-react-template/blob/main/src/components/trans.tsx">Trans</a></li>
+</ul>
+<pre><code class="language-js hljs language-javascript">&lt;<span class="hljs-title class_">Trans</span>&gt;<span class="hljs-title class_">Hello</span>&lt;/<span class="hljs-title class_">Trans</span>&gt;
+</code></pre>
+<p>みたいにすると単語帳に <code>Hello</code> に対する単語があれば日本語に変換してくれるし、なければ英語のまま表示する。</p>
+<p>一応、 <a href="https://www.npmjs.com/package/fast-printf">printf</a> のフォーマットで変数も埋め込めるようにした。</p>
+<h3>タイムゾーンや日付の表示形式の変更</h3>
+<p>これもライブラリを使わず自作。</p>
+<p><a href="https://github.com/spencermountain/spacetime">spacetime</a> にタイムゾーン変換やフォーマット機能があるので
+その入力方式をフロント側で設定してバック側でDBに保存するというシンプルな方式。</p>
+<p>これも便利コンポーネントを用意しておいた。</p>
+<ul>
+<li><a href="https://github.com/neumann-tokyo/deno-vite-react-template/blob/main/src/components/datetime-format.tsx">datetime-format.tsx</a></li>
+<li><a href="https://github.com/neumann-tokyo/deno-vite-react-template/blob/main/src/components/datetime-format-select.tsx">datetime-format-select.tsx</a></li>
+<li><a href="https://github.com/neumann-tokyo/deno-vite-react-template/blob/main/src/components/timezone-select.tsx">timezone-select.tsx</a></li>
+</ul>
+<h3>ダークモード</h3>
+<p><a href="https://chakra-ui.com">Chakra UI</a> のダークモード機能に乗っかっているが、これは Cookie とかに記録する方式なので DB 保存でも良い気がする。</p>
+<h3>認可 (Roles, Permissions)</h3>
+<p>認可も最近はライブラリを使わず DB のテーブル構成でなんとかしている。</p>
+<p><a href="https://github.com/neumann-tokyo/deno-hono-api-template/blob/main/db/migrations/2024022701_initialize.up.sql">マイグレーションファイル</a> をみると DB
+の作りがわかると思うのだが、</p>
+<p>users -&gt; users_roles -&gt; roles -&gt; roles_permissions -&gt; permissions</p>
+<p>というリレーションがある。
+機能名を permissions テーブルに設定しておいて、それを roles に割り当てる。
+users には roles を割り当て、 permissions は直接見ないようにする。
+これにより、「ユーザーにはロールを割り当てる」「ロールには権限を割り当てる」という構造ができ、
+認可を管理しやすくなる。</p>
+<p>これは UI を見たほうがわかりやすいかもしれない。</p>
+<p><img src="/img/posts/202405171328/users_roles.png" alt="users_roles">
+<img src="img/posts/202405171328/roles_permissions.png" alt="roles_permissions"></p>
+<p>サーバー側では次のように <a href="https://github.com/neumann-tokyo/deno-hono-api-template/blob/main/src/middleware/permission-checker.ts">permissionChecker</a> という middleware で permission 名を指定しておいて、 サインイン中のユーザーがその permission を持っていなければ機能が使えないようにしている。</p>
+<pre><code class="language-js hljs language-javascript">app.<span class="hljs-title function_">post</span>(<span class="hljs-string">"/"</span>, <span class="hljs-title function_">permissionChecker</span>(<span class="hljs-string">"todos"</span>), <span class="hljs-keyword">async</span> (c) =&gt; {
+  <span class="hljs-comment">//...</span>
+})
+</code></pre>
+<p>フロント側も <a href="https://github.com/neumann-tokyo/deno-vite-react-template/blob/main/src/components/can.tsx">Can</a> というコンポーネントで同じようなことができるようにした。</p>
+<h3>Todo リスト (CRUD のサンプルとして)</h3>
+<p>CRUD のサンプルのつもりで簡単な TODO リスト機能を作っておいたけど、結構認可とかユーザー設定のほうも
+CRUD が多くなったのでそっち見たほうがいいかもしれない。</p>
+<h3>招待 URL によるサインアップ</h3>
+<p><img src="/img/posts/202405171328/invitations.png" alt="invitations"></p>
+<p>discord みたいにトークン付きの URL からサインアップできるようにしてある。</p>
+<p>「コピー」ボタンをクリックすると招待URLをコピーできて、これを招待したい人に渡す。</p>
+<p>トークンが有効であれば、サインアップ画面が出てくる。</p>
+<p><img src="/img/posts/202405171328/sign_up.png" alt="sign up"></p>
+<h3>各種テスト (frontend 側が途中)</h3>
+<p>サーバー側は models と routes のテストを書いてある。</p>
+<ul>
+<li><a href="https://github.com/neumann-tokyo/deno-hono-api-template/tree/main/test">test</a></li>
+</ul>
+<p>Deno の標準の Test 機能で十分かと思ったが AfterAll 系の callback 処理で不具合があって、
+async がからむとうまく動かなかったので、 <a href="https://github.com/aaronhuggins/deno_mocha">deno_mocha</a> を使うことにした。
+今のところ大丈夫そう。</p>
+<p>frontend 側のテストも <a href="https://vitest.dev">vitest</a> + <a href="https://github.com/capricorn86/happy-dom">happy-dom</a> で作るつもりだが、まだ出来ていない。</p>
+<h2>まとめ</h2>
+<p>今後の開発でよく使うであろう機能をとりあえずテンプレートに出来たのは役に立ちそうだ。
+色々とオレオレな仕様なので他の人は使いづらいかもしれないが、適当に改造して使ってほしい。</p>
+<p>具体的な動かし方とかはもう少し README あたりに記載が必要だと思うので追々対応する予定。</p>
+<p>Deno, Hono, Vite, あたりの組み合わせた動かし方は本当に資料が少なくて、今回の
+テンプレート公開が誰かの役に立ったら嬉しい。</p>
+<p>私は個人的に作っている FAM というシステム (Discord クローンみたいなもの) で
+このテンプレートを活用していくつもりだ。</p>
+</div>
+  <hr>
+<div class="comment-button-container">
+  <a href="https://github.com/kbaba1001/kbaba1001.github.io/discussions" target="_blank" class="comment-button">
+    掲示板にコメントする
+  </a>
+  <div class="comment-note">
+    ※どの記事のコメントかわかるように本文に記事タイトルなどを入れてください。
+  </div>
+</div>
+
+  <a href="/" class="post-index-link">一覧に戻る</a>
+</div>
+</main>
+</div>
+
+  
+
+</body></html>
