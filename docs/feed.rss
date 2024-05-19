@@ -117,7 +117,7 @@
         認可を管理しやすくなる。</p>
         <p>これは UI を見たほうがわかりやすいかもしれない。</p>
         <p><img src="https://www.kbaba1001.com/img/posts/202405171328/users_roles.png" alt="users_roles">
-        <img src="https://www.kbaba1001.com/posts/202405171328_deno-hono-react-template/img/posts/202405171328/roles_permissions.png" alt="roles_permissions"></p>
+        <img src="https://www.kbaba1001.com/img/posts/202405171328/roles_permissions.png" alt="roles_permissions"></p>
         <p>サーバー側では次のように <a href="https://github.com/neumann-tokyo/deno-hono-api-template/blob/main/src/middleware/permission-checker.ts">permissionChecker</a> という middleware で permission 名を指定しておいて、 サインイン中のユーザーがその permission を持っていなければ機能が使えないようにしている。</p>
         <pre><code class="language-js">app.post(&quot;/&quot;, permissionChecker(&quot;todos&quot;), async (c) =&gt; {
         //...

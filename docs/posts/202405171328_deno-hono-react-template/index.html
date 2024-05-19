@@ -184,7 +184,7 @@ users には roles を割り当て、 permissions は直接見ないようにす
 認可を管理しやすくなる。</p>
 <p>これは UI を見たほうがわかりやすいかもしれない。</p>
 <p><img src="/img/posts/202405171328/users_roles.png" alt="users_roles">
-<img src="img/posts/202405171328/roles_permissions.png" alt="roles_permissions"></p>
+<img src="/img/posts/202405171328/roles_permissions.png" alt="roles_permissions"></p>
 <p>サーバー側では次のように <a href="https://github.com/neumann-tokyo/deno-hono-api-template/blob/main/src/middleware/permission-checker.ts">permissionChecker</a> という middleware で permission 名を指定しておいて、 サインイン中のユーザーがその permission を持っていなければ機能が使えないようにしている。</p>
 <pre><code class="language-js hljs language-javascript">app.<span class="hljs-title function_">post</span>(<span class="hljs-string">"/"</span>, <span class="hljs-title function_">permissionChecker</span>(<span class="hljs-string">"todos"</span>), <span class="hljs-keyword">async</span> (c) =&gt; {
   <span class="hljs-comment">//...</span>

@@ -115,7 +115,7 @@ users には roles を割り当て、 permissions は直接見ないようにす
 これは UI を見たほうがわかりやすいかもしれない。
 
 ![users_roles](/img/posts/202405171328/users_roles.png)
-![roles_permissions](img/posts/202405171328/roles_permissions.png)
+![roles_permissions](/img/posts/202405171328/roles_permissions.png)
 
 サーバー側では次のように [permissionChecker](https://github.com/neumann-tokyo/deno-hono-api-template/blob/main/src/middleware/permission-checker.ts) という middleware で permission 名を指定しておいて、 サインイン中のユーザーがその permission を持っていなければ機能が使えないようにしている。
 
