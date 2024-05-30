@@ -1,0 +1,60 @@
+.fukidashi-container {
+  display: flex;
+  align-items: center;
+}
+
+.fukidashi-image-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.fukidashi-avatar {
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.fukidashi-left {
+  position: relative;
+  display: inline-block;
+  margin: 1.5rem 0 1.5rem 15px;
+  padding: 1rem;
+  min-width: 120px;
+  max-width: 100%;
+  color: #555;
+  font-size: 1.5rem;
+  background: #fff;
+  border: solid 3px #555;
+  box-sizing: border-box;
+  border-radius: 1rem;
+}
+
+.fukidashi-left:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -24px;
+  margin-top: -12px;
+  border: 12px solid transparent;
+  border-right: 12px solid #fff;
+  z-index: 2;
+}
+
+.fukidashi-left:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -30px;
+  margin-top: -14px;
+  border: 14px solid transparent;
+  border-right: 14px solid #555;
+  z-index: 1;
+}
+
+.fukidashi-left .serifu {
+  margin: 0;
+  padding: 0;
+  white-space: pre-line;
+}

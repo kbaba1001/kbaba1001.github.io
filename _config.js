@@ -73,4 +73,26 @@ site.use(postcss());
 site.use(terser());
 site.use(sitemap());
 
+const newline = (text) => {
+	return text.replace(/\\n/g, "<br>");
+};
+const fukidashi = (content) => {
+	return content?.replaceAll(
+		/《(.*?)\|(.*?)\|(.*?)》/g,
+		(_, name, image, serifu) => `<div class="fukidashi-container">
+<div class="fukidashi-image-container">
+  <img src="${image}" alt="${name}" class="fukidashi-avatar" />
+	<span>${name}</span>
+</div>
+<div class="fukidashi-left"><div class="fukidashi-serifu">${newline(
+			serifu,
+		)}</div></div></div>`,
+	);
+};
+site.process([".md"], (pages) => {
+	for (const page of pages) {
+		page.content = fukidashi(page.content);
+	}
+});
+
 export default site;
