@@ -1,12 +1,14 @@
 .fukidashi-container {
   display: flex;
   align-items: center;
+  width: 100%;
 }
 
 .fukidashi-image-container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100px;
 }
 
 .fukidashi-avatar {

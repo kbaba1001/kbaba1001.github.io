@@ -73,10 +73,11 @@ site.use(postcss());
 site.use(terser());
 site.use(sitemap());
 
-const newline = (text) => {
-	return text.replace(/\\n/g, "<br>");
-};
 const fukidashi = (content) => {
+	const newline = (text) => {
+		return text.replace(/\\n/g, "<br>");
+	};
+
 	return content?.replaceAll(
 		/《(.*?)\|(.*?)\|(.*?)》/g,
 		(_, name, image, serifu) => `<div class="fukidashi-container">

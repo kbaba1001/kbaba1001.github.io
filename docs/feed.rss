@@ -9,6 +9,25 @@
     <language>ja_JP</language>
     <generator>Lume v2.0.1</generator>
     <item>
+      <title>Lumeで「ふきだし」を作る</title>
+      <link>https://www.kbaba1001.com/posts/202405301700_fukidashi/</link>
+      <guid isPermaLink="false">https://www.kbaba1001.com/posts/202405301700_fukidashi/</guid>
+      <content:encoded>
+        <![CDATA[<p>《kbaba1001|/img/horse.jpg|Markdown中にこんな吹き出しを挿入できるようにしてみた》</p>
+        <p><img src="https://www.kbaba1001.com/img/posts/202405301700/code.png" alt="code"></p>
+        <p>Markdown 中に上記のような構文を書いておくと吹き出しを作れるようにした。</p>
+        <p>どうやっているかと言うと、Lume の <code>_config.js</code> に次のようなコードを書いてある。</p>
+        <p><img src="https://www.kbaba1001.com/img/posts/202405301700/code2.png" alt="code2"></p>
+        <p><a href="https://github.com/kbaba1001/kbaba1001.github.io/blob/main/_config.js">_config.js github</a></p>
+        <p><code>page.content</code> にはレンダリングされる HTML が入っていてこれを上書きするという少々強引な方法で実装している。
+        本当は markdown-it の plugin にするほうが行儀が良い。</p>
+        <p><a href="https://github.com/kbaba1001/kbaba1001.github.io/blob/main/_includes/css/components/fukidashi.css">CSS が気になる方は github を参照して。</a></p>
+        <p>《kbaba1001|/img/horse.jpg|今後も使っていくよ》</p>
+        ]]>
+      </content:encoded>
+      <pubDate>Thu, 30 May 2024 17:00:51 GMT</pubDate>
+    </item>
+    <item>
       <title>同人誌の通信販売を開始しました</title>
       <link>https://www.kbaba1001.com/posts/202405301114_start-a-dojinshi-on-ec/</link>
       <guid isPermaLink="false">https://www.kbaba1001.com/posts/202405301114_start-a-dojinshi-on-ec/</guid>
@@ -387,44 +406,6 @@
         ]]>
       </content:encoded>
       <pubDate>Wed, 17 Apr 2024 09:27:04 GMT</pubDate>
-    </item>
-    <item>
-      <title>馬場日記012「作りたい物がない」</title>
-      <link>https://www.kbaba1001.com/posts/202404170926_baba-diary012/</link>
-      <guid isPermaLink="false">https://www.kbaba1001.com/posts/202404170926_baba-diary012/</guid>
-      <content:encoded>
-        <![CDATA[<p><img src="https://www.kbaba1001.com/img/commics/baba-diary_012.png" alt="馬場日記012"></p>
-        <p>なんか説教臭い漫画が増えてて面白くないなと思ったので、
-        今回からせめて自分の顔を馬にすることにした。</p>
-        <h2>プログラミングを習得したいけど、作りたいものがない</h2>
-        <p>時々こんな相談を受けるのだが、ある程度プログラミングを習得しないと何が作れるかもわからないわけで
-        最初から作りたいものがはっきりしている人のほうが稀ではないだろうか。</p>
-        <p>新しいアイディアがあったとしても、それを形にするのは難しい。
-        その上、人に使ってもらったり、そこからお金を稼いだりするのはなおさら難しい。
-        継続してサービスをメンテナンスするのは新規にサービスを作るのとは別のスキルが必要だし、
-        開発者としてのモチベーションの維持も重要になってくる。</p>
-        <p>私自身としてはプログラミングは好きだが、ビジネスにはあまり興味がなく、
-        「新規サービスを立ち上げて一発当ててやろう」みたいな気持ちにはどうしてもなれない。
-        どちらかというとビジネスは煩わしく、私はプログラムを書くことに集中したい。
-        なので、長年受託開発のみやってきたし、今でもできれば要件定義とか
-        マーケティングとかは他の人にやってもらいたい。</p>
-        <p>だから、私の回答としては「作りたいものは無くても良い」ということになる。</p>
-        <h2>既存システムのコピーを作ろう</h2>
-        <p>とはいえ、何かしらテーマがないのとプログラミングの習得が難しいというのも事実だ。
-        初歩的なことは本や Web の Tutorial
-        でも学べるけど、やはり自力でシステムを作るのが一番勉強になる。</p>
-        <p>なので僕のおすすめは既存のシステムのコピーを作ってみること。</p>
-        <p>例えば、メルカリや Amazon のような通販サイトや、
-        テトリスやブロック崩しのような簡単なゲームなどを作ってみるのが良い。
-        お金が絡む機能については実際の決算は行わないようにして、
-        「勉強用に作ったサイトです」という名目で Web に公開しても良いと思う。</p>
-        <p>Web システムを開発する（そして仕事にする）のであれば、
-        通販サイトや受発注システムを作ってみるのはとても勉強になる。 SNS
-        のコピーでもいいけど、もう少しシステムっぽいものの方が DB や設計の勉強になるし、
-        業務アプリ（いわゆるERP）は参考資料が多々ある。</p>
-        ]]>
-      </content:encoded>
-      <pubDate>Wed, 17 Apr 2024 09:26:04 GMT</pubDate>
     </item>
   </channel>
 </rss>
