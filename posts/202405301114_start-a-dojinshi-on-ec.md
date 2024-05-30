@@ -3,7 +3,8 @@ title: 同人誌の通信販売を開始しました
 date: 2024-05-30 11:14:58
 ogimage: /img/posts/202405301114_start-a-dojinshi-on-ec.png
 tags:
-  - Tech
+  - 漫画
+  - お知らせ
 ---
 
 今まで書いた同人誌を通信販売するためのページを Base で作成しました。
