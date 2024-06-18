@@ -9,6 +9,24 @@
     <language>ja_JP</language>
     <generator>Lume v2.0.1</generator>
     <item>
+      <title>「関数型デザイン」を買った</title>
+      <link>https://www.kbaba1001.com/posts/202406181152_bought-functional-design/</link>
+      <guid isPermaLink="false">https://www.kbaba1001.com/posts/202406181152_bought-functional-design/</guid>
+      <content:encoded>
+        <![CDATA[<p><img src="https://www.kbaba1001.com/img/posts/202406181152/functional-design.jpg" alt="関数型デザイン"></p>
+        <p>ロバート・C・マーチンが Clojure と Java を比較して Clojure におけるデザインパターンや
+        SOLID 原則の実装方法について書いた本らしい。</p>
+        <p>まだ始めの方しか読んでないけど彼の本にしてはコードが多くて嬉しい。
+        Clojure の再起と反復の違いについて書かれていて、
+        再起のときにメモ化を活用することで末尾再帰最適化できないときでも
+        パフォーマンスを出すコードの書き方があり、すでに勉強になっている。</p>
+        <p>Clojure を使う人以外にこの本が刺さるかどうかわからないけど
+        ニッチな分野に対しては良書だと思うのでしっかり読みたい。</p>
+        ]]>
+      </content:encoded>
+      <pubDate>Tue, 18 Jun 2024 11:52:38 GMT</pubDate>
+    </item>
+    <item>
       <title>「本に寄り添う文鎮」を買った</title>
       <link>https://www.kbaba1001.com/posts/202406171618_I-bought-a-paperweight/</link>
       <guid isPermaLink="false">https://www.kbaba1001.com/posts/202406171618_I-bought-a-paperweight/</guid>
@@ -388,24 +406,6 @@
         ]]>
       </content:encoded>
       <pubDate>Wed, 08 May 2024 09:32:36 GMT</pubDate>
-    </item>
-    <item>
-      <title>ブログタイトル変更</title>
-      <link>https://www.kbaba1001.com/posts/202405070712_change-blog-title/</link>
-      <guid isPermaLink="false">https://www.kbaba1001.com/posts/202405070712_change-blog-title/</guid>
-      <content:encoded>
-        <![CDATA[<p><img src="https://www.kbaba1001.com/img/posts/202405070712_change-blog-title.png" alt="ブログタイトル変更"></p>
-        <p>ブログのタイトルを「kbaba1001ブログ」から「ハッカーと漫画家」に変更しました。</p>
-        <p>Paul Graham 氏の
-        <a href="https://shop.ohmsha.co.jp/shopdetail/000000001697/">ハッカーと画家</a>
-        のオマージュです。 この本は Lisp
-        好きな人は読んでいる人も多いと思いますが、私も例に漏れず好きですねぇ。 Paul
-        Graham さんの皮肉たっぷりな所が良いし川合史朗さんの翻訳も素晴らしい。</p>
-        <p>今後も漫画は描いていきたいのでハッカーと漫画家を名乗ることにしました。</p>
-        <p>今後ともよろしくお願いします。</p>
-        ]]>
-      </content:encoded>
-      <pubDate>Tue, 07 May 2024 07:12:02 GMT</pubDate>
     </item>
   </channel>
 </rss>
