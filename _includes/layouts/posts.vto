@@ -1,0 +1,48 @@
+---
+layout: layouts/main.vto
+title: TOP
+description: "kbaba1001のブログです"
+ogimage: /img/horse.jpg
+---
+
+<div class="top">
+  <h1 class="top-h1">ブログ記事一覧</h1>
+  <div id="search"></div>
+
+  <div class="blog" id="posts-index">
+    <div class="blog-container">
+      {{ for post of results }}
+      <div class="blog-card">
+        <div class="blog-card-date">{{ post.date |> date('DATE') }}</div>
+        <a href="{{ post.url }}" class="blog-card-title-link">
+          <img
+            src="{{ post.ogimage }}"
+            alt="{{ post.title }}"
+            class="blog-card-image"
+          />
+          <h2 class="blog-card-title">{{ post.title }}</h2>
+        </a>
+        <div class="blog-card-description">{{ post.description }}</div>
+        <ul class="blog-tags">
+          {{ for tag of post.tags }}
+          <li class="blog-tag">{{ tag }}</li>
+          {{ /for }}
+        </ul>
+      </div>
+      {{ /for }}
+    </div>
+  </div>
+
+  <div class="blog-pagination-container">
+    <div class="blog-pagination-previous">
+      {{ if pagination.previous }}
+      <a href="{{ pagination.previous }}">前へ</a>
+      {{ /if }}
+    </div>
+    <div class="blog-pagination-next">
+      {{ if pagination.next }}
+      <a href="{{ pagination.next }}">次へ</a>
+      {{ /if }}
+    </div>
+  </div>
+</div>

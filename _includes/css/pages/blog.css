@@ -2,6 +2,20 @@
   margin: 1rem 0;
 }
 
+.blog-pagination-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.blog-pagination-previous {
+  text-align: left;
+}
+
+.blog-pagination-next {
+  text-align: right;
+}
+
+
 .blog-container {
   display: flex;
   flex-direction: column;
