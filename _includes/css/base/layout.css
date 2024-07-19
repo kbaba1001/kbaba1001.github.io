@@ -16,20 +16,20 @@
 
 .header {
   width: var(--contents-width);
-  display: grid;
-  grid-template-columns: 1fr auto;
-  grid-template-rows: auto;
-  grid-template-areas:
-    "title nav"
-    "tags tags";
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0.5rem 0;
 }
 
 .grid-header-title {
   grid-area: title;
 }
+
 .grid-header-nav {
   grid-area: nav;
 }
+
 .grid-header-tags {
   grid-area: tags;
 }
@@ -61,6 +61,7 @@
   .layout-main {
     display: block;
   }
+
   .layout-footer {
     display: block;
   }
@@ -77,6 +78,7 @@
     width: 95%;
     margin: auto;
   }
+
   .footer {
     width: 100%;
   }
