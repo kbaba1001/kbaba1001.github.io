@@ -72,7 +72,7 @@ body{background-color:var(--footer-bg-color);font-family:sans-serif;font-size:1.
 code.hljs{font-family:Source Code Pro,monospace;font-size:1rem}
 .layout{flex-direction:column;min-height:99vh;display:flex}
 .layout-header{background-color:var(--header-bg-color);color:var(--header-text-color);z-index:10;justify-content:center;display:flex;position:sticky;top:0}
-.header{width:var(--contents-width);grid-template:"title nav""tags tags"/1fr auto;display:grid}
+.header{width:var(--contents-width);justify-content:space-between;align-items:center;margin:.5rem 0;display:flex}
 .grid-header-title{grid-area:title}
 .grid-header-nav{grid-area:nav}
 .grid-header-tags{grid-area:tags}
@@ -90,7 +90,7 @@ code.hljs{font-family:Source Code Pro,monospace;font-size:1rem}
 .comment-button-container{flex-direction:column;justify-content:center;align-items:center;gap:1rem;margin:20px 0;display:flex}
 .comment-button{color:#fff;background-color:#8088cf;border-radius:10px;padding:10px 20px;text-decoration:none;display:inline-block}
 .comment-note{font-size:.8rem}
-.tags-links{gap:.5rem;display:flex}
+.tags-links{flex-wrap:wrap;gap:.5rem;width:100%;margin:.5rem 0;display:flex}
 .tags-link{background-color:var(--tag-link-bg-color);color:var(--tag-link-color);border-radius:.5rem;padding:.3rem .5rem;text-decoration:none}
 .fukidashi-container{align-items:center;width:100%;display:flex}
 .fukidashi-image-container{flex-direction:column;align-items:center;width:100px;display:flex}
@@ -102,6 +102,9 @@ code.hljs{font-family:Source Code Pro,monospace;font-size:1rem}
 .top{margin:1rem 0}
 .top-h1{font-size:1.5rem}
 .blog{margin:1rem 0}
+.blog-pagination-container{justify-content:space-between;display:flex}
+.blog-pagination-previous{text-align:left}
+.blog-pagination-next{text-align:right}
 .blog-container{flex-direction:column;display:flex}
 .blog-card{border-bottom:1px dotted var(--main-text-color);padding:1rem 0}
 .blog-card-image{-o-object-fit:cover;object-fit:cover;-o-object-position:50% top;object-position:50% top;border:1px solid var(--ogimage-border-color);border-radius:1rem;width:100%;height:100%;max-height:700px}
