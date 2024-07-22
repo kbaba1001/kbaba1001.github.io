@@ -9,6 +9,20 @@
     <language>ja_JP</language>
     <generator>Lume v2.0.1</generator>
     <item>
+      <title>ページネーションとタグ一覧対応</title>
+      <link>https://www.kbaba1001.com/posts/202407220958_pagination-and-tag-index/</link>
+      <guid isPermaLink="false">https://www.kbaba1001.com/posts/202407220958_pagination-and-tag-index/</guid>
+      <content:encoded>
+        <![CDATA[<p>記事の一覧をする各ページのページネーション対応とタグ一覧の自動生成対応をしました。</p>
+        <p><a href="https://lume.land/">Lume</a> はこういう機能が色々あって便利だけど、相変わらずドキュメントが不親切なうえ結構仕様も変わるからどうやればいいのかよくわからん。。。</p>
+        <p><code>index.page.js</code> みたいなファイルを作ると複数の page を生成するコードを書いてもいいという感じのようだ。
+        これが昔は <code>index.impl.js</code> だったっぽくてそっちの情報しかなかったから結構うまく動かなかった。</p>
+        <p>ただ、やり方が分かれば便利なもので、記事につけた tag を自動的に全部取ってきてヘッダーに表示することもできるようになった。</p>
+        ]]>
+      </content:encoded>
+      <pubDate>Mon, 22 Jul 2024 09:58:06 GMT</pubDate>
+    </item>
+    <item>
       <title>6,7月やってたことまとめ</title>
       <link>https://www.kbaba1001.com/posts/202407161937_june-and-july-activity/</link>
       <guid isPermaLink="false">https://www.kbaba1001.com/posts/202407161937_june-and-july-activity/</guid>
@@ -429,21 +443,6 @@
         ]]>
       </content:encoded>
       <pubDate>Fri, 10 May 2024 22:19:26 GMT</pubDate>
-    </item>
-    <item>
-      <title>Podcastでネパールインターン受け入れのこと等を話しました</title>
-      <link>https://www.kbaba1001.com/posts/202405081003_podcast-about-nepal-internships/</link>
-      <guid isPermaLink="false">https://www.kbaba1001.com/posts/202405081003_podcast-about-nepal-internships/</guid>
-      <content:encoded>
-        <![CDATA[<iframe src="https://podcasters.spotify.com/pod/show/nomadineers/embed/episodes/Nomadineers18--wbaba-san-e2jbbgh/a-ab88p73" height="102px" width="400px" frameborder="0" scrolling="no"></iframe>
-        <p><a href="https://podcasters.spotify.com/pod/show/nomadineers">Nomadinners のPodcast</a>
-        で１時間半くらい近況とか
-        ノイマントーキョー株式会社で行っていたネパール人をインターンとして受け入れていた頃の話とかをしました。</p>
-        <p>ネパールインターンについては０から始める外資企業という感じでなかなか楽しかったですが、あまり利益には繋がらなかったですね。。。
-        いろいろな意味で勉強にはなりました。</p>
-        ]]>
-      </content:encoded>
-      <pubDate>Wed, 08 May 2024 10:03:04 GMT</pubDate>
     </item>
   </channel>
 </rss>
