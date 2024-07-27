@@ -9,6 +9,32 @@
     <language>ja_JP</language>
     <generator>Lume v2.0.1</generator>
     <item>
+      <title>GeForce RTX4060を買った</title>
+      <link>https://www.kbaba1001.com/posts/202407271101_ge-force-rtx4060/</link>
+      <guid isPermaLink="false">https://www.kbaba1001.com/posts/202407271101_ge-force-rtx4060/</guid>
+      <content:encoded>
+        <![CDATA[<p>Amazon の Prime セールで <a href="https://amzn.asia/d/03wWXrgp">MSI GeForce RTX 4060 VENTUS 2X BLACK 8G OC グラフィックスボード VD8560</a> が 44,455円だったので買ってみた。</p>
+        <p>今まで使っていたのが GeForce GTX 1080 という結構古い GPU だったのでローカルLLMなどに限界を感じていた。</p>
+        <p>自宅サーバーとして使っているデスクトップPCのグラボを換装して、無事にあっさり動いてくれた。
+        特にドライバを入れ直したりしてないけど大丈夫そう。</p>
+        <p>今まで使っていた GeForce GTX 1080 を1台余っているデスクトップPCに刺して、ゲーミングPCにすることにした。
+        こっちのマシンは知り合いから貰ったものでちょっと古いが、ちょいちょい部品を入れ替えて使っている。
+        このPCに刺さっているグラボが古すぎてHDMIとアナログ端子しかない上に、HDMIから音が出ないというクソボードだったので、
+        前から交換したいと思っていた。
+        いざ GeForce GTX 1080 を使おうとしたらグラボ用の電源ピンが6ピンのしかなくて、8ピンが必要だったので電源も交換する必要があった。</p>
+        <p>長泉の下土狩駅近くに小さな PC パーツ屋を見つけて、ふらりと立ち寄った。
+        玄人志向の 750W の電源が 14,000 円のところを 12,000 円にまけてくれたので即買いした。
+        なんか味わい深い店だった。
+        昔はああいうおじさんが一人でやってるようなパーツ屋や電子部品屋がそこそこあったのだが。。。</p>
+        <p>電源とグラボを変えたらゲーミング PC も無事に動くようになったので、今はほぼ Guilty Gear Strive 専用機になっている。
+        ストーリーを見るだけでも楽しい。</p>
+        <p>昔買っただけでプレイしてない同人ゲームとかちょいちょいあるのよね。。。
+        少しずつ時間を作ってゲームしよう。</p>
+        ]]>
+      </content:encoded>
+      <pubDate>Sat, 27 Jul 2024 11:01:00 GMT</pubDate>
+    </item>
+    <item>
       <title>ページネーションとタグ一覧対応</title>
       <link>https://www.kbaba1001.com/posts/202407220958_pagination-and-tag-index/</link>
       <guid isPermaLink="false">https://www.kbaba1001.com/posts/202407220958_pagination-and-tag-index/</guid>
@@ -410,39 +436,6 @@
         ]]>
       </content:encoded>
       <pubDate>Mon, 13 May 2024 18:43:18 GMT</pubDate>
-    </item>
-    <item>
-      <title>Denoでシステムを作り始めた</title>
-      <link>https://www.kbaba1001.com/posts/202405102219_start-to-make-a-system-by-deno/</link>
-      <guid isPermaLink="false">https://www.kbaba1001.com/posts/202405102219_start-to-make-a-system-by-deno/</guid>
-      <content:encoded>
-        <![CDATA[<p>とりあえずサインイン機能だけ出来た。</p>
-        <p><img src="https://www.kbaba1001.com/img/posts/202405102219/sign-in-user.gif" alt="進捗"></p>
-        <p>今回は</p>
-        <ul>
-        <li>Backend: Deno + Hono</li>
-        <li>Frontend: Deno + Vite + React</li>
-        <li>言語: TypeScript</li>
-        </ul>
-        <p>という構成。</p>
-        <p>ドキュメントが少なくてハマることが多い。
-        試しに使ってみたライブラリが Deno でうまく動かなかったりとかも若干ある。</p>
-        <p>まだまだ Deno は縛りプレイっぽさがあるけど、 Web 標準はありがたいし速いしなんとか使いこなしたい。</p>
-        <p>ソースコードは後日公開する予定。
-        動画でちらっと見えてるけど、まだ初期の部分なのでテンプレートとして作っていて、
-        他でも使い回せるようにしている。
-        サインイン機能 + 簡単な TODO リストの CRUD くらいまで作っておくつもり。
-        そのくらいあればサンプルとしては十分だろう。</p>
-        <p>サーバー側では PostgreSQL + Kysely 構成もあり、結構実践的な作りになっている。</p>
-        <p>Hono の RTC で色々楽をしたかったけど、なんかかえって面倒くさい気がしたのでいったんただの REST にしている。
-        そうなると Swagger とか若干欲しくなるなぁ。。。
-        <a href="https://github.com/scalar/scalar/tree/main/packages/hono-api-reference">hono-api-reference</a> この辺が便利かもなぁ
-        あるいは <a href="https://github.com/honojs/middleware/tree/main/packages/trpc-server">tRPC</a>。</p>
-        <p>まぁこういうのはある程度出来てからでもいい気もする。
-        公開用の API と内部用の API は別だろうし。</p>
-        ]]>
-      </content:encoded>
-      <pubDate>Fri, 10 May 2024 22:19:26 GMT</pubDate>
     </item>
   </channel>
 </rss>
