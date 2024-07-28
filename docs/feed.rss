@@ -9,6 +9,21 @@
     <language>ja_JP</language>
     <generator>Lume v2.0.1</generator>
     <item>
+      <title>いい感じの木の板を安く手に入れた</title>
+      <link>https://www.kbaba1001.com/posts/202407290803_bought-wood-plates/</link>
+      <guid isPermaLink="false">https://www.kbaba1001.com/posts/202407290803_bought-wood-plates/</guid>
+      <content:encoded>
+        <![CDATA[<p><img src="https://www.kbaba1001.com/img/posts/202407290803/wood.jpg" alt="wood"></p>
+        <p>古着やレトログッツの屋台が楽寿園で出ていて、たまたま上記の木の板を見つけた。
+        価格は 300 円～ 1,000 円で激安。</p>
+        <p>こういうちゃんとした木の板って材木屋やホームセンターだと地味に高いのよね。</p>
+        <p>何を作るか想像すると楽しみ。</p>
+        <p>大きいのは机にして、小さいのは表札や皿みたいにしたい。</p>
+        ]]>
+      </content:encoded>
+      <pubDate>Mon, 29 Jul 2024 08:03:58 GMT</pubDate>
+    </item>
+    <item>
       <title>GeForce RTX4060を買った</title>
       <link>https://www.kbaba1001.com/posts/202407271101_ge-force-rtx4060/</link>
       <guid isPermaLink="false">https://www.kbaba1001.com/posts/202407271101_ge-force-rtx4060/</guid>
@@ -415,27 +430,6 @@
         ]]>
       </content:encoded>
       <pubDate>Fri, 17 May 2024 13:28:54 GMT</pubDate>
-    </item>
-    <item>
-      <title>FAM開発。多言語対応とか</title>
-      <link>https://www.kbaba1001.com/posts/202405131843_developing-fam-about-i18n-etc/</link>
-      <guid isPermaLink="false">https://www.kbaba1001.com/posts/202405131843_developing-fam-about-i18n-etc/</guid>
-      <content:encoded>
-        <![CDATA[<p><a href="https://www.kbaba1001.com/posts/202405102219_start-to-make-a-system-by-deno">前回</a> に引き続き Deno でシステムを作っている。
-        まだ準備段階だがこのシステムを FAM と呼んでいる。</p>
-        <p><img src="https://www.kbaba1001.com/img/posts/202405131843/todo.gif" alt="TODO"></p>
-        <p>今回実装した機能:</p>
-        <ul>
-        <li>多言語対応 (i18n)</li>
-        <li>タイムゾーンの変更</li>
-        <li>日付の表示フォーマットの変更</li>
-        <li>ダークモード対応</li>
-        <li>簡単なTODOリスト (CRUD のサンプルとして)</li>
-        </ul>
-        <p>ソースコードの公開はまだしてないけど後日行う予定。</p>
-        ]]>
-      </content:encoded>
-      <pubDate>Mon, 13 May 2024 18:43:18 GMT</pubDate>
     </item>
   </channel>
 </rss>
