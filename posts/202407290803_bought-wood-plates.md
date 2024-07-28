@@ -3,7 +3,7 @@ title: いい感じの木の板を安く手に入れた
 date: 2024-07-29 08:03:58
 ogimage: /img/posts/202407290803_bought-wood-plates.png
 tags:
-  - Tech
+  - 日常
 ---
 
 ![wood](/img/posts/202407290803/wood.jpg)
