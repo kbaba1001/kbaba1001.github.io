@@ -9,6 +9,48 @@
     <language>ja_JP</language>
     <generator>Lume v2.0.1</generator>
     <item>
+      <title>Clojureで漫画制作用のデスクトップアプリを作りたい</title>
+      <link>https://www.kbaba1001.com/posts/202408011039_I-wanna-make-desktop-apps-by-clojure/</link>
+      <guid isPermaLink="false">https://www.kbaba1001.com/posts/202408011039_I-wanna-make-desktop-apps-by-clojure/</guid>
+      <content:encoded>
+        <![CDATA[<p>デスクトップアプリを作りたいと前々から思っているのだが、 Web ばかりやっていて実際に作ったことはない。</p>
+        <p>最近、紙とペンで漫画を書いていて、写植やトーンなどの仕上げだけ PC でやっているのだが
+        GIMP と Inkscape だけでは若干不便なので Clojure でツールを開発したくなってきた。</p>
+        <p>漫画制作ツールと言えば ClipStudio をアマチュアからプロまで使っている。
+        ClipStudioは良いツールなのだが基本的にアナログで書いている自分にはオーバースペック気味。</p>
+        <h3>案1: GIMP Plugin</h3>
+        <p>GIMP の Plugin 開発ツールである Script Fu は Lisp である。
+        短期間の開発であればとりあえず必要な機能を Script Fu で作るのが良さそう。</p>
+        <p>集中線とか縦書きツールとか作ってる人がいたけど、今ググったらサイトが消えていた。。。悲しい</p>
+        <h3>案2: Humble UI</h3>
+        <p>Clojure の GUI 開発で調べたら次のライブラリが面白そうだった。</p>
+        <p><a href="https://github.com/HumbleUI/HumbleUI">HumbleUI</a></p>
+        <p>JVM なので自然とクロスプラットフォームになるはず。</p>
+        <h3>案3: Tauri + Qwik + Squint (or Cherry)</h3>
+        <p><a href="https://tauri.app/">Tauri</a> という Electron Alternative として良さそうなツールがある。
+        本体は Rust で書かれていて、GUI部分は HTML/CSS/JS で構築できる。</p>
+        <p>オフィシャルに Next.js や Qwik をサポートしているのだが、
+        Next.js を Vercel 以外で動かすことを一切信用していないので、
+        やるとしたら Qwik を採用する。
+        (Vite で preact とか突っ込んでもいいけど)</p>
+        <p>最近の ClojureScript はやや進歩していて、 TypeScript みたいに npm 上だけで動く環境を作るプロジェクトがある。
+        それが次：</p>
+        <ul>
+        <li><a href="https://github.com/squint-cljs/squint">squint</a></li>
+        <li><a href="https://github.com/squint-cljs/cherry">cherry</a></li>
+        </ul>
+        <p>squint と cherry は細かい違いはあれどほぼ同じ。</p>
+        <p>これが Tauri + Qwik 構成で使えれば悪くなさそう。</p>
+        <p>（ただ、誰もやってない未踏の環境にはなるので、変な動きしても自力でなんとかする必要がある…）</p>
+        <h3>おわりに</h3>
+        <p>まぁそもそも個人開発やる時間があんまないんだけど。</p>
+        <p><a href="https://www.kbaba1001.com/tags/FAM/">FAM</a> の開発も進められてないし。</p>
+        <p>やらないといけないことと、やりたいことが多すぎる。</p>
+        ]]>
+      </content:encoded>
+      <pubDate>Thu, 01 Aug 2024 10:39:13 GMT</pubDate>
+    </item>
+    <item>
       <title>いい感じの木の板を安く手に入れた</title>
       <link>https://www.kbaba1001.com/posts/202407290803_bought-wood-plates/</link>
       <guid isPermaLink="false">https://www.kbaba1001.com/posts/202407290803_bought-wood-plates/</guid>
@@ -284,152 +326,6 @@
         ]]>
       </content:encoded>
       <pubDate>Thu, 30 May 2024 11:14:58 GMT</pubDate>
-    </item>
-    <item>
-      <title>DenoでHonoやReactを使ったテンプレートを作ってみた</title>
-      <link>https://www.kbaba1001.com/posts/202405171328_deno-hono-react-template/</link>
-      <guid isPermaLink="false">https://www.kbaba1001.com/posts/202405171328_deno-hono-react-template/</guid>
-      <content:encoded>
-        <![CDATA[<p><img src="https://www.kbaba1001.com/img/posts/202405171328/template.gif" alt="gif"></p>
-        <p>Deno で本格的な Web システムを作るためテンプレートを作ってみた。</p>
-        <ul>
-        <li><a href="https://github.com/neumann-tokyo/deno-vite-react-template">deno-vite-react-template</a></li>
-        <li><a href="https://github.com/neumann-tokyo/deno-hono-api-template">deno-hono-api-template</a></li>
-        </ul>
-        <p>backend と frontend で完全に分かれていて RESTful API で通信するようにした。</p>
-        <h2>仕様</h2>
-        <ul>
-        <li><a href="https://github.com/neumann-tokyo/deno-vite-react-template">deno-vite-react-template</a>
-        <ul>
-        <li>Deno, Vite, React による構成 (<a href="https://github.com/anatoo/vite-deno-plugin">vite-deno-plugin</a> を使った)</li>
-        <li>Routing Library として <a href="https://github.com/molefrog/wouter">wouter</a></li>
-        <li>UI Library として <a href="https://chakra-ui.com/">Chakra UI</a></li>
-        <li>全体的に <a href="https://jotai.org/">jotai</a>, <a href="https://github.com/jotaijs/jotai-tanstack-query">jotai-tanstack-query</a> を活用してAPI通信のキャッシュなど行っている</li>
-        <li><a href="https://www.npmjs.com/package/react-if">react-if</a> は便利なので皆使ってほしい</li>
-        </ul>
-        </li>
-        <li><a href="https://github.com/neumann-tokyo/deno-hono-api-template">deno-hono-api-template</a>
-        <ul>
-        <li><a href="https://hono.dev/">Hono</a> による RESTful API サーバー
-        <ul>
-        <li>RPC も使いたかったけど今回は汎用性を考えて不採用</li>
-        </ul>
-        </li>
-        <li>PostgreSQL</li>
-        <li><a href="https://github.com/golang-migrate/migrate">migrate</a> によるマイグレーション管理</li>
-        <li><a href="https://kysely.dev/">kysely</a> による SQL ビルディング
-        <ul>
-        <li>Deno でも <a href="https://github.com/RobinBlomberg/kysely-codegen">kysely-codegen</a> がなんとか動いた</li>
-        </ul>
-        </li>
-        <li><a href="https://deno.land/x/djwt@v3.0.2">djwt</a> による JWT 認証</li>
-        <li><a href="https://github.com/aaronhuggins/deno_mocha">deno_mocha</a> によるテスト
-        <ul>
-        <li>deno test では afterAll などにバグがあったため</li>
-        </ul>
-        </li>
-        <li><a href="https://zod.dev/">zod</a> によるバリデーション</li>
-        </ul>
-        </li>
-        <li>共通
-        <ul>
-        <li>VS Code Devcontainer で開発できるようにしてある</li>
-        <li>Linter, Formatter に <a href="https://biomejs.dev/">Biome</a> を使用。 Biome は速くてよい</li>
-        <li><a href="https://github.com/spencermountain/spacetime">spacetime</a> 便利</li>
-        </ul>
-        </li>
-        </ul>
-        <h2>機能</h2>
-        <ul>
-        <li>email/password によるサインイン</li>
-        <li>多言語対応 ( i18n )</li>
-        <li>タイムゾーンや日付の表示形式の変更</li>
-        <li>ダークモード</li>
-        <li>認可 (Roles, Permissions)</li>
-        <li>Todo リスト (CRUD のサンプルとして)</li>
-        <li>招待 URL によるサインアップ</li>
-        <li>各種テスト (frontend 側が途中)</li>
-        </ul>
-        <h2>設計的な部分</h2>
-        <h3>email/password によるサインイン</h3>
-        <p>JWT による email / password サインイン。
-        特筆することはないけど、 <a href="https://hono.dev/middleware/builtin/jwt">Hono の middleware の jwt</a> がなんとなく使いづらかったので
-        <a href="https://deno.land/x/djwt@v3.0.2">djwt</a> というライブラリで自作した。
-        djwt はシークレットキー以外にも公開鍵秘密鍵での JWT の sign/verify が出来たのでそれを採用してみた。</p>
-        <p><a href="https://github.com/neumann-tokyo/deno-hono-api-template/blob/main/tools/generate-jwt-key.ts">generate-jwt-key.ts</a> を用意したのでこれで鍵が作れる。</p>
-        <h3>多言語対応 ( i18n )</h3>
-        <p>色々ライブラリを調べたけど、結果的には jotai を活用して単語帳を作ることにした。</p>
-        <ul>
-        <li><a href="https://github.com/neumann-tokyo/deno-vite-react-template/blob/main/src/atoms/i18n/japanese-messages.ts">英語日本語の対応表</a></li>
-        </ul>
-        <p>この単語帳を次のコンポーネントで扱えるようにする</p>
-        <ul>
-        <li><a href="https://github.com/neumann-tokyo/deno-vite-react-template/blob/main/src/components/trans.tsx">Trans</a></li>
-        </ul>
-        <pre><code class="language-js">&lt;Trans&gt;Hello&lt;/Trans&gt;
-        </code></pre>
-        <p>みたいにすると単語帳に <code>Hello</code> に対する単語があれば日本語に変換してくれるし、なければ英語のまま表示する。</p>
-        <p>一応、 <a href="https://www.npmjs.com/package/fast-printf">printf</a> のフォーマットで変数も埋め込めるようにした。</p>
-        <h3>タイムゾーンや日付の表示形式の変更</h3>
-        <p>これもライブラリを使わず自作。</p>
-        <p><a href="https://github.com/spencermountain/spacetime">spacetime</a> にタイムゾーン変換やフォーマット機能があるので
-        その入力方式をフロント側で設定してバック側でDBに保存するというシンプルな方式。</p>
-        <p>これも便利コンポーネントを用意しておいた。</p>
-        <ul>
-        <li><a href="https://github.com/neumann-tokyo/deno-vite-react-template/blob/main/src/components/datetime-format.tsx">datetime-format.tsx</a></li>
-        <li><a href="https://github.com/neumann-tokyo/deno-vite-react-template/blob/main/src/components/datetime-format-select.tsx">datetime-format-select.tsx</a></li>
-        <li><a href="https://github.com/neumann-tokyo/deno-vite-react-template/blob/main/src/components/timezone-select.tsx">timezone-select.tsx</a></li>
-        </ul>
-        <h3>ダークモード</h3>
-        <p><a href="https://chakra-ui.com/">Chakra UI</a> のダークモード機能に乗っかっているが、これは Cookie とかに記録する方式なので DB 保存でも良い気がする。</p>
-        <h3>認可 (Roles, Permissions)</h3>
-        <p>認可も最近はライブラリを使わず DB のテーブル構成でなんとかしている。</p>
-        <p><a href="https://github.com/neumann-tokyo/deno-hono-api-template/blob/main/db/migrations/2024022701_initialize.up.sql">マイグレーションファイル</a> をみると DB
-        の作りがわかると思うのだが、</p>
-        <p>users -&gt; users_roles -&gt; roles -&gt; roles_permissions -&gt; permissions</p>
-        <p>というリレーションがある。
-        機能名を permissions テーブルに設定しておいて、それを roles に割り当てる。
-        users には roles を割り当て、 permissions は直接見ないようにする。
-        これにより、「ユーザーにはロールを割り当てる」「ロールには権限を割り当てる」という構造ができ、
-        認可を管理しやすくなる。</p>
-        <p>これは UI を見たほうがわかりやすいかもしれない。</p>
-        <p><img src="https://www.kbaba1001.com/img/posts/202405171328/users_roles.png" alt="users_roles">
-        <img src="https://www.kbaba1001.com/img/posts/202405171328/roles_permissions.png" alt="roles_permissions"></p>
-        <p>サーバー側では次のように <a href="https://github.com/neumann-tokyo/deno-hono-api-template/blob/main/src/middleware/permission-checker.ts">permissionChecker</a> という middleware で permission 名を指定しておいて、 サインイン中のユーザーがその permission を持っていなければ機能が使えないようにしている。</p>
-        <pre><code class="language-js">app.post(&quot;/&quot;, permissionChecker(&quot;todos&quot;), async (c) =&gt; {
-        //...
-        })
-        </code></pre>
-        <p>フロント側も <a href="https://github.com/neumann-tokyo/deno-vite-react-template/blob/main/src/components/can.tsx">Can</a> というコンポーネントで同じようなことができるようにした。</p>
-        <h3>Todo リスト (CRUD のサンプルとして)</h3>
-        <p>CRUD のサンプルのつもりで簡単な TODO リスト機能を作っておいたけど、結構認可とかユーザー設定のほうも
-        CRUD が多くなったのでそっち見たほうがいいかもしれない。</p>
-        <h3>招待 URL によるサインアップ</h3>
-        <p><img src="https://www.kbaba1001.com/img/posts/202405171328/invitations.png" alt="invitations"></p>
-        <p>discord みたいにトークン付きの URL からサインアップできるようにしてある。</p>
-        <p>「コピー」ボタンをクリックすると招待URLをコピーできて、これを招待したい人に渡す。</p>
-        <p>トークンが有効であれば、サインアップ画面が出てくる。</p>
-        <p><img src="https://www.kbaba1001.com/img/posts/202405171328/sign_up.png" alt="sign up"></p>
-        <h3>各種テスト (frontend 側が途中)</h3>
-        <p>サーバー側は models と routes のテストを書いてある。</p>
-        <ul>
-        <li><a href="https://github.com/neumann-tokyo/deno-hono-api-template/tree/main/test">test</a></li>
-        </ul>
-        <p>Deno の標準の Test 機能で十分かと思ったが AfterAll 系の callback 処理で不具合があって、
-        async がからむとうまく動かなかったので、 <a href="https://github.com/aaronhuggins/deno_mocha">deno_mocha</a> を使うことにした。
-        今のところ大丈夫そう。</p>
-        <p>frontend 側のテストも <a href="https://vitest.dev/">vitest</a> + <a href="https://github.com/capricorn86/happy-dom">happy-dom</a> で作るつもりだが、まだ出来ていない。</p>
-        <h2>まとめ</h2>
-        <p>今後の開発でよく使うであろう機能をとりあえずテンプレートに出来たのは役に立ちそうだ。
-        色々とオレオレな仕様なので他の人は使いづらいかもしれないが、適当に改造して使ってほしい。</p>
-        <p>具体的な動かし方とかはもう少し README あたりに記載が必要だと思うので追々対応する予定。</p>
-        <p>Deno, Hono, Vite, あたりの組み合わせた動かし方は本当に資料が少なくて、今回の
-        テンプレート公開が誰かの役に立ったら嬉しい。</p>
-        <p>私は個人的に作っている FAM というシステム (Discord クローンみたいなもの) で
-        このテンプレートを活用していくつもりだ。</p>
-        ]]>
-      </content:encoded>
-      <pubDate>Fri, 17 May 2024 13:28:54 GMT</pubDate>
     </item>
   </channel>
 </rss>

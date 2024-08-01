@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="/styles.css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <meta name="author" content="kbaba1001">
+    <meta property="og:title" content="Clojureで漫画制作用のデスクトップアプリを作りたい - ハッカーと漫画家">
+    <meta property="og:url" content="https://www.kbaba1001.com/posts/202408011039_I-wanna-make-desktop-apps-by-clojure/">
+    <meta property="og:image" content="https://www.kbaba1001.com/img/posts/202408011039_I-wanna-make-desktop-apps-by-clojure.png">
+    <meta property="twitter:image:src" content="https://www.kbaba1001.com/img/posts/202408011039_I-wanna-make-desktop-apps-by-clojure.png">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <meta property="og:type" content="website">
+    <meta name="description" content="Clojure と漫画が好きな kbaba1001 のブログです。">
+    <meta property="og:description" content="Clojure と漫画が好きな kbaba1001 のブログです。">
+    <meta property="og:locale" content="ja_JP">
+
+    <!-- Google tag (gtag.js) -->
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-MJ8FZT12VZ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-MJ8FZT12VZ");
+    </script>
+
+    <title>Clojureで漫画制作用のデスクトップアプリを作りたい - ハッカーと漫画家</title>
+  </head>
+  <body class="layout">
+    <header class="layout-header">
+  <div class="header">
+    <div class="grid-header-title"><div class="header-title">
+  <img src="/img/horse.jpg" alt="ハッカーと漫画家" loading="lazy" class="header-title-logo">
+  <a href="/" class="header-title-link">ハッカーと漫画家</a>
+</div>
+</div>
+    <div class="grid-header-nav"><nav class="header-nav-container">
+  <ul class="header-nav-list">
+    <li>
+      <a href="/about" class="header-nav-list-link"> About </a>
+    </li>
+    <li>
+      <a href="https://github.com/kbaba1001/kbaba1001.github.io/discussions" class="header-nav-list-link" target="_blank">
+        掲示板
+      </a>
+    </li>
+    <li>
+      <a href="/feed.rss" class="header-nav-list-link"> RSS </a>
+    </li>
+  </ul>
+</nav>
+</div>
+  </div>
+</header>
+<div class="layout-main">
+  <main class="layout-main-center"><div class="post">
+  <div>
+    <div class="post-date">2024-08-01</div>
+    
+    <div class="post-tag" data-pagefind-filter="tag">Tech</div>
+    
+  </div>
+  <h1 class="post-title">Clojureで漫画制作用のデスクトップアプリを作りたい</h1>
+  <div class="post-main"><p>デスクトップアプリを作りたいと前々から思っているのだが、 Web ばかりやっていて実際に作ったことはない。</p>
+<p>最近、紙とペンで漫画を書いていて、写植やトーンなどの仕上げだけ PC でやっているのだが
+GIMP と Inkscape だけでは若干不便なので Clojure でツールを開発したくなってきた。</p>
+<p>漫画制作ツールと言えば ClipStudio をアマチュアからプロまで使っている。
+ClipStudioは良いツールなのだが基本的にアナログで書いている自分にはオーバースペック気味。</p>
+<h3>案1: GIMP Plugin</h3>
+<p>GIMP の Plugin 開発ツールである Script Fu は Lisp である。
+短期間の開発であればとりあえず必要な機能を Script Fu で作るのが良さそう。</p>
+<p>集中線とか縦書きツールとか作ってる人がいたけど、今ググったらサイトが消えていた。。。悲しい</p>
+<h3>案2: Humble UI</h3>
+<p>Clojure の GUI 開発で調べたら次のライブラリが面白そうだった。</p>
+<p><a href="https://github.com/HumbleUI/HumbleUI">HumbleUI</a></p>
+<p>JVM なので自然とクロスプラットフォームになるはず。</p>
+<h3>案3: Tauri + Qwik + Squint (or Cherry)</h3>
+<p><a href="https://tauri.app/">Tauri</a> という Electron Alternative として良さそうなツールがある。
+本体は Rust で書かれていて、GUI部分は HTML/CSS/JS で構築できる。</p>
+<p>オフィシャルに Next.js や Qwik をサポートしているのだが、
+Next.js を Vercel 以外で動かすことを一切信用していないので、
+やるとしたら Qwik を採用する。
+(Vite で preact とか突っ込んでもいいけど)</p>
+<p>最近の ClojureScript はやや進歩していて、 TypeScript みたいに npm 上だけで動く環境を作るプロジェクトがある。
+それが次：</p>
+<ul>
+<li><a href="https://github.com/squint-cljs/squint">squint</a></li>
+<li><a href="https://github.com/squint-cljs/cherry">cherry</a></li>
+</ul>
+<p>squint と cherry は細かい違いはあれどほぼ同じ。</p>
+<p>これが Tauri + Qwik 構成で使えれば悪くなさそう。</p>
+<p>（ただ、誰もやってない未踏の環境にはなるので、変な動きしても自力でなんとかする必要がある…）</p>
+<h3>おわりに</h3>
+<p>まぁそもそも個人開発やる時間があんまないんだけど。</p>
+<p><a href="/tags/FAM/">FAM</a> の開発も進められてないし。</p>
+<p>やらないといけないことと、やりたいことが多すぎる。</p>
+</div>
+  <hr>
+<div class="comment-button-container">
+  <a href="https://github.com/kbaba1001/kbaba1001.github.io/discussions" target="_blank" class="comment-button">
+    掲示板にコメントする
+  </a>
+  <div class="comment-note">
+    ※どの記事のコメントかわかるように本文に記事タイトルなどを入れてください。
+  </div>
+</div>
+
+  <a href="/" class="post-index-link">一覧に戻る</a>
+</div>
+</main>
+</div>
+
+  
+
+</body></html>
