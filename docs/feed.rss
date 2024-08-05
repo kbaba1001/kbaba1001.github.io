@@ -9,6 +9,30 @@
     <language>ja_JP</language>
     <generator>Lume v2.0.1</generator>
     <item>
+      <title>The Clojure Workshop を買ってみた</title>
+      <link>https://www.kbaba1001.com/posts/202408021559_the-clojure-workshop/</link>
+      <guid isPermaLink="false">https://www.kbaba1001.com/posts/202408021559_the-clojure-workshop/</guid>
+      <content:encoded>
+        <![CDATA[<p><img src="https://www.kbaba1001.com/img/posts/202408021559/the-clojure-workshop.jpg" alt="the-clojure-workshop.jpg"></p>
+        <p><a href="https://amzn.asia/d/d8seC4S">The Clojure Workshop</a> のペーパーブックを買ってみた。
+        以前、電子書籍で読んだのでないようは知っているのだが、改めて紙でも買ってみた。
+        Clojureを学ぶうえで必要なことがかなり網羅的に載っていて、初心者にもおすすめできる良い本だと思う。
+        残念ながら日本語版はない。誰か翻訳してほしい。</p>
+        <h3>圧倒的なページ数</h3>
+        <p>この本はとにかく長い。写真でみて分かる通りの分厚さ。
+        なんと 800 ページもある。</p>
+        <p><img src="https://www.kbaba1001.com/img/posts/202408021559/width.jpg" alt="width"></p>
+        <p>手元にあった辞書 (LONGMAN) と比べても The Clojure Workshop の方が分厚い……。
+        その分全く Clojure を触ったことがない人が Web システムを作るところまで導いてくれる内容となっている。</p>
+        <h3>個人的におすすめ書籍</h3>
+        <p>今から Clojure を始めるなら次の2冊を用意すれば良い。</p>
+        <p><img src="https://www.kbaba1001.com/img/posts/202408021559/clojure-books.jpg" alt="clojure-books"></p>
+        <p>『The Clojure Workshop』を最後まで進めたあと、『関数型デザイン』を読んで設計について学ぶ。完璧。</p>
+        ]]>
+      </content:encoded>
+      <pubDate>Fri, 02 Aug 2024 15:59:17 GMT</pubDate>
+    </item>
+    <item>
       <title>Clojureで漫画制作用のデスクトップアプリを作りたい</title>
       <link>https://www.kbaba1001.com/posts/202408011039_I-wanna-make-desktop-apps-by-clojure/</link>
       <guid isPermaLink="false">https://www.kbaba1001.com/posts/202408011039_I-wanna-make-desktop-apps-by-clojure/</guid>
@@ -291,41 +315,6 @@
         ]]>
       </content:encoded>
       <pubDate>Thu, 30 May 2024 17:00:51 GMT</pubDate>
-    </item>
-    <item>
-      <title>同人誌の通信販売を開始しました</title>
-      <link>https://www.kbaba1001.com/posts/202405301114_start-a-dojinshi-on-ec/</link>
-      <guid isPermaLink="false">https://www.kbaba1001.com/posts/202405301114_start-a-dojinshi-on-ec/</guid>
-      <content:encoded>
-        <![CDATA[<p>今まで書いた同人誌を通信販売するためのページを Base で作成しました。
-        上記からご注文いただけたら私から発送しますので、ぜひお買い求めください。</p>
-        <p><a href="https://neumann.base.shop/">ノイマンパブリッシング通販サイト</a></p>
-        <p>またサークルの Instagram も始めましたのでよろしくお願いします。</p>
-        <ul>
-        <li><a href="https://www.instagram.com/neumann_tokyo_publishing/">Instagram - neumann_tokyo_publishing</a></li>
-        </ul>
-        <h2>Base になった経緯</h2>
-        <p>《kbaba1001|/img/horse.jpg|一般向けの同人誌を売るためのプラットフォームがない！！》</p>
-        <p>これにつきます。</p>
-        <p>一応 <a href="https://booth.pm/ja">BOOTH</a> という pixiv 社がやっているサービスがあるんですが、</p>
-        <ul>
-        <li>ユーザーがあんま多くない気がする</li>
-        <li>購入するのに pixiv のアカウントが必要なのがだるいと言う意見がある</li>
-        </ul>
-        <p>みたいなところが不満でやめました。
-        一時期使ったこともあるんですが、手数料の安さとか在庫預かってくれるとかは嬉しいんですが、
-        pixiv 自体の人気が以前ほど高くないことも考えるとあんま採用したくないなぁというのが本音。</p>
-        <p>とくに、自分のやっている分野はエッセイ漫画であって、萌え萌えなオタクコンテンツってわけじゃないし。。。</p>
-        <p>《妻:Assam|/img/ashley.png|FANZA とか DLSite はユーザー多いけどエロだけって感じだし。。。》</p>
-        <p>《kbaba1001|/img/horse.jpg|いっそのこと通販サイトを普通に作るほうが良くね？》</p>
-        <p>というわけで Base を活用することにしました。</p>
-        <p>自分で PayPal とか Stripe とか使って EC サイトを作ることも考えましたが、
-        特商法の表記とか利用規約とか整えるの面倒くさいのでそこは Base のような
-        商品を売ることができるプラットフォームを使うことにしました。
-        これならあまり手数料も取られないし。</p>
-        ]]>
-      </content:encoded>
-      <pubDate>Thu, 30 May 2024 11:14:58 GMT</pubDate>
     </item>
   </channel>
 </rss>
