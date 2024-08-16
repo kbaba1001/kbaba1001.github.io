@@ -9,6 +9,72 @@
     <language>ja_JP</language>
     <generator>Lume v2.0.1</generator>
     <item>
+      <title>自宅同人誌印刷を支える環境</title>
+      <link>https://www.kbaba1001.com/posts/202408161040_selfbuild-books-environment/</link>
+      <guid isPermaLink="false">https://www.kbaba1001.com/posts/202408161040_selfbuild-books-environment/</guid>
+      <content:encoded>
+        <![CDATA[<p><img src="https://www.kbaba1001.com/img/posts/202408161040/printer.jpg" alt="printer"></p>
+        <p>自宅（ノイマントーキョー本社）で同人誌を作成している。これには２台のプリンターを使っている。</p>
+        <ul>
+        <li>A4 モノクロレーザープリンター</li>
+        <li>A3 カラーインクジェットプリンター</li>
+        </ul>
+        <p>この辺の装備は４年くらい前に買ったものだが、最近のレーザープリンターは本当に値段が下がっていて、
+        今調べたら A3 カラーレーザーでも 6 万くらいであった。いい時代だ。</p>
+        <p><a href="https://amzn.asia/d/4BGhG7q">キヤノン　A3 カラーレーザープリンター　LBP841CS  56,249 円</a></p>
+        <p>レーザープリンターは圧倒的にたくさん印刷できるので、インク単価が安くてたまに交換するだけで良い。
+        モノクロでも割と十分で仕事の書類や同人誌印刷でも活躍している。</p>
+        <p>自宅同人誌といえども表紙に使う紙は少し良いものをつかっている。135kg上質紙とかクラフト紙とか。
+        クラフト紙はレーザーと相性が悪くて少しこすれてしまったので、インクジェットで印刷するようにした。</p>
+        <p>この結果できたのがこれらの本（真ん中は印刷所で作ったやつ。）</p>
+        <p><img src="https://www.kbaba1001.com/img/posts/202408161040/books.jpg" alt="books"></p>
+        <p>自宅印刷の場合、印刷所に出すよりはかなり安く作ることができる。
+        もちろん手作業で製本する手間はあるし、印刷所で作るほど整った本にはならないけど、
+        画質とかはデータを気をつければ十分な気がする。</p>
+        <h3>サークルの表札</h3>
+        <p><img src="https://www.kbaba1001.com/img/posts/202408161040/nameplate.jpg" alt="nameplate"></p>
+        <p>こんなものを作ってみた。木のプレートにはんだごてでウッドバーニングしてサークル用の表札（看板）を作った。
+        ウッドバーニングは結構便利な技術で、簡単な割に仕上がりが良い。
+        今使っているのは電子工作用のはんだごてを限界温度の５００度くらいまで上げて使っているのだが、
+        専用のものを買っても良い気がする。</p>
+        ]]>
+      </content:encoded>
+      <pubDate>Fri, 16 Aug 2024 10:40:19 GMT</pubDate>
+    </item>
+    <item>
+      <title>積読を消化したい</title>
+      <link>https://www.kbaba1001.com/posts/202408161007_I-want-to-read-books/</link>
+      <guid isPermaLink="false">https://www.kbaba1001.com/posts/202408161007_I-want-to-read-books/</guid>
+      <content:encoded>
+        <![CDATA[<p><img src="https://www.kbaba1001.com/img/posts/202408161007/books.jpg" alt="books"></p>
+        <p>なかなか忙しくて本を読めていないので、すっかり積読してしまっている。
+        中には半分くらい読んでいるやつもあるが、まったく手を付けていないものもある。</p>
+        <p>なんか Discord とかで読書会しても良いのかもしれない。</p>
+        <p>やはり技術書が多いが、英語とかデザインの本もある。
+        あと写真には写ってないけどヒンディー語と中国語の本とか。
+        外国語の勉強ももっとやりたいけどなかなか時間がなぁ。。。
+        TOEFLもやりたいけども。</p>
+        <p>ゲームやアルゴリズム系の本はほとんど趣味だが、
+        こういうのって読むだけでも楽しい。
+        プログラミングを始めるならやはり簡単なゲームを作る
+        ところからやるのが良いと思うのだが、最近は
+        Unity とかが発達しているせいで逆にあんまライブラリ使わずに
+        実装するのが減ってきているのがなんとなく残念だ。</p>
+        <p>デザインは最近どうもワイヤーフレームなどを作る機会が増えているので、
+        いっそデザインの知識をアップデートしたいという感じ。
+        何度か自分でデザインやったほうがいいんじゃないかと思って勉強するのだが、
+        いまいち実践となると知識を活かしきれていない気がする。
+        というか、デザインの話は基本的に印刷物の話が多くて、
+        Webデザインの話とはちょっと別な部分もあり、
+        なんかちょっとつながっていない感じがする。
+        Webデザインの話と言っても当然CSSとかの技術的な部分は理解しているわけで、
+        なんかこう、UI/UXみたいな話が知りたいのかもしれない。</p>
+        <p>一応色彩検定３級を昔取ったのだが、だいぶ知識を忘れているので教科書を買い直した。</p>
+        ]]>
+      </content:encoded>
+      <pubDate>Fri, 16 Aug 2024 10:07:03 GMT</pubDate>
+    </item>
+    <item>
       <title>The Clojure Workshop を買ってみた</title>
       <link>https://www.kbaba1001.com/posts/202408021559_the-clojure-workshop/</link>
       <guid isPermaLink="false">https://www.kbaba1001.com/posts/202408021559_the-clojure-workshop/</guid>
@@ -240,81 +306,6 @@
         ]]>
       </content:encoded>
       <pubDate>Mon, 17 Jun 2024 16:18:35 GMT</pubDate>
-    </item>
-    <item>
-      <title>FAM設計方針変更</title>
-      <link>https://www.kbaba1001.com/posts/202406141438_change-FAM-system-design/</link>
-      <guid isPermaLink="false">https://www.kbaba1001.com/posts/202406141438_change-FAM-system-design/</guid>
-      <content:encoded>
-        <![CDATA[<p>少しずつ個人開発しているシステム FAM についての大まかな設計は
-        <a href="https://www.kbaba1001.com/posts/2024020601_deno/">Deno で Google Meet みたいなやつを作ってみようと思っている</a>
-        に書いたとおりなのだが、若干方向性を修正することにした。</p>
-        <h2>なるべく PostgreSQL を使う</h2>
-        <h3>全文検索</h3>
-        <p>TypeSense などの全文検索エンジンを使うことを考えていたが、なるべくインフラコストを下げる意味では依存するシステムは少ないほうがいい。
-        基本的にオンプレでの運用を考えているけど、一応クラウドで動かす場合のコストを考えてのこと。</p>
-        <p>そのため PGroonga で全文検索を行う方針に考え直した。
-        <a href="https://supabase.com/">Supabase</a> であればクラウドでも動くので、基本的にクラウドで動かす場合は Supabase 使ってくれという方針にした。</p>
-        <p>どうしても AWS や GCP で動かしたい場合は PGroonga の代わりに bg_bigm などを使う選択肢があるが、これはオプションと言うか
-        余力があれば対応くらいで優先度は下げる。</p>
-        <h3>Stream にデータを読み書きする</h3>
-        <p>PostgreSQL の LISTEN/NOTIFY を利用しようと思っている。</p>
-        <p>参考: <a href="https://zenn.dev/micin/articles/postgresql-listen-notify">PostgreSQL LISTEN/NOTIFY, Goを利用したリアルタイム配信</a></p>
-        <h3>Timescale DB はやめる</h3>
-        <p>PostgreSQL で十分そうな気がするので。
-        Supabase 前提なら PostgreSQL のほうが良かろう。</p>
-        <h2>Strage として MinIO を使う</h2>
-        <p>Strage は <a href="https://min.io/">minio</a> を docker で動かすことにした。
-        これならクラウド化するときに Supabase Strage のような S3 互換のサービスが使えるし、もちろん S3 でも動く。</p>
-        <p>結果的にサーバーサイドの docker compose ではアプリケーションサーバー本体、PostgreSQL、MinIO の３つが動く構成にした。</p>
-        <h2>フロントエンドの変更</h2>
-        <h3>Deno から Node に戻した</h3>
-        <p>Deno + Vite + React 環境はなかなか難しい事がわかり、フロントは Node に戻した。</p>
-        <ul>
-        <li>NODE_ENV や process がないので React が production モードでしか動かず、デバッグがし辛い</li>
-        <li>上記の理由で jsdom, happy-dom などを使ったテストが動かない</li>
-        <li><code>import React from &quot;react&quot;</code> という書き方をしているコードが動かない
-        <ul>
-        <li>これは React 本体で export default が定義されてないので <code>import * as React from &quot;react&quot;</code> が正しい書き方なのだが、TS なのか Node なのかのコンパイラが気を利かせて動いているコードのようだ</li>
-        <li>当然、 Deno ではエラーになる</li>
-        <li>具体的には Tanstack query が動いてくれなかった</li>
-        </ul>
-        </li>
-        <li><a href="https://github.com/jotaijs/jotai-tanstack-query">jotai-tanstack-query</a> つらい
-        <ul>
-        <li>query の引数が atom で渡すしかないので同一ページに複数のコンポーネントがあり、その引数だけ変えたい場合に結構無理やりな方法でしか対処できない</li>
-        <li>残念ながら Tanstack Query 直接使うほうが何かと楽ということがわかった</li>
-        </ul>
-        </li>
-        <li><a href="https://www.kuma-ui.com/">Kuma UI</a> から <a href="https://v2.chakra-ui.com/">ChakraUI</a> へ
-        <ul>
-        <li>Kuma UI は理想的なのだが、もう少し機能が増えないとしんどい気がする</li>
-        </ul>
-        </li>
-        <li>結局 jotai はグローバルステートの管理だけするようにしてあとは React Hook 系を使うようにした</li>
-        </ul>
-        ]]>
-      </content:encoded>
-      <pubDate>Fri, 14 Jun 2024 14:38:37 GMT</pubDate>
-    </item>
-    <item>
-      <title>Lumeで「ふきだし」を作る</title>
-      <link>https://www.kbaba1001.com/posts/202405301700_fukidashi/</link>
-      <guid isPermaLink="false">https://www.kbaba1001.com/posts/202405301700_fukidashi/</guid>
-      <content:encoded>
-        <![CDATA[<p>《kbaba1001|/img/horse.jpg|Markdown中にこんな吹き出しを挿入できるようにしてみた》</p>
-        <p><img src="https://www.kbaba1001.com/img/posts/202405301700/code.png" alt="code"></p>
-        <p>Markdown 中に上記のような構文を書いておくと吹き出しを作れるようにした。</p>
-        <p>どうやっているかと言うと、Lume の <code>_config.js</code> に次のようなコードを書いてある。</p>
-        <p><img src="https://www.kbaba1001.com/img/posts/202405301700/code2.png" alt="code2"></p>
-        <p><a href="https://github.com/kbaba1001/kbaba1001.github.io/blob/main/_config.js">_config.js github</a></p>
-        <p><code>page.content</code> にはレンダリングされる HTML が入っていてこれを上書きするという少々強引な方法で実装している。
-        本当は markdown-it の plugin にするほうが行儀が良い。</p>
-        <p><a href="https://github.com/kbaba1001/kbaba1001.github.io/blob/main/_includes/css/components/fukidashi.css">CSS が気になる方は github を参照して。</a></p>
-        <p>《kbaba1001|/img/horse.jpg|今後も使っていくよ》</p>
-        ]]>
-      </content:encoded>
-      <pubDate>Thu, 30 May 2024 17:00:51 GMT</pubDate>
     </item>
   </channel>
 </rss>
