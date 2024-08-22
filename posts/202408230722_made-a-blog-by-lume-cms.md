@@ -16,6 +16,8 @@ tags:
 
 これらはデータとしては Deno KV や Githu API を使うこともできるし、 File System にそのまま markdown ファイルを生成することもできる。
 
+* [今回作成したブログ](https://magazine.neumann.tokyo/)
+
 ### サーバー環境
 
 今回は LumeCMS を自宅サーバーで動かすことにした。
