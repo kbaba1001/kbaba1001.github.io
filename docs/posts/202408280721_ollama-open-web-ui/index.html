@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="/styles.css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <meta name="author" content="kbaba1001">
+    <meta property="og:title" content="Ollama と Open WebUI でローカルLLMを動かす - ハッカーと漫画家">
+    <meta property="og:url" content="https://www.kbaba1001.com/posts/202408280721_ollama-open-web-ui/">
+    <meta property="og:image" content="https://www.kbaba1001.com/img/posts/202408280721_ollama-open-web-ui.png">
+    <meta property="twitter:image:src" content="https://www.kbaba1001.com/img/posts/202408280721_ollama-open-web-ui.png">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <meta property="og:type" content="website">
+    <meta name="description" content="Clojure と漫画が好きな kbaba1001 のブログです。">
+    <meta property="og:description" content="Clojure と漫画が好きな kbaba1001 のブログです。">
+    <meta property="og:locale" content="ja_JP">
+
+    <!-- Google tag (gtag.js) -->
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-MJ8FZT12VZ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-MJ8FZT12VZ");
+    </script>
+
+    <title>Ollama と Open WebUI でローカルLLMを動かす - ハッカーと漫画家</title>
+  </head>
+  <body class="layout">
+    <header class="layout-header">
+  <div class="header">
+    <div class="grid-header-title"><div class="header-title">
+  <img src="/img/horse.jpg" alt="ハッカーと漫画家" loading="lazy" class="header-title-logo">
+  <a href="/" class="header-title-link">ハッカーと漫画家</a>
+</div>
+</div>
+    <div class="grid-header-nav"><nav class="header-nav-container">
+  <ul class="header-nav-list">
+    <li>
+      <a href="/about" class="header-nav-list-link"> About </a>
+    </li>
+    <li>
+      <a href="https://github.com/kbaba1001/kbaba1001.github.io/discussions" class="header-nav-list-link" target="_blank">
+        掲示板
+      </a>
+    </li>
+    <li>
+      <a href="/feed.rss" class="header-nav-list-link"> RSS </a>
+    </li>
+  </ul>
+</nav>
+</div>
+  </div>
+</header>
+<div class="layout-main">
+  <main class="layout-main-center"><div class="post">
+  <div>
+    <div class="post-date">2024-08-28</div>
+    
+    <div class="post-tag" data-pagefind-filter="tag">Tech</div>
+    
+    <div class="post-tag" data-pagefind-filter="tag">AI</div>
+    
+  </div>
+  <h1 class="post-title">Ollama と Open WebUI でローカルLLMを動かす</h1>
+  <div class="post-main"><p><a href="https://github.com/kbaba1001/ollama_and_open-webui_sample">ollama_and_open-webui_sample</a></p>
+<p>こんなリポジトリを作ってみた。</p>
+<ul>
+<li><a href="https://github.com/ollama/ollama">Ollama</a>
+<ul>
+<li>いろいろな LLM モデルを同じインタフェースで動かせるようにするためのサーバー</li>
+<li>llama-cpp-python と似たようなものという理解</li>
+</ul>
+</li>
+<li><a href="https://github.com/open-webui/open-webui">open-webui</a>
+<ul>
+<li>ollama の web ui</li>
+<li>ChatGPT っぽい画面が立ち上がる</li>
+</ul>
+</li>
+<li><a href="https://huggingface.co/elyza/Llama-3-ELYZA-JP-8B-GGUF">elyza/Llama-3-ELYZA-JP-8B-GGUF</a>
+<ul>
+<li>llama 3 ベースで ELYZA が日本語対応してくれたモデル。</li>
+<li>8B なので家庭用のグラボでも動かせる（目安としては 8B なら 8GB 以上の RAM を積んだグラボ）</li>
+</ul>
+</li>
+</ul>
+<p>今までの実験から ELYZA のモデルは信用しているので Llama3 対応モデルはありがたい。</p>
+<p>動かしてみた様子はこんな感じ。</p>
+<p><img src="/img/posts/202408280721/llama3-elyza-1.png" alt="スクショ1"></p>
+<p><img src="/img/posts/202408280721/llama3-elyza-2.png" alt="スクショ2"></p>
+<p>やはり llama2 系に比べると段違いに賢い。会話が成り立っている。</p>
+<p>画像生成っぽいことをしてほしいという無茶ぶりにもなんとか答えていていじらしい。</p>
+<p>ローカルLLMは面白いのでなんかもっと活用できないか考えたいところ。
+codellama というのもあるので vs code と組み合わせて使っても良さそう。</p>
+</div>
+  <hr>
+<div class="comment-button-container">
+  <a href="https://github.com/kbaba1001/kbaba1001.github.io/discussions" target="_blank" class="comment-button">
+    掲示板にコメントする
+  </a>
+  <div class="comment-note">
+    ※どの記事のコメントかわかるように本文に記事タイトルなどを入れてください。
+  </div>
+</div>
+
+  <a href="/" class="post-index-link">一覧に戻る</a>
+</div>
+</main>
+</div>
+
+  
+
+</body></html>

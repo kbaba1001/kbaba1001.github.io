@@ -9,6 +9,45 @@
     <language>ja_JP</language>
     <generator>Lume v2.0.1</generator>
     <item>
+      <title>Ollama と Open WebUI でローカルLLMを動かす</title>
+      <link>https://www.kbaba1001.com/posts/202408280721_ollama-open-web-ui/</link>
+      <guid isPermaLink="false">https://www.kbaba1001.com/posts/202408280721_ollama-open-web-ui/</guid>
+      <content:encoded>
+        <![CDATA[<p><a href="https://github.com/kbaba1001/ollama_and_open-webui_sample">ollama_and_open-webui_sample</a></p>
+        <p>こんなリポジトリを作ってみた。</p>
+        <ul>
+        <li><a href="https://github.com/ollama/ollama">Ollama</a>
+        <ul>
+        <li>いろいろな LLM モデルを同じインタフェースで動かせるようにするためのサーバー</li>
+        <li>llama-cpp-python と似たようなものという理解</li>
+        </ul>
+        </li>
+        <li><a href="https://github.com/open-webui/open-webui">open-webui</a>
+        <ul>
+        <li>ollama の web ui</li>
+        <li>ChatGPT っぽい画面が立ち上がる</li>
+        </ul>
+        </li>
+        <li><a href="https://huggingface.co/elyza/Llama-3-ELYZA-JP-8B-GGUF">elyza/Llama-3-ELYZA-JP-8B-GGUF</a>
+        <ul>
+        <li>llama 3 ベースで ELYZA が日本語対応してくれたモデル。</li>
+        <li>8B なので家庭用のグラボでも動かせる（目安としては 8B なら 8GB 以上の RAM を積んだグラボ）</li>
+        </ul>
+        </li>
+        </ul>
+        <p>今までの実験から ELYZA のモデルは信用しているので Llama3 対応モデルはありがたい。</p>
+        <p>動かしてみた様子はこんな感じ。</p>
+        <p><img src="https://www.kbaba1001.com/img/posts/202408280721/llama3-elyza-1.png" alt="スクショ1"></p>
+        <p><img src="https://www.kbaba1001.com/img/posts/202408280721/llama3-elyza-2.png" alt="スクショ2"></p>
+        <p>やはり llama2 系に比べると段違いに賢い。会話が成り立っている。</p>
+        <p>画像生成っぽいことをしてほしいという無茶ぶりにもなんとか答えていていじらしい。</p>
+        <p>ローカルLLMは面白いのでなんかもっと活用できないか考えたいところ。
+        codellama というのもあるので vs code と組み合わせて使っても良さそう。</p>
+        ]]>
+      </content:encoded>
+      <pubDate>Wed, 28 Aug 2024 07:21:23 GMT</pubDate>
+    </item>
+    <item>
       <title>LumeCMSでブログを作ってみた</title>
       <link>https://www.kbaba1001.com/posts/202408230722_made-a-blog-by-lume-cms/</link>
       <guid isPermaLink="false">https://www.kbaba1001.com/posts/202408230722_made-a-blog-by-lume-cms/</guid>
@@ -334,24 +373,6 @@
         ]]>
       </content:encoded>
       <pubDate>Tue, 16 Jul 2024 19:37:20 GMT</pubDate>
-    </item>
-    <item>
-      <title>「関数型デザイン」を買った</title>
-      <link>https://www.kbaba1001.com/posts/202406181152_bought-functional-design/</link>
-      <guid isPermaLink="false">https://www.kbaba1001.com/posts/202406181152_bought-functional-design/</guid>
-      <content:encoded>
-        <![CDATA[<p><img src="https://www.kbaba1001.com/img/posts/202406181152/functional-design.jpg" alt="関数型デザイン"></p>
-        <p>ロバート・C・マーチンが Clojure と Java を比較して Clojure におけるデザインパターンや
-        SOLID 原則の実装方法について書いた本らしい。</p>
-        <p>まだ始めの方しか読んでないけど彼の本にしてはコードが多くて嬉しい。
-        Clojure の再起と反復の違いについて書かれていて、
-        再起のときにメモ化を活用することで末尾再帰最適化できないときでも
-        パフォーマンスを出すコードの書き方があり、すでに勉強になっている。</p>
-        <p>Clojure を使う人以外にこの本が刺さるかどうかわからないけど
-        ニッチな分野に対しては良書だと思うのでしっかり読みたい。</p>
-        ]]>
-      </content:encoded>
-      <pubDate>Tue, 18 Jun 2024 11:52:38 GMT</pubDate>
     </item>
   </channel>
 </rss>
