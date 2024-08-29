@@ -9,6 +9,24 @@
     <language>ja_JP</language>
     <generator>Lume v2.0.1</generator>
     <item>
+      <title>タスクリストみたいなやつを楽にDnDするやつ</title>
+      <link>https://www.kbaba1001.com/posts/202408290945_dnd-on-list/</link>
+      <guid isPermaLink="false">https://www.kbaba1001.com/posts/202408290945_dnd-on-list/</guid>
+      <content:encoded>
+        <![CDATA[<p><img src="https://user-images.githubusercontent.com/2182637/53614150-efbed780-3c2c-11e9-9204-a5d2e746faca.gif" alt="@hello-pangea/dnd"></p>
+        <p>こういうやつを React で楽にやりたい。</p>
+        <p>というわけで見つけたのが <a href="https://www.npmjs.com/package/@hello-pangea/dnd">@hello-pangea/dnd</a></p>
+        <p>もちろん他にも汎用的な DnD ライブラリはあったけど、リストの DnD はこれが一番楽そうだった。</p>
+        <p>ただ、ドキュメントが少なすぎる。。。</p>
+        <p>実質サンプルしか役に立たないので <a href="https://github.com/hello-pangea/dnd/blob/HEAD/docs/about/examples.md">これ</a> を見る。</p>
+        <p><img src="https://www.kbaba1001.com/img/posts/202408290945/dnd.png" alt="サンプルコード"></p>
+        <p>とはいえ、３つのコンポーネント差し込むだけで簡単に DnD できるようになったので非常に良かった。
+        これくらいの手間で DnD ができるなら積極的に使おうという気持ちになる。</p>
+        ]]>
+      </content:encoded>
+      <pubDate>Thu, 29 Aug 2024 09:45:55 GMT</pubDate>
+    </item>
+    <item>
       <title>Ollama と Open WebUI でローカルLLMを動かす</title>
       <link>https://www.kbaba1001.com/posts/202408280721_ollama-open-web-ui/</link>
       <guid isPermaLink="false">https://www.kbaba1001.com/posts/202408280721_ollama-open-web-ui/</guid>
@@ -297,82 +315,6 @@
         ]]>
       </content:encoded>
       <pubDate>Mon, 22 Jul 2024 09:58:06 GMT</pubDate>
-    </item>
-    <item>
-      <title>6,7月やってたことまとめ</title>
-      <link>https://www.kbaba1001.com/posts/202407161937_june-and-july-activity/</link>
-      <guid isPermaLink="false">https://www.kbaba1001.com/posts/202407161937_june-and-july-activity/</guid>
-      <content:encoded>
-        <![CDATA[<h3>私生活</h3>
-        <ul>
-        <li>ホームステイの受け入れをやっていた。もともと4週間の予定だったが少々トラブルがあって2週間で終了した。</li>
-        <li>風邪をひいた。発熱や喉の痛みは１週間くらいで治ったものの、しつこく咳がでてかなり長いこと苦しんだ</li>
-        <li><a href="https://www.yamakawa.co.jp/product/59116">日本史の英語版の教科書</a> を夫婦で一緒に毎日１ページずつ読んでいた</li>
-        <li>仕事や私用で何度か東京に行った</li>
-        <li>近所の床屋（理容院）が気に入ったので今後も通うことにした
-        <ul>
-        <li>床屋に必ず刃牙がおいてあるのはなぜなのか</li>
-        </ul>
-        </li>
-        <li>7月の猛暑日に海に行った。誰もいなくて大変心地よかった</li>
-        <li>高校時代の旧友が飲み会を主催してくれて参加。IT系の人が10人くらい集まったけど全くITの話はせず、くだらない話ばかりして最高だった</li>
-        <li>逆流性食道炎と慢性胃炎が発覚して、食事や生活習慣の改善を始めた
-        <ul>
-        <li>逆流性食道炎に関しては最重症（重症より悪い）と言われ、これ以上悪化すると食堂に穴が空いたりガンになったりすると医者から脅されたので改善に取り組むことにした</li>
-        </ul>
-        </li>
-        <li>新しい浴衣を1万円くらいでかった。いつも古着で買っているので新品を買うのは珍しい。</li>
-        <li>CRAMP 展、グレンラガン対キルラキル展などいくつか展示を見た。どれも素晴らしい。</li>
-        <li>Guilty Gear Strive を買ったので合間をぬって遊びたい所存</li>
-        </ul>
-        <p>《kbaba1001|/img/horse.jpg|逆流性食道炎きついわー。揚げ物や酒を辞めてコーヒーも1日1杯にしている》</p>
-        <h3>Tech 系の話</h3>
-        <ul>
-        <li>体調不良や私生活でのストレスなどであまり個人開発や英語勉強などは進まず。。。残念</li>
-        <li>YouTube を再開したい気持ちが若干あるが、正直時間が取れそうにない</li>
-        </ul>
-        <p>《kbaba1001|/img/horse.jpg|個人開発が止まっているのでなんとか再開したい。こういうのはモチベの管理が難しいね》</p>
-        <h3>イラスト系の話</h3>
-        <ul>
-        <li><a href="https://note.com/bookcultureclub/n/n97a6fe0c4294">静岡 zine fess</a> に参加して漫画本を売った</li>
-        <li><a href="https://holbein-shop.com/?pid=87594228">ホルベインの透明水彩絵の具２４色セット</a> を買って絵を描いていた
-        <ul>
-        <li>噂通り発色が良くて使い勝手が良い</li>
-        <li>水彩色鉛筆とも併用して表現を模索中</li>
-        </ul>
-        </li>
-        <li>20年ぶりくらいにつけペンを使うようになった
-        <ul>
-        <li>いろいろ試したけどスクールペンが一番良さそうという結論</li>
-        </ul>
-        </li>
-        <li>水彩を始めたので画家の<a href="https://www.pixiv.net/users/902690">三澤寛志</a>さんの本を中古で買った。昔、彼の主催のコスプレクロッキー会に参加したことがあって楽しかった。
-        <ul>
-        <li>水彩や油彩で東方のイラストなど描いていてすごいと思う</li>
-        </ul>
-        </li>
-        <li>YouTube で水彩の人の動画をいくつか見ている
-        <ul>
-        <li>最近のお気に入り
-        <ul>
-        <li><a href="https://www.youtube.com/@rojiasnote1494">ROJIAS NOTE</a></li>
-        <li><a href="https://www.youtube.com/@WatercolorbyShibasaki">Watercolor by Shibasaki</a></li>
-        <li><a href="https://www.youtube.com/@umeko0930">梅吉</a></li>
-        </ul>
-        </li>
-        </ul>
-        </li>
-        <li><a href="https://www.comitia.co.jp/html/149.html">コミティア149</a> にサークル参加予定
-        <ul>
-        <li>詳細は後日書きます</li>
-        <li><a href="https://neumann.base.shop/">ノイマンパブリッシング</a> で売っている「らんげ～じ！」の他にもう一冊出したい</li>
-        </ul>
-        </li>
-        </ul>
-        <p>《kbaba1001|/img/horse.jpg|絵を描く時間を減らさないと他のことができなさそう……》</p>
-        ]]>
-      </content:encoded>
-      <pubDate>Tue, 16 Jul 2024 19:37:20 GMT</pubDate>
     </item>
   </channel>
 </rss>
