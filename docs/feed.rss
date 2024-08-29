@@ -9,6 +9,19 @@
     <language>ja_JP</language>
     <generator>Lume v2.0.1</generator>
     <item>
+      <title>カレンダーUIが必要な時使うやつ</title>
+      <link>https://www.kbaba1001.com/posts/202408290953_full-calendar/</link>
+      <guid isPermaLink="false">https://www.kbaba1001.com/posts/202408290953_full-calendar/</guid>
+      <content:encoded>
+        <![CDATA[<p><img src="https://www.kbaba1001.com/img/posts/202408290953/full-calendar.png" alt="Full Calendar"></p>
+        <p><a href="https://fullcalendar.io/">Full Calendar</a> を使ってくれ。</p>
+        <p>React 以外にも生 JS でも使えるようにできている。最高。</p>
+        <p>以上。</p>
+        ]]>
+      </content:encoded>
+      <pubDate>Thu, 29 Aug 2024 09:53:21 GMT</pubDate>
+    </item>
+    <item>
       <title>タスクリストみたいなやつを楽にDnDするやつ</title>
       <link>https://www.kbaba1001.com/posts/202408290945_dnd-on-list/</link>
       <guid isPermaLink="false">https://www.kbaba1001.com/posts/202408290945_dnd-on-list/</guid>
@@ -301,20 +314,6 @@
         ]]>
       </content:encoded>
       <pubDate>Sat, 27 Jul 2024 11:01:00 GMT</pubDate>
-    </item>
-    <item>
-      <title>ページネーションとタグ一覧対応</title>
-      <link>https://www.kbaba1001.com/posts/202407220958_pagination-and-tag-index/</link>
-      <guid isPermaLink="false">https://www.kbaba1001.com/posts/202407220958_pagination-and-tag-index/</guid>
-      <content:encoded>
-        <![CDATA[<p>記事の一覧をする各ページのページネーション対応とタグ一覧の自動生成対応をしました。</p>
-        <p><a href="https://lume.land/">Lume</a> はこういう機能が色々あって便利だけど、相変わらずドキュメントが不親切なうえ結構仕様も変わるからどうやればいいのかよくわからん。。。</p>
-        <p><code>index.page.js</code> みたいなファイルを作ると複数の page を生成するコードを書いてもいいという感じのようだ。
-        これが昔は <code>index.impl.js</code> だったっぽくてそっちの情報しかなかったから結構うまく動かなかった。</p>
-        <p>ただ、やり方が分かれば便利なもので、記事につけた tag を自動的に全部取ってきてヘッダーに表示することもできるようになった。</p>
-        ]]>
-      </content:encoded>
-      <pubDate>Mon, 22 Jul 2024 09:58:06 GMT</pubDate>
     </item>
   </channel>
 </rss>
