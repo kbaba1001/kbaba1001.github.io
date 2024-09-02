@@ -9,6 +9,35 @@
     <language>ja_JP</language>
     <generator>Lume v2.0.1</generator>
     <item>
+      <title>スツールをDIYした</title>
+      <link>https://www.kbaba1001.com/posts/202409021001_diy-stool/</link>
+      <guid isPermaLink="false">https://www.kbaba1001.com/posts/202409021001_diy-stool/</guid>
+      <content:encoded>
+        <![CDATA[<p><img src="https://www.kbaba1001.com/img/posts/202409021001/stool.jpg" alt="stool"></p>
+        <p>タイトルの通りで上記のスツールを自作してみた。</p>
+        <p>木を切って革の部分も貼った。</p>
+        <h3>デザイン案</h3>
+        <p><img src="https://www.kbaba1001.com/img/posts/202409021001/design1.jpg" alt="design1"></p>
+        <p>はじめは上記のように１本脚で考えていたが、
+        家具なども作っている大工さんに相談したところ
+        柱と面の接地面積を増やした方が良いとのことで
+        次のデザインになった。</p>
+        <p><img src="https://www.kbaba1001.com/img/posts/202409021001/design2.jpg" alt="design2"></p>
+        <p>作業工数は増えたがデザインも格好良くなり満足している。</p>
+        <h3>革貼り</h3>
+        <p>今回のチャレンジは革貼り。練習用に合皮を使った。
+        合皮は百均で330円で売っていた。やすい。</p>
+        <p>家具に革を貼るやり方についてはYoutubeで調べたが、
+        やはりあまりやっている人は多くなくて、
+        工場とかでソファを作っている動画を参考にした。</p>
+        <p>革の裏面に接着剤をつけてかなり革を伸ばしながら貼る
+        というやり方のようだ。
+        革はタッカーで木材と固定した。</p>
+        ]]>
+      </content:encoded>
+      <pubDate>Mon, 02 Sep 2024 10:01:18 GMT</pubDate>
+    </item>
+    <item>
       <title>カレンダーUIが必要な時使うやつ</title>
       <link>https://www.kbaba1001.com/posts/202408290953_full-calendar/</link>
       <guid isPermaLink="false">https://www.kbaba1001.com/posts/202408290953_full-calendar/</guid>
@@ -288,32 +317,6 @@
         ]]>
       </content:encoded>
       <pubDate>Mon, 29 Jul 2024 08:03:58 GMT</pubDate>
-    </item>
-    <item>
-      <title>GeForce RTX4060を買った</title>
-      <link>https://www.kbaba1001.com/posts/202407271101_ge-force-rtx4060/</link>
-      <guid isPermaLink="false">https://www.kbaba1001.com/posts/202407271101_ge-force-rtx4060/</guid>
-      <content:encoded>
-        <![CDATA[<p>Amazon の Prime セールで <a href="https://amzn.asia/d/03wWXrgp">MSI GeForce RTX 4060 VENTUS 2X BLACK 8G OC グラフィックスボード VD8560</a> が 44,455円だったので買ってみた。</p>
-        <p>今まで使っていたのが GeForce GTX 1080 という結構古い GPU だったのでローカルLLMなどに限界を感じていた。</p>
-        <p>自宅サーバーとして使っているデスクトップPCのグラボを換装して、無事にあっさり動いてくれた。
-        特にドライバを入れ直したりしてないけど大丈夫そう。</p>
-        <p>今まで使っていた GeForce GTX 1080 を1台余っているデスクトップPCに刺して、ゲーミングPCにすることにした。
-        こっちのマシンは知り合いから貰ったものでちょっと古いが、ちょいちょい部品を入れ替えて使っている。
-        このPCに刺さっているグラボが古すぎてHDMIとアナログ端子しかない上に、HDMIから音が出ないというクソボードだったので、
-        前から交換したいと思っていた。
-        いざ GeForce GTX 1080 を使おうとしたらグラボ用の電源ピンが6ピンのしかなくて、8ピンが必要だったので電源も交換する必要があった。</p>
-        <p>長泉の下土狩駅近くに小さな PC パーツ屋を見つけて、ふらりと立ち寄った。
-        玄人志向の 750W の電源が 14,000 円のところを 12,000 円にまけてくれたので即買いした。
-        なんか味わい深い店だった。
-        昔はああいうおじさんが一人でやってるようなパーツ屋や電子部品屋がそこそこあったのだが。。。</p>
-        <p>電源とグラボを変えたらゲーミング PC も無事に動くようになったので、今はほぼ Guilty Gear Strive 専用機になっている。
-        ストーリーを見るだけでも楽しい。</p>
-        <p>昔買っただけでプレイしてない同人ゲームとかちょいちょいあるのよね。。。
-        少しずつ時間を作ってゲームしよう。</p>
-        ]]>
-      </content:encoded>
-      <pubDate>Sat, 27 Jul 2024 11:01:00 GMT</pubDate>
     </item>
   </channel>
 </rss>
