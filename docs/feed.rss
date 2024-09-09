@@ -9,6 +9,154 @@
     <language>ja_JP</language>
     <generator>Lume v2.0.1</generator>
     <item>
+      <title>React の Tips やおすすめライブラリなど</title>
+      <link>https://www.kbaba1001.com/posts/202409091131_react-tips-and-favorite-libraries/</link>
+      <guid isPermaLink="false">https://www.kbaba1001.com/posts/202409091131_react-tips-and-favorite-libraries/</guid>
+      <content:encoded>
+        <![CDATA[<p>React も使い始めて数年が経ち、自分なりの書き方も確立できてきたので Tips などをまとめてみようと思う。</p>
+        <h3>React If</h3>
+        <p><a href="https://www.npmjs.com/package/react-if">React If</a> を使ってくれ。大事なことなのでもう一度。
+        <a href="https://www.npmjs.com/package/react-if">React If</a> を使ってくれ。</p>
+        <p>簡単に言えば、 if 文や Switch 文を React コンポーネントで書ける。</p>
+        <pre><code class="language-javascript">const Bar = ({ name, age, drinkingAge }) =&gt; (
+        &lt;div&gt;
+        &lt;Header /&gt;
+        &lt;If condition={age &gt;= drinkingAge}&gt;
+        &lt;Then&gt;
+        &lt;span className=&quot;ok&quot;&gt;Have a beer, {name}!&lt;/span&gt;
+        &lt;/Then&gt;
+        &lt;Else&gt;
+        &lt;span className=&quot;not-ok&quot;&gt;Sorry, {name}, you are not old enough.&lt;/span&gt;
+        &lt;/Else&gt;
+        &lt;/If&gt;
+        &lt;Footer /&gt;
+        &lt;/div&gt;
+        );
+        </code></pre>
+        <p>React の読みづらさの一つが三項演算子だと思っていて、コンポーネントで書いたほうが読みやすい。
+        Solidjs にこんな感じの機能があって似たようなことが React でもできないかと思って探したら React If を見つけたという経緯。</p>
+        <h3>react-timer-hook</h3>
+        <p>アニメーションなど時間を扱いたいケースが時々あって、
+        そういう場合に <a href="https://www.npmjs.com/package/react-timer-hook?activeTab=readme">react-timer-hook</a> が
+        非常に使いやすかった。</p>
+        <p><code>useTimer</code> という hook を作って時間を扱うことができる。便利。</p>
+        <h3>そもそも SPA でよくね？</h3>
+        <p>Next.js や Remix などの SSR 系のライブラリが流行っているが、ほとんどのケースでは SPA で十分だと思う。
+        SSR はサーバーサイドも一緒に管理することになり、まだまだ気楽に書けるという印象ではない。</p>
+        <p>特に別途 BFF っぽい API サーバーがあるのであれば、 SPA で十分ではないかというのは検討したほうがいい。
+        SSR は開発コストが高く、それを考慮しても SSR でしかパフォーマンスが出せないという場合にのみ使う方が良い。</p>
+        <h3>Wouter</h3>
+        <p>React または Preact において軽量なルーティングライブラリとして使えるのが <a href="https://github.com/molefrog/wouter">Wouter</a> 。</p>
+        <p>SPAならこれで十分。余分な機能がない。以上。</p>
+        <h3>jotai</h3>
+        <p><a href="https://jotai.org/">jotai</a> は結構有名なライブラリになってしまったが、グローバルステートなどを扱うための状態管理ライブラリ。
+        いわゆる <code>useContext</code> の代替。</p>
+        <p>いろいろなプラグインがあって、目的に合わせて変えられるのが良い。
+        私が特に気に入っているのは</p>
+        <ul>
+        <li><a href="https://jotai.org/docs/extensions/effect">jotai-effect</a>
+        <ul>
+        <li>useEffect 的なやつ</li>
+        </ul>
+        </li>
+        <li><a href="https://jotai.org/docs/extensions/scope">jotai-scope</a>
+        <ul>
+        <li>jotai の atom はグローバル変数にならざるを得ないので、スコープを付けられるライブラリ</li>
+        </ul>
+        </li>
+        </ul>
+        <h3>spacetime</h3>
+        <p>React とは無関係だがよく使うので <a href="https://github.com/spencermountain/spacetime">spacetime</a> も紹介する。</p>
+        <p>いわゆる date-fns のような時間操作系のライブラリ。</p>
+        <p>軽量、直感的な関数、機能が豊富なので気に入っている。知名度が低いのが残念だ。</p>
+        <h3>ky</h3>
+        <p><a href="https://www.npmjs.com/package/ky">ky</a> は <a href="https://www.npmjs.com/package/axios">axios</a> の代替ライブラリ。</p>
+        <p>Denoでも使えるのが良い。</p>
+        <p>正直この手のやつはあまり使う必要がない（fetchで十分）と思うのだが、たまにあると便利なので一応使っている。</p>
+        <h3>Tanstack Query</h3>
+        <p><a href="https://tanstack.com/query/latest">Tanstack Query</a> も有名なやつだが、 SPA 開発ではほぼ必須のライブラリ。</p>
+        <p>API 通信をキャッシュしたり、データ取得中の loading status を管理したりできる超便利なやつ。</p>
+        <p>リロード機能がいい感じなのが最高。</p>
+        <p><a href="https://jotai.org/docs/extensions/query">jotai-tanstack-query</a> も結構頑張って使っていたのだが、
+        ちょっともう一歩なところがあって結局 Tansatack Query をそのまま使うほうがよいという結論になった。</p>
+        <h3>qs</h3>
+        <p><a href="https://www.npmjs.com/package/qs">qs</a> もあまり React は関係ないが URL の Search Parameters をいい感じに encode/decode できるやつ。</p>
+        <p>ルーティングライブラリにこの手の機能がくっついている場合もあるけど、 qs のほうが小回りがきいて便利なことが多いので、
+        ルーティングは前述の Wouter くらいシンプルにしておいて qs で補うほうが好みだ。</p>
+        <h3>vitest, happy-dom</h3>
+        <ul>
+        <li><a href="https://vitest.dev/">vitest</a></li>
+        <li><a href="https://github.com/capricorn86/happy-dom">happy-dom</a></li>
+        </ul>
+        <p>テストライブラリ。</p>
+        <p>速い。書き心地に変なクセがない。以上</p>
+        <h3>Biome</h3>
+        <p><a href="https://biomejs.dev/">Biome</a> は Linter と Formatter の機能を併せ持つ爆速なやつ。</p>
+        <p>Biome に比べれば ESLint や Prettier は遅くて使いたくない。</p>
+        <p>Biome のデフォルトのフォーマットにやや癖があるが、自分としては Linter や Formatter というのは
+        「あればそれでいい」という程度のこだわりしかなく特に不満なし。</p>
+        <p>色々カスタマイズしたい人は ESLint のほうがいいと思う。</p>
+        <p>残念なのは対応している言語が基本的に JS/TS/JSX/TSX/JSON/JSONC のみということ。
+        Markdown や CSS も対応してくれると嬉しいのだが。。。</p>
+        <p>少なくとも React + Chakra UI の世界にいる限り生 CSS は書かなくてもいいので Biome で十分である。</p>
+        <h3>lefthook</h3>
+        <p>git hook をかきやすくするやつ。</p>
+        <p>チーム開発のときに Linter / Formatter / Test あたりは必ずパスしてからコミットしてほしいという気持ちがあり、
+        そういう設定を強要するために lefthook など入れてみるのだが、まぁ、だいたい抜け道を使われて徒労に終わる。。。</p>
+        <h2>UI の話</h2>
+        <h3>Chakra UI</h3>
+        <p>最近は UI 作りは <a href="https://v2.chakra-ui.com/">Chakra UI</a> 1択と思っている。
+        <a href="https://www.kuma-ui.com/">Kuma UI</a> も思想は悪くないのだが、コンポーネントが少なすぎる。</p>
+        <p>Chakra UI にはだいたい使いたいコンポーネントが揃っているし、思想的にも使いやすい。</p>
+        <p>Tailwind css の良いところを取り込みつつ、悪いところは排除した感じが実に良い。</p>
+        <h4>ローディング UI を考える</h4>
+        <p>Chakra UI にあるローディングで使えそうなコンポーネントが次。</p>
+        <ul>
+        <li><a href="https://v2.chakra-ui.com/docs/components/progress#animated-progress">Progress bar</a>
+        <ul>
+        <li><img src="https://www.kbaba1001.com/img/posts/202409091131/progress-bar.gif" alt="progress-bar"></li>
+        </ul>
+        </li>
+        <li><a href="https://v2.chakra-ui.com/docs/components/skeleton">skeleton</a>
+        <ul>
+        <li><img src="https://www.kbaba1001.com/img/posts/202409091131/skeleton.gif" alt="skeleton"></li>
+        </ul>
+        </li>
+        <li><a href="https://v2.chakra-ui.com/docs/components/spinner">spinner</a>
+        <ul>
+        <li><img src="https://www.kbaba1001.com/img/posts/202409091131/spinner.gif" alt="spinner"></li>
+        </ul>
+        </li>
+        </ul>
+        <p>最近良く見かける UI としてロード中に Progress bar がヘッダーとかページのトップにあるやつ。
+        なんとなくロード中というのがわかりやすいので導入したい。</p>
+        <p>Skeleton も私としてはあまり使ってこなかったのだが、Amazonとか見てるとかなり使われている。
+        ロード中なんだけど早く画面が表示されたように錯覚させる良いUIだと思う。</p>
+        <p>逆に Spinner はいかにも「ロード中ですよ」という感じで、案外多用しないほうがいい気がする。
+        本当にロードに時間がかかるような場合とかのみにしたほうがいいんじゃないかなぁ。</p>
+        <p>こういうのは本職のデザイナーの意見も聞きたいところ。</p>
+        <h4>Chakra UI にないコンポーネントを補う</h4>
+        <p>少々意外なことに Chakra UI には date-picker や select2 的なコンポーネントがない。
+        正直これらは <code>&lt;input type=&quot;datetime-local&quot; &gt;</code> や <code>&lt;datalist&gt;</code> で十分なケースも多いのだが、
+        もう少し機能のある UI が求められるケースもある。</p>
+        <p>そういう場合には <a href="https://blueprintjs.com/">Blueprint</a> を使うようにしている。</p>
+        <h3>Blueprint</h3>
+        <p><a href="https://blueprintjs.com/">Blueprint</a> は業務アプリをつくるのに向いたUIを提供している。
+        デザイン的に Chakra UI のポップな感じと合わないのだが、ちょうど Chakra にないコンポーネントがあるので使っている。</p>
+        <p><img src="https://www.kbaba1001.com/img/posts/202409091131/blueprint.png" alt="blueprint"></p>
+        <h4>テーブルUIを考える</h4>
+        <p>Blueprint の良い点はテーブルUIが非常によくできている。
+        ドキュメントが読みづらくGitHubのサンプルコードを読むのが一番良いのだが、Excelライクなテーブルが作れる。</p>
+        <p>未だに「ExcelみたいなUIが欲しいです」という要望は時々あるので Blueprint はよい。</p>
+        <p><a href="https://tanstack.com/table/latest">Tanstack Table</a> と組み合わせると更に良い。
+        これはテーブルのUIとデータを分けて考えることができるようになるライブラリ。
+        地味に困る部分なのでしっかり作ってあって良いライブラリだと思う。
+        ソートやページネーションもあるので助かる。</p>
+        ]]>
+      </content:encoded>
+      <pubDate>Mon, 09 Sep 2024 11:31:14 GMT</pubDate>
+    </item>
+    <item>
       <title>スツールをDIYした</title>
       <link>https://www.kbaba1001.com/posts/202409021001_diy-stool/</link>
       <guid isPermaLink="false">https://www.kbaba1001.com/posts/202409021001_diy-stool/</guid>
@@ -302,21 +450,6 @@
         ]]>
       </content:encoded>
       <pubDate>Thu, 01 Aug 2024 10:39:13 GMT</pubDate>
-    </item>
-    <item>
-      <title>いい感じの木の板を安く手に入れた</title>
-      <link>https://www.kbaba1001.com/posts/202407290803_bought-wood-plates/</link>
-      <guid isPermaLink="false">https://www.kbaba1001.com/posts/202407290803_bought-wood-plates/</guid>
-      <content:encoded>
-        <![CDATA[<p><img src="https://www.kbaba1001.com/img/posts/202407290803/wood.jpg" alt="wood"></p>
-        <p>古着やレトログッツの屋台が楽寿園で出ていて、たまたま上記の木の板を見つけた。
-        価格は 300 円～ 1,000 円で激安。</p>
-        <p>こういうちゃんとした木の板って材木屋やホームセンターだと地味に高いのよね。</p>
-        <p>何を作るか想像すると楽しみ。</p>
-        <p>大きいのは机にして、小さいのは表札や皿みたいにしたい。</p>
-        ]]>
-      </content:encoded>
-      <pubDate>Mon, 29 Jul 2024 08:03:58 GMT</pubDate>
     </item>
   </channel>
 </rss>
