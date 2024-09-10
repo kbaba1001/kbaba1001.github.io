@@ -4,6 +4,8 @@ date: 2024-09-10 09:08:37
 ogimage: /img/posts/202409100908_learning-ui-design.jpg
 tags:
   - Tech
+  - 勉強
+  - frontend
 ---
 
 ![UI Design Books](/img/posts/202409100908/ui-design.jpg)
