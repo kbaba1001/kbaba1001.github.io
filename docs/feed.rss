@@ -203,6 +203,12 @@
         これはテーブルのUIとデータを分けて考えることができるようになるライブラリ。
         地味に困る部分なのでしっかり作ってあって良いライブラリだと思う。
         ソートやページネーションもあるので助かる。</p>
+        <h3>AutoAnimate</h3>
+        <p><a href="https://auto-animate.formkit.com/">AutoAnimate</a> は一覧とかで自動的にそれっぽいアニメーションを付けてくれるライブラリ。
+        一覧画面での追加、削除、移動のとき要素にちょっとアニメーションを付けてくれる。
+        あんまこだわりなくそれっぽいアニメーションがほしいときにCSSとかで頑張るより楽。</p>
+        <p>何度か使っているけど、 Chakra UI にも <a href="https://v2.chakra-ui.com/docs/components/transitions">Transitions</a> という
+        アニメーション関係のコンポーネントがあることに気がついたのでこっちでも十分かもしれない。</p>
         <h3>その他、過去に紹介した UI ライブラリ</h3>
         <ul>
         <li><a href="https://www.kbaba1001.com/posts/202408290945_dnd-on-list">タスクリストみたいなやつを楽にDnDするやつ</a></li>
