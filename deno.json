@@ -7,7 +7,7 @@
 		"lume": "echo \"import 'lume/cli.ts'\" | deno run -A -",
 		"fmt": "deno task prettier --ignore-path .prettierignore -w \"**/*.+(js|jsx|css|json|md)\" && deno task prettier --ignore-path .prettierignore -w --parser=html \"**/*.vto\"",
 		"build": "deno task lume --dest docs --location https://www.kbaba1001.com",
-		"serve": "deno task lume -s -p 4000",
+		"dev": "deno task lume -s -p 4000",
 		"remove-exif": "exiftool -overwrite_original -recurse -all=",
 		"new-post": "./tools/new-post.bash"
 	},

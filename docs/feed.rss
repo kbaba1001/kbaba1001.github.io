@@ -9,6 +9,54 @@
     <language>ja_JP</language>
     <generator>Lume v2.0.1</generator>
     <item>
+      <title>Web UIデザインの勉強をしている</title>
+      <link>https://www.kbaba1001.com/posts/202409100908_learning-ui-design/</link>
+      <guid isPermaLink="false">https://www.kbaba1001.com/posts/202409100908_learning-ui-design/</guid>
+      <content:encoded>
+        <![CDATA[<p><img src="https://www.kbaba1001.com/img/posts/202409100908/ui-design.jpg" alt="UI Design Books"></p>
+        <p>前から持っていた本も含めて上記の本を読んでいる。</p>
+        <p>色彩検定３級は前から持っているのだが、内容を忘れてしまったので復習している。
+        ちょっと概念過ぎて応用までが遠い気もする。</p>
+        <h3>なぜ勉強しているのか</h3>
+        <p>《kbaba1001|/img/horse.jpg|デザインのできるエンジニアになりたい》</p>
+        <p>以前から画面を作る機会は多く、デザイナーを雇う予算がない開発の現場も多いので、
+        私が自分でワイヤーフレームなど書くことも多々あり、デザインを勉強したいという気持ちは以前からあった。
+        というか、以前からデザインは勉強しているのだが、いまいち正解がわからず自らをデザイナーと名乗るほど
+        習得できている気がしない。</p>
+        <p>ある意味で、デザインは機能を作ることより独学が難しいかもしれない。
+        機能は動いているかどうかという明白は指標があるけど、デザインにはそれがない。
+        素人でも口を出せる部分もある一方で、専門家らしい意見が求められる場合も多いように思う。
+        結局のところ、なぜそのデザインにしたのかを自分なりに一つ一つ正解を作っていく分野という気がする。</p>
+        <p>一方で、単に「デザイン」という場合、出版物（チラシとか本とか）のデザインを指す場合が多いように思う。
+        私にとってそういうデザインも同人誌づくりでは必要なのだが、本職であるWebシステム開発で活かすのであれば、
+        やはりWebデザインについて学びたい。
+        印刷物は後から動いたり画面の大きさが変わったりしないので、どうしてもWebやスマホに応用が不十分なことがあるので、
+        今回は Web UI デザインに焦点を絞っている本を買ってみた（下の２冊）。</p>
+        <h3>感想『縁の下のUIデザイン』</h3>
+        <p>かつてWeb+DB Press で連載していたものが本になったらしい。
+        Web+DB Press は廃刊になってしまったのが未だに惜しい。。。</p>
+        <p>内容としては UI の小技集だがどういう意図でそのUIを使えばいいかを
+        比較しながら説明してくれているのでわかりやすかった。</p>
+        <p>またどのようなUIが楽しいか、という観点でもUIを考えており、
+        単に利便性の話だけでなくユーザーにとって楽しいと思えるシステムを
+        提供できているかというのは指標として今後も大切にしたいと思った。</p>
+        <p>私のような非デザイナーにはありがたい。</p>
+        <p>エンジニアがデザインを学ぶ場合、ほとんどのデザイナーよりも実装力は高い場合が多いのではなかろうか。
+        どのように HTML や CSS, JS を使えばその機能を実装できるかはエンジニアの方が詳しいはずだ。
+        しかし、なぜその UI にするのかという部分でエンジニアはデザイナーに劣る。</p>
+        <h3>感想『UIデザイン必携』</h3>
+        <p>『縁の下のUIデザイン』と色彩検定３級の中間くらいの知識をちょうど補ってくれる感じで良かった。</p>
+        <p>色彩検定３級で出てくる用語、概念を、じゃあWebデザインでどのように考えるかという部分が
+        イマイチ自分の中で整理できていなかったのだが、この本はそのへんをうまく説明してくれている気がする。</p>
+        <p>『縁の下のUIデザイン』ほど実装に特化しておらず、でもWebやスマホを中心としたUIの話が
+        まとまっており良い感じだ。</p>
+        <p>この本１冊での満足感はそこまで高くないかもしれないけど、最初の写真にある４冊全て含めると
+        デザインについての学習はかなりできると思う。</p>
+        ]]>
+      </content:encoded>
+      <pubDate>Tue, 10 Sep 2024 09:08:37 GMT</pubDate>
+    </item>
+    <item>
       <title>React の Tips やおすすめライブラリなど</title>
       <link>https://www.kbaba1001.com/posts/202409091131_react-tips-and-favorite-libraries/</link>
       <guid isPermaLink="false">https://www.kbaba1001.com/posts/202409091131_react-tips-and-favorite-libraries/</guid>
@@ -408,48 +456,6 @@
         ]]>
       </content:encoded>
       <pubDate>Fri, 02 Aug 2024 15:59:17 GMT</pubDate>
-    </item>
-    <item>
-      <title>Clojureで漫画制作用のデスクトップアプリを作りたい</title>
-      <link>https://www.kbaba1001.com/posts/202408011039_I-wanna-make-desktop-apps-by-clojure/</link>
-      <guid isPermaLink="false">https://www.kbaba1001.com/posts/202408011039_I-wanna-make-desktop-apps-by-clojure/</guid>
-      <content:encoded>
-        <![CDATA[<p>デスクトップアプリを作りたいと前々から思っているのだが、 Web ばかりやっていて実際に作ったことはない。</p>
-        <p>最近、紙とペンで漫画を書いていて、写植やトーンなどの仕上げだけ PC でやっているのだが
-        GIMP と Inkscape だけでは若干不便なので Clojure でツールを開発したくなってきた。</p>
-        <p>漫画制作ツールと言えば ClipStudio をアマチュアからプロまで使っている。
-        ClipStudioは良いツールなのだが基本的にアナログで書いている自分にはオーバースペック気味。</p>
-        <h3>案1: GIMP Plugin</h3>
-        <p>GIMP の Plugin 開発ツールである Script Fu は Lisp である。
-        短期間の開発であればとりあえず必要な機能を Script Fu で作るのが良さそう。</p>
-        <p>集中線とか縦書きツールとか作ってる人がいたけど、今ググったらサイトが消えていた。。。悲しい</p>
-        <h3>案2: Humble UI</h3>
-        <p>Clojure の GUI 開発で調べたら次のライブラリが面白そうだった。</p>
-        <p><a href="https://github.com/HumbleUI/HumbleUI">HumbleUI</a></p>
-        <p>JVM なので自然とクロスプラットフォームになるはず。</p>
-        <h3>案3: Tauri + Qwik + Squint (or Cherry)</h3>
-        <p><a href="https://tauri.app/">Tauri</a> という Electron Alternative として良さそうなツールがある。
-        本体は Rust で書かれていて、GUI部分は HTML/CSS/JS で構築できる。</p>
-        <p>オフィシャルに Next.js や Qwik をサポートしているのだが、
-        Next.js を Vercel 以外で動かすことを一切信用していないので、
-        やるとしたら Qwik を採用する。
-        (Vite で preact とか突っ込んでもいいけど)</p>
-        <p>最近の ClojureScript はやや進歩していて、 TypeScript みたいに npm 上だけで動く環境を作るプロジェクトがある。
-        それが次：</p>
-        <ul>
-        <li><a href="https://github.com/squint-cljs/squint">squint</a></li>
-        <li><a href="https://github.com/squint-cljs/cherry">cherry</a></li>
-        </ul>
-        <p>squint と cherry は細かい違いはあれどほぼ同じ。</p>
-        <p>これが Tauri + Qwik 構成で使えれば悪くなさそう。</p>
-        <p>（ただ、誰もやってない未踏の環境にはなるので、変な動きしても自力でなんとかする必要がある…）</p>
-        <h3>おわりに</h3>
-        <p>まぁそもそも個人開発やる時間があんまないんだけど。</p>
-        <p><a href="https://www.kbaba1001.com/tags/FAM/">FAM</a> の開発も進められてないし。</p>
-        <p>やらないといけないことと、やりたいことが多すぎる。</p>
-        ]]>
-      </content:encoded>
-      <pubDate>Thu, 01 Aug 2024 10:39:13 GMT</pubDate>
     </item>
   </channel>
 </rss>
