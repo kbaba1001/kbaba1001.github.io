@@ -183,6 +183,9 @@
         <p>逆に Spinner はいかにも「ロード中ですよ」という感じで、案外多用しないほうがいい気がする。
         本当にロードに時間がかかるような場合とかのみにしたほうがいいんじゃないかなぁ。</p>
         <p>こういうのは本職のデザイナーの意見も聞きたいところ。</p>
+        <p><strong>(追記)</strong></p>
+        <p><a href="https://www.npmjs.com/package/holy-loader">holy-loader</a> という便利なライブラリを見つけた。
+        導入するだけで画面遷移の時ヘッダーにローディングUIを表示することができる。良さそう。</p>
         <h4>Chakra UI にないコンポーネントを補う</h4>
         <p>少々意外なことに Chakra UI には date-picker や select2 的なコンポーネントがない。
         正直これらは <code>&lt;input type=&quot;datetime-local&quot; &gt;</code> や <code>&lt;datalist&gt;</code> で十分なケースも多いのだが、
@@ -200,6 +203,11 @@
         これはテーブルのUIとデータを分けて考えることができるようになるライブラリ。
         地味に困る部分なのでしっかり作ってあって良いライブラリだと思う。
         ソートやページネーションもあるので助かる。</p>
+        <h3>その他、過去に紹介した UI ライブラリ</h3>
+        <ul>
+        <li><a href="https://www.kbaba1001.com/posts/202408290945_dnd-on-list">タスクリストみたいなやつを楽にDnDするやつ</a></li>
+        <li><a href="https://www.kbaba1001.com/posts/202408290953_full-calendar/">カレンダーUIが必要な時使うやつ</a></li>
+        </ul>
         ]]>
       </content:encoded>
       <pubDate>Mon, 09 Sep 2024 11:31:14 GMT</pubDate>
