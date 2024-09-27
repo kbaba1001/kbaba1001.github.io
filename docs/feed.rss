@@ -9,6 +9,45 @@
     <language>ja_JP</language>
     <generator>Lume v2.0.1</generator>
     <item>
+      <title>CADをやり始めた</title>
+      <link>https://www.kbaba1001.com/posts/202409280830_i-challenge-a-cad/</link>
+      <guid isPermaLink="false">https://www.kbaba1001.com/posts/202409280830_i-challenge-a-cad/</guid>
+      <content:encoded>
+        <![CDATA[<p><a href="https://cadiy3d.com/wp/"><img src="https://www.kbaba1001.com/img/posts/202409280830/caDIY3D.png" alt="caDIY3D"></a></p>
+        <p><a href="https://cadiy3d.com/wp/">caDIY3D</a> というソフトで CAD を始めてみることにした。</p>
+        <p>自分でも意外なことに今まで CAD をやったことがない。
+        DIY の設計図は斜視図で紙や iPad で書くことでなんとかしてきていた。</p>
+        <p>だが、いい加減 CAD を覚えようと思った。
+        世の中には CAD のソフトが有料・無料あわせてたくさんあるのだが、
+        caDIY3D が次の点で良さそうだと思って試している。</p>
+        <ul>
+        <li>価格が安い (買い切りで1万円くらい)</li>
+        <li>DIY に特化した機能がある
+        <ul>
+        <li>ホームセンターで売っているような材料で設計できる</li>
+        </ul>
+        </li>
+        <li>設計を元に木取り図を自動生成してくれる
+        <ul>
+        <li>木取り図とは、作ろうとしているものに対してどの材料をどのくらい買えばいいかという図</li>
+        <li>基本的にホームセンターで売っているものは 3～8フィートくらいなので、その範囲で材を切る必要がある</li>
+        </ul>
+        </li>
+        <li>機能が限られている分、直感的な 3D の UI で設計可能</li>
+        </ul>
+        <p>たぶん 3D プリンターなどを使うのであれば <a href="https://www.autodesk.com/products/fusion-360/overview?term=1-YEAR&amp;tab=subscription">Fusion 360</a> のような大掛かりな CAD ソフトを使うほうがいいと思うけど、木工に関しては caDIY3D が良さそうだ。</p>
+        <p>とりあえず 30 日トライアルをやっている。</p>
+        <p><img src="https://www.kbaba1001.com/img/posts/202409280830/caDIY3D-2.png" alt="caDIY3D-2"></p>
+        <p>30分くらい使っただけで簡単な棚を設計できた。</p>
+        <p><img src="https://www.kbaba1001.com/img/posts/202409280830/caDIY3D-3.png" alt="caDIY3D-3"></p>
+        <p>木取り図も自動生成できて最高。毎回これを頭で考えるのが若干大変だった。</p>
+        <p><img src="https://www.kbaba1001.com/img/posts/202409280830/caDIY3D-4.png" alt="caDIY3D-4"></p>
+        <p>木取り図から値段も計算してくれる。便利じゃん！</p>
+        ]]>
+      </content:encoded>
+      <pubDate>Sat, 28 Sep 2024 08:30:16 GMT</pubDate>
+    </item>
+    <item>
       <title>紙に書いた今年の日記が500ページくらいあってキモい</title>
       <link>https://www.kbaba1001.com/posts/202409280809_paper-diary/</link>
       <guid isPermaLink="false">https://www.kbaba1001.com/posts/202409280809_paper-diary/</guid>
@@ -433,39 +472,6 @@
         ]]>
       </content:encoded>
       <pubDate>Fri, 23 Aug 2024 07:22:57 GMT</pubDate>
-    </item>
-    <item>
-      <title>自宅同人誌印刷を支える環境</title>
-      <link>https://www.kbaba1001.com/posts/202408161040_selfbuild-books-environment/</link>
-      <guid isPermaLink="false">https://www.kbaba1001.com/posts/202408161040_selfbuild-books-environment/</guid>
-      <content:encoded>
-        <![CDATA[<p><img src="https://www.kbaba1001.com/img/posts/202408161040/printer.jpg" alt="printer"></p>
-        <p>自宅（ノイマントーキョー本社）で同人誌を作成している。これには２台のプリンターを使っている。</p>
-        <ul>
-        <li>A4 モノクロレーザープリンター</li>
-        <li>A3 カラーインクジェットプリンター</li>
-        </ul>
-        <p>この辺の装備は４年くらい前に買ったものだが、最近のレーザープリンターは本当に値段が下がっていて、
-        今調べたら A3 カラーレーザーでも 6 万くらいであった。いい時代だ。</p>
-        <p><a href="https://amzn.asia/d/4BGhG7q">キヤノン　A3 カラーレーザープリンター　LBP841CS  56,249 円</a></p>
-        <p>レーザープリンターは圧倒的にたくさん印刷できるので、インク単価が安くてたまに交換するだけで良い。
-        モノクロでも割と十分で仕事の書類や同人誌印刷でも活躍している。</p>
-        <p>自宅同人誌といえども表紙に使う紙は少し良いものをつかっている。135kg上質紙とかクラフト紙とか。
-        クラフト紙はレーザーと相性が悪くて少しこすれてしまったので、インクジェットで印刷するようにした。</p>
-        <p>この結果できたのがこれらの本（真ん中は印刷所で作ったやつ。）</p>
-        <p><img src="https://www.kbaba1001.com/img/posts/202408161040/books.jpg" alt="books"></p>
-        <p>自宅印刷の場合、印刷所に出すよりはかなり安く作ることができる。
-        もちろん手作業で製本する手間はあるし、印刷所で作るほど整った本にはならないけど、
-        画質とかはデータを気をつければ十分な気がする。</p>
-        <h3>サークルの表札</h3>
-        <p><img src="https://www.kbaba1001.com/img/posts/202408161040/nameplate.jpg" alt="nameplate"></p>
-        <p>こんなものを作ってみた。木のプレートにはんだごてでウッドバーニングしてサークル用の表札（看板）を作った。
-        ウッドバーニングは結構便利な技術で、簡単な割に仕上がりが良い。
-        今使っているのは電子工作用のはんだごてを限界温度の５００度くらいまで上げて使っているのだが、
-        専用のものを買っても良い気がする。</p>
-        ]]>
-      </content:encoded>
-      <pubDate>Fri, 16 Aug 2024 10:40:19 GMT</pubDate>
     </item>
   </channel>
 </rss>
