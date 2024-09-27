@@ -9,6 +9,33 @@
     <language>ja_JP</language>
     <generator>Lume v2.0.1</generator>
     <item>
+      <title>紙に書いた今年の日記が500ページくらいあってキモい</title>
+      <link>https://www.kbaba1001.com/posts/202409280809_paper-diary/</link>
+      <guid isPermaLink="false">https://www.kbaba1001.com/posts/202409280809_paper-diary/</guid>
+      <content:encoded>
+        <![CDATA[<p>皆さんは日記帳を持ってますか？</p>
+        <p>私の日記帳はこんな感じです。</p>
+        <p><img src="https://www.kbaba1001.com/img/posts/202409280809/diary2.jpg" alt="日記2"></p>
+        <p><a href="https://www.kokuyo-st.co.jp/stationery/campus-notebinder/">コクヨ ノートのように使えるバインダー</a> に
+        <a href="https://www.kokuyo-st.co.jp/stationery/looseleaf/b5.html">しっかり書けるA罫7mmドット入りルーズリーフ</a> を入れて、
+        <a href="https://www.pentel.co.jp/products/ballpointpen/energel/">エナージェル</a>ボールペンやガラスペンで日記を書くのが好きだ。</p>
+        <p>SNS をやめてから日記を1日２，３回くらい書くようになった。
+        ネットに書けないことも紙には書けるし、炎上しないから気が楽だ。</p>
+        <p>特に読み返すわけでもないのだが、書いた分は別の厚めのルーズリーフケースに移し替えている。</p>
+        <p>で、その結果、今年の日記がこんな感じ。</p>
+        <p><img src="https://www.kbaba1001.com/img/posts/202409280809/diary1.jpg" alt="日記1"></p>
+        <p>分厚くてキモい。。。</p>
+        <p>しかもだいたいどのページもぎっちり書いてある。</p>
+        <p>読み返してみると、なんか常に色々やっててこの人忙しそうだなと思った。</p>
+        <p>別に普通のことなんだけど「今日は通院の日だ」みたいな記述もあって、少し狂気じみている。</p>
+        <p>最近では日記を売る人もいると聞いたことある。
+        守秘義務に関わることや個人名とか除けば自分の日記も売れそうではある。。。
+        あんまそういう気持ちじゃないけど</p>
+        ]]>
+      </content:encoded>
+      <pubDate>Sat, 28 Sep 2024 08:09:11 GMT</pubDate>
+    </item>
+    <item>
       <title>AIコンピュータについて</title>
       <link>https://www.kbaba1001.com/posts/202409280755_ai-computer/</link>
       <guid isPermaLink="false">https://www.kbaba1001.com/posts/202409280755_ai-computer/</guid>
@@ -439,39 +466,6 @@
         ]]>
       </content:encoded>
       <pubDate>Fri, 16 Aug 2024 10:40:19 GMT</pubDate>
-    </item>
-    <item>
-      <title>積読を消化したい</title>
-      <link>https://www.kbaba1001.com/posts/202408161007_I-want-to-read-books/</link>
-      <guid isPermaLink="false">https://www.kbaba1001.com/posts/202408161007_I-want-to-read-books/</guid>
-      <content:encoded>
-        <![CDATA[<p><img src="https://www.kbaba1001.com/img/posts/202408161007/books.jpg" alt="books"></p>
-        <p>なかなか忙しくて本を読めていないので、すっかり積読してしまっている。
-        中には半分くらい読んでいるやつもあるが、まったく手を付けていないものもある。</p>
-        <p>なんか Discord とかで読書会しても良いのかもしれない。</p>
-        <p>やはり技術書が多いが、英語とかデザインの本もある。
-        あと写真には写ってないけどヒンディー語と中国語の本とか。
-        外国語の勉強ももっとやりたいけどなかなか時間がなぁ。。。
-        TOEFLもやりたいけども。</p>
-        <p>ゲームやアルゴリズム系の本はほとんど趣味だが、
-        こういうのって読むだけでも楽しい。
-        プログラミングを始めるならやはり簡単なゲームを作る
-        ところからやるのが良いと思うのだが、最近は
-        Unity とかが発達しているせいで逆にあんまライブラリ使わずに
-        実装するのが減ってきているのがなんとなく残念だ。</p>
-        <p>デザインは最近どうもワイヤーフレームなどを作る機会が増えているので、
-        いっそデザインの知識をアップデートしたいという感じ。
-        何度か自分でデザインやったほうがいいんじゃないかと思って勉強するのだが、
-        いまいち実践となると知識を活かしきれていない気がする。
-        というか、デザインの話は基本的に印刷物の話が多くて、
-        Webデザインの話とはちょっと別な部分もあり、
-        なんかちょっとつながっていない感じがする。
-        Webデザインの話と言っても当然CSSとかの技術的な部分は理解しているわけで、
-        なんかこう、UI/UXみたいな話が知りたいのかもしれない。</p>
-        <p>一応色彩検定３級を昔取ったのだが、だいぶ知識を忘れているので教科書を買い直した。</p>
-        ]]>
-      </content:encoded>
-      <pubDate>Fri, 16 Aug 2024 10:07:03 GMT</pubDate>
     </item>
   </channel>
 </rss>
