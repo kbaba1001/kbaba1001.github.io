@@ -9,6 +9,96 @@
     <language>ja_JP</language>
     <generator>Lume v2.0.1</generator>
     <item>
+      <title>Squint で切り開く ClojureScript の新しい可能性</title>
+      <link>https://www.kbaba1001.com/posts/202410130849_opening-up-new-possibilities-for-clojure-script-with-squint/</link>
+      <guid isPermaLink="false">https://www.kbaba1001.com/posts/202410130849_opening-up-new-possibilities-for-clojure-script-with-squint/</guid>
+      <content:encoded>
+        <![CDATA[<p>少し前から <a href="https://github.com/squint-cljs/squint">Squint</a> という軽量な ClojureScript (CLJS) のコンパイラがあります。
+        最近これで遊び始めたのでざっくり紹介したいです。</p>
+        <p>《kbaba1001|/img/horse.jpg|TypeScriptと同程度の気楽さでClojureScriptを使いたい》</p>
+        <p>簡単に言えばこれを叶えるための選択肢としての Squint です。</p>
+        <h3>そもそも今までの CLJS と何が違うのか</h3>
+        <p>今までの CLJS はこんな感じでした。</p>
+        <ul>
+        <li>Java の Clojure との高い互換性を重視</li>
+        <li>CLJS の実行に Java が必要 (<a href="https://github.com/thheller/shadow-cljs">shadow-cljs</a>はだいぶ頑張ってこれをなくそうとしていたけど…)</li>
+        <li>ビルドのアウトプットファイルが大きい
+        <ul>
+        <li>JS のデータ構造をそのまま使うわけではないので標準で色々入っている分重い</li>
+        </ul>
+        </li>
+        <li>JS のデータ構造を使う場合には <code>#js</code> や <code>clj-&gt;js</code> などを使って変換する必要があった
+        <ul>
+        <li>これで困ることはあんまりなかったけど、初心者には分かりづらいポイントかも</li>
+        </ul>
+        </li>
+        <li>Promise の扱いが微妙
+        <ul>
+        <li><a href="https://github.com/clojure/core.async">core.async</a> で十分なことは多いけど、 JS の Promise を使いたいケースも結構ある</li>
+        <li>core.async の関数の戻り値が Promise ではないのがたまに辛い</li>
+        </ul>
+        </li>
+        <li>package.json とかに書いたらいい感じにやってほしいけど、なんかごちゃごちゃする
+        <ul>
+        <li>shadow-cljs はだいぶ良かった</li>
+        </ul>
+        </li>
+        <li>cljs 対応済みの clojure ライブラリが使える</li>
+        </ul>
+        <p>何度も言いますが Shadow-cljs は最高です。 npm で動くし、今までの ClojureScript のライブラリも使えます。
+        難点を上げるとすれば、ビルドが遅くて重く、なんとなく気楽さに欠けることでしょうか。</p>
+        <p>Vite などの JS 文化のビルドライブラリを使いたいというのが正直なところです。</p>
+        <p>そこで、 Squint 。</p>
+        <p>Squint は今までの Clojure(Script) との互換性を捨てる代わりに、</p>
+        <ul>
+        <li>JS のデータをそのまま使うことによるアウトプットの軽量化</li>
+        <li>Promise, Async/Await のサポート</li>
+        <li>JSX 対応</li>
+        </ul>
+        <p>などが入り、 vite などと組み合わせて使うことも出来るようになりました。</p>
+        <p>なので</p>
+        <p>《kbaba1001|/img/horse.jpg|今までの cljs は不要だけど、 js の資産を活用して cljs で開発したい》</p>
+        <p>のような考えの人には向いていると思います。
+        詳細は <a href="https://github.com/squint-cljs/squint?tab=readme-ov-file#differences-with-clojurescript">このへん</a> を読んでください。
+        今までの CLJS との互換性を重視した <a href="https://github.com/squint-cljs/cherry">cherry</a> というプロジェクトもあります。</p>
+        <h3>まずはサンプルコード</h3>
+        <p><a href="https://github.com/neumann-tokyo/vite-preact-squint">vite-preact-squint</a></p>
+        <p>vite, preact, squint で土台を作ってみた。まだ途中だけどとりあえず squint でビルドした jsx を vite で動かすところまではできた。</p>
+        <p>vite squit plugin みたいなやつがあればよいのだが、そこまではまだできていないようで、
+        <code>squint watch</code> で js/jsx ファイルを作ってそれを <code>vite</code> に食べさせるという動き。</p>
+        <p>そうすると２つのプロセスを同時に起動する必要があり、やや面倒なので <a href="https://github.com/chrismytton/shoreman">Shoreman</a> という <a href="https://github.com/ddollar/foreman">Foreman</a> を shell に移植したやつをリポジトリ内に入れて使うことにした。
+        (この辺はもう少しシンプルにできそうな気がするけど)</p>
+        <p><a href="https://github.com/brandonstubbs/vite-plugin-squint">vite-plugin-squint</a> を作っている人もいたので、後で試す。</p>
+        <h3>cljs で malli だけ使いたい</h3>
+        <p><a href="https://github.com/metosin/malli">malli</a> は cljs で動的に typecheck が出来るライブラリで、
+        <a href="https://github.com/clojure/spec.alpha">clojure/spec.alpha</a> の代わりによく使われている。</p>
+        <p>malli の良いところはデータ構造で spec を定義できて、かつ、 Validation などでも使えることだ。</p>
+        <p>TypeScriptのような型システムは別にいらないのだが、単に関数の引数として何を期待しているのかを
+        明白にしておきたいときは結構あって、 Malli はそういうときにちょうどいい。</p>
+        <h4>Squint で Malli は動かない。ではどうするか？</h4>
+        <p>先ほど互換性の話をした通り Squint では普通の CLJS ライブラリは動かないので Malli も動かない。</p>
+        <p>ではどうするか？ JS のライブラリで似たようなものを探すしかない。</p>
+        <p>「引数に何を期待しているかを明記する」という目的であれば <a href="https://www.npmjs.com/package/prop-types">PropTypes</a> をまず思いついた。</p>
+        <p>しかし、案の定 PropTypes は放置されていて、世の中的にはそういうのは「 TypeScript を使え」の一点張りになってしまっていた。
+        PropTypes的なライブラリで代替品も見つからない。</p>
+        <p>《kbaba1001|/img/horse.jpg|発想を変えよう》</p>
+        <h4>Validation ライブラリを Spec 代わりに使う</h4>
+        <p>Clojure には <code>pre</code>、 <code>post</code> という機能がある。
+        関数の事前条件(<code>pre</code>)または事後条件(<code>post</code>)を設定して、条件を満たしていなければ例外を出すというものだ。</p>
+        <p>Malli にせよ clojure/spec.alpha にせよ、静的な型チェックとは異なり、
+        動的な型チェックというのは何かしらの方法で実行して確認する必要がある。</p>
+        <p>方針としてはこうだ。</p>
+        <ul>
+        <li><code>pre</code> で validation チェックライブラリ ( <a href="https://zod.dev/">zod</a> や <a href="https://valibot.dev/">valibot</a> など ) を実行して引数のチェックをする</li>
+        <li>この機構は本番モード(<code>NODE_ENV=production</code>)では無視する（必ずパスする）ようにする</li>
+        <li>テストを活用する</li>
+        </ul>
+        <p>このやり方なら JS の新しいライブラリを使って Malli が行っているような動的な型チェックが出来る。</p>
+        ]]>
+      </content:encoded>
+      <pubDate>Sun, 13 Oct 2024 08:49:58 GMT</pubDate>
+    </item>
+    <item>
       <title>CADをやり始めた</title>
       <link>https://www.kbaba1001.com/posts/202409280830_i-challenge-a-cad/</link>
       <guid isPermaLink="false">https://www.kbaba1001.com/posts/202409280830_i-challenge-a-cad/</guid>
@@ -408,70 +498,6 @@
         ]]>
       </content:encoded>
       <pubDate>Wed, 28 Aug 2024 07:21:23 GMT</pubDate>
-    </item>
-    <item>
-      <title>LumeCMSでブログを作ってみた</title>
-      <link>https://www.kbaba1001.com/posts/202408230722_made-a-blog-by-lume-cms/</link>
-      <guid isPermaLink="false">https://www.kbaba1001.com/posts/202408230722_made-a-blog-by-lume-cms/</guid>
-      <content:encoded>
-        <![CDATA[<p>以前からこのサイトの構築で使っている <a href="https://lume.land/">Lume</a> だが、最近 <a href="https://lume.land/cms/">LumeCMS</a> という CMS 機能を組み込むプラグインが出た。
-        静的サイトジェネレーターで CMS というのも変な話なのだが、 LumeCMS と使うとブログなどのデータ更新のためのUI付き管理画面が作れるようだ。</p>
-        <p><img src="https://www.kbaba1001.com/img/posts/202408230722/lume-cms-posts.png" alt="LumeCMSの管理画面"></p>
-        <p>管理画面を色々設定するとこんな感じになる。
-        タイトルと本文だけじゃなくてタグとか著者とか設定できるようにしてみた。便利。</p>
-        <p>これらはデータとしては Deno KV や Githu API を使うこともできるし、 File System にそのまま markdown ファイルを生成することもできる。</p>
-        <ul>
-        <li><a href="https://magazine.neumann.tokyo/">今回作成したブログ</a></li>
-        </ul>
-        <h3>サーバー環境</h3>
-        <p>今回は LumeCMS を自宅サーバーで動かすことにした。
-        次のような感じ。</p>
-        <p><img src="https://www.kbaba1001.com/img/posts/202408230722/lume-cms-infra.png" alt="LumeCMSのインフラ環境"></p>
-        <p>黄色は docker container で、3つの Conatiner が docker compose で動いている。</p>
-        <p>LumeCMS はアプリケーションサーバーとして動かしておいて、 Caddy でリバースプロキシして外部から見れるようにしておく。
-        これは Caddy の Port で <a href="http://localhost:8080/admin">http://localhost:8080/admin</a> みたいなパスに対してリバースプロキシすることで、</p>
-        <ul>
-        <li><a href="http://localhost:8080/admin">http://localhost:8080/admin</a> は管理画面</li>
-        <li>それ以外の <a href="http://localhost:8080/">http://localhost:8080/</a> は静的サイトで生成されたホームページ</li>
-        </ul>
-        <p>という動きを作りたかったため。</p>
-        <p>Lume の builder を <code>deno task lume build -w</code> みたいな感じで動かしておけばファイルの変更があったときに
-        自動でビルドをやり直して結果である <code>_site</code> を作れるので、 LumeCMS でファイルを作った際もこの自動ビルドが走る。</p>
-        <p><code>_site</code> を Caddy で静的コンテンツとして配信すれば速いし、 Caddy のロードバランサとしての恩恵にあやかれる。</p>
-        <p>Docker の中では 80 Port で Caddy を動かす必要がある。これは http で動かすためで、 Caddy は 80 以外は自動的に https になる。
-        Docker の外から Port Foward するときに 80 をホストの 8080 からアクセスできるようにしておく（この Port は何番でも良い）。</p>
-        <p>8080 Port に対して <a href="https://github.com/fatedier/frp">Frp</a> を使って Tunneling することで https 化と外部への公開を行う。
-        frp についての詳細は <a href="https://www.kbaba1001.com/posts/2024022301_frp/">frp で自宅サーバーを公開する</a> を参照。
-        frp を用意するのが面倒くさかったら ngrok とか cloudflare tunnel とか使えば良い。</p>
-        <h3>雑感</h3>
-        <p>色々 CMS で良いのがないか調べたけど、機能少なくていいからサクッと使えるやつっていうのがなかなか無かった。
-        どれも「カスタマイズバリバリできます！（ただしドキュメントをよく読んでね）」みたいなのが多くてイマイチだったので、
-        使い慣れている Lume に CMS 機能が組み込めるのは割りと助かった気がする。</p>
-        <p>もっと本格的な CMS が欲しい人には不十分だと思うけど、ちょっとしたブログを作るくらいならこれで良さそう。</p>
-        <h3>Lume の他のプラグイン</h3>
-        <p>今回はなるべく Lume のプラグインを使って og image とか整えるようにした。</p>
-        <ul>
-        <li><a href="https://lume.land/plugins/metas/">metas</a>
-        <ul>
-        <li>メタタグを管理しやすくするやつ</li>
-        </ul>
-        </li>
-        <li><a href="https://lume.land/plugins/og_images/">og image</a>
-        <ul>
-        <li>og:image をタイトルなどから自動生成するやつ</li>
-        <li><a href="https://github.com/vercel/satori">satori</a> を使っていて案外使い勝手が良かった</li>
-        </ul>
-        </li>
-        <li><a href="https://lume.land/plugins/pagefind/">pagefind</a>
-        <ul>
-        <li>記事を検索できるやつ</li>
-        </ul>
-        </li>
-        </ul>
-        <p>Lume はどれも使い方のドキュメントが不十分で苦労するけど、頑張ればうまく使える。</p>
-        ]]>
-      </content:encoded>
-      <pubDate>Fri, 23 Aug 2024 07:22:57 GMT</pubDate>
     </item>
   </channel>
 </rss>

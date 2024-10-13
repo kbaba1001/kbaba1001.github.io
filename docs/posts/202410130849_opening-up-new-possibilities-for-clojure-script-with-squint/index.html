@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="/styles.css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <meta name="author" content="kbaba1001">
+    <meta property="og:title" content="Squint で切り開く ClojureScript の新しい可能性 - ハッカーと漫画家">
+    <meta property="og:url" content="https://www.kbaba1001.com/posts/202410130849_opening-up-new-possibilities-for-clojure-script-with-squint/">
+    <meta property="og:image" content="https://www.kbaba1001.com/img/posts/202410130849_opening-up-new-possibilities-for-clojure-script-with-squint.png">
+    <meta property="twitter:image:src" content="https://www.kbaba1001.com/img/posts/202410130849_opening-up-new-possibilities-for-clojure-script-with-squint.png">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <meta property="og:type" content="website">
+    <meta name="description" content="Clojure と漫画が好きな kbaba1001 のブログです。">
+    <meta property="og:description" content="Clojure と漫画が好きな kbaba1001 のブログです。">
+    <meta property="og:locale" content="ja_JP">
+
+    <!-- Google tag (gtag.js) -->
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-MJ8FZT12VZ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-MJ8FZT12VZ");
+    </script>
+
+    <title>Squint で切り開く ClojureScript の新しい可能性 - ハッカーと漫画家</title>
+  </head>
+  <body class="layout">
+    <header class="layout-header">
+  <div class="header">
+    <div class="grid-header-title"><div class="header-title">
+  <img src="/img/horse.jpg" alt="ハッカーと漫画家" loading="lazy" class="header-title-logo">
+  <a href="/" class="header-title-link">ハッカーと漫画家</a>
+</div>
+</div>
+    <div class="grid-header-nav"><nav class="header-nav-container">
+  <ul class="header-nav-list">
+    <li>
+      <a href="/about" class="header-nav-list-link"> About </a>
+    </li>
+    <li>
+      <a href="https://github.com/kbaba1001/kbaba1001.github.io/discussions" class="header-nav-list-link" target="_blank">
+        掲示板
+      </a>
+    </li>
+    <li>
+      <a href="/feed.rss" class="header-nav-list-link"> RSS </a>
+    </li>
+  </ul>
+</nav>
+</div>
+  </div>
+</header>
+<div class="layout-main">
+  <main class="layout-main-center"><div class="post">
+  <div>
+    <div class="post-date">2024-10-13</div>
+    
+    <div class="post-tag" data-pagefind-filter="tag">Tech</div>
+    
+  </div>
+  <h1 class="post-title">Squint で切り開く ClojureScript の新しい可能性</h1>
+  <div class="post-main"><p>少し前から <a href="https://github.com/squint-cljs/squint">Squint</a> という軽量な ClojureScript (CLJS) のコンパイラがあります。
+最近これで遊び始めたのでざっくり紹介したいです。</p>
+<p><div class="fukidashi-container">
+<div class="fukidashi-image-container">
+  <img src="/img/horse.jpg" alt="kbaba1001" class="fukidashi-avatar" />
+	<span>kbaba1001</span>
+</div>
+<div class="fukidashi-left"><div class="fukidashi-serifu">TypeScriptと同程度の気楽さでClojureScriptを使いたい</div></div></div></p>
+<p>簡単に言えばこれを叶えるための選択肢としての Squint です。</p>
+<h3>そもそも今までの CLJS と何が違うのか</h3>
+<p>今までの CLJS はこんな感じでした。</p>
+<ul>
+<li>Java の Clojure との高い互換性を重視</li>
+<li>CLJS の実行に Java が必要 (<a href="https://github.com/thheller/shadow-cljs">shadow-cljs</a>はだいぶ頑張ってこれをなくそうとしていたけど…)</li>
+<li>ビルドのアウトプットファイルが大きい
+<ul>
+<li>JS のデータ構造をそのまま使うわけではないので標準で色々入っている分重い</li>
+</ul>
+</li>
+<li>JS のデータ構造を使う場合には <code>#js</code> や <code>clj-&gt;js</code> などを使って変換する必要があった
+<ul>
+<li>これで困ることはあんまりなかったけど、初心者には分かりづらいポイントかも</li>
+</ul>
+</li>
+<li>Promise の扱いが微妙
+<ul>
+<li><a href="https://github.com/clojure/core.async">core.async</a> で十分なことは多いけど、 JS の Promise を使いたいケースも結構ある</li>
+<li>core.async の関数の戻り値が Promise ではないのがたまに辛い</li>
+</ul>
+</li>
+<li>package.json とかに書いたらいい感じにやってほしいけど、なんかごちゃごちゃする
+<ul>
+<li>shadow-cljs はだいぶ良かった</li>
+</ul>
+</li>
+<li>cljs 対応済みの clojure ライブラリが使える</li>
+</ul>
+<p>何度も言いますが Shadow-cljs は最高です。 npm で動くし、今までの ClojureScript のライブラリも使えます。
+難点を上げるとすれば、ビルドが遅くて重く、なんとなく気楽さに欠けることでしょうか。</p>
+<p>Vite などの JS 文化のビルドライブラリを使いたいというのが正直なところです。</p>
+<p>そこで、 Squint 。</p>
+<p>Squint は今までの Clojure(Script) との互換性を捨てる代わりに、</p>
+<ul>
+<li>JS のデータをそのまま使うことによるアウトプットの軽量化</li>
+<li>Promise, Async/Await のサポート</li>
+<li>JSX 対応</li>
+</ul>
+<p>などが入り、 vite などと組み合わせて使うことも出来るようになりました。</p>
+<p>なので</p>
+<p><div class="fukidashi-container">
+<div class="fukidashi-image-container">
+  <img src="/img/horse.jpg" alt="kbaba1001" class="fukidashi-avatar" />
+	<span>kbaba1001</span>
+</div>
+<div class="fukidashi-left"><div class="fukidashi-serifu">今までの cljs は不要だけど、 js の資産を活用して cljs で開発したい</div></div></div></p>
+<p>のような考えの人には向いていると思います。
+詳細は <a href="https://github.com/squint-cljs/squint?tab=readme-ov-file#differences-with-clojurescript">このへん</a> を読んでください。
+今までの CLJS との互換性を重視した <a href="https://github.com/squint-cljs/cherry">cherry</a> というプロジェクトもあります。</p>
+<h3>まずはサンプルコード</h3>
+<p><a href="https://github.com/neumann-tokyo/vite-preact-squint">vite-preact-squint</a></p>
+<p>vite, preact, squint で土台を作ってみた。まだ途中だけどとりあえず squint でビルドした jsx を vite で動かすところまではできた。</p>
+<p>vite squit plugin みたいなやつがあればよいのだが、そこまではまだできていないようで、
+<code>squint watch</code> で js/jsx ファイルを作ってそれを <code>vite</code> に食べさせるという動き。</p>
+<p>そうすると２つのプロセスを同時に起動する必要があり、やや面倒なので <a href="https://github.com/chrismytton/shoreman">Shoreman</a> という <a href="https://github.com/ddollar/foreman">Foreman</a> を shell に移植したやつをリポジトリ内に入れて使うことにした。
+(この辺はもう少しシンプルにできそうな気がするけど)</p>
+<p><a href="https://github.com/brandonstubbs/vite-plugin-squint">vite-plugin-squint</a> を作っている人もいたので、後で試す。</p>
+<h3>cljs で malli だけ使いたい</h3>
+<p><a href="https://github.com/metosin/malli">malli</a> は cljs で動的に typecheck が出来るライブラリで、
+<a href="https://github.com/clojure/spec.alpha">clojure/spec.alpha</a> の代わりによく使われている。</p>
+<p>malli の良いところはデータ構造で spec を定義できて、かつ、 Validation などでも使えることだ。</p>
+<p>TypeScriptのような型システムは別にいらないのだが、単に関数の引数として何を期待しているのかを
+明白にしておきたいときは結構あって、 Malli はそういうときにちょうどいい。</p>
+<h4>Squint で Malli は動かない。ではどうするか？</h4>
+<p>先ほど互換性の話をした通り Squint では普通の CLJS ライブラリは動かないので Malli も動かない。</p>
+<p>ではどうするか？ JS のライブラリで似たようなものを探すしかない。</p>
+<p>「引数に何を期待しているかを明記する」という目的であれば <a href="https://www.npmjs.com/package/prop-types">PropTypes</a> をまず思いついた。</p>
+<p>しかし、案の定 PropTypes は放置されていて、世の中的にはそういうのは「 TypeScript を使え」の一点張りになってしまっていた。
+PropTypes的なライブラリで代替品も見つからない。</p>
+<p><div class="fukidashi-container">
+<div class="fukidashi-image-container">
+  <img src="/img/horse.jpg" alt="kbaba1001" class="fukidashi-avatar" />
+	<span>kbaba1001</span>
+</div>
+<div class="fukidashi-left"><div class="fukidashi-serifu">発想を変えよう</div></div></div></p>
+<h4>Validation ライブラリを Spec 代わりに使う</h4>
+<p>Clojure には <code>pre</code>、 <code>post</code> という機能がある。
+関数の事前条件(<code>pre</code>)または事後条件(<code>post</code>)を設定して、条件を満たしていなければ例外を出すというものだ。</p>
+<p>Malli にせよ clojure/spec.alpha にせよ、静的な型チェックとは異なり、
+動的な型チェックというのは何かしらの方法で実行して確認する必要がある。</p>
+<p>方針としてはこうだ。</p>
+<ul>
+<li><code>pre</code> で validation チェックライブラリ ( <a href="https://zod.dev/">zod</a> や <a href="https://valibot.dev/">valibot</a> など ) を実行して引数のチェックをする</li>
+<li>この機構は本番モード(<code>NODE_ENV=production</code>)では無視する（必ずパスする）ようにする</li>
+<li>テストを活用する</li>
+</ul>
+<p>このやり方なら JS の新しいライブラリを使って Malli が行っているような動的な型チェックが出来る。</p>
+</div>
+  <hr>
+<div class="comment-button-container">
+  <a href="https://github.com/kbaba1001/kbaba1001.github.io/discussions" target="_blank" class="comment-button">
+    掲示板にコメントする
+  </a>
+  <div class="comment-note">
+    ※どの記事のコメントかわかるように本文に記事タイトルなどを入れてください。
+  </div>
+</div>
+
+  <a href="/" class="post-index-link">一覧に戻る</a>
+</div>
+</main>
+</div>
+
+  
+
+</body></html>
