@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="/styles.css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <meta name="author" content="kbaba1001">
+    <meta property="og:title" content="近々やりたいこと2024年10月 - ハッカーと漫画家">
+    <meta property="og:url" content="https://www.kbaba1001.com/posts/202410200712_what-I-will-do-from-2024-10/">
+    <meta property="og:image" content="https://www.kbaba1001.com/img/posts/202410200712_what-I-will-do-from-2024-10.png">
+    <meta property="twitter:image:src" content="https://www.kbaba1001.com/img/posts/202410200712_what-I-will-do-from-2024-10.png">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <meta property="og:type" content="website">
+    <meta name="description" content="Clojure と漫画が好きな kbaba1001 のブログです。">
+    <meta property="og:description" content="Clojure と漫画が好きな kbaba1001 のブログです。">
+    <meta property="og:locale" content="ja_JP">
+
+    <!-- Google tag (gtag.js) -->
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-MJ8FZT12VZ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-MJ8FZT12VZ");
+    </script>
+
+    <title>近々やりたいこと2024年10月 - ハッカーと漫画家</title>
+  </head>
+  <body class="layout">
+    <header class="layout-header">
+  <div class="header">
+    <div class="grid-header-title"><div class="header-title">
+  <img src="/img/horse.jpg" alt="ハッカーと漫画家" loading="lazy" class="header-title-logo">
+  <a href="/" class="header-title-link">ハッカーと漫画家</a>
+</div>
+</div>
+    <div class="grid-header-nav"><nav class="header-nav-container">
+  <ul class="header-nav-list">
+    <li>
+      <a href="/about" class="header-nav-list-link"> About </a>
+    </li>
+    <li>
+      <a href="https://github.com/kbaba1001/kbaba1001.github.io/discussions" class="header-nav-list-link" target="_blank">
+        掲示板
+      </a>
+    </li>
+    <li>
+      <a href="/feed.rss" class="header-nav-list-link"> RSS </a>
+    </li>
+  </ul>
+</nav>
+</div>
+  </div>
+</header>
+<div class="layout-main">
+  <main class="layout-main-center"><div class="post">
+  <div>
+    <div class="post-date">2024-10-20</div>
+    
+    <div class="post-tag" data-pagefind-filter="tag">Tech</div>
+    
+    <div class="post-tag" data-pagefind-filter="tag">日常</div>
+    
+  </div>
+  <h1 class="post-title">近々やりたいこと2024年10月</h1>
+  <div class="post-main"><p>近々やりたいこと</p>
+<ul>
+<li>ClojureScript (Squint) 関係の動画
+<ul>
+<li>プログラミングしながら雑談するような、プログラミング Vlog 動画を作りたい</li>
+</ul>
+</li>
+<li>Ollama か llama-cpp-python をベースにしてローカル AI と日本語で音声通話できる仕組みを作りたい
+<ul>
+<li>喋った言葉を whisper でテキスト化してローカルllm に認識させて、その結果を VOICEVOX で読み上げさせる</li>
+<li>Ollama は JS 対応されているのでうまいことクライアント作れば良さそう
+<ul>
+<li>とりあえず Web ベースのクライアントで良い</li>
+<li>コードも理解させるなら VS Code プラグインが理想かもしれない</li>
+</ul>
+</li>
+<li>以前から作っているローカルAI: Poppins システムの発展型</li>
+</ul>
+</li>
+<li>Supabase (Self-host) + Deno Fresh + Squint でシステム構築
+<ul>
+<li>以前から作っている FAM システムの作り直し</li>
+<li>ロードバランサ (Kong か Caddy あたり) をうまく使って拡張できるようにしたい</li>
+<li>今まで特定のサービスに依存しないシステム開発を心がけてきたけど、次の理由でSupabase依存することにした
+<ul>
+<li>PGroonga が動くクラウドシステムは Supabase のみ</li>
+<li>Supabase が self-host できるので必ずしもクラウド依存ではない</li>
+<li>Supabase 使うほうが認証とかストレージとか楽そう</li>
+</ul>
+</li>
+<li>Deno Fresh について
+<ul>
+<li>React より Preact のほうが好み</li>
+<li>Preact 前提なら vite で頑張るより Fresh 使うほうが楽かも</li>
+<li>サーバーサイドが Supabase 前提で簡略化出来るなら backend と frontend を分けなくても良さそう</li>
+</ul>
+</li>
+<li>Squint について
+<ul>
+<li>Squint で js, jsx を出力してそれを Deno Fresh で動かせれば理想</li>
+<li>もちろん Squint 使わないほうが一般的だし楽だけども、やはり Clojure を書きたい</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>技術書典 (11/3) 参加予定
+<ul>
+<li>自宅サーバー本が出ます</li>
+<li>ローカル AI 本も出るかも？間に合えば…</li>
+</ul>
+</li>
+<li>ISUCON
+<ul>
+<li>参加申込済みだけどいまいち練習できていない。やらねば。。。</li>
+</ul>
+</li>
+<li>Rust の勉強
+<ul>
+<li>ISUCON 終了後に着手できそう</li>
+<li>本を3冊買ってあるので勉強したい</li>
+<li>特に WASM とか Web 対応とかが気になる</li>
+</ul>
+</li>
+<li>自宅サーバーに関する動画作成
+<ul>
+<li>自宅サーバー + NextCloud の話をもう少ししたい</li>
+<li>自宅サーバー + Local LLM の話もしたい</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>上記の箇条書きを ChatGPT 4o with canvas で文章化しました。↓</p>
+<hr>
+<p>やりたいことがたくさんあってワクワクしているので、近々取り組みたいプロジェクトについてまとめてみました。</p>
+<h3>ClojureScript (Squint) 関連の動画</h3>
+<p>ClojureScriptの一環として、特に"Squint"に関係するプログラミングのVlog動画を作りたいと思っています。プログラミングをしながら雑談をするような形式で、リラックスした雰囲気の動画になる予定です。技術的な内容と日常的な思考を共有することで、視聴者の皆さんと同じ熱意を共有できると嬉しいです。</p>
+<h3>ローカルAIと日本語で音声通話する仕組み</h3>
+<p>次に取り組みたいのが、Ollamaやllama-cpp-pythonをベースにして、ローカルAIと日本語で音声通話できる仕組みの開発です。これは、話した言葉をWhisperでテキスト化し、その内容をローカルのLLM（大規模言語モデル）に理解させ、その結果をVOICEVOXで読み上げる、という流れを想定しています。特にOllamaはJavaScript対応されているので、Webベースのクライアントを作ってテストしてみたいと思っています。最終的にはVS Codeプラグインとして、コードも理解する形に進化させるのが理想です。このアイデアは以前から作っているローカルAI、"Poppinsシステム"の発展型と考えています。</p>
+<h3>Supabase + Deno Fresh + Squint でシステム構築</h3>
+<p>次に、Supabase（Self-host）とDeno Fresh、そしてSquintを使って新たなシステム構築に取り組もうと思っています。このプロジェクトは、以前から作っているFAMシステムの改良版です。ロードバランサ（KongやCaddyなど）を使って、より拡張性のあるシステムにすることが目標です。</p>
+<p>これまで私は、特定のサービスに依存しないシステム開発を心がけてきましたが、以下の理由でSupabaseを選びました。</p>
+<ul>
+<li>PGroongaが動作するクラウドシステムはSupabaseのみ</li>
+<li>Supabaseはセルフホスト可能で、必ずしもクラウドに依存しない</li>
+<li>認証やストレージなどが簡単に利用できる</li>
+</ul>
+<p>Deno Freshを使う理由としては、Reactよりも軽量なPreactが好みであり、Preact前提ならFreshのほうがシンプルに開発できそうだからです。また、バックエンドとフロントエンドを分ける必要もないため、全体の開発が楽になると考えています。</p>
+<p>Squintについては、JavaScriptやJSXを生成してDeno Freshで動かすことを目指しています。もちろんSquintを使わないほうが一般的ではありますが、それでもClojureを書く楽しさを手放したくない気持ちがあります。</p>
+<h3>技術書典への参加</h3>
+<p>11月3日に開催される技術書典に参加する予定です。そこで、自宅サーバーに関する本を出す予定です。さらに、ローカルAIに関する本も間に合えば出したいと考えています。</p>
+<h3>ISUCONの参加</h3>
+<p>ISUCONに申し込んでいますが、まだあまり練習できていません。本番に向けてもう少し頑張って準備しなければと感じています。</p>
+<h3>Rustの勉強</h3>
+<p>ISUCONが終わったら、Rustの勉強にも取り組みたいと思っています。すでに3冊の本を購入しているので、これらを活用して特にWASMやWeb関連の技術に注目しながら学んでいく予定です。</p>
+<h3>自宅サーバーに関する動画作成</h3>
+<p>最後に、自宅サーバーに関する動画も作成したいと考えています。特に、自宅サーバーとNextCloudの設定や、自宅サーバーとローカルLLMの連携についてもう少し掘り下げて共有したいです。</p>
+<p>こうしてみると、たくさんのプロジェクトがありますが、どれも非常に楽しみで取り組むのが待ち遠しいです。少しずつ進めて、ブログや動画で進捗を共有していければと思っています。</p>
+<p><div class="fukidashi-container">
+<div class="fukidashi-image-container">
+  <img src="/img/horse.jpg" alt="kbaba1001" class="fukidashi-avatar" />
+	<span>kbaba1001</span>
+</div>
+<div class="fukidashi-left"><div class="fukidashi-serifu">普通に読める文章になっていて恐ろしい...</div></div></div></p>
+<hr>
+<p>ちなみに、同じプロンプトで llama3-elyza-jp-8b を実行した結果は次:</p>
+<hr>
+<p>タイトル: 近々やりたいことのまとめ - プログラミングとローカルAIの活用 -</p>
+<p>近いうちに取り組みたいプロジェクトや活動について、箇条書きで整理してみました。以下はその内容です。</p>
+<p>先日、技術書典11/3に参加し、自宅サーバー本を出します。同時に、ローカルAI本も出る予定です。他にも、ISUCONやRustの勉強、ClojureScriptやOllamaを活用したローカルAIと音声通話、SupabaseやDeno Freshを使用したシステム構築など多くのプロジェクトが控えています。</p>
+<p>以下は、各プロジェクトの詳細です。</p>
+<ol>
+<li>
+<p>ClojureScript関係の動画:
+プログラミングしながら雑談するVlog動画を作りたい。Ollamaやllama-cpp-pythonを使用し、ローカルAIと日本語で音声通話できる仕組みを構築します。</p>
+</li>
+<li>
+<p>Ollamaやllama-cpp-pythonのクライアント作成:
+Webベースのクライアントを作る予定です。VS Codeプラグインが理想かもしれません。</p>
+</li>
+<li>
+<p>Supabase、Deno Fresh、Squintでのシステム構築:
+以前から作っているFAM システムをSupabaseで再構築します。ロードバランサを使って拡張できるようにし、認証やストレージを楽に設定したいです。</p>
+</li>
+<li>
+<p>Deno Freshについて:
+Preactを使用してFreshでアプリケーションを作成する予定です。サーバー側の設定が簡略化されるならば、backendとfrontendを分ける必要はなさそうです。</p>
+</li>
+<li>
+<p>Squintについて:
+Squintでjs,jsxを出力し、Deno Freshで動かすことが理想です。もちろん一般的にはClojureScriptを使わないほうが楽ですが、書きたいから使います。</p>
+</li>
+<li>
+<p>技術書典11/3の参加と自宅サーバー本の出版:
+自宅サーバー本を出します。ローカルAI本も出る予定です。</p>
+</li>
+<li>
+<p>ISUCONの参加申し込みとRustの勉強:
+ISUCONに参加申込済みですが、練習できていません。やらねばです。Rustの勉強は、ISUCON終了後から始める予定です。</p>
+</li>
+<li>
+<p>自宅サーバーに関する動画作成:
+自宅サーバーとNextCloudやローカルLLMについての話をまとめたいです。</p>
+</li>
+</ol>
+<p>以上が近々やりたいことの内容です。</p>
+<p><div class="fukidashi-container">
+<div class="fukidashi-image-container">
+  <img src="/img/horse.jpg" alt="kbaba1001" class="fukidashi-avatar" />
+	<span>kbaba1001</span>
+</div>
+<div class="fukidashi-left"><div class="fukidashi-serifu">要約してくれた感じだね</div></div></div></p>
+<p>やはり llama2 系に比べれば圧倒的に進歩しているけど、 ChatGPT 4o にはもちろん及ばず。
+でもこれくらい動けばなにかできそうではある。</p>
+</div>
+  <hr>
+<div class="comment-button-container">
+  <a href="https://github.com/kbaba1001/kbaba1001.github.io/discussions" target="_blank" class="comment-button">
+    掲示板にコメントする
+  </a>
+  <div class="comment-note">
+    ※どの記事のコメントかわかるように本文に記事タイトルなどを入れてください。
+  </div>
+</div>
+
+  <a href="/" class="post-index-link">一覧に戻る</a>
+</div>
+</main>
+</div>
+
+  
+
+</body></html>
