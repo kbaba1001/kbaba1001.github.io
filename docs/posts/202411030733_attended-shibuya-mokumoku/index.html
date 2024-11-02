@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="/styles.css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <meta name="author" content="kbaba1001">
+    <meta property="og:title" content="渋谷でもくもく会に参加した - ハッカーと漫画家">
+    <meta property="og:url" content="https://www.kbaba1001.com/posts/202411030733_attended-shibuya-mokumoku/">
+    <meta property="og:image" content="https://www.kbaba1001.com/img/posts/202411030733_attended-shibuya-mokumoku.png">
+    <meta property="twitter:image:src" content="https://www.kbaba1001.com/img/posts/202411030733_attended-shibuya-mokumoku.png">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <meta property="og:type" content="website">
+    <meta name="description" content="Clojure と漫画が好きな kbaba1001 のブログです。">
+    <meta property="og:description" content="Clojure と漫画が好きな kbaba1001 のブログです。">
+    <meta property="og:locale" content="ja_JP">
+
+    <!-- Google tag (gtag.js) -->
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-MJ8FZT12VZ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-MJ8FZT12VZ");
+    </script>
+
+    <title>渋谷でもくもく会に参加した - ハッカーと漫画家</title>
+  </head>
+  <body class="layout">
+    <header class="layout-header">
+  <div class="header">
+    <div class="grid-header-title"><div class="header-title">
+  <img src="/img/horse.jpg" alt="ハッカーと漫画家" loading="lazy" class="header-title-logo">
+  <a href="/" class="header-title-link">ハッカーと漫画家</a>
+</div>
+</div>
+    <div class="grid-header-nav"><nav class="header-nav-container">
+  <ul class="header-nav-list">
+    <li>
+      <a href="/about" class="header-nav-list-link"> About </a>
+    </li>
+    <li>
+      <a href="https://github.com/kbaba1001/kbaba1001.github.io/discussions" class="header-nav-list-link" target="_blank">
+        掲示板
+      </a>
+    </li>
+    <li>
+      <a href="/feed.rss" class="header-nav-list-link"> RSS </a>
+    </li>
+  </ul>
+</nav>
+</div>
+  </div>
+</header>
+<div class="layout-main">
+  <main class="layout-main-center"><div class="post">
+  <div>
+    <div class="post-date">2024-11-03</div>
+    
+    <div class="post-tag" data-pagefind-filter="tag">Tech</div>
+    
+    <div class="post-tag" data-pagefind-filter="tag">日常</div>
+    
+  </div>
+  <h1 class="post-title">渋谷でもくもく会に参加した</h1>
+  <div class="post-main"><p><img src="/img/posts/202411030733/mokumoku.jpg" alt="渋谷でもくもく会"></p>
+<p><a href="https://connpass.com/event/334713/">渋谷でもくもく会</a> に参加してきた。</p>
+<p>こういうイベントに参加するのは久しぶりで楽しかった。</p>
+<h3>会の雰囲気</h3>
+<p>シェアオフィスでの開催だったので静かな空間で良かった。
+参加者も１０人くらいで適度におしゃべりしたりするのにちょうどいい感じ。</p>
+<p>もくもく会だが、作業したり喋ったりゆるい雰囲気で良かった。
+（ずっと黙っている会もあったりするが、自分好みではない）</p>
+<p>他の参加者は若手と中堅のエンジニアの方が半々くらいで、
+適度に会話が盛り上がって楽しかった。
+意外と女性の参加者も多かった。</p>
+<p>私は最近静岡に引きこもっているので、Tech系の話をするのは久々で
+自分がこういうおしゃべりに飢えていたことに気づいた。</p>
+<p>若手エンジニアの方たちの話は自分にとっては新鮮なところもあって、
+転職の話とかどのように技術を学んでいくかとか、話題が若くて良かった。</p>
+<h3>やっていたこと</h3>
+<p>最近 ChatGPT に AI と音声で会話できる機能がついたのだが、それと同じようなものを
+ローカルLLMを使って実現したい。次の流れで実現できると思っている。</p>
+<ul>
+<li>ユーザーの音声のテキスト化
+<ul>
+<li>ユーザーの音声をブラウザで取得</li>
+<li>音声データをStreamでサーバーにおくる</li>
+<li>サーバーでは音声データをWhisperで文字に変換する (ここもStream処理)</li>
+<li>文字データをフロント側にStreamで返却しつつ、DBにも保存する</li>
+</ul>
+</li>
+<li>テキストをローカルLLMにわたして返答をつくる
+<ul>
+<li>１００文字くらいの短い文章を作るように命令しておく</li>
+<li>インプットはStreamではなくまとめてテキストデータを入れる</li>
+<li>アウトプットをStream で受け取る</li>
+</ul>
+</li>
+<li>LLMの返答を音声データにする
+<ul>
+<li>LLMのアウトプットを Stream で受け取り、それを <a href="https://github.com/KoljaB/RealtimeTTS">RealtimeTTS</a> などを用いて Stream で音声データにする</li>
+<li>サーバーからフロントに音声データと文字データを Stream で送る</li>
+<li>フロントではサーバーからのレスポンスを Stream で受け取りつつ、音声を再生し、文字データを画面に表示する</li>
+</ul>
+</li>
+</ul>
+<p>もくもく会では、ブラウザ上で音声データを取得して ReadableStream でサーバーに送り、
+サーバー側でファイル化するという処理を作ることができた。</p>
+<p>実際には受け取ったバイナリをファイルにするんじゃなくて、そのまま <a href="https://github.com/ufal/whisper_streaming/blob/main/whisper_online_server.py">whisper_online_server.py</a> に渡してテキスト化したい。</p>
+<h3>結果</h3>
+<p>会場ではかなり集中して作業できてきちんとした進捗が出せてよかった。</p>
+<p>12:00 - 18:30 （わたしは 17:30 で帰ったけど）という長時間の会だったので、
+なかなか普段ここまでまとまった時間は取れないので、それだけでもありがたかった。</p>
+<h3>蛇足: わからないことをAIに聞くことに慣れた</h3>
+<p>会とは関係ないけど WebStream API をつかったコーディングは初めてで
+MDNのサンプルコードだけだとしんどいなぁと思っていたところ、
+ChatGPTにサンプルコードを提示させるとかなりいいコードがでてきて、
+なんかもうこれでいいじゃんとなった。
+こういう規格に沿ったものをつくるのはAIのほうが得意そうだ。</p>
+<p>バックエンドも Deno にしているので Web 標準の機能が使えてスッキリするが、
+これも資料が少ないので ChatGPT に聞いたほうが何かと早い。。。</p>
+<p>ChatGPTの作ったコードをとりあえず動かしてみて、問題があったらドキュメントを参考に修正するという感じ。</p>
+<p>すごい時代になったなぁ。。。</p>
+</div>
+  <hr>
+<div class="comment-button-container">
+  <a href="https://github.com/kbaba1001/kbaba1001.github.io/discussions" target="_blank" class="comment-button">
+    掲示板にコメントする
+  </a>
+  <div class="comment-note">
+    ※どの記事のコメントかわかるように本文に記事タイトルなどを入れてください。
+  </div>
+</div>
+
+  <a href="/" class="post-index-link">一覧に戻る</a>
+</div>
+</main>
+</div>
+
+  
+
+</body></html>

@@ -1,4 +1,7 @@
-import { createCanvas, loadImage } from "https://deno.land/x/canvas/mod.ts";
+import {
+	createCanvas,
+	loadImage,
+} from "https://deno.land/x/canvas@v1.4.2/mod.ts";
 
 const width = 1200;
 const height = 630;
