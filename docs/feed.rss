@@ -9,6 +9,587 @@
     <language>ja_JP</language>
     <generator>Lume v2.0.1</generator>
     <item>
+      <title>Deno, Web Streams API で Local LLM と音声通話するWebシステムを開発している</title>
+      <link>https://www.kbaba1001.com/posts/202412140705_making-a-talk-with-local-llm-system-with-deno-web-streams-api/</link>
+      <guid isPermaLink="false">https://www.kbaba1001.com/posts/202412140705_making-a-talk-with-local-llm-system-with-deno-web-streams-api/</guid>
+      <content:encoded>
+        <![CDATA[<h2>開発中のもの</h2>
+        <p>YouTubeのデモ</p>
+        <p>最近時々見かけるようになった、AIと音声通話できるやつを作ってみた。</p>
+        <p>既存サービスとの違い、特徴としては</p>
+        <ul>
+        <li>外部APIを使わず、自宅サーバーのローカルGPUのみで動作</li>
+        <li>Web Streams API を活用してリアルタイム処理を実現</li>
+        <li>Backend: Deno, Hono, Kysely, PostgreSQL</li>
+        <li>Frontend: Node, Vite, React</li>
+        </ul>
+        <h2>大まかなロジック</h2>
+        <ul>
+        <li>人間の声をブラウザのマイク機能で取得してサーバーに Web Streams で送る</li>
+        <li>サーバー側で音声データを Faster Whisper を用いてテキスト化する</li>
+        <li>テキストをリアルタイムにフロントエンドで取得</li>
+        <li>テキストをローカルLLM (Ollama) にプロンプトとして渡す</li>
+        <li>ローカルLLMからの実行結果をリアルタイムにフロントエンドに送信</li>
+        <li>フロントエンドでテキストを読み上げ</li>
+        </ul>
+        <h2>リアルタイム処理</h2>
+        <p>同期処理とかストリーミング処理などともいう。
+        フロントエンドとバックエンドでデータのやり取りをする際に、少しずつデータを送ることでタイムラグを少なくしてシステムが動くようにする技術のこと。</p>
+        <h3>リアルタイム処理の実装方法</h3>
+        <p>Webシステムのリアルタイム処理について調べると WebSocket に関する情報がたくさん出てくる。</p>
+        <h4>WebSocket のメリット・デメリット</h4>
+        <ul>
+        <li>WebSocket のメリット
+        <ul>
+        <li>sockert io などのライブラリを使うと簡単に実装できる</li>
+        <li>古いブラウザでも動く</li>
+        <li>使っている人が多いのかドキュメントが豊富</li>
+        </ul>
+        </li>
+        <li>WebSocket のデメリット
+        <ul>
+        <li>双方向通信なので通信量が多い</li>
+        <li>ws/wssというプロトコルを使うのでサーバー側で http/https とは別の設計が必要になる</li>
+        </ul>
+        </li>
+        </ul>
+        <h4>WebStreams のメリット・デメリット</h4>
+        <ul>
+        <li>WebStreams のメリット
+        <ul>
+        <li>単方向通信なので通信量を抑えることができる</li>
+        <li>http/https で扱うことができるのでサーバーに特別な実装が不要</li>
+        </ul>
+        </li>
+        <li>WebStreams のデメリット
+        <ul>
+        <li>使ってる人が少ないのかドキュメントが少ない（ほとんどMDNだけかも）</li>
+        <li>古いブラウザでは動かないことがある</li>
+        </ul>
+        </li>
+        </ul>
+        <h4>今回は WebStreams を採用</h4>
+        <p>WebStreams を使ったことがなかったのでやってみたかったというのが一番大きな理由（というかそのためにこのシステムを作っている）なのだが、WebSocketsは意外と気難しいやつだと思っていて、一見気楽に実装できて良いのだが本番環境まで含めて考えると通信量などの問題もあり使いこなすのが難しいという感触がある。</p>
+        <h2>WebStreams API とは何か？</h2>
+        <ul>
+        <li>Readable Stream, Writable Stream, Transform Stream を使ってデータのやり取りができる。</li>
+        <li>これらの Stream はシェルコマンドのように pipe してつなげることができるため、すっきりしたコードを書くことができて嬉しい。</li>
+        <li>Web標準の機能であるから今どきのブラウザ、そしてDenoで活用することができる
+        <ul>
+        <li>Node.js は歴史的な経緯により Deno ほど綺麗な実装になっていない</li>
+        </ul>
+        </li>
+        </ul>
+        <p>詳しくは MDN 参照 <a href="https://developer.mozilla.org/en-US/docs/Web/API/Streams_API">https://developer.mozilla.org/en-US/docs/Web/API/Streams_API</a></p>
+        <h2>WebStreams API はどこで使われているか？</h2>
+        <ul>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Response">fetch の Response Body</a></li>
+        <li><a href="https://hono.dev/docs/helpers/streaming">Hono の Streaming Helper</a></li>
+        <li>Deno の IO や HTTP リクエストなど</li>
+        </ul>
+        <h2>作成するシステムの概要</h2>
+        <p><img src="https://www.kbaba1001.com/img/posts/202412140705/design.png" alt="システムの概要図"></p>
+        <h3>人の声をテキスト化する部分</h3>
+        <p>フロント側の処理。音声データを取得してバックエンドに ReadableStream を使って送信する。</p>
+        <pre><code class="language-ts">import { jwtTokenAtom } from &quot;@/atoms/current-user&quot;;
+        import { httpClient } from &quot;@/libs/http-client&quot;;
+        import { Box, Button } from &quot;@chakra-ui/react&quot;;
+        import { useMutation } from &quot;@tanstack/react-query&quot;;
+        import { useAtom } from &quot;jotai&quot;;
+        import { useRef } from &quot;react&quot;;
+        
+        type AudioStreamerProps = {
+        talkId: string;
+        };
+        
+        export const AudioStreamer = ({ talkId }: AudioStreamerProps) =&gt; {
+        // 音声データの取得用の Ref
+        const mediaRecorderRef = useRef&lt;MediaRecorder | null&gt;(null);
+        const streamControllerRef =
+        useRef&lt;ReadableStreamDefaultController&lt;Uint8Array&gt; | null&gt;(null);
+        const [jwtToken] = useAtom(jwtTokenAtom);
+        
+        const { mutate, isPending } = useMutation({
+        mutationFn: async (audioStream: ReadableStream&lt;Uint8Array&gt;) =&gt; {
+        return await httpClient({ jwtToken })
+        .post(`talks/${talkId}/stream`, {
+        body: audioStream,
+        timeout: false,
+        })
+        .text();
+        },
+        onSuccess: (data) =&gt; {
+        console.log(data);
+        },
+        onError: (error) =&gt; {
+        console.error(error);
+        },
+        });
+        
+        // 音声データを取得してサーバーにリクエストする
+        const startRecording = async () =&gt; {
+        try {
+        // マイクへのアクセスをリクエスト
+        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        
+        // MediaRecorderの作成
+        const options = {
+        mimeType: &quot;audio/webm; codecs=opus&quot;, // サポートされているmimeTypeを指定
+        };
+        const mediaRecorder = new MediaRecorder(stream, options);
+        
+        mediaRecorderRef.current = mediaRecorder;
+        
+        // ReadableStreamの作成
+        const audioStream = new ReadableStream&lt;Uint8Array&gt;({
+        start(controller) {
+        // コントローラを保存して、後でデータをエンキューする
+        streamControllerRef.current = controller;
+        },
+        });
+        
+        // dataavailableイベントのハンドリング
+        mediaRecorder.addEventListener(&quot;dataavailable&quot;, async (event) =&gt; {
+        if (event.data &amp;&amp; event.data.size &gt; 0) {
+        // BlobをArrayBufferに変換
+        const arrayBuffer = await event.data.arrayBuffer();
+        // ArrayBufferをUint8Arrayに変換
+        const chunk = new Uint8Array(arrayBuffer);
+        // ReadableStreamにチャンクをエンキュー
+        streamControllerRef.current?.enqueue(chunk);
+        }
+        });
+        
+        // stopイベントのハンドリング
+        mediaRecorder.addEventListener(&quot;stop&quot;, () =&gt; {
+        // ReadableStreamをクローズ
+        streamControllerRef.current?.close();
+        });
+        
+        // 録音開始（100msごとにデータを収集）
+        mediaRecorder.start(100);
+        
+        // ReadableStreamをAPIに送信
+        mutate(audioStream);
+        } catch (error) {
+        console.error(&quot;マイクへのアクセスエラー:&quot;, error);
+        }
+        };
+        
+        const stopRecording = () =&gt; {
+        mediaRecorderRef.current?.stop();
+        };
+        
+        return (
+        &lt;Box&gt;
+        &lt;Button colorScheme=&quot;red&quot; onClick={startRecording} isLoading={isPending}&gt;
+        録音
+        &lt;/Button&gt;
+        &lt;Button
+        colorScheme=&quot;blue&quot;
+        onClick={stopRecording}
+        isDisabled={!isPending}
+        &gt;
+        停止
+        &lt;/Button&gt;
+        &lt;/Box&gt;
+        );
+        };
+        </code></pre>
+        <p>バックエンドでは、ReadableStreamを受け取って <a href="https://github.com/ufal/whisper_streaming">whisper_streaming</a> のサーバー（これは別途立ち上げておく）に音声データを渡し、テキストデータを受け取る。</p>
+        <pre><code class="language-ts">app.post(&quot;/:id/stream&quot;, permissionChecker(&quot;talks&quot;), async (c) =&gt; {
+        // 音声データをReadableStreamで取得する
+        const stream = c.req.raw.body as ReadableStream;
+        const talkId = Number(c.req.param(&quot;id&quot;));
+        const user = c.get(&quot;currentUser&quot;);
+        
+        if (stream) {
+        // whisper streaming は サンプリングレートなどに指定があるため FFmpeg で変換する
+        // これは Web Streams API でパイプできる
+        const ffmpeg = new Deno.Command(&quot;ffmpeg&quot;, {
+        args: [
+        &quot;-i&quot;,
+        &quot;pipe:0&quot;, // 標準入力からデータを受け取る
+        &quot;-ar&quot;,
+        &quot;16000&quot;, // サンプリングレートを16000Hzに設定
+        &quot;-ac&quot;,
+        &quot;1&quot;, // モノラルに設定
+        &quot;-sample_fmt&quot;,
+        &quot;s16&quot;, // サンプルフォーマットをs16に設定
+        &quot;-f&quot;,
+        &quot;wav&quot;, // 出力フォーマットをWAVに設定
+        &quot;pipe:1&quot;, // 標準出力にデータを出力
+        ],
+        stdin: &quot;piped&quot;,
+        stdout: &quot;piped&quot;,
+        stderr: &quot;piped&quot;,
+        });
+        const ffmpegProcess = ffmpeg.spawn();
+        
+        stream.pipeTo(ffmpegProcess.stdin);
+        
+        const convertedAudioStream = ffmpegProcess.stdout;
+        
+        // WhipserStreamingServer は TCP サーバーなので Deno.connect で接続できる
+        // これも Web Streams でパイプできる
+        const whisper = await Deno.connect({
+        hostname: Deno.env.get(&quot;WHISPER_HOST&quot;) || &quot;localhost&quot;,
+        port: Number(Deno.env.get(&quot;WHISPER_PORT&quot;)) || 43001,
+        });
+        
+        convertedAudioStream.pipeTo(whisper.writable);
+        
+        const reader = whisper.readable.getReader();
+        const decoder = new TextDecoder(&quot;utf-8&quot;);
+        let sentence = &quot;&quot;;
+        const sentenceIdentifier = crypto.randomUUID();
+        
+        try {
+        // Streams からテキストデータを受け取って、DBに保存したり通知したりする
+        while (true) {
+        const { done, value } = await reader.read();
+        if (done) {
+        break;
+        }
+        const text = decoder.decode(value);
+        // 先頭に数字が入っているので削除
+        const wordText = text.replace(/^[\d\s]+/, &quot;&quot;).replace(/\n/g, &quot;&quot;);
+        
+        if (wordText.length &gt; 0) {
+        sentence += wordText;
+        // 後述のGETリクエストでテキストデータを取得できるようにするためにNotifyする
+        await notify(&quot;words_inserted&quot;, {
+        id: crypto.randomUUID(),
+        talkId,
+        userId: user.id,
+        words: wordText,
+        sentenceIdentifier,
+        });
+        await modelWords.create({
+        talkId,
+        userId: user.id,
+        words: wordText,
+        sentenceIdentifier,
+        });
+        }
+        }
+        } catch (error) {
+        if (error instanceof Deno.errors.Interrupted) {
+        customLogger(&quot;POST クライアントが接続を閉じました。&quot;);
+        }
+        }
+        
+        return c.text(&quot;completed&quot;, 200);
+        }
+        
+        return c.text(&quot;ストリームが存在しません&quot;, 400);
+        });
+        </code></pre>
+        <h3>新しいテキストができた時にフロントで取得する部分</h3>
+        <p>フロントではAIと話すページを開いたときにバックエンドに対してGETリクエストを出して、
+        過去の会話履歴を取得するようにしている。
+        このリクエストをStreamで繋いだままにしておいて、新しいデータが入れば取得するようにしておく</p>
+        <pre><code class="language-ts">	const [words, setWords] = useState&lt;Word[]&gt;([]);
+        
+        useEffect(() =&gt; {
+        const fetchStream = async () =&gt; {
+        // 次のエンドポイントはReadableStreamを返す
+        const response = await httpClient({ jwtToken }).get(
+        `talks/${talkId}/stream`,
+        );
+        const stream = response.body;
+        
+        if (!stream) {
+        console.error(&quot;このブラウザはストリーミングをサポートしていません。&quot;);
+        return;
+        }
+        
+        const reader = stream.getReader();
+        const decoder = new TextDecoder(&quot;utf-8&quot;);
+        try {
+        while (true) {
+        const { done, value } = await reader.read();
+        if (done) {
+        console.log(&quot;done!&quot;);
+        break;
+        }
+        
+        // 新しいデータを受け取ったら Words 配列にいれる
+        // (なるべく連続するデータは同じフキダシに入れたいのでちょっとコードがごちゃごちゃしている)
+        const chunk = decoder.decode(value, { stream: true });
+        const json = JSON.parse(chunk);
+        const lastWord = json[0];
+        if (lastWord?.assistantId != null) {
+        speak(lastWord.words);
+        }
+        setWords((prev) =&gt; {
+        const newArray = [...json, ...prev];
+        const result = newArray.reduce((acc, cur) =&gt; {
+        const key = cur.sentenceIdentifier;
+        acc[key] = {
+        id: key,
+        userId: cur.userId,
+        talkId: cur.talkId,
+        words: acc[key]
+        ? `${cur.words}${acc[key].words}`.replace(/\n/g, &quot;&quot;)
+        : cur.words.replace(/\n/g, &quot;&quot;),
+        sentenceIdentifier: key,
+        };
+        
+        return acc;
+        }, {});
+        return Object.values(result);
+        });
+        }
+        } catch (error) {
+        console.error(&quot;ストリームの読み取り中にエラーが発生しました:&quot;, error);
+        }
+        };
+        
+        fetchStream();
+        }, [jwtToken, talkId]);
+        
+        // words 配列を表示する処理が続く
+        </code></pre>
+        <p>バックエンドでは PostgreSQL の <a href="https://www.postgresql.org/docs/current/sql-notify.html">Notify/Listen</a> 機能を使って
+        Channel のようなことをする。
+        これにより、新しいデータが追加されたらフロントエンドに送る。</p>
+        <pre><code class="language-ts">app.get(&quot;/:id/stream&quot;, permissionChecker(&quot;talks&quot;), async (c) =&gt; {
+        const talkId = Number(c.req.param(&quot;id&quot;));
+        
+        const words = await modelWords.findAllByTalkId(talkId);
+        const wordsJson = JSON.stringify(words);
+        
+        // stream を返すのでクライアントが接続を切らない限りデータを渡し続けることができる。
+        return streamText(c, async (s) =&gt; {
+        await s.writeln(wordsJson);
+        // words_insterted という channel にJSONテキストが入ってくるのでそれを監視する
+        // WARN channel 名に talkId を入れたほうが他の会話のデータを誤って取得せずに済みそう
+        await listen(&quot;listen words_inserted&quot;, async (msg) =&gt; {
+        if (msg.channel !== &quot;words_inserted&quot;) {
+        return;
+        }
+        
+        const word = JSON.parse(msg.payload);
+        await s.write(JSON.stringify([word]));
+        });
+        
+        s.onAbort(() =&gt; {
+        customLogger(&quot;GET クライアントが接続を閉じました。&quot;);
+        });
+        
+        while (true) {
+        await s.sleep(1000);
+        }
+        });
+        });
+        </code></pre>
+        <p>listen と notify 関数の実装は次のような感じ</p>
+        <pre><code class="language-ts">import { CamelCasePlugin, Kysely, PostgresDialect, sql } from &quot;kysely&quot;;
+        import Pool from &quot;pg-pool&quot;;
+        import type { DB } from &quot;./database-types.ts&quot;;
+        import { clerk } from &quot;./libs/clerk.ts&quot;;
+        
+        export const pool = new Pool({
+        connectionString:
+        Deno.env.get(&quot;DENO_ENV&quot;) === &quot;test&quot;
+        ? Deno.env.get(&quot;TEST_DB_URL&quot;)
+        : Deno.env.get(&quot;DATABASE_URL&quot;),
+        max: 20,
+        idleTimeoutMillis: 30000,
+        connectionTimeoutMillis: 2000,
+        });
+        
+        const dialect = new PostgresDialect({
+        pool,
+        });
+        
+        export const db = new Kysely&lt;DB&gt;({
+        dialect,
+        plugins: [new CamelCasePlugin()],
+        log: (log) =&gt; {
+        if (log.level === &quot;query&quot;) {
+        clerk.info(&quot;SQL&quot;, log.query.sql);
+        }
+        },
+        });
+        
+        export async function notify(channel: string, obj: object) {
+        return await sql`select pg_notify(${channel}, ${JSON.stringify(obj)})`.execute(
+        db,
+        );
+        }
+        
+        export async function listen(
+        listenChannel: string,
+        callback: (msg: { channel: string; payload: string }) =&gt; void,
+        ) {
+        const pgClient = await pool.connect();
+        pgClient.on(&quot;notification&quot;, callback);
+        
+        return await pgClient.query(listenChannel);
+        }
+        </code></pre>
+        <h3>Local LLM へのリクエストとレスポンス</h3>
+        <p>会話データができたので、これをもとにプロンプトを作成してローカルLLMにリクエストする。</p>
+        <pre><code class="language-ts">import { Button } from &quot;@chakra-ui/react&quot;;
+        
+        export function TalkToAI({
+        assistantMutate,
+        assistantIsPending,
+        }: { assistantMutate: () =&gt; void; assistantIsPending: boolean }) {
+        return (
+        &lt;Button
+        colorScheme=&quot;blue&quot;
+        onClick={() =&gt; assistantMutate()}
+        isLoading={assistantIsPending}
+        &gt;
+        AIをよびだす
+        &lt;/Button&gt;
+        );
+        }
+        
+        // assistantMutate の中身
+        const { mutate: assistantMutate, isPending: assistantIsPending } =
+        useMutation({
+        mutationFn: async () =&gt;
+        await httpClient({ jwtToken }).post(`talks/${talkId}/assistant_chat`, {
+        timeout: false,
+        }),
+        onSuccess: () =&gt; {
+        //
+        console.log(&quot;ok&quot;);
+        },
+        onError: (error) =&gt; {
+        console.error(error);
+        },
+        });
+        </code></pre>
+        <p>現状、AI呼び出しのトリガーはボタンにしてある。
+        将来的にはユーザーが話し終わったら自動で処理するようにしたい。</p>
+        <p>バックエンドでは <code>talks/${talkId}/assistant_chat</code> にリクエストがあると、次の処理を行う。</p>
+        <ul>
+        <li>次の情報からLLMのプロンプトを作成する
+        <ul>
+        <li>直近数回の人間とAIの会話データ</li>
+        <li>AIの人格設定データ</li>
+        </ul>
+        </li>
+        <li>ローカルLLMサーバー (Ollama を使用) にプロンプトを投げる</li>
+        <li>レスポンスをStreamで受け取り、DBにNotify、保存</li>
+        </ul>
+        <pre><code class="language-ts">app.post(&quot;/:id/assistant_chat&quot;, permissionChecker(&quot;talks&quot;), async (c) =&gt; {
+        const talkId = Number(c.req.param(&quot;id&quot;));
+        const user = c.get(&quot;currentUser&quot;);
+        const talk = await modelTalks.findById({
+        talkId,
+        userId: user.id,
+        });
+        
+        if (!talk) {
+        return c.json({ message: &quot;Talk not found&quot; }, 404);
+        }
+        
+        // 直近数回の会話を取得
+        const words = await modelWords.findLatestByTalkId(talkId);
+        
+        // 人間とAIの会話によって role を切り替えながらLLMのプロンプトを作成
+        let messages = words
+        .map((word) =&gt; ({
+        role: word.userId == null ? &quot;assistant&quot; : &quot;user&quot;,
+        content: `${word.words}`,
+        }))
+        .reverse();
+        
+        // AIの人格設定は system role で渡す
+        messages = [
+        ...messages,
+        { role: &quot;system&quot;, content: talk.assistant.personality },
+        ];
+        
+        // Ollama で動いているローカルLLMにリクエストする
+        const response = await ky.post(`${Deno.env.get(&quot;OLLAMA_URL&quot;)}/api/chat`, {
+        json: {
+        model: talk.assistant.model,
+        messages,
+        stream: true,
+        },
+        });
+        
+        // ローカルLLMサーバーからのレスポンスをchannelに通知したり、保存したりする
+        const reader = response.body?.getReader();
+        const decoder = new TextDecoder(&quot;utf-8&quot;);
+        const sentenceIdentifier = crypto.randomUUID();
+        let text = &quot;&quot;;
+        let textChank = &quot;&quot;;
+        while (reader &amp;&amp; true) {
+        const { done, value } = await reader.read();
+        if (done) {
+        break;
+        }
+        const jsonText = decoder.decode(value, { stream: true });
+        const json = JSON.parse(jsonText);
+        
+        textChank += json.message.content;
+        if (textChank.length &gt; 20) {
+        await notify(&quot;words_inserted&quot;, {
+        id: crypto.randomUUID(),
+        talkId: talk.id,
+        assistantId: talk.assistantId,
+        words: textChank,
+        sentenceIdentifier,
+        });
+        
+        text += textChank;
+        textChank = &quot;&quot;;
+        }
+        }
+        
+        if (textChank.length &gt; 0) {
+        await notify(&quot;words_inserted&quot;, {
+        id: crypto.randomUUID(),
+        talkId: talk.id,
+        assistantId: talk.assistantId,
+        words: textChank,
+        sentenceIdentifier,
+        });
+        
+        text += textChank;
+        textChank = &quot;&quot;;
+        
+        await modelWords.create({
+        talkId,
+        assistantId: talk.assistantId,
+        words: text,
+        sentenceIdentifier,
+        });
+        }
+        
+        return c.json({ msg: text });
+        });
+        </code></pre>
+        <h3>AIからのレスポンステキストの読み上げ</h3>
+        <p>ひとまずブラウザの機能で読み上げているだけ</p>
+        <pre><code class="language-ts">function speak(text: string) {
+        // SpeechSynthesisUtteranceのインスタンスを作成
+        const utterance = new SpeechSynthesisUtterance();
+        utterance.text = text;
+        utterance.lang = &quot;ja-JP&quot;;
+        // 音声を再生
+        window.speechSynthesis.speak(utterance);
+        }
+        </code></pre>
+        <p>新しいテキストを取得した際に、AIからの発言であれば上記の関数を使って読み上げる。</p>
+        <h2>今後の展望</h2>
+        <p>テキスト読み上げが地味なので <a href="https://github.com/VOICEVOX/voicevox_engine">VOICEVOX</a> などをつかって音声データをサーバーで作成し、
+        フロントに送るようにしたい。
+        これもStreamを利用してリアルタイムにやりたいので、そんな感じの仕組みを作成中。</p>
+        <p>すべてのソースコードの公開は全体が完成したらします。</p>
+        ]]>
+      </content:encoded>
+      <pubDate>Sat, 14 Dec 2024 07:05:34 GMT</pubDate>
+    </item>
+    <item>
       <title>Clojure Family が色々ある話</title>
       <link>https://www.kbaba1001.com/posts/202412030751_clojure-family/</link>
       <guid isPermaLink="false">https://www.kbaba1001.com/posts/202412030751_clojure-family/</guid>
@@ -605,168 +1186,6 @@
         ]]>
       </content:encoded>
       <pubDate>Tue, 10 Sep 2024 09:08:37 GMT</pubDate>
-    </item>
-    <item>
-      <title>React の Tips やおすすめライブラリなど</title>
-      <link>https://www.kbaba1001.com/posts/202409091131_react-tips-and-favorite-libraries/</link>
-      <guid isPermaLink="false">https://www.kbaba1001.com/posts/202409091131_react-tips-and-favorite-libraries/</guid>
-      <content:encoded>
-        <![CDATA[<p>React も使い始めて数年が経ち、自分なりの書き方も確立できてきたので Tips などをまとめてみようと思う。</p>
-        <h3>React If</h3>
-        <p><a href="https://www.npmjs.com/package/react-if">React If</a> を使ってくれ。大事なことなのでもう一度。
-        <a href="https://www.npmjs.com/package/react-if">React If</a> を使ってくれ。</p>
-        <p>簡単に言えば、 if 文や Switch 文を React コンポーネントで書ける。</p>
-        <pre><code class="language-javascript">const Bar = ({ name, age, drinkingAge }) =&gt; (
-        &lt;div&gt;
-        &lt;Header /&gt;
-        &lt;If condition={age &gt;= drinkingAge}&gt;
-        &lt;Then&gt;
-        &lt;span className=&quot;ok&quot;&gt;Have a beer, {name}!&lt;/span&gt;
-        &lt;/Then&gt;
-        &lt;Else&gt;
-        &lt;span className=&quot;not-ok&quot;&gt;Sorry, {name}, you are not old enough.&lt;/span&gt;
-        &lt;/Else&gt;
-        &lt;/If&gt;
-        &lt;Footer /&gt;
-        &lt;/div&gt;
-        );
-        </code></pre>
-        <p>React の読みづらさの一つが三項演算子だと思っていて、コンポーネントで書いたほうが読みやすい。
-        Solidjs にこんな感じの機能があって似たようなことが React でもできないかと思って探したら React If を見つけたという経緯。</p>
-        <h3>react-timer-hook</h3>
-        <p>アニメーションなど時間を扱いたいケースが時々あって、
-        そういう場合に <a href="https://www.npmjs.com/package/react-timer-hook?activeTab=readme">react-timer-hook</a> が
-        非常に使いやすかった。</p>
-        <p><code>useTimer</code> という hook を作って時間を扱うことができる。便利。</p>
-        <h3>そもそも SPA でよくね？</h3>
-        <p>Next.js や Remix などの SSR 系のライブラリが流行っているが、ほとんどのケースでは SPA で十分だと思う。
-        SSR はサーバーサイドも一緒に管理することになり、まだまだ気楽に書けるという印象ではない。</p>
-        <p>特に別途 BFF っぽい API サーバーがあるのであれば、 SPA で十分ではないかというのは検討したほうがいい。
-        SSR は開発コストが高く、それを考慮しても SSR でしかパフォーマンスが出せないという場合にのみ使う方が良い。</p>
-        <h3>Wouter</h3>
-        <p>React または Preact において軽量なルーティングライブラリとして使えるのが <a href="https://github.com/molefrog/wouter">Wouter</a> 。</p>
-        <p>SPAならこれで十分。余分な機能がない。以上。</p>
-        <h3>jotai</h3>
-        <p><a href="https://jotai.org/">jotai</a> は結構有名なライブラリになってしまったが、グローバルステートなどを扱うための状態管理ライブラリ。
-        いわゆる <code>useContext</code> の代替。</p>
-        <p>いろいろなプラグインがあって、目的に合わせて変えられるのが良い。
-        私が特に気に入っているのは</p>
-        <ul>
-        <li><a href="https://jotai.org/docs/extensions/effect">jotai-effect</a>
-        <ul>
-        <li>useEffect 的なやつ</li>
-        </ul>
-        </li>
-        <li><a href="https://jotai.org/docs/extensions/scope">jotai-scope</a>
-        <ul>
-        <li>jotai の atom はグローバル変数にならざるを得ないので、スコープを付けられるライブラリ</li>
-        </ul>
-        </li>
-        </ul>
-        <h3>spacetime</h3>
-        <p>React とは無関係だがよく使うので <a href="https://github.com/spencermountain/spacetime">spacetime</a> も紹介する。</p>
-        <p>いわゆる date-fns のような時間操作系のライブラリ。</p>
-        <p>軽量、直感的な関数、機能が豊富なので気に入っている。知名度が低いのが残念だ。</p>
-        <h3>ky</h3>
-        <p><a href="https://www.npmjs.com/package/ky">ky</a> は <a href="https://www.npmjs.com/package/axios">axios</a> の代替ライブラリ。</p>
-        <p>Denoでも使えるのが良い。</p>
-        <p>正直この手のやつはあまり使う必要がない（fetchで十分）と思うのだが、たまにあると便利なので一応使っている。</p>
-        <h3>Tanstack Query</h3>
-        <p><a href="https://tanstack.com/query/latest">Tanstack Query</a> も有名なやつだが、 SPA 開発ではほぼ必須のライブラリ。</p>
-        <p>API 通信をキャッシュしたり、データ取得中の loading status を管理したりできる超便利なやつ。</p>
-        <p>リロード機能がいい感じなのが最高。</p>
-        <p><a href="https://jotai.org/docs/extensions/query">jotai-tanstack-query</a> も結構頑張って使っていたのだが、
-        ちょっともう一歩なところがあって結局 Tansatack Query をそのまま使うほうがよいという結論になった。</p>
-        <h3>qs</h3>
-        <p><a href="https://www.npmjs.com/package/qs">qs</a> もあまり React は関係ないが URL の Search Parameters をいい感じに encode/decode できるやつ。</p>
-        <p>ルーティングライブラリにこの手の機能がくっついている場合もあるけど、 qs のほうが小回りがきいて便利なことが多いので、
-        ルーティングは前述の Wouter くらいシンプルにしておいて qs で補うほうが好みだ。</p>
-        <h3>vitest, happy-dom</h3>
-        <ul>
-        <li><a href="https://vitest.dev/">vitest</a></li>
-        <li><a href="https://github.com/capricorn86/happy-dom">happy-dom</a></li>
-        </ul>
-        <p>テストライブラリ。</p>
-        <p>速い。書き心地に変なクセがない。以上</p>
-        <h3>Biome</h3>
-        <p><a href="https://biomejs.dev/">Biome</a> は Linter と Formatter の機能を併せ持つ爆速なやつ。</p>
-        <p>Biome に比べれば ESLint や Prettier は遅くて使いたくない。</p>
-        <p>Biome のデフォルトのフォーマットにやや癖があるが、自分としては Linter や Formatter というのは
-        「あればそれでいい」という程度のこだわりしかなく特に不満なし。</p>
-        <p>色々カスタマイズしたい人は ESLint のほうがいいと思う。</p>
-        <p>残念なのは対応している言語が基本的に JS/TS/JSX/TSX/JSON/JSONC のみということ。
-        Markdown や CSS も対応してくれると嬉しいのだが。。。</p>
-        <p>少なくとも React + Chakra UI の世界にいる限り生 CSS は書かなくてもいいので Biome で十分である。</p>
-        <h3>lefthook</h3>
-        <p>git hook をかきやすくするやつ。</p>
-        <p>チーム開発のときに Linter / Formatter / Test あたりは必ずパスしてからコミットしてほしいという気持ちがあり、
-        そういう設定を強要するために lefthook など入れてみるのだが、まぁ、だいたい抜け道を使われて徒労に終わる。。。</p>
-        <h2>UI の話</h2>
-        <h3>Chakra UI</h3>
-        <p>最近は UI 作りは <a href="https://v2.chakra-ui.com/">Chakra UI</a> 1択と思っている。
-        <a href="https://www.kuma-ui.com/">Kuma UI</a> も思想は悪くないのだが、コンポーネントが少なすぎる。</p>
-        <p>Chakra UI にはだいたい使いたいコンポーネントが揃っているし、思想的にも使いやすい。</p>
-        <p>Tailwind css の良いところを取り込みつつ、悪いところは排除した感じが実に良い。</p>
-        <h4>ローディング UI を考える</h4>
-        <p>Chakra UI にあるローディングで使えそうなコンポーネントが次。</p>
-        <ul>
-        <li><a href="https://v2.chakra-ui.com/docs/components/progress#animated-progress">Progress bar</a>
-        <ul>
-        <li><img src="https://www.kbaba1001.com/img/posts/202409091131/progress-bar.gif" alt="progress-bar"></li>
-        </ul>
-        </li>
-        <li><a href="https://v2.chakra-ui.com/docs/components/skeleton">skeleton</a>
-        <ul>
-        <li><img src="https://www.kbaba1001.com/img/posts/202409091131/skeleton.gif" alt="skeleton"></li>
-        </ul>
-        </li>
-        <li><a href="https://v2.chakra-ui.com/docs/components/spinner">spinner</a>
-        <ul>
-        <li><img src="https://www.kbaba1001.com/img/posts/202409091131/spinner.gif" alt="spinner"></li>
-        </ul>
-        </li>
-        </ul>
-        <p>最近良く見かける UI としてロード中に Progress bar がヘッダーとかページのトップにあるやつ。
-        なんとなくロード中というのがわかりやすいので導入したい。</p>
-        <p>Skeleton も私としてはあまり使ってこなかったのだが、Amazonとか見てるとかなり使われている。
-        ロード中なんだけど早く画面が表示されたように錯覚させる良いUIだと思う。</p>
-        <p>逆に Spinner はいかにも「ロード中ですよ」という感じで、案外多用しないほうがいい気がする。
-        本当にロードに時間がかかるような場合とかのみにしたほうがいいんじゃないかなぁ。</p>
-        <p>こういうのは本職のデザイナーの意見も聞きたいところ。</p>
-        <p><strong>(追記)</strong></p>
-        <p><a href="https://www.npmjs.com/package/holy-loader">holy-loader</a> という便利なライブラリを見つけた。
-        導入するだけで画面遷移の時ヘッダーにローディングUIを表示することができる。良さそう。</p>
-        <h4>Chakra UI にないコンポーネントを補う</h4>
-        <p>少々意外なことに Chakra UI には date-picker や select2 的なコンポーネントがない。
-        正直これらは <code>&lt;input type=&quot;datetime-local&quot; &gt;</code> や <code>&lt;datalist&gt;</code> で十分なケースも多いのだが、
-        もう少し機能のある UI が求められるケースもある。</p>
-        <p>そういう場合には <a href="https://blueprintjs.com/">Blueprint</a> を使うようにしている。</p>
-        <h3>Blueprint</h3>
-        <p><a href="https://blueprintjs.com/">Blueprint</a> は業務アプリをつくるのに向いたUIを提供している。
-        デザイン的に Chakra UI のポップな感じと合わないのだが、ちょうど Chakra にないコンポーネントがあるので使っている。</p>
-        <p><img src="https://www.kbaba1001.com/img/posts/202409091131/blueprint.png" alt="blueprint"></p>
-        <h4>テーブルUIを考える</h4>
-        <p>Blueprint の良い点はテーブルUIが非常によくできている。
-        ドキュメントが読みづらくGitHubのサンプルコードを読むのが一番良いのだが、Excelライクなテーブルが作れる。</p>
-        <p>未だに「ExcelみたいなUIが欲しいです」という要望は時々あるので Blueprint はよい。</p>
-        <p><a href="https://tanstack.com/table/latest">Tanstack Table</a> と組み合わせると更に良い。
-        これはテーブルのUIとデータを分けて考えることができるようになるライブラリ。
-        地味に困る部分なのでしっかり作ってあって良いライブラリだと思う。
-        ソートやページネーションもあるので助かる。</p>
-        <h3>AutoAnimate</h3>
-        <p><a href="https://auto-animate.formkit.com/">AutoAnimate</a> は一覧とかで自動的にそれっぽいアニメーションを付けてくれるライブラリ。
-        一覧画面での追加、削除、移動のとき要素にちょっとアニメーションを付けてくれる。
-        あんまこだわりなくそれっぽいアニメーションがほしいときにCSSとかで頑張るより楽。</p>
-        <p>何度か使っているけど、 Chakra UI にも <a href="https://v2.chakra-ui.com/docs/components/transitions">Transitions</a> という
-        アニメーション関係のコンポーネントがあることに気がついたのでこっちでも十分かもしれない。</p>
-        <h3>その他、過去に紹介した UI ライブラリ</h3>
-        <ul>
-        <li><a href="https://www.kbaba1001.com/posts/202408290945_dnd-on-list">タスクリストみたいなやつを楽にDnDするやつ</a></li>
-        <li><a href="https://www.kbaba1001.com/posts/202408290953_full-calendar/">カレンダーUIが必要な時使うやつ</a></li>
-        </ul>
-        ]]>
-      </content:encoded>
-      <pubDate>Mon, 09 Sep 2024 11:31:14 GMT</pubDate>
     </item>
   </channel>
 </rss>

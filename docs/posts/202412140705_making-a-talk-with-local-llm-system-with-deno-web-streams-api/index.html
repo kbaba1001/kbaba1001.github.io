@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="/styles.css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <meta name="author" content="kbaba1001">
+    <meta property="og:title" content="Deno, Web Streams API で Local LLM と音声通話するWebシステムを開発している - ハッカーと漫画家">
+    <meta property="og:url" content="https://www.kbaba1001.com/posts/202412140705_making-a-talk-with-local-llm-system-with-deno-web-streams-api/">
+    <meta property="og:image" content="https://www.kbaba1001.com/img/posts/202412140705_making-a-talk-with-local-llm-system-with-deno-web-streams-api.png">
+    <meta property="twitter:image:src" content="https://www.kbaba1001.com/img/posts/202412140705_making-a-talk-with-local-llm-system-with-deno-web-streams-api.png">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <meta property="og:type" content="website">
+    <meta name="description" content="Clojure と漫画が好きな kbaba1001 のブログです。">
+    <meta property="og:description" content="Clojure と漫画が好きな kbaba1001 のブログです。">
+    <meta property="og:locale" content="ja_JP">
+
+    <!-- Google tag (gtag.js) -->
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-MJ8FZT12VZ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-MJ8FZT12VZ");
+    </script>
+
+    <title>Deno, Web Streams API で Local LLM と音声通話するWebシステムを開発している - ハッカーと漫画家</title>
+  </head>
+  <body class="layout">
+    <header class="layout-header">
+  <div class="header">
+    <div class="grid-header-title"><div class="header-title">
+  <img src="/img/kitsune-kamen.jpg" alt="ハッカーと漫画家" loading="lazy" class="header-title-logo">
+  <a href="/" class="header-title-link">ハッカーと漫画家</a>
+</div>
+</div>
+    <div class="grid-header-nav"><nav class="header-nav-container">
+  <ul class="header-nav-list">
+    <li>
+      <a href="/about" class="header-nav-list-link"> About </a>
+    </li>
+    <li>
+      <a href="https://github.com/kbaba1001/kbaba1001.github.io/discussions" class="header-nav-list-link" target="_blank">
+        掲示板
+      </a>
+    </li>
+    <li>
+      <a href="/feed.rss" class="header-nav-list-link"> RSS </a>
+    </li>
+  </ul>
+</nav>
+</div>
+  </div>
+</header>
+<div class="layout-main">
+  <main class="layout-main-center"><div class="post">
+  <div>
+    <div class="post-date">2024-12-14</div>
+    
+    <div class="post-tag" data-pagefind-filter="tag">Tech</div>
+    
+  </div>
+  <h1 class="post-title">Deno, Web Streams API で Local LLM と音声通話するWebシステムを開発している</h1>
+  <div class="post-main"><h2>開発中のもの</h2>
+<p>YouTubeのデモ</p>
+<p>最近時々見かけるようになった、AIと音声通話できるやつを作ってみた。</p>
+<p>既存サービスとの違い、特徴としては</p>
+<ul>
+<li>外部APIを使わず、自宅サーバーのローカルGPUのみで動作</li>
+<li>Web Streams API を活用してリアルタイム処理を実現</li>
+<li>Backend: Deno, Hono, Kysely, PostgreSQL</li>
+<li>Frontend: Node, Vite, React</li>
+</ul>
+<h2>大まかなロジック</h2>
+<ul>
+<li>人間の声をブラウザのマイク機能で取得してサーバーに Web Streams で送る</li>
+<li>サーバー側で音声データを Faster Whisper を用いてテキスト化する</li>
+<li>テキストをリアルタイムにフロントエンドで取得</li>
+<li>テキストをローカルLLM (Ollama) にプロンプトとして渡す</li>
+<li>ローカルLLMからの実行結果をリアルタイムにフロントエンドに送信</li>
+<li>フロントエンドでテキストを読み上げ</li>
+</ul>
+<h2>リアルタイム処理</h2>
+<p>同期処理とかストリーミング処理などともいう。
+フロントエンドとバックエンドでデータのやり取りをする際に、少しずつデータを送ることでタイムラグを少なくしてシステムが動くようにする技術のこと。</p>
+<h3>リアルタイム処理の実装方法</h3>
+<p>Webシステムのリアルタイム処理について調べると WebSocket に関する情報がたくさん出てくる。</p>
+<h4>WebSocket のメリット・デメリット</h4>
+<ul>
+<li>WebSocket のメリット
+<ul>
+<li>sockert io などのライブラリを使うと簡単に実装できる</li>
+<li>古いブラウザでも動く</li>
+<li>使っている人が多いのかドキュメントが豊富</li>
+</ul>
+</li>
+<li>WebSocket のデメリット
+<ul>
+<li>双方向通信なので通信量が多い</li>
+<li>ws/wssというプロトコルを使うのでサーバー側で http/https とは別の設計が必要になる</li>
+</ul>
+</li>
+</ul>
+<h4>WebStreams のメリット・デメリット</h4>
+<ul>
+<li>WebStreams のメリット
+<ul>
+<li>単方向通信なので通信量を抑えることができる</li>
+<li>http/https で扱うことができるのでサーバーに特別な実装が不要</li>
+</ul>
+</li>
+<li>WebStreams のデメリット
+<ul>
+<li>使ってる人が少ないのかドキュメントが少ない（ほとんどMDNだけかも）</li>
+<li>古いブラウザでは動かないことがある</li>
+</ul>
+</li>
+</ul>
+<h4>今回は WebStreams を採用</h4>
+<p>WebStreams を使ったことがなかったのでやってみたかったというのが一番大きな理由（というかそのためにこのシステムを作っている）なのだが、WebSocketsは意外と気難しいやつだと思っていて、一見気楽に実装できて良いのだが本番環境まで含めて考えると通信量などの問題もあり使いこなすのが難しいという感触がある。</p>
+<h2>WebStreams API とは何か？</h2>
+<ul>
+<li>Readable Stream, Writable Stream, Transform Stream を使ってデータのやり取りができる。</li>
+<li>これらの Stream はシェルコマンドのように pipe してつなげることができるため、すっきりしたコードを書くことができて嬉しい。</li>
+<li>Web標準の機能であるから今どきのブラウザ、そしてDenoで活用することができる
+<ul>
+<li>Node.js は歴史的な経緯により Deno ほど綺麗な実装になっていない</li>
+</ul>
+</li>
+</ul>
+<p>詳しくは MDN 参照 <a href="https://developer.mozilla.org/en-US/docs/Web/API/Streams_API">https://developer.mozilla.org/en-US/docs/Web/API/Streams_API</a></p>
+<h2>WebStreams API はどこで使われているか？</h2>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Response">fetch の Response Body</a></li>
+<li><a href="https://hono.dev/docs/helpers/streaming">Hono の Streaming Helper</a></li>
+<li>Deno の IO や HTTP リクエストなど</li>
+</ul>
+<h2>作成するシステムの概要</h2>
+<p><img src="/img/posts/202412140705/design.png" alt="システムの概要図"></p>
+<h3>人の声をテキスト化する部分</h3>
+<p>フロント側の処理。音声データを取得してバックエンドに ReadableStream を使って送信する。</p>
+<pre><code class="language-ts hljs language-typescript"><span class="hljs-keyword">import</span> { jwtTokenAtom } <span class="hljs-keyword">from</span> <span class="hljs-string">"@/atoms/current-user"</span>;
+<span class="hljs-keyword">import</span> { httpClient } <span class="hljs-keyword">from</span> <span class="hljs-string">"@/libs/http-client"</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">Box</span>, <span class="hljs-title class_">Button</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">"@chakra-ui/react"</span>;
+<span class="hljs-keyword">import</span> { useMutation } <span class="hljs-keyword">from</span> <span class="hljs-string">"@tanstack/react-query"</span>;
+<span class="hljs-keyword">import</span> { useAtom } <span class="hljs-keyword">from</span> <span class="hljs-string">"jotai"</span>;
+<span class="hljs-keyword">import</span> { useRef } <span class="hljs-keyword">from</span> <span class="hljs-string">"react"</span>;
+
+<span class="hljs-keyword">type</span> <span class="hljs-title class_">AudioStreamerProps</span> = {
+	<span class="hljs-attr">talkId</span>: <span class="hljs-built_in">string</span>;
+};
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> <span class="hljs-title function_">AudioStreamer</span> = (<span class="hljs-params">{ talkId }: AudioStreamerProps</span>) =&gt; {
+  <span class="hljs-comment">// 音声データの取得用の Ref</span>
+  <span class="hljs-keyword">const</span> mediaRecorderRef = useRef&lt;<span class="hljs-title class_">MediaRecorder</span> | <span class="hljs-literal">null</span>&gt;(<span class="hljs-literal">null</span>);
+	<span class="hljs-keyword">const</span> streamControllerRef =
+		useRef&lt;<span class="hljs-title class_">ReadableStreamDefaultController</span>&lt;<span class="hljs-title class_">Uint8Array</span>&gt; | <span class="hljs-literal">null</span>&gt;(<span class="hljs-literal">null</span>);
+	<span class="hljs-keyword">const</span> [jwtToken] = <span class="hljs-title function_">useAtom</span>(jwtTokenAtom);
+
+	<span class="hljs-keyword">const</span> { mutate, isPending } = <span class="hljs-title function_">useMutation</span>({
+		<span class="hljs-attr">mutationFn</span>: <span class="hljs-keyword">async</span> (<span class="hljs-attr">audioStream</span>: <span class="hljs-title class_">ReadableStream</span>&lt;<span class="hljs-title class_">Uint8Array</span>&gt;) =&gt; {
+			<span class="hljs-keyword">return</span> <span class="hljs-keyword">await</span> <span class="hljs-title function_">httpClient</span>({ jwtToken })
+				.<span class="hljs-title function_">post</span>(<span class="hljs-string">`talks/<span class="hljs-subst">${talkId}</span>/stream`</span>, {
+					<span class="hljs-attr">body</span>: audioStream,
+					<span class="hljs-attr">timeout</span>: <span class="hljs-literal">false</span>,
+				})
+				.<span class="hljs-title function_">text</span>();
+		},
+		<span class="hljs-attr">onSuccess</span>: <span class="hljs-function">(<span class="hljs-params">data</span>) =&gt;</span> {
+			<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(data);
+		},
+		<span class="hljs-attr">onError</span>: <span class="hljs-function">(<span class="hljs-params">error</span>) =&gt;</span> {
+			<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(error);
+		},
+	});
+
+  <span class="hljs-comment">// 音声データを取得してサーバーにリクエストする</span>
+	<span class="hljs-keyword">const</span> <span class="hljs-title function_">startRecording</span> = <span class="hljs-keyword">async</span> (<span class="hljs-params"></span>) =&gt; {
+		<span class="hljs-keyword">try</span> {
+			<span class="hljs-comment">// マイクへのアクセスをリクエスト</span>
+			<span class="hljs-keyword">const</span> stream = <span class="hljs-keyword">await</span> navigator.<span class="hljs-property">mediaDevices</span>.<span class="hljs-title function_">getUserMedia</span>({ <span class="hljs-attr">audio</span>: <span class="hljs-literal">true</span> });
+
+			<span class="hljs-comment">// MediaRecorderの作成</span>
+			<span class="hljs-keyword">const</span> options = {
+				<span class="hljs-attr">mimeType</span>: <span class="hljs-string">"audio/webm; codecs=opus"</span>, <span class="hljs-comment">// サポートされているmimeTypeを指定</span>
+			};
+			<span class="hljs-keyword">const</span> mediaRecorder = <span class="hljs-keyword">new</span> <span class="hljs-title class_">MediaRecorder</span>(stream, options);
+
+			mediaRecorderRef.<span class="hljs-property">current</span> = mediaRecorder;
+
+			<span class="hljs-comment">// ReadableStreamの作成</span>
+			<span class="hljs-keyword">const</span> audioStream = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ReadableStream</span>&lt;<span class="hljs-title class_">Uint8Array</span>&gt;({
+				<span class="hljs-title function_">start</span>(<span class="hljs-params">controller</span>) {
+					<span class="hljs-comment">// コントローラを保存して、後でデータをエンキューする</span>
+					streamControllerRef.<span class="hljs-property">current</span> = controller;
+				},
+			});
+
+			<span class="hljs-comment">// dataavailableイベントのハンドリング</span>
+			mediaRecorder.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">"dataavailable"</span>, <span class="hljs-keyword">async</span> (event) =&gt; {
+				<span class="hljs-keyword">if</span> (event.<span class="hljs-property">data</span> &amp;&amp; event.<span class="hljs-property">data</span>.<span class="hljs-property">size</span> &gt; <span class="hljs-number">0</span>) {
+					<span class="hljs-comment">// BlobをArrayBufferに変換</span>
+					<span class="hljs-keyword">const</span> arrayBuffer = <span class="hljs-keyword">await</span> event.<span class="hljs-property">data</span>.<span class="hljs-title function_">arrayBuffer</span>();
+					<span class="hljs-comment">// ArrayBufferをUint8Arrayに変換</span>
+					<span class="hljs-keyword">const</span> chunk = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Uint8Array</span>(arrayBuffer);
+					<span class="hljs-comment">// ReadableStreamにチャンクをエンキュー</span>
+					streamControllerRef.<span class="hljs-property">current</span>?.<span class="hljs-title function_">enqueue</span>(chunk);
+				}
+			});
+
+			<span class="hljs-comment">// stopイベントのハンドリング</span>
+			mediaRecorder.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">"stop"</span>, <span class="hljs-function">() =&gt;</span> {
+				<span class="hljs-comment">// ReadableStreamをクローズ</span>
+				streamControllerRef.<span class="hljs-property">current</span>?.<span class="hljs-title function_">close</span>();
+			});
+
+			<span class="hljs-comment">// 録音開始（100msごとにデータを収集）</span>
+			mediaRecorder.<span class="hljs-title function_">start</span>(<span class="hljs-number">100</span>);
+
+			<span class="hljs-comment">// ReadableStreamをAPIに送信</span>
+			<span class="hljs-title function_">mutate</span>(audioStream);
+		} <span class="hljs-keyword">catch</span> (error) {
+			<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">"マイクへのアクセスエラー:"</span>, error);
+		}
+	};
+
+	<span class="hljs-keyword">const</span> <span class="hljs-title function_">stopRecording</span> = (<span class="hljs-params"></span>) =&gt; {
+		mediaRecorderRef.<span class="hljs-property">current</span>?.<span class="hljs-title function_">stop</span>();
+	};
+
+	<span class="hljs-keyword">return</span> (
+		<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">Box</span>&gt;</span>
+			<span class="hljs-tag">&lt;<span class="hljs-name">Button</span> <span class="hljs-attr">colorScheme</span>=<span class="hljs-string">"red"</span> <span class="hljs-attr">onClick</span>=<span class="hljs-string">{startRecording}</span> <span class="hljs-attr">isLoading</span>=<span class="hljs-string">{isPending}</span>&gt;</span>
+				録音
+			<span class="hljs-tag">&lt;/<span class="hljs-name">Button</span>&gt;</span>
+			<span class="hljs-tag">&lt;<span class="hljs-name">Button</span>
+				<span class="hljs-attr">colorScheme</span>=<span class="hljs-string">"blue"</span>
+				<span class="hljs-attr">onClick</span>=<span class="hljs-string">{stopRecording}</span>
+				<span class="hljs-attr">isDisabled</span>=<span class="hljs-string">{!isPending}</span>
+			&gt;</span>
+				停止
+			<span class="hljs-tag">&lt;/<span class="hljs-name">Button</span>&gt;</span>
+		<span class="hljs-tag">&lt;/<span class="hljs-name">Box</span>&gt;</span></span>
+	);
+};
+</code></pre>
+<p>バックエンドでは、ReadableStreamを受け取って <a href="https://github.com/ufal/whisper_streaming">whisper_streaming</a> のサーバー（これは別途立ち上げておく）に音声データを渡し、テキストデータを受け取る。</p>
+<pre><code class="language-ts hljs language-typescript">app.<span class="hljs-title function_">post</span>(<span class="hljs-string">"/:id/stream"</span>, <span class="hljs-title function_">permissionChecker</span>(<span class="hljs-string">"talks"</span>), <span class="hljs-keyword">async</span> (c) =&gt; {
+  <span class="hljs-comment">// 音声データをReadableStreamで取得する</span>
+	<span class="hljs-keyword">const</span> stream = c.<span class="hljs-property">req</span>.<span class="hljs-property">raw</span>.<span class="hljs-property">body</span> <span class="hljs-keyword">as</span> <span class="hljs-title class_">ReadableStream</span>;
+	<span class="hljs-keyword">const</span> talkId = <span class="hljs-title class_">Number</span>(c.<span class="hljs-property">req</span>.<span class="hljs-title function_">param</span>(<span class="hljs-string">"id"</span>));
+	<span class="hljs-keyword">const</span> user = c.<span class="hljs-title function_">get</span>(<span class="hljs-string">"currentUser"</span>);
+
+	<span class="hljs-keyword">if</span> (stream) {
+    <span class="hljs-comment">// whisper streaming は サンプリングレートなどに指定があるため FFmpeg で変換する</span>
+    <span class="hljs-comment">// これは Web Streams API でパイプできる</span>
+		<span class="hljs-keyword">const</span> ffmpeg = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Deno</span>.<span class="hljs-title class_">Command</span>(<span class="hljs-string">"ffmpeg"</span>, {
+			<span class="hljs-attr">args</span>: [
+				<span class="hljs-string">"-i"</span>,
+				<span class="hljs-string">"pipe:0"</span>, <span class="hljs-comment">// 標準入力からデータを受け取る</span>
+				<span class="hljs-string">"-ar"</span>,
+				<span class="hljs-string">"16000"</span>, <span class="hljs-comment">// サンプリングレートを16000Hzに設定</span>
+				<span class="hljs-string">"-ac"</span>,
+				<span class="hljs-string">"1"</span>, <span class="hljs-comment">// モノラルに設定</span>
+				<span class="hljs-string">"-sample_fmt"</span>,
+				<span class="hljs-string">"s16"</span>, <span class="hljs-comment">// サンプルフォーマットをs16に設定</span>
+				<span class="hljs-string">"-f"</span>,
+				<span class="hljs-string">"wav"</span>, <span class="hljs-comment">// 出力フォーマットをWAVに設定</span>
+				<span class="hljs-string">"pipe:1"</span>, <span class="hljs-comment">// 標準出力にデータを出力</span>
+			],
+			<span class="hljs-attr">stdin</span>: <span class="hljs-string">"piped"</span>,
+			<span class="hljs-attr">stdout</span>: <span class="hljs-string">"piped"</span>,
+			<span class="hljs-attr">stderr</span>: <span class="hljs-string">"piped"</span>,
+		});
+		<span class="hljs-keyword">const</span> ffmpegProcess = ffmpeg.<span class="hljs-title function_">spawn</span>();
+
+		stream.<span class="hljs-title function_">pipeTo</span>(ffmpegProcess.<span class="hljs-property">stdin</span>);
+
+		<span class="hljs-keyword">const</span> convertedAudioStream = ffmpegProcess.<span class="hljs-property">stdout</span>;
+
+    <span class="hljs-comment">// WhipserStreamingServer は TCP サーバーなので Deno.connect で接続できる</span>
+    <span class="hljs-comment">// これも Web Streams でパイプできる</span>
+		<span class="hljs-keyword">const</span> whisper = <span class="hljs-keyword">await</span> <span class="hljs-title class_">Deno</span>.<span class="hljs-title function_">connect</span>({
+			<span class="hljs-attr">hostname</span>: <span class="hljs-title class_">Deno</span>.<span class="hljs-property">env</span>.<span class="hljs-title function_">get</span>(<span class="hljs-string">"WHISPER_HOST"</span>) || <span class="hljs-string">"localhost"</span>,
+			<span class="hljs-attr">port</span>: <span class="hljs-title class_">Number</span>(<span class="hljs-title class_">Deno</span>.<span class="hljs-property">env</span>.<span class="hljs-title function_">get</span>(<span class="hljs-string">"WHISPER_PORT"</span>)) || <span class="hljs-number">43001</span>,
+		});
+
+		convertedAudioStream.<span class="hljs-title function_">pipeTo</span>(whisper.<span class="hljs-property">writable</span>);
+
+		<span class="hljs-keyword">const</span> reader = whisper.<span class="hljs-property">readable</span>.<span class="hljs-title function_">getReader</span>();
+		<span class="hljs-keyword">const</span> decoder = <span class="hljs-keyword">new</span> <span class="hljs-title class_">TextDecoder</span>(<span class="hljs-string">"utf-8"</span>);
+		<span class="hljs-keyword">let</span> sentence = <span class="hljs-string">""</span>;
+		<span class="hljs-keyword">const</span> sentenceIdentifier = crypto.<span class="hljs-title function_">randomUUID</span>();
+
+		<span class="hljs-keyword">try</span> {
+      <span class="hljs-comment">// Streams からテキストデータを受け取って、DBに保存したり通知したりする</span>
+			<span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>) {
+				<span class="hljs-keyword">const</span> { done, value } = <span class="hljs-keyword">await</span> reader.<span class="hljs-title function_">read</span>();
+				<span class="hljs-keyword">if</span> (done) {
+					<span class="hljs-keyword">break</span>;
+				}
+				<span class="hljs-keyword">const</span> text = decoder.<span class="hljs-title function_">decode</span>(value);
+				<span class="hljs-comment">// 先頭に数字が入っているので削除</span>
+				<span class="hljs-keyword">const</span> wordText = text.<span class="hljs-title function_">replace</span>(<span class="hljs-regexp">/^[\d\s]+/</span>, <span class="hljs-string">""</span>).<span class="hljs-title function_">replace</span>(<span class="hljs-regexp">/\n/g</span>, <span class="hljs-string">""</span>);
+
+				<span class="hljs-keyword">if</span> (wordText.<span class="hljs-property">length</span> &gt; <span class="hljs-number">0</span>) {
+					sentence += wordText;
+          <span class="hljs-comment">// 後述のGETリクエストでテキストデータを取得できるようにするためにNotifyする</span>
+          <span class="hljs-keyword">await</span> <span class="hljs-title function_">notify</span>(<span class="hljs-string">"words_inserted"</span>, {
+						<span class="hljs-attr">id</span>: crypto.<span class="hljs-title function_">randomUUID</span>(),
+						talkId,
+						<span class="hljs-attr">userId</span>: user.<span class="hljs-property">id</span>,
+						<span class="hljs-attr">words</span>: wordText,
+						sentenceIdentifier,
+					});
+					<span class="hljs-keyword">await</span> modelWords.<span class="hljs-title function_">create</span>({
+						talkId,
+						<span class="hljs-attr">userId</span>: user.<span class="hljs-property">id</span>,
+						<span class="hljs-attr">words</span>: wordText,
+						sentenceIdentifier,
+					});
+				}
+			}
+		} <span class="hljs-keyword">catch</span> (error) {
+			<span class="hljs-keyword">if</span> (error <span class="hljs-keyword">instanceof</span> <span class="hljs-title class_">Deno</span>.<span class="hljs-property">errors</span>.<span class="hljs-property">Interrupted</span>) {
+				<span class="hljs-title function_">customLogger</span>(<span class="hljs-string">"POST クライアントが接続を閉じました。"</span>);
+			}
+		}
+
+		<span class="hljs-keyword">return</span> c.<span class="hljs-title function_">text</span>(<span class="hljs-string">"completed"</span>, <span class="hljs-number">200</span>);
+	}
+
+	<span class="hljs-keyword">return</span> c.<span class="hljs-title function_">text</span>(<span class="hljs-string">"ストリームが存在しません"</span>, <span class="hljs-number">400</span>);
+});
+</code></pre>
+<h3>新しいテキストができた時にフロントで取得する部分</h3>
+<p>フロントではAIと話すページを開いたときにバックエンドに対してGETリクエストを出して、
+過去の会話履歴を取得するようにしている。
+このリクエストをStreamで繋いだままにしておいて、新しいデータが入れば取得するようにしておく</p>
+<pre><code class="language-ts hljs language-typescript">	<span class="hljs-keyword">const</span> [words, setWords] = useState&lt;<span class="hljs-title class_">Word</span>[]&gt;([]);
+
+	<span class="hljs-title function_">useEffect</span>(<span class="hljs-function">() =&gt;</span> {
+		<span class="hljs-keyword">const</span> <span class="hljs-title function_">fetchStream</span> = <span class="hljs-keyword">async</span> (<span class="hljs-params"></span>) =&gt; {
+      <span class="hljs-comment">// 次のエンドポイントはReadableStreamを返す</span>
+      <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> <span class="hljs-title function_">httpClient</span>({ jwtToken }).<span class="hljs-title function_">get</span>(
+				<span class="hljs-string">`talks/<span class="hljs-subst">${talkId}</span>/stream`</span>,
+			);
+			<span class="hljs-keyword">const</span> stream = response.<span class="hljs-property">body</span>;
+
+			<span class="hljs-keyword">if</span> (!stream) {
+				<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">"このブラウザはストリーミングをサポートしていません。"</span>);
+				<span class="hljs-keyword">return</span>;
+			}
+
+			<span class="hljs-keyword">const</span> reader = stream.<span class="hljs-title function_">getReader</span>();
+			<span class="hljs-keyword">const</span> decoder = <span class="hljs-keyword">new</span> <span class="hljs-title class_">TextDecoder</span>(<span class="hljs-string">"utf-8"</span>);
+			<span class="hljs-keyword">try</span> {
+				<span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>) {
+					<span class="hljs-keyword">const</span> { done, value } = <span class="hljs-keyword">await</span> reader.<span class="hljs-title function_">read</span>();
+					<span class="hljs-keyword">if</span> (done) {
+						<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">"done!"</span>);
+						<span class="hljs-keyword">break</span>;
+					}
+
+          <span class="hljs-comment">// 新しいデータを受け取ったら Words 配列にいれる</span>
+          <span class="hljs-comment">// (なるべく連続するデータは同じフキダシに入れたいのでちょっとコードがごちゃごちゃしている)</span>
+					<span class="hljs-keyword">const</span> chunk = decoder.<span class="hljs-title function_">decode</span>(value, { <span class="hljs-attr">stream</span>: <span class="hljs-literal">true</span> });
+					<span class="hljs-keyword">const</span> json = <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">parse</span>(chunk);
+					<span class="hljs-keyword">const</span> lastWord = json[<span class="hljs-number">0</span>];
+					<span class="hljs-keyword">if</span> (lastWord?.<span class="hljs-property">assistantId</span> != <span class="hljs-literal">null</span>) {
+						<span class="hljs-title function_">speak</span>(lastWord.<span class="hljs-property">words</span>);
+					}
+					<span class="hljs-title function_">setWords</span>(<span class="hljs-function">(<span class="hljs-params">prev</span>) =&gt;</span> {
+						<span class="hljs-keyword">const</span> newArray = [...json, ...prev];
+						<span class="hljs-keyword">const</span> result = newArray.<span class="hljs-title function_">reduce</span>(<span class="hljs-function">(<span class="hljs-params">acc, cur</span>) =&gt;</span> {
+							<span class="hljs-keyword">const</span> key = cur.<span class="hljs-property">sentenceIdentifier</span>;
+							acc[key] = {
+								<span class="hljs-attr">id</span>: key,
+								<span class="hljs-attr">userId</span>: cur.<span class="hljs-property">userId</span>,
+								<span class="hljs-attr">talkId</span>: cur.<span class="hljs-property">talkId</span>,
+								<span class="hljs-attr">words</span>: acc[key]
+									? <span class="hljs-string">`<span class="hljs-subst">${cur.words}</span><span class="hljs-subst">${acc[key].words}</span>`</span>.<span class="hljs-title function_">replace</span>(<span class="hljs-regexp">/\n/g</span>, <span class="hljs-string">""</span>)
+									: cur.<span class="hljs-property">words</span>.<span class="hljs-title function_">replace</span>(<span class="hljs-regexp">/\n/g</span>, <span class="hljs-string">""</span>),
+								<span class="hljs-attr">sentenceIdentifier</span>: key,
+							};
+
+							<span class="hljs-keyword">return</span> acc;
+						}, {});
+						<span class="hljs-keyword">return</span> <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">values</span>(result);
+					});
+				}
+			} <span class="hljs-keyword">catch</span> (error) {
+				<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">"ストリームの読み取り中にエラーが発生しました:"</span>, error);
+			}
+		};
+
+		<span class="hljs-title function_">fetchStream</span>();
+	}, [jwtToken, talkId]);
+
+  <span class="hljs-comment">// words 配列を表示する処理が続く</span>
+</code></pre>
+<p>バックエンドでは PostgreSQL の <a href="https://www.postgresql.org/docs/current/sql-notify.html">Notify/Listen</a> 機能を使って
+Channel のようなことをする。
+これにより、新しいデータが追加されたらフロントエンドに送る。</p>
+<pre><code class="language-ts hljs language-typescript">app.<span class="hljs-title function_">get</span>(<span class="hljs-string">"/:id/stream"</span>, <span class="hljs-title function_">permissionChecker</span>(<span class="hljs-string">"talks"</span>), <span class="hljs-keyword">async</span> (c) =&gt; {
+	<span class="hljs-keyword">const</span> talkId = <span class="hljs-title class_">Number</span>(c.<span class="hljs-property">req</span>.<span class="hljs-title function_">param</span>(<span class="hljs-string">"id"</span>));
+
+	<span class="hljs-keyword">const</span> words = <span class="hljs-keyword">await</span> modelWords.<span class="hljs-title function_">findAllByTalkId</span>(talkId);
+	<span class="hljs-keyword">const</span> wordsJson = <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">stringify</span>(words);
+
+  <span class="hljs-comment">// stream を返すのでクライアントが接続を切らない限りデータを渡し続けることができる。</span>
+	<span class="hljs-keyword">return</span> <span class="hljs-title function_">streamText</span>(c, <span class="hljs-keyword">async</span> (s) =&gt; {
+		<span class="hljs-keyword">await</span> s.<span class="hljs-title function_">writeln</span>(wordsJson);
+    <span class="hljs-comment">// words_insterted という channel にJSONテキストが入ってくるのでそれを監視する</span>
+    <span class="hljs-comment">// WARN channel 名に talkId を入れたほうが他の会話のデータを誤って取得せずに済みそう</span>
+		<span class="hljs-keyword">await</span> <span class="hljs-title function_">listen</span>(<span class="hljs-string">"listen words_inserted"</span>, <span class="hljs-keyword">async</span> (msg) =&gt; {
+			<span class="hljs-keyword">if</span> (msg.<span class="hljs-property">channel</span> !== <span class="hljs-string">"words_inserted"</span>) {
+				<span class="hljs-keyword">return</span>;
+			}
+
+			<span class="hljs-keyword">const</span> word = <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">parse</span>(msg.<span class="hljs-property">payload</span>);
+			<span class="hljs-keyword">await</span> s.<span class="hljs-title function_">write</span>(<span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">stringify</span>([word]));
+		});
+
+		s.<span class="hljs-title function_">onAbort</span>(<span class="hljs-function">() =&gt;</span> {
+			<span class="hljs-title function_">customLogger</span>(<span class="hljs-string">"GET クライアントが接続を閉じました。"</span>);
+		});
+
+		<span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>) {
+			<span class="hljs-keyword">await</span> s.<span class="hljs-title function_">sleep</span>(<span class="hljs-number">1000</span>);
+		}
+	});
+});
+</code></pre>
+<p>listen と notify 関数の実装は次のような感じ</p>
+<pre><code class="language-ts hljs language-typescript"><span class="hljs-keyword">import</span> { <span class="hljs-title class_">CamelCasePlugin</span>, <span class="hljs-title class_">Kysely</span>, <span class="hljs-title class_">PostgresDialect</span>, sql } <span class="hljs-keyword">from</span> <span class="hljs-string">"kysely"</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">Pool</span> <span class="hljs-keyword">from</span> <span class="hljs-string">"pg-pool"</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-keyword">type</span> { <span class="hljs-variable constant_">DB</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">"./database-types.ts"</span>;
+<span class="hljs-keyword">import</span> { clerk } <span class="hljs-keyword">from</span> <span class="hljs-string">"./libs/clerk.ts"</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> pool = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Pool</span>({
+	<span class="hljs-attr">connectionString</span>:
+		<span class="hljs-title class_">Deno</span>.<span class="hljs-property">env</span>.<span class="hljs-title function_">get</span>(<span class="hljs-string">"DENO_ENV"</span>) === <span class="hljs-string">"test"</span>
+			? <span class="hljs-title class_">Deno</span>.<span class="hljs-property">env</span>.<span class="hljs-title function_">get</span>(<span class="hljs-string">"TEST_DB_URL"</span>)
+			: <span class="hljs-title class_">Deno</span>.<span class="hljs-property">env</span>.<span class="hljs-title function_">get</span>(<span class="hljs-string">"DATABASE_URL"</span>),
+	<span class="hljs-attr">max</span>: <span class="hljs-number">20</span>,
+	<span class="hljs-attr">idleTimeoutMillis</span>: <span class="hljs-number">30000</span>,
+	<span class="hljs-attr">connectionTimeoutMillis</span>: <span class="hljs-number">2000</span>,
+});
+
+<span class="hljs-keyword">const</span> dialect = <span class="hljs-keyword">new</span> <span class="hljs-title class_">PostgresDialect</span>({
+	pool,
+});
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> db = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Kysely</span>&lt;<span class="hljs-variable constant_">DB</span>&gt;({
+	dialect,
+	<span class="hljs-attr">plugins</span>: [<span class="hljs-keyword">new</span> <span class="hljs-title class_">CamelCasePlugin</span>()],
+	<span class="hljs-attr">log</span>: <span class="hljs-function">(<span class="hljs-params">log</span>) =&gt;</span> {
+		<span class="hljs-keyword">if</span> (log.<span class="hljs-property">level</span> === <span class="hljs-string">"query"</span>) {
+			clerk.<span class="hljs-title function_">info</span>(<span class="hljs-string">"SQL"</span>, log.<span class="hljs-property">query</span>.<span class="hljs-property">sql</span>);
+		}
+	},
+});
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">notify</span>(<span class="hljs-params">channel: <span class="hljs-built_in">string</span>, obj: <span class="hljs-built_in">object</span></span>) {
+	<span class="hljs-keyword">return</span> <span class="hljs-keyword">await</span> sql<span class="hljs-string">`select pg_notify(<span class="hljs-subst">${channel}</span>, <span class="hljs-subst">${<span class="hljs-built_in">JSON</span>.stringify(obj)}</span>)`</span>.<span class="hljs-title function_">execute</span>(
+		db,
+	);
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">listen</span>(<span class="hljs-params">
+	listenChannel: <span class="hljs-built_in">string</span>,
+	callback: (msg: { channel: <span class="hljs-built_in">string</span>; payload: <span class="hljs-built_in">string</span> }) =&gt; <span class="hljs-built_in">void</span>,
+</span>) {
+	<span class="hljs-keyword">const</span> pgClient = <span class="hljs-keyword">await</span> pool.<span class="hljs-title function_">connect</span>();
+	pgClient.<span class="hljs-title function_">on</span>(<span class="hljs-string">"notification"</span>, callback);
+
+	<span class="hljs-keyword">return</span> <span class="hljs-keyword">await</span> pgClient.<span class="hljs-title function_">query</span>(listenChannel);
+}
+</code></pre>
+<h3>Local LLM へのリクエストとレスポンス</h3>
+<p>会話データができたので、これをもとにプロンプトを作成してローカルLLMにリクエストする。</p>
+<pre><code class="language-ts hljs language-typescript"><span class="hljs-keyword">import</span> { <span class="hljs-title class_">Button</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">"@chakra-ui/react"</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">TalkToAI</span>(<span class="hljs-params">{
+	assistantMutate,
+	assistantIsPending,
+}: { assistantMutate: () =&gt; <span class="hljs-built_in">void</span>; assistantIsPending: <span class="hljs-built_in">boolean</span> }</span>) {
+	<span class="hljs-keyword">return</span> (
+		<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">Button</span>
+			<span class="hljs-attr">colorScheme</span>=<span class="hljs-string">"blue"</span>
+			<span class="hljs-attr">onClick</span>=<span class="hljs-string">{()</span> =&gt;</span> assistantMutate()}
+			isLoading={assistantIsPending}
+		&gt;
+			AIをよびだす
+		<span class="hljs-tag">&lt;/<span class="hljs-name">Button</span>&gt;</span></span>
+	);
+}
+
+<span class="hljs-comment">// assistantMutate の中身</span>
+<span class="hljs-keyword">const</span> { <span class="hljs-attr">mutate</span>: assistantMutate, <span class="hljs-attr">isPending</span>: assistantIsPending } =
+  <span class="hljs-title function_">useMutation</span>({
+    <span class="hljs-attr">mutationFn</span>: <span class="hljs-keyword">async</span> () =&gt;
+      <span class="hljs-keyword">await</span> <span class="hljs-title function_">httpClient</span>({ jwtToken }).<span class="hljs-title function_">post</span>(<span class="hljs-string">`talks/<span class="hljs-subst">${talkId}</span>/assistant_chat`</span>, {
+        <span class="hljs-attr">timeout</span>: <span class="hljs-literal">false</span>,
+      }),
+    <span class="hljs-attr">onSuccess</span>: <span class="hljs-function">() =&gt;</span> {
+      <span class="hljs-comment">//</span>
+      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">"ok"</span>);
+    },
+    <span class="hljs-attr">onError</span>: <span class="hljs-function">(<span class="hljs-params">error</span>) =&gt;</span> {
+      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(error);
+    },
+  });
+</code></pre>
+<p>現状、AI呼び出しのトリガーはボタンにしてある。
+将来的にはユーザーが話し終わったら自動で処理するようにしたい。</p>
+<p>バックエンドでは <code>talks/${talkId}/assistant_chat</code> にリクエストがあると、次の処理を行う。</p>
+<ul>
+<li>次の情報からLLMのプロンプトを作成する
+<ul>
+<li>直近数回の人間とAIの会話データ</li>
+<li>AIの人格設定データ</li>
+</ul>
+</li>
+<li>ローカルLLMサーバー (Ollama を使用) にプロンプトを投げる</li>
+<li>レスポンスをStreamで受け取り、DBにNotify、保存</li>
+</ul>
+<pre><code class="language-ts hljs language-typescript">app.<span class="hljs-title function_">post</span>(<span class="hljs-string">"/:id/assistant_chat"</span>, <span class="hljs-title function_">permissionChecker</span>(<span class="hljs-string">"talks"</span>), <span class="hljs-keyword">async</span> (c) =&gt; {
+	<span class="hljs-keyword">const</span> talkId = <span class="hljs-title class_">Number</span>(c.<span class="hljs-property">req</span>.<span class="hljs-title function_">param</span>(<span class="hljs-string">"id"</span>));
+	<span class="hljs-keyword">const</span> user = c.<span class="hljs-title function_">get</span>(<span class="hljs-string">"currentUser"</span>);
+	<span class="hljs-keyword">const</span> talk = <span class="hljs-keyword">await</span> modelTalks.<span class="hljs-title function_">findById</span>({
+		talkId,
+		<span class="hljs-attr">userId</span>: user.<span class="hljs-property">id</span>,
+	});
+
+	<span class="hljs-keyword">if</span> (!talk) {
+		<span class="hljs-keyword">return</span> c.<span class="hljs-title function_">json</span>({ <span class="hljs-attr">message</span>: <span class="hljs-string">"Talk not found"</span> }, <span class="hljs-number">404</span>);
+	}
+
+  <span class="hljs-comment">// 直近数回の会話を取得</span>
+	<span class="hljs-keyword">const</span> words = <span class="hljs-keyword">await</span> modelWords.<span class="hljs-title function_">findLatestByTalkId</span>(talkId);
+
+  <span class="hljs-comment">// 人間とAIの会話によって role を切り替えながらLLMのプロンプトを作成</span>
+	<span class="hljs-keyword">let</span> messages = words
+		.<span class="hljs-title function_">map</span>(<span class="hljs-function">(<span class="hljs-params">word</span>) =&gt;</span> ({
+			<span class="hljs-attr">role</span>: word.<span class="hljs-property">userId</span> == <span class="hljs-literal">null</span> ? <span class="hljs-string">"assistant"</span> : <span class="hljs-string">"user"</span>,
+			<span class="hljs-attr">content</span>: <span class="hljs-string">`<span class="hljs-subst">${word.words}</span>`</span>,
+		}))
+		.<span class="hljs-title function_">reverse</span>();
+
+  <span class="hljs-comment">// AIの人格設定は system role で渡す</span>
+	messages = [
+		...messages,
+		{ <span class="hljs-attr">role</span>: <span class="hljs-string">"system"</span>, <span class="hljs-attr">content</span>: talk.<span class="hljs-property">assistant</span>.<span class="hljs-property">personality</span> },
+	];
+
+  <span class="hljs-comment">// Ollama で動いているローカルLLMにリクエストする</span>
+	<span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> ky.<span class="hljs-title function_">post</span>(<span class="hljs-string">`<span class="hljs-subst">${Deno.env.get(<span class="hljs-string">"OLLAMA_URL"</span>)}</span>/api/chat`</span>, {
+		<span class="hljs-attr">json</span>: {
+			<span class="hljs-attr">model</span>: talk.<span class="hljs-property">assistant</span>.<span class="hljs-property">model</span>,
+			messages,
+			<span class="hljs-attr">stream</span>: <span class="hljs-literal">true</span>,
+		},
+	});
+
+  <span class="hljs-comment">// ローカルLLMサーバーからのレスポンスをchannelに通知したり、保存したりする</span>
+	<span class="hljs-keyword">const</span> reader = response.<span class="hljs-property">body</span>?.<span class="hljs-title function_">getReader</span>();
+	<span class="hljs-keyword">const</span> decoder = <span class="hljs-keyword">new</span> <span class="hljs-title class_">TextDecoder</span>(<span class="hljs-string">"utf-8"</span>);
+	<span class="hljs-keyword">const</span> sentenceIdentifier = crypto.<span class="hljs-title function_">randomUUID</span>();
+	<span class="hljs-keyword">let</span> text = <span class="hljs-string">""</span>;
+	<span class="hljs-keyword">let</span> textChank = <span class="hljs-string">""</span>;
+	<span class="hljs-keyword">while</span> (reader &amp;&amp; <span class="hljs-literal">true</span>) {
+		<span class="hljs-keyword">const</span> { done, value } = <span class="hljs-keyword">await</span> reader.<span class="hljs-title function_">read</span>();
+		<span class="hljs-keyword">if</span> (done) {
+			<span class="hljs-keyword">break</span>;
+		}
+		<span class="hljs-keyword">const</span> jsonText = decoder.<span class="hljs-title function_">decode</span>(value, { <span class="hljs-attr">stream</span>: <span class="hljs-literal">true</span> });
+		<span class="hljs-keyword">const</span> json = <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">parse</span>(jsonText);
+
+		textChank += json.<span class="hljs-property">message</span>.<span class="hljs-property">content</span>;
+		<span class="hljs-keyword">if</span> (textChank.<span class="hljs-property">length</span> &gt; <span class="hljs-number">20</span>) {
+			<span class="hljs-keyword">await</span> <span class="hljs-title function_">notify</span>(<span class="hljs-string">"words_inserted"</span>, {
+				<span class="hljs-attr">id</span>: crypto.<span class="hljs-title function_">randomUUID</span>(),
+				<span class="hljs-attr">talkId</span>: talk.<span class="hljs-property">id</span>,
+				<span class="hljs-attr">assistantId</span>: talk.<span class="hljs-property">assistantId</span>,
+				<span class="hljs-attr">words</span>: textChank,
+				sentenceIdentifier,
+			});
+
+			text += textChank;
+			textChank = <span class="hljs-string">""</span>;
+		}
+	}
+
+	<span class="hljs-keyword">if</span> (textChank.<span class="hljs-property">length</span> &gt; <span class="hljs-number">0</span>) {
+		<span class="hljs-keyword">await</span> <span class="hljs-title function_">notify</span>(<span class="hljs-string">"words_inserted"</span>, {
+			<span class="hljs-attr">id</span>: crypto.<span class="hljs-title function_">randomUUID</span>(),
+			<span class="hljs-attr">talkId</span>: talk.<span class="hljs-property">id</span>,
+			<span class="hljs-attr">assistantId</span>: talk.<span class="hljs-property">assistantId</span>,
+			<span class="hljs-attr">words</span>: textChank,
+			sentenceIdentifier,
+		});
+
+		text += textChank;
+		textChank = <span class="hljs-string">""</span>;
+
+		<span class="hljs-keyword">await</span> modelWords.<span class="hljs-title function_">create</span>({
+			talkId,
+			<span class="hljs-attr">assistantId</span>: talk.<span class="hljs-property">assistantId</span>,
+			<span class="hljs-attr">words</span>: text,
+			sentenceIdentifier,
+		});
+	}
+
+	<span class="hljs-keyword">return</span> c.<span class="hljs-title function_">json</span>({ <span class="hljs-attr">msg</span>: text });
+});
+</code></pre>
+<h3>AIからのレスポンステキストの読み上げ</h3>
+<p>ひとまずブラウザの機能で読み上げているだけ</p>
+<pre><code class="language-ts hljs language-typescript"><span class="hljs-keyword">function</span> <span class="hljs-title function_">speak</span>(<span class="hljs-params">text: <span class="hljs-built_in">string</span></span>) {
+	<span class="hljs-comment">// SpeechSynthesisUtteranceのインスタンスを作成</span>
+	<span class="hljs-keyword">const</span> utterance = <span class="hljs-keyword">new</span> <span class="hljs-title class_">SpeechSynthesisUtterance</span>();
+	utterance.<span class="hljs-property">text</span> = text;
+	utterance.<span class="hljs-property">lang</span> = <span class="hljs-string">"ja-JP"</span>;
+	<span class="hljs-comment">// 音声を再生</span>
+	<span class="hljs-variable language_">window</span>.<span class="hljs-property">speechSynthesis</span>.<span class="hljs-title function_">speak</span>(utterance);
+}
+</code></pre>
+<p>新しいテキストを取得した際に、AIからの発言であれば上記の関数を使って読み上げる。</p>
+<h2>今後の展望</h2>
+<p>テキスト読み上げが地味なので <a href="https://github.com/VOICEVOX/voicevox_engine">VOICEVOX</a> などをつかって音声データをサーバーで作成し、
+フロントに送るようにしたい。
+これもStreamを利用してリアルタイムにやりたいので、そんな感じの仕組みを作成中。</p>
+<p>すべてのソースコードの公開は全体が完成したらします。</p>
+</div>
+  <hr>
+<div class="comment-button-container">
+  <a href="https://github.com/kbaba1001/kbaba1001.github.io/discussions" target="_blank" class="comment-button">
+    掲示板にコメントする
+  </a>
+  <div class="comment-note">
+    ※どの記事のコメントかわかるように本文に記事タイトルなどを入れてください。
+  </div>
+</div>
+
+  <a href="/" class="post-index-link">一覧に戻る</a>
+</div>
+</main>
+</div>
+
+  
+
+</body></html>
