@@ -14,7 +14,7 @@
       <guid isPermaLink="false">https://www.kbaba1001.com/posts/202412140705_making-a-talk-with-local-llm-system-with-deno-web-streams-api/</guid>
       <content:encoded>
         <![CDATA[<h2>開発中のもの</h2>
-        <p>YouTubeのデモ</p>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/LLjdWHjzwQU?si=YYHC0dihp1bLUwsT" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         <p>最近時々見かけるようになった、AIと音声通話できるやつを作ってみた。</p>
         <p>既存サービスとの違い、特徴としては</p>
         <ul>
