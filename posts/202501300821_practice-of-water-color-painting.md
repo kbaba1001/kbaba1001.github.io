@@ -3,7 +3,7 @@ title: 透明水彩の練習
 date: 2025-01-30 08:21:32
 ogimage: /img/posts/202501300821_practice-of-water-color-painting.png
 tags:
-  - Tech
+  - イラスト話
 ---
 
 ## 透明水彩によるカラーデッサン
