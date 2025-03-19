@@ -9,6 +9,39 @@
     <language>ja_JP</language>
     <generator>Lume v2.0.1</generator>
     <item>
+      <title>君は4つのMacbookAirを手に入れた</title>
+      <link>https://www.kbaba1001.com/posts/202503191106_4-macbook-air/</link>
+      <guid isPermaLink="false">https://www.kbaba1001.com/posts/202503191106_4-macbook-air/</guid>
+      <content:encoded>
+        <![CDATA[<h2>ジャンクマシン</h2>
+        <p>ジャンク品の Macbook Air を知人とかメルカリとかから１台１万円くらいで譲り受けた。
+        なんと４台もある。</p>
+        <p>実は古い Macbook は非公式の互換バッテリーが Amazon で 5,000 ～ 7,000円くらいで売っているので
+        自力で交換することにした。</p>
+        <p>ジャンク品だと電源ケーブルもなかったり、あっても使い古されたりしているので
+        Amazonで互換品を買うことにした。</p>
+        <p>そうすると、予算感としては１台あたり、</p>
+        <ul>
+        <li>本体: 10,000円</li>
+        <li>バッテリー: 6,000円</li>
+        <li>電源: 4,000円</li>
+        </ul>
+        <p>で、約2万円。</p>
+        <p>これでそこそこの性能のマシンが手に入るなら安いか。</p>
+        <h2>どう使うか</h2>
+        <p>Macbook Air には Linux を入れてサーバー or ちょっとした持ち運びマシンにする予定。</p>
+        <p>今使っているノートパソコンはゲーミングPCなので、重量が重いし電池のもちが悪い…。
+        悪いマシンではないのだが持ち歩くには辛いのだった。</p>
+        <p>そこで MacbookAir を Linux 化して SSH やリモートデスクトップでアクセスできるようにしておけば便利かなと思った。</p>
+        <p>あるいは Kubernetes クラスタを作ってもいい。</p>
+        <h2>Gentoo Linux を入れる</h2>
+        <p>妻がOSを学びたいというので、それなら <a href="https://www.gentoo.org/">Gentoo Linux</a> から始めようという話になった。</p>
+        <p>自分も Gentoo Linux を使うのは久々なので一緒にやってみる予定。</p>
+        ]]>
+      </content:encoded>
+      <pubDate>Wed, 19 Mar 2025 11:06:39 GMT</pubDate>
+    </item>
+    <item>
       <title>水彩画修行</title>
       <link>https://www.kbaba1001.com/posts/202502281007_water-color-drawing/</link>
       <guid isPermaLink="false">https://www.kbaba1001.com/posts/202502281007_water-color-drawing/</guid>
@@ -1143,96 +1176,6 @@
         ]]>
       </content:encoded>
       <pubDate>Sun, 20 Oct 2024 07:12:38 GMT</pubDate>
-    </item>
-    <item>
-      <title>Squint で切り開く ClojureScript の新しい可能性</title>
-      <link>https://www.kbaba1001.com/posts/202410130849_opening-up-new-possibilities-for-clojure-script-with-squint/</link>
-      <guid isPermaLink="false">https://www.kbaba1001.com/posts/202410130849_opening-up-new-possibilities-for-clojure-script-with-squint/</guid>
-      <content:encoded>
-        <![CDATA[<p>少し前から <a href="https://github.com/squint-cljs/squint">Squint</a> という軽量な ClojureScript (CLJS) のコンパイラがあります。
-        最近これで遊び始めたのでざっくり紹介したいです。</p>
-        <p>《kbaba1001|/img/horse.jpg|TypeScriptと同程度の気楽さでClojureScriptを使いたい》</p>
-        <p>簡単に言えばこれを叶えるための選択肢としての Squint です。</p>
-        <h3>そもそも今までの CLJS と何が違うのか</h3>
-        <p>今までの CLJS はこんな感じでした。</p>
-        <ul>
-        <li>Java の Clojure との高い互換性を重視</li>
-        <li>CLJS の実行に Java が必要 (<a href="https://github.com/thheller/shadow-cljs">shadow-cljs</a>はだいぶ頑張ってこれをなくそうとしていたけど…)</li>
-        <li>ビルドのアウトプットファイルが大きい
-        <ul>
-        <li>JS のデータ構造をそのまま使うわけではないので標準で色々入っている分重い</li>
-        </ul>
-        </li>
-        <li>JS のデータ構造を使う場合には <code>#js</code> や <code>clj-&gt;js</code> などを使って変換する必要があった
-        <ul>
-        <li>これで困ることはあんまりなかったけど、初心者には分かりづらいポイントかも</li>
-        </ul>
-        </li>
-        <li>Promise の扱いが微妙
-        <ul>
-        <li><a href="https://github.com/clojure/core.async">core.async</a> で十分なことは多いけど、 JS の Promise を使いたいケースも結構ある</li>
-        <li>core.async の関数の戻り値が Promise ではないのがたまに辛い</li>
-        </ul>
-        </li>
-        <li>package.json とかに書いたらいい感じにやってほしいけど、なんかごちゃごちゃする
-        <ul>
-        <li>shadow-cljs はだいぶ良かった</li>
-        </ul>
-        </li>
-        <li>cljs 対応済みの clojure ライブラリが使える</li>
-        </ul>
-        <p>何度も言いますが Shadow-cljs は最高です。 npm で動くし、今までの ClojureScript のライブラリも使えます。
-        難点を上げるとすれば、ビルドが遅くて重く、なんとなく気楽さに欠けることでしょうか。</p>
-        <p>Vite などの JS 文化のビルドライブラリを使いたいというのが正直なところです。</p>
-        <p>そこで、 Squint 。</p>
-        <p>Squint は今までの Clojure(Script) との互換性を捨てる代わりに、</p>
-        <ul>
-        <li>JS のデータをそのまま使うことによるアウトプットの軽量化</li>
-        <li>Promise, Async/Await のサポート</li>
-        <li>JSX 対応</li>
-        </ul>
-        <p>などが入り、 vite などと組み合わせて使うことも出来るようになりました。</p>
-        <p>なので</p>
-        <p>《kbaba1001|/img/horse.jpg|今までの cljs は不要だけど、 js の資産を活用して cljs で開発したい》</p>
-        <p>のような考えの人には向いていると思います。
-        詳細は <a href="https://github.com/squint-cljs/squint?tab=readme-ov-file#differences-with-clojurescript">このへん</a> を読んでください。
-        今までの CLJS との互換性を重視した <a href="https://github.com/squint-cljs/cherry">cherry</a> というプロジェクトもあります。</p>
-        <h3>まずはサンプルコード</h3>
-        <p><a href="https://github.com/neumann-tokyo/vite-preact-squint">vite-preact-squint</a></p>
-        <p>vite, preact, squint で土台を作ってみた。まだ途中だけどとりあえず squint でビルドした jsx を vite で動かすところまではできた。</p>
-        <p>vite squit plugin みたいなやつがあればよいのだが、そこまではまだできていないようで、
-        <code>squint watch</code> で js/jsx ファイルを作ってそれを <code>vite</code> に食べさせるという動き。</p>
-        <p>そうすると２つのプロセスを同時に起動する必要があり、やや面倒なので <a href="https://github.com/chrismytton/shoreman">Shoreman</a> という <a href="https://github.com/ddollar/foreman">Foreman</a> を shell に移植したやつをリポジトリ内に入れて使うことにした。
-        (この辺はもう少しシンプルにできそうな気がするけど)</p>
-        <p><a href="https://github.com/brandonstubbs/vite-plugin-squint">vite-plugin-squint</a> を作っている人もいたので、後で試す。</p>
-        <h3>cljs で malli だけ使いたい</h3>
-        <p><a href="https://github.com/metosin/malli">malli</a> は cljs で動的に typecheck が出来るライブラリで、
-        <a href="https://github.com/clojure/spec.alpha">clojure/spec.alpha</a> の代わりによく使われている。</p>
-        <p>malli の良いところはデータ構造で spec を定義できて、かつ、 Validation などでも使えることだ。</p>
-        <p>TypeScriptのような型システムは別にいらないのだが、単に関数の引数として何を期待しているのかを
-        明白にしておきたいときは結構あって、 Malli はそういうときにちょうどいい。</p>
-        <h4>Squint で Malli は動かない。ではどうするか？</h4>
-        <p>先ほど互換性の話をした通り Squint では普通の CLJS ライブラリは動かないので Malli も動かない。</p>
-        <p>ではどうするか？ JS のライブラリで似たようなものを探すしかない。</p>
-        <p>「引数に何を期待しているかを明記する」という目的であれば <a href="https://www.npmjs.com/package/prop-types">PropTypes</a> をまず思いついた。</p>
-        <p>しかし、案の定 PropTypes は放置されていて、世の中的にはそういうのは「 TypeScript を使え」の一点張りになってしまっていた。
-        PropTypes的なライブラリで代替品も見つからない。</p>
-        <p>《kbaba1001|/img/horse.jpg|発想を変えよう》</p>
-        <h4>Validation ライブラリを Spec 代わりに使う</h4>
-        <p>Clojure には <code>pre</code>、 <code>post</code> という機能がある。
-        関数の事前条件(<code>pre</code>)または事後条件(<code>post</code>)を設定して、条件を満たしていなければ例外を出すというものだ。</p>
-        <p>Malli にせよ clojure/spec.alpha にせよ、静的な型チェックとは異なり、
-        動的な型チェックというのは何かしらの方法で実行して確認する必要がある。</p>
-        <p>方針としてはこうだ。</p>
-        <ul>
-        <li><code>pre</code> で validation チェックライブラリ ( <a href="https://zod.dev/">zod</a> や <a href="https://valibot.dev/">valibot</a> など ) を実行して引数のチェックをする</li>
-        <li>この機構は本番モード(<code>NODE_ENV=production</code>)では無視する（必ずパスする）ようにする</li>
-        <li>テストを活用する</li>
-        </ul>
-        <p>このやり方なら JS の新しいライブラリを使って Malli が行っているような動的な型チェックが出来る。</p>
-        ]]>
-      </content:encoded>
-      <pubDate>Sun, 13 Oct 2024 08:49:58 GMT</pubDate>
     </item>
   </channel>
 </rss>
