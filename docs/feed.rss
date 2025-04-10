@@ -9,6 +9,49 @@
     <language>ja_JP</language>
     <generator>Lume v2.0.1</generator>
     <item>
+      <title>Gentoo と Extraterm</title>
+      <link>https://www.kbaba1001.com/posts/202504081333_gentoo-and-extraterm/</link>
+      <guid isPermaLink="false">https://www.kbaba1001.com/posts/202504081333_gentoo-and-extraterm/</guid>
+      <content:encoded>
+        <![CDATA[<p>眠れない夜。 Gentoo Linux をインストールし始めた。</p>
+        <p><img src="https://www.kbaba1001.com/img/posts/202504081333/gentoo01.jpg" alt="gentoo01.jpg"></p>
+        <p>これはいつも使っているWindowsのノートパソコンなのだが、
+        Windowsもちょっと使うので外付けのSSDにGentoo Linuxをインストールして
+        USBを抜き差しすることでデュアルブートできるようにした。</p>
+        <p><img src="https://www.kbaba1001.com/img/posts/202504081333/gentoo02.jpg" alt="gentoo02.jpg"></p>
+        <p>最近の外付けSSDはこんなに小さい。これでも 1TB ある。すごい時代だ。</p>
+        <p><a href="https://github.com/fastfetch-cli/fastfetch">fastfetch</a> という性能を可視化するツールの実行結果:</p>
+        <p><img src="https://www.kbaba1001.com/img/posts/202504081333/gentoo03.jpg" alt="gentoo03.jpg"></p>
+        <h3>10 数年ぶりの Gentoo Linux</h3>
+        <p>10数年前、当時務めていた会社では Gentoo Linux を使う人が多かった。
+        私はDebianを使っていたのでバカにされていた。
+        技術力の高い人が多くて良い会社だったと思う。</p>
+        <p>Gentoo Linux インストールバトルみたいなのものやってた。
+        簡単に言えば、若手社員が集まってみんなでGentooをインストールする会。</p>
+        <p>私も影響されて一時期 gentoo を入れてみたけど、半年くらい使っているとなんか色々壊れてきてしんどくなって使うのを辞めた。</p>
+        <p>しかし１０年くらい経ってみると自分の技術力が上がったので、
+        Gentooハンドブックも落ち着いて読めるようになっていた。
+        案外すんなりインストールできて昔は何が苦手だったのかよくわからなくなった。
+        たぶん、Gentooハンドブックの「いろいろな選択肢があるよ」という書き方が素人には読みづらかったのだと思う。
+        Gentooにおいて選択は重要なのだが、もう少し「これだけやればOK」みたいなドキュメントもほしい気もする。</p>
+        <p>ここ数週間Gentooを触ってみて、emerge コマンドも案外悪くないなぁ、USEで色々指定するの楽しいな、みたいな気持ちに素直になった。
+        どうしてもソフトをインストールする際にビルドするので時間はかかるのだが、それを待つのも一興といったところ。
+        たまにめちゃくちゃ時間かかるけど。</p>
+        <h3>ターミナルに Extraterm を使う</h3>
+        <p>ターミナルとしてとりあえず URxvt を使っていたが、もう少し便利なものを使いたいと思っていた。</p>
+        <p>個人的にLinuxソフトを選ぶ基準としては Gnome, KDE などの特定の WM に依存せず、 gtk, qt などの描画ライブラリに依存していることを
+        重視しているので、 Gnome Terminal みたいなのは今回の選択肢から外した。
+        するとあんまりピンとくるものがなかったのだが、色々探したところ <a href="https://extraterm.org/index.html">Extraterm</a> というのを見つけた。</p>
+        <p><img src="https://www.kbaba1001.com/img/posts/202504081333/extraterm.png" alt="extraterm"></p>
+        <p>Extraterm は plugin で <code>show</code> というコマンドをいれることができて、これは上記のようにターミナル上で画像の閲覧ができる。
+        他にもちょっとした便利機能があり、GUIでフォントの設定などができる気楽さが気に入った。</p>
+        <p>タイル型ウインドウマネージャを使うので微妙に画像のプレビューを display コマンドとかで行うと微妙に不便だったので、 show コマンドは助かる。
+        一時期は <a href="https://github.com/jarun/nnn">nnn</a> を試したこともあるけど、これはGithubのスクショにあるような状態で動かすまでが難しすぎて辞めた。</p>
+        ]]>
+      </content:encoded>
+      <pubDate>Tue, 08 Apr 2025 13:33:24 GMT</pubDate>
+    </item>
+    <item>
       <title>技術書典18にサークル「さ19：ノイマンパブリッシング」として参加します</title>
       <link>https://www.kbaba1001.com/posts/202503301121_techbookfest18/</link>
       <guid isPermaLink="false">https://www.kbaba1001.com/posts/202503301121_techbookfest18/</guid>
@@ -943,74 +986,6 @@
         ]]>
       </content:encoded>
       <pubDate>Tue, 03 Dec 2024 07:51:05 GMT</pubDate>
-    </item>
-    <item>
-      <title>渋谷でもくもく会に参加した</title>
-      <link>https://www.kbaba1001.com/posts/202411030733_attended-shibuya-mokumoku/</link>
-      <guid isPermaLink="false">https://www.kbaba1001.com/posts/202411030733_attended-shibuya-mokumoku/</guid>
-      <content:encoded>
-        <![CDATA[<p><img src="https://www.kbaba1001.com/img/posts/202411030733/mokumoku.jpg" alt="渋谷でもくもく会"></p>
-        <p><a href="https://connpass.com/event/334713/">渋谷でもくもく会</a> に参加してきた。</p>
-        <p>こういうイベントに参加するのは久しぶりで楽しかった。</p>
-        <h3>会の雰囲気</h3>
-        <p>シェアオフィスでの開催だったので静かな空間で良かった。
-        参加者も１０人くらいで適度におしゃべりしたりするのにちょうどいい感じ。</p>
-        <p>もくもく会だが、作業したり喋ったりゆるい雰囲気で良かった。
-        （ずっと黙っている会もあったりするが、自分好みではない）</p>
-        <p>他の参加者は若手と中堅のエンジニアの方が半々くらいで、
-        適度に会話が盛り上がって楽しかった。
-        意外と女性の参加者も多かった。</p>
-        <p>私は最近静岡に引きこもっているので、Tech系の話をするのは久々で
-        自分がこういうおしゃべりに飢えていたことに気づいた。</p>
-        <p>若手エンジニアの方たちの話は自分にとっては新鮮なところもあって、
-        転職の話とかどのように技術を学んでいくかとか、話題が若くて良かった。</p>
-        <h3>やっていたこと</h3>
-        <p>最近 ChatGPT に AI と音声で会話できる機能がついたのだが、それと同じようなものを
-        ローカルLLMを使って実現したい。次の流れで実現できると思っている。</p>
-        <ul>
-        <li>ユーザーの音声のテキスト化
-        <ul>
-        <li>ユーザーの音声をブラウザで取得</li>
-        <li>音声データをStreamでサーバーにおくる</li>
-        <li>サーバーでは音声データをWhisperで文字に変換する (ここもStream処理)</li>
-        <li>文字データをフロント側にStreamで返却しつつ、DBにも保存する</li>
-        </ul>
-        </li>
-        <li>テキストをローカルLLMにわたして返答をつくる
-        <ul>
-        <li>１００文字くらいの短い文章を作るように命令しておく</li>
-        <li>インプットはStreamではなくまとめてテキストデータを入れる</li>
-        <li>アウトプットをStream で受け取る</li>
-        </ul>
-        </li>
-        <li>LLMの返答を音声データにする
-        <ul>
-        <li>LLMのアウトプットを Stream で受け取り、それを <a href="https://github.com/KoljaB/RealtimeTTS">RealtimeTTS</a> などを用いて Stream で音声データにする</li>
-        <li>サーバーからフロントに音声データと文字データを Stream で送る</li>
-        <li>フロントではサーバーからのレスポンスを Stream で受け取りつつ、音声を再生し、文字データを画面に表示する</li>
-        </ul>
-        </li>
-        </ul>
-        <p>もくもく会では、ブラウザ上で音声データを取得して ReadableStream でサーバーに送り、
-        サーバー側でファイル化するという処理を作ることができた。</p>
-        <p>実際には受け取ったバイナリをファイルにするんじゃなくて、そのまま <a href="https://github.com/ufal/whisper_streaming/blob/main/whisper_online_server.py">whisper_online_server.py</a> に渡してテキスト化したい。</p>
-        <h3>結果</h3>
-        <p>会場ではかなり集中して作業できてきちんとした進捗が出せてよかった。</p>
-        <p>12:00 - 18:30 （わたしは 17:30 で帰ったけど）という長時間の会だったので、
-        なかなか普段ここまでまとまった時間は取れないので、それだけでもありがたかった。</p>
-        <h3>蛇足: わからないことをAIに聞くことに慣れた</h3>
-        <p>会とは関係ないけど WebStream API をつかったコーディングは初めてで
-        MDNのサンプルコードだけだとしんどいなぁと思っていたところ、
-        ChatGPTにサンプルコードを提示させるとかなりいいコードがでてきて、
-        なんかもうこれでいいじゃんとなった。
-        こういう規格に沿ったものをつくるのはAIのほうが得意そうだ。</p>
-        <p>バックエンドも Deno にしているので Web 標準の機能が使えてスッキリするが、
-        これも資料が少ないので ChatGPT に聞いたほうが何かと早い。。。</p>
-        <p>ChatGPTの作ったコードをとりあえず動かしてみて、問題があったらドキュメントを参考に修正するという感じ。</p>
-        <p>すごい時代になったなぁ。。。</p>
-        ]]>
-      </content:encoded>
-      <pubDate>Sun, 03 Nov 2024 07:33:24 GMT</pubDate>
     </item>
   </channel>
 </rss>

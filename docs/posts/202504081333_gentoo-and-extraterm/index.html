@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="/styles.css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <meta name="author" content="kbaba1001">
+    <meta property="og:title" content="Gentoo と Extraterm - ハッカーと漫画家">
+    <meta property="og:url" content="https://www.kbaba1001.com/posts/202504081333_gentoo-and-extraterm/">
+    <meta property="og:image" content="https://www.kbaba1001.com/img/posts/202504081333_gentoo-and-extraterm.png">
+    <meta property="twitter:image:src" content="https://www.kbaba1001.com/img/posts/202504081333_gentoo-and-extraterm.png">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <meta property="og:type" content="website">
+    <meta name="description" content="Clojure と漫画が好きな kbaba1001 のブログです。">
+    <meta property="og:description" content="Clojure と漫画が好きな kbaba1001 のブログです。">
+    <meta property="og:locale" content="ja_JP">
+
+    <!-- Google tag (gtag.js) -->
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-MJ8FZT12VZ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-MJ8FZT12VZ");
+    </script>
+
+    <title>Gentoo と Extraterm - ハッカーと漫画家</title>
+  </head>
+  <body class="layout">
+    <header class="layout-header">
+  <div class="header">
+    <div class="grid-header-title"><div class="header-title">
+  <img src="/img/kitsune-kamen.jpg" alt="ハッカーと漫画家" loading="lazy" class="header-title-logo">
+  <a href="/" class="header-title-link">ハッカーと漫画家</a>
+</div>
+</div>
+    <div class="grid-header-nav"><nav class="header-nav-container">
+  <ul class="header-nav-list">
+    <li>
+      <a href="/about" class="header-nav-list-link"> About </a>
+    </li>
+    <li>
+      <a href="https://github.com/kbaba1001/kbaba1001.github.io/discussions" class="header-nav-list-link" target="_blank">
+        掲示板
+      </a>
+    </li>
+    <li>
+      <a href="/feed.rss" class="header-nav-list-link"> RSS </a>
+    </li>
+  </ul>
+</nav>
+</div>
+  </div>
+</header>
+<div class="layout-main">
+  <main class="layout-main-center"><div class="post">
+  <div>
+    <div class="post-date">2025-04-08</div>
+    
+    <div class="post-tag" data-pagefind-filter="tag">Tech</div>
+    
+  </div>
+  <h1 class="post-title">Gentoo と Extraterm</h1>
+  <div class="post-main"><p>眠れない夜。 Gentoo Linux をインストールし始めた。</p>
+<p><img src="/img/posts/202504081333/gentoo01.jpg" alt="gentoo01.jpg"></p>
+<p>これはいつも使っているWindowsのノートパソコンなのだが、
+Windowsもちょっと使うので外付けのSSDにGentoo Linuxをインストールして
+USBを抜き差しすることでデュアルブートできるようにした。</p>
+<p><img src="/img/posts/202504081333/gentoo02.jpg" alt="gentoo02.jpg"></p>
+<p>最近の外付けSSDはこんなに小さい。これでも 1TB ある。すごい時代だ。</p>
+<p><a href="https://github.com/fastfetch-cli/fastfetch">fastfetch</a> という性能を可視化するツールの実行結果:</p>
+<p><img src="/img/posts/202504081333/gentoo03.jpg" alt="gentoo03.jpg"></p>
+<h3>10 数年ぶりの Gentoo Linux</h3>
+<p>10数年前、当時務めていた会社では Gentoo Linux を使う人が多かった。
+私はDebianを使っていたのでバカにされていた。
+技術力の高い人が多くて良い会社だったと思う。</p>
+<p>Gentoo Linux インストールバトルみたいなのものやってた。
+簡単に言えば、若手社員が集まってみんなでGentooをインストールする会。</p>
+<p>私も影響されて一時期 gentoo を入れてみたけど、半年くらい使っているとなんか色々壊れてきてしんどくなって使うのを辞めた。</p>
+<p>しかし１０年くらい経ってみると自分の技術力が上がったので、
+Gentooハンドブックも落ち着いて読めるようになっていた。
+案外すんなりインストールできて昔は何が苦手だったのかよくわからなくなった。
+たぶん、Gentooハンドブックの「いろいろな選択肢があるよ」という書き方が素人には読みづらかったのだと思う。
+Gentooにおいて選択は重要なのだが、もう少し「これだけやればOK」みたいなドキュメントもほしい気もする。</p>
+<p>ここ数週間Gentooを触ってみて、emerge コマンドも案外悪くないなぁ、USEで色々指定するの楽しいな、みたいな気持ちに素直になった。
+どうしてもソフトをインストールする際にビルドするので時間はかかるのだが、それを待つのも一興といったところ。
+たまにめちゃくちゃ時間かかるけど。</p>
+<h3>ターミナルに Extraterm を使う</h3>
+<p>ターミナルとしてとりあえず URxvt を使っていたが、もう少し便利なものを使いたいと思っていた。</p>
+<p>個人的にLinuxソフトを選ぶ基準としては Gnome, KDE などの特定の WM に依存せず、 gtk, qt などの描画ライブラリに依存していることを
+重視しているので、 Gnome Terminal みたいなのは今回の選択肢から外した。
+するとあんまりピンとくるものがなかったのだが、色々探したところ <a href="https://extraterm.org/index.html">Extraterm</a> というのを見つけた。</p>
+<p><img src="/img/posts/202504081333/extraterm.png" alt="extraterm"></p>
+<p>Extraterm は plugin で <code>show</code> というコマンドをいれることができて、これは上記のようにターミナル上で画像の閲覧ができる。
+他にもちょっとした便利機能があり、GUIでフォントの設定などができる気楽さが気に入った。</p>
+<p>タイル型ウインドウマネージャを使うので微妙に画像のプレビューを display コマンドとかで行うと微妙に不便だったので、 show コマンドは助かる。
+一時期は <a href="https://github.com/jarun/nnn">nnn</a> を試したこともあるけど、これはGithubのスクショにあるような状態で動かすまでが難しすぎて辞めた。</p>
+</div>
+  <hr>
+<div class="comment-button-container">
+  <a href="https://github.com/kbaba1001/kbaba1001.github.io/discussions" target="_blank" class="comment-button">
+    掲示板にコメントする
+  </a>
+  <div class="comment-note">
+    ※どの記事のコメントかわかるように本文に記事タイトルなどを入れてください。
+  </div>
+</div>
+
+  <a href="/" class="post-index-link">一覧に戻る</a>
+</div>
+</main>
+</div>
+
+  
+
+</body></html>
