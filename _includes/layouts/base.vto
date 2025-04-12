@@ -3,70 +3,62 @@ description: "Clojure と漫画が好きな kbaba1001 のブログです。"
 ---
 
 <html lang="ja">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, minimum-scale=1.0"
-    />
-    <link rel="stylesheet" href="/styles.css" />
 
-    <link
-      rel="apple-touch-icon"
-      sizes="180x180"
-      href="/img/favicon/apple-touch-icon.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="/img/favicon/favicon-32x32.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="16x16"
-      href="/img/favicon/favicon-16x16.png"
-    />
-    <link rel="manifest" href="/site.webmanifest" />
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+  <link rel="stylesheet" href="/styles.css" />
 
-    <meta name="author" content="kbaba1001" />
-    <meta property="og:title" content="{{ title }} - ハッカーと漫画家" />
-    <meta property="og:url" content="https://www.kbaba1001.com{{ url }}" />
-    <meta
-      property="og:image"
-      content="https://www.kbaba1001.com{{ ogimage }}"
-    />
-    <meta
-      property="twitter:image:src"
-      content="https://www.kbaba1001.com{{ ogimage }}"
-    />
-    <meta name="twitter:card" content="summary_large_image" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon/favicon-16x16.png" />
+  <link rel="manifest" href="/site.webmanifest" />
 
-    <meta property="og:type" content="website" />
-    <meta name="description" content="{{ description }}" />
-    <meta property="og:description" content="{{ description }}" />
-    <meta property="og:locale" content="ja_JP" />
+  <meta name="author" content="kbaba1001" />
+  <meta property="og:title" content="{{ title }} - ハッカーと漫画家" />
+  <meta property="og:url" content="https://www.kbaba1001.com{{ url }}" />
+  <meta property="og:image" content="https://www.kbaba1001.com{{ ogimage }}" />
+  <meta property="twitter:image:src" content="https://www.kbaba1001.com{{ ogimage }}" />
+  <meta name="twitter:card" content="summary_large_image" />
 
-    <!-- Google tag (gtag.js) -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-MJ8FZT12VZ"
-    ></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
+  <meta property="og:type" content="website" />
+  <meta name="description" content="{{ description }}" />
+  <meta property="og:description" content="{{ description }}" />
+  <meta property="og:locale" content="ja_JP" />
 
-      gtag("config", "G-MJ8FZT12VZ");
-    </script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MJ8FZT12VZ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
 
-    <title>{{ title }} - ハッカーと漫画家</title>
-  </head>
-  <body class="layout">
-    {{ content }}
-  </body>
+    gtag("config", "G-MJ8FZT12VZ");
+  </script>
+
+  <!-- remark42 -->
+  <script>
+    var remark_config = {
+      host: 'https://remark42.neumann.work',
+      site_id: 'kbaba1001.com',
+      components: ['embed', 'last-comments', 'counter'],
+      max_shown_comments: 100,
+      locale: 'ja',
+      show_email_subscription: false,
+      simple_view: true,
+      no_footer: false
+    }
+  </script>
+  <script>!function (e, n) { for (var o = 0; o < e.length; o++) { var r = n.createElement("script"), c = ".js", d = n.head || n.body; "noModule" in r ? (r.type = "module", c = ".mjs") : r.async = !0, r.defer = !0, r.src = remark_config.host + "/web/" + e[o] + c, d.appendChild(r) } }(remark_config.components || ["embed"], document);</script>
+
+  <title>{{ title }} - ハッカーと漫画家</title>
+</head>
+
+<body class="layout">
+  {{ content }}
+</body>
+
 </html>
