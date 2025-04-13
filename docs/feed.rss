@@ -9,6 +9,27 @@
     <language>ja_JP</language>
     <generator>Lume v2.0.1</generator>
     <item>
+      <title>コメントできるようになりました</title>
+      <link>https://www.kbaba1001.com/posts/202504131130_you-can-comment-in-this-blog/</link>
+      <guid isPermaLink="false">https://www.kbaba1001.com/posts/202504131130_you-can-comment-in-this-blog/</guid>
+      <content:encoded>
+        <![CDATA[<p>ブログの各ページでコメントができるようになりました。</p>
+        <p>《kbaba1001|/img/kitsune-kamen.jpg|ようやくという感じですね、おまたせしました》</p>
+        <h2>技術的な話</h2>
+        <p><a href="https://remark42.com/">Remark42</a> というオープンソースのコメント埋め込みを使いました。
+        Remark42 のサーバーはいつものように自宅サーバーで動いています。</p>
+        <p>むかしは DISQUS というサービスでこういうコメントがつけれていろいろなブログで使われていた印象ですが、
+        最近はあまり見なくなったように思います。
+        そもそも Qiita とか Zenn.dev とか使わずに個人でブログ書いている人も少ないですけど。</p>
+        <p>Remark42 はバックエンドは docker ですぐに動き、
+        フロントエンドも少しタグを設定するだけだったので導入は楽でした。
+        認証した人のみコメントできるようにしています。</p>
+        <p>Remark42 は認証周りで少しはまりましたが、これはいつものことなので比較的簡単に設定できてよかったかなと思います。</p>
+        ]]>
+      </content:encoded>
+      <pubDate>Sun, 13 Apr 2025 11:30:25 GMT</pubDate>
+    </item>
+    <item>
       <title>Gentoo と Extraterm</title>
       <link>https://www.kbaba1001.com/posts/202504081333_gentoo-and-extraterm/</link>
       <guid isPermaLink="false">https://www.kbaba1001.com/posts/202504081333_gentoo-and-extraterm/</guid>
@@ -905,87 +926,6 @@
         ]]>
       </content:encoded>
       <pubDate>Sat, 14 Dec 2024 07:05:34 GMT</pubDate>
-    </item>
-    <item>
-      <title>Clojure Family が色々ある話</title>
-      <link>https://www.kbaba1001.com/posts/202412030751_clojure-family/</link>
-      <guid isPermaLink="false">https://www.kbaba1001.com/posts/202412030751_clojure-family/</guid>
-      <content:encoded>
-        <![CDATA[<p>Clojure といえば JVM 上で動く Lisp のように紹介されることが多く、
-        私もそういう言い方をすることも多いのだがこの言い方は正しくない。
-        なぜなら JVM 以外で動く Clojure (あるいは Clojure っぽい言語も含む) が多々存在しているからだ。</p>
-        <p>今日は Clojure Family とも言うべきこれらの方言について紹介する。</p>
-        <h2>Clojure (JVMで動くやつ)</h2>
-        <p>まずは一番良く使われている JVM 上で動く Clojure 。
-        特筆されない場合 &quot;Clojure&quot; といえばこれのこと。</p>
-        <ul>
-        <li>Java の機能やエコシステムを活用したい場合はとてもよい</li>
-        <li>とりあえず Clojure を使いたい場合はこれがおすすめ</li>
-        </ul>
-        <h2>ClojureScript (Alt JS の一種)</h2>
-        <p>ビルドすると JavaScript になる Clojure 。
-        おそらく JVM 版の次によく使われている。
-        JVM 版と同じところが開発しているという安心感がある。</p>
-        <p>ただ、ビルドツールが色々とあって、</p>
-        <ul>
-        <li><a href="https://clojurescript.org/guides/quick-start">deps.ednを使う方法</a></li>
-        <li><a href="https://figwheel.org/">Figwheel</a></li>
-        <li><a href="https://github.com/thheller/shadow-cljs">Shadow-cljs</a></li>
-        </ul>
-        <p>などのやり方がある。</p>
-        <p>「deps.edn を使う方法」は公式サイトに乗っているやり方だが、これは npm ライブラリを素直に使えないというデメリットが有り、
-        そのへんを解決するために後者の 2 つがある。</p>
-        <p>Shadow-cljs が一番後発なので、今から新しく何かを作りたいなら、これがおすすめ。
-        （あるいは後述の squint や cherry を使う）</p>
-        <h2>ClojureCLR</h2>
-        <p>こちらも Clojure 本家が作成しているもので、 ビルドすると Microsoft’s .Net Framework 環境で動く Clojure 。
-        つまり C# で書かれた Clojure 実装。</p>
-        <p>私は使ったことがなく、詳しくないので紹介する程度に留める。
-        ゲームとかWindowsサーバーでClojureを使いたい人にはいいのかもしれない。</p>
-        <h2>Babashka</h2>
-        <p><a href="https://babashka.org/">Babashka</a> は GraalVM を用いて Clojure を native binary にビルドできるもの。</p>
-        <p>JVM 版の Clojure を使うとどうしても実行時の起動に時間が掛かるが、 Babashka であればすぐに動くので
-        スクリプトを Clojure で書きたい場合などに便利。</p>
-        <p><a href="https://github.com/borkdude">Michiel Borkent</a> 氏の作品。彼は Babashka を始め後述の様々なツールを作っているすごい人。</p>
-        <h2>Squint</h2>
-        <p><a href="https://github.com/squint-cljs/squint">squint</a> は ClojureScript のコンパイラなのだが、 JavaScript の Built-in Data structures のみ使用しているため、いくつかの点で本来の ClojureScript とは異なる。</p>
-        <ul>
-        <li>ClojureScript では <code>[]</code> や <code>{}</code> は JavaScript のオブジェクトではなく immutable な ClojureScript ようにカスタムされたオブジェクトを返すが、 Squint では JavaScript の build-in の <code>Array</code> や <code>Object</code> を返す。</li>
-        <li>Async/Await のサポート (ClojureScript では core.async などを使う必要があったが Squint では Promise が素直に使える)</li>
-        <li>ClojureScript 用に開発されたライブラリなどがうまく動かない場合があるので、JS/TS用のライブラリを使うほうが無難</li>
-        <li><a href="https://github.com/brandonstubbs/vite-plugin-squint">vite-plugin-squint</a> などを使うと Squint -&gt; JSX -&gt; JS の変換が楽</li>
-        </ul>
-        <p>Squint はないよりも気軽に CLJS （っぽい言語）が使えるのが魅力。
-        私としてはかなり期待している。</p>
-        <h2>Cherry</h2>
-        <p><a href="https://github.com/squint-cljs/cherry">Cherry</a> は Squint よりもともとの ClojureScript への互換性を高めたもの。
-        ClojureScript のライブラリを活用したい場合はこちらのほうが良さそう。</p>
-        <h2>Jank</h2>
-        <p><a href="https://jank-lang.org/">Jank</a> は Clojure を LLVM + JIT コンパイラで動くようにしたもの。
-        C++との親和性が高いらしく、C/C++ っぽい領域のところを Clojure で書きたい場合には良さそう。
-        どのくらいの事ができるのかをまだ私は把握しきれていないけど、将来性はあるように思うので期待。</p>
-        <h2>その他</h2>
-        <p>私は使ったことないけど他のClojure方言を紹介</p>
-        <ul>
-        <li><a href="https://github.com/Tensegritics/ClojureDart">ClojureDart</a></li>
-        <li><a href="https://github.com/clojerl/clojerl">ClojureL</a>
-        <ul>
-        <li>Erlang 実装</li>
-        </ul>
-        </li>
-        <li><a href="https://github.com/kanaka/mal">mal</a>
-        <ul>
-        <li>Clojure っぽい言語を実装することで言語実装について学ぶプロジェクト</li>
-        </ul>
-        </li>
-        </ul>
-        <h2>感想</h2>
-        <p>Lisp は方言がたくさんある言語だけど、最近はもうClojure方言と呼ぶべき分野ができていて、
-        やっぱりClojureの人気はすごいなぁと思ったりしました。
-        Scheme方言なんかも結構たくさんあるみたいで調べてみると面白かったです。</p>
-        ]]>
-      </content:encoded>
-      <pubDate>Tue, 03 Dec 2024 07:51:05 GMT</pubDate>
     </item>
   </channel>
 </rss>
