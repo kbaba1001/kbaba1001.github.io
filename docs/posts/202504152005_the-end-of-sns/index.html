@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <link rel="stylesheet" href="/styles.css">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <meta name="author" content="kbaba1001">
+  <meta property="og:title" content="自宅サーバーにぼっちMastdon (Hollo) を建てた。SNSの終焉 - ハッカーと漫画家">
+  <meta property="og:url" content="https://www.kbaba1001.com/posts/202504152005_the-end-of-sns/">
+  <meta property="og:image" content="https://www.kbaba1001.com/img/posts/202504152005_the-end-of-sns.png">
+  <meta property="twitter:image:src" content="https://www.kbaba1001.com/img/posts/202504152005_the-end-of-sns.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <meta property="og:type" content="website">
+  <meta name="description" content="Clojure と漫画が好きな kbaba1001 のブログです。">
+  <meta property="og:description" content="Clojure と漫画が好きな kbaba1001 のブログです。">
+  <meta property="og:locale" content="ja_JP">
+
+  <!-- はてなブックマークのコメントをさせない -->
+  <meta name="Hatena::Bookmark" content="nocomment">
+
+  <!-- Google tag (gtag.js) -->
+  <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-MJ8FZT12VZ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+
+    gtag("config", "G-MJ8FZT12VZ");
+  </script>
+
+  <!-- remark42 -->
+  <script>
+    var remark_config = {
+      host: 'https://remark42.neumann.work',
+      site_id: 'kbaba1001_com',
+      components: ['embed', 'last-comments', 'counter'],
+      max_shown_comments: 100,
+      locale: 'ja',
+      show_email_subscription: false,
+      simple_view: true,
+      no_footer: false
+    }
+  </script>
+  <script>!function (e, n) { for (var o = 0; o < e.length; o++) { var r = n.createElement("script"), c = ".js", d = n.head || n.body; "noModule" in r ? (r.type = "module", c = ".mjs") : r.async = !0, r.defer = !0, r.src = remark_config.host + "/web/" + e[o] + c, d.appendChild(r) } }(remark_config.components || ["embed"], document);</script>
+  <title>自宅サーバーにぼっちMastdon (Hollo) を建てた。SNSの終焉 - ハッカーと漫画家</title>
+
+  
+</head>
+
+<body class="layout">
+  <header class="layout-header">
+  <div class="header">
+    <div class="grid-header-title"><div class="header-title">
+  <img src="/img/kitsune-kamen.jpg" alt="ハッカーと漫画家" loading="lazy" class="header-title-logo">
+  <a href="/" class="header-title-link">ハッカーと漫画家</a>
+</div>
+</div>
+    <div class="grid-header-nav"><nav class="header-nav-container">
+  <ul class="header-nav-list">
+    <li>
+      <a href="/timeline" class="header-nav-list-link">Timeline</a>
+    </li>
+    <li>
+      <a href="/about" class="header-nav-list-link"> About </a>
+    </li>
+    <li>
+      <a href="https://github.com/kbaba1001/kbaba1001.github.io" class="header-nav-list-link" target="_blank">
+        GitHub
+      </a>
+    </li>
+    <li>
+      <a href="/feed.rss" class="header-nav-list-link"> RSS </a>
+    </li>
+  </ul>
+</nav>
+</div>
+  </div>
+</header>
+<div class="layout-main">
+  <main class="layout-main-center"><div class="post">
+  <div>
+    <div class="post-date">2025-04-16</div>
+    
+    <div class="post-tag" data-pagefind-filter="tag">Tech</div>
+    
+    <div class="post-tag" data-pagefind-filter="tag">お知らせ</div>
+    
+    <div class="post-tag" data-pagefind-filter="tag">自宅サーバー</div>
+    
+  </div>
+  <h1 class="post-title">自宅サーバーにぼっちMastdon (Hollo) を建てた。SNSの終焉</h1>
+  <div class="post-main"><p><img src="/img/posts/202504152005_the-end-of-sns.png" alt="終焉"></p>
+<p><div class="fukidashi-container">
+<div class="fukidashi-image-container">
+  <img src="/img/kitsune-kamen.jpg" alt="kbaba1001" class="fukidashi-avatar" />
+	<span>kbaba1001</span>
+</div>
+<div class="fukidashi-left"><div class="fukidashi-serifu">SNSを終わらせました</div></div></div></p>
+<h2>背景</h2>
+<p>私がX（Twitter）に失望してアカウントを消してしまったことは以前<a href="/posts/202404011858_baba-diary-03/">漫画にも描いた</a>とおりです。
+しばし、紙の日記や別のSNSなどいろいろ試してきましたが、最近はだいたい次のような感じで落ち着いています。</p>
+<ul>
+<li>紙の日記 ... １日数回～週に数回程度の頻度で徒然なる思いを書く</li>
+<li>BlueSky ... ほぼ閲覧専用。投稿はほとんど告知のみ。</li>
+<li>X ... サークル用にアカウントを作り直したけど正直あんま使ってない</li>
+<li>Instagram ... 同上</li>
+<li>Facebook ... 友だちとのつながりのためにアカウント残してるだけという感じ</li>
+<li>Discord ... クローズゆえの安心感があり結構使っている</li>
+</ul>
+<p><div class="fukidashi-container">
+<div class="fukidashi-image-container">
+  <img src="/img/kitsune-kamen.jpg" alt="kbaba1001" class="fukidashi-avatar" />
+	<span>kbaba1001</span>
+</div>
+<div class="fukidashi-left"><div class="fukidashi-serifu">一番活発に投稿しているのがこのブログだったりします。</div></div></div></p>
+<p><div class="fukidashi-container">
+<div class="fukidashi-image-container">
+  <img src="/img/kitsune-kamen.jpg" alt="kbaba1001" class="fukidashi-avatar" />
+	<span>kbaba1001</span>
+</div>
+<div class="fukidashi-left"><div class="fukidashi-serifu">そして、この度ヘッダーに <a href="/timeline/">Timeline</a> が追加されました。</div></div></div></p>
+<p>今日はこれの話をします。</p>
+<h2>Timelineとは何なのか</h2>
+<p><div class="fukidashi-container">
+<div class="fukidashi-image-container">
+  <img src="/img/kitsune-kamen.jpg" alt="kbaba1001" class="fukidashi-avatar" />
+	<span>kbaba1001</span>
+</div>
+<div class="fukidashi-left"><div class="fukidashi-serifu">私の一人Twitterです</div></div></div></p>
+<p>他の人の投稿は出てきませんし、リプライやいいねとかもないです。
+頑張ればMastodon経由でなにかアクションできるのかもしれませんが、ちょっとこの辺は後で説明します。</p>
+<p><div class="fukidashi-container">
+<div class="fukidashi-image-container">
+  <img src="/img/kitsune-kamen.jpg" alt="kbaba1001" class="fukidashi-avatar" />
+	<span>kbaba1001</span>
+</div>
+<div class="fukidashi-left"><div class="fukidashi-serifu">私の近況がわかる。それだけです。</div></div></div></p>
+<p>正しく MicroBlog というわけです。</p>
+<h2>どうやって投稿しているの？</h2>
+<p><img src="/img/posts/202504152005/phanpy-social.png" alt="投稿画面"></p>
+<p>こんな感じの投稿用の画面というかアプリというかがあります。
+これは私にしか見えません。</p>
+<h2>技術的な話</h2>
+<p>さて、そろそろこれが実態として何なのかを説明しましょう。</p>
+<p>タイトルにもある通り、<a href="https://joinmastodon.org/">Mastodon</a> です。</p>
+<p>ただし、お一人様用の Mastodon 互換サーバーを作れる <a href="https://docs.hollo.social/">Hollo</a> というソフトを使っています。</p>
+<p><div class="fukidashi-container">
+<div class="fukidashi-image-container">
+  <img src="/img/kitsune-kamen.jpg" alt="kbaba1001" class="fukidashi-avatar" />
+	<span>kbaba1001</span>
+</div>
+<div class="fukidashi-left"><div class="fukidashi-serifu">自宅サーバーで <a href="https://docs.hollo.social/">Hollo</a> を Self-Hosting しました。</div></div></div></p>
+<h3>Hollo が Mastodon 互換APIを持つので Mastodon ツールが使える</h3>
+<p><a href="https://docs.hollo.social/clients/">Hollo の Clients</a> 紹介のページに書かれているようなクライアントが使えます。</p>
+<p><div class="fukidashi-container">
+<div class="fukidashi-image-container">
+  <img src="/img/kitsune-kamen.jpg" alt="kbaba1001" class="fukidashi-avatar" />
+	<span>kbaba1001</span>
+</div>
+<div class="fukidashi-left"><div class="fukidashi-serifu">先程の投稿アプリのスクショも <a href="https://phanpy.social/">Phanpy</a> というMastodonクライアントです</div></div></div></p>
+<p>これはなんだか Clojure で Java や JavaScript のリソースを利用している事に似ています。
+プロトコルに依存するとエコシステムを拝借できるという利点がありますね。</p>
+<p>そして、ブログに投稿を埋め込むためのライブラリとして <a href="https://gitlab.com/idotj/mastodon-embed-timeline">mastodon-embed-timeline</a> というのを見つけたので
+<strong>これを使えば簡単に投稿を表示できるわけです</strong>。</p>
+<p><div class="fukidashi-container">
+<div class="fukidashi-image-container">
+  <img src="/img/kitsune-kamen.jpg" alt="kbaba1001" class="fukidashi-avatar" />
+	<span>kbaba1001</span>
+</div>
+<div class="fukidashi-left"><div class="fukidashi-serifu">が、だめ。。。動かない！</div></div></div></p>
+<h3>Mastodo embed timeline が動かない</h3>
+<p>何度やってもTimelineを取得するAPIが 401 を返します。</p>
+<p><a href="https://docs.joinmastodon.org/methods/accounts/#statuses">Mastodon の API の仕様</a> を確認すると Public な投稿では認証が不要ということになっていますが、
+どうも Hollo では認証が必須になっているようです。</p>
+<h4>オープンソース (AGPL) バンザイ</h4>
+<p><div class="fukidashi-container">
+<div class="fukidashi-image-container">
+  <img src="/img/kitsune-kamen.jpg" alt="kbaba1001" class="fukidashi-avatar" />
+	<span>kbaba1001</span>
+</div>
+<div class="fukidashi-left"><div class="fukidashi-serifu">だめなときは改造しよう</div></div></div></p>
+<p>オープンソースは素晴らしい。Hollo は AGPL ライセンスなので、改造したらそのソースコードも公開する必要があります。
+というわけで主に次の改造を行いました。</p>
+<p><a href="https://github.com/kbaba1001/hollo/commit/621baadade5b3297bcfd4fa15c953b9cbd82d61f"><img src="/img/posts/202504152005/statuses.png" alt="diff"><br>コミット</a></p>
+<p>少々荒っぽいですが、認証部分を削除してAPIが動くようにしました。
+これで無事に Mastodo embed timeline が動くようになりました。</p>
+<h2>今のところの感想</h2>
+<p>さて、なんとなく気づかれたかと思いますが、別に私はMastodonやMisskeyでの交流は目的としていないので、
+Holloでさえオーバースペックです。
+単に Google Form + Google SpreadSheet とかでデータ作って表示するだけくらいでも良かった気はします。</p>
+<p>ただ、まぁ、Mastodonの資産を使えるのはそれなりに楽な気もします。</p>
+<p>恥ずかしながら今回のことで初めて ActivityPub という概念も知りました。
+これは Mastodon, Misskey, 意外にも Threads などで投稿などを共有できるプロトコルです。</p>
+<p><div class="fukidashi-container">
+<div class="fukidashi-image-container">
+  <img src="/img/kitsune-kamen.jpg" alt="kbaba1001" class="fukidashi-avatar" />
+	<span>kbaba1001</span>
+</div>
+<div class="fukidashi-left"><div class="fukidashi-serifu">Mastodon って結構な発明だったんですね...</div></div></div></p>
+<p>ところで BlueSky が ActivityPub ではない独自のプロトコルを使っているということで、
+なんかそんなところでいがみ合っている場合ではないような気もしました…。
+BlueSkyなりにActivityPubが気に入らない点がなにかあるんでしょうけど。</p>
+<p><div class="fukidashi-container">
+<div class="fukidashi-image-container">
+  <img src="/img/kitsune-kamen.jpg" alt="kbaba1001" class="fukidashi-avatar" />
+	<span>kbaba1001</span>
+</div>
+<div class="fukidashi-left"><div class="fukidashi-serifu">それで言えば一人BlueSkyサーバーを建てるという手もありましたねぇ。</div></div></div></p>
+<p>とりあえず Hollo で作ってしまったのでしばらくはこれを使ってみようと思います。</p>
+<p>引き続き若干 Hollo の挙動が怪しいところがあるので fork したリポジトリで直して、
+余裕があれば本家にも Pull Request しようと思います。</p>
+</div>
+  <!-- <hr />
+<div class="comment-button-container">
+  <a
+    href="https://github.com/kbaba1001/kbaba1001.github.io/discussions"
+    target="_blank"
+    class="comment-button"
+  >
+    掲示板にコメントする
+  </a>
+  <div class="comment-note">
+    ※どの記事のコメントかわかるように本文に記事タイトルなどを入れてください。
+  </div>
+</div>
+ -->
+  <div id="remark42"></div>
+  <a href="/" class="post-index-link">一覧に戻る</a>
+</div>
+</main>
+</div>
+
+
+
+
+</body></html>

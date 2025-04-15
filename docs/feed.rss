@@ -9,6 +9,80 @@
     <language>ja_JP</language>
     <generator>Lume v2.0.1</generator>
     <item>
+      <title>自宅サーバーにぼっちMastdon (Hollo) を建てた。SNSの終焉</title>
+      <link>https://www.kbaba1001.com/posts/202504152005_the-end-of-sns/</link>
+      <guid isPermaLink="false">https://www.kbaba1001.com/posts/202504152005_the-end-of-sns/</guid>
+      <content:encoded>
+        <![CDATA[<p><img src="https://www.kbaba1001.com/img/posts/202504152005_the-end-of-sns.png" alt="終焉"></p>
+        <p>《kbaba1001|/img/kitsune-kamen.jpg|SNSを終わらせました》</p>
+        <h2>背景</h2>
+        <p>私がX（Twitter）に失望してアカウントを消してしまったことは以前<a href="https://www.kbaba1001.com/posts/202404011858_baba-diary-03/">漫画にも描いた</a>とおりです。
+        しばし、紙の日記や別のSNSなどいろいろ試してきましたが、最近はだいたい次のような感じで落ち着いています。</p>
+        <ul>
+        <li>紙の日記 ... １日数回～週に数回程度の頻度で徒然なる思いを書く</li>
+        <li>BlueSky ... ほぼ閲覧専用。投稿はほとんど告知のみ。</li>
+        <li>X ... サークル用にアカウントを作り直したけど正直あんま使ってない</li>
+        <li>Instagram ... 同上</li>
+        <li>Facebook ... 友だちとのつながりのためにアカウント残してるだけという感じ</li>
+        <li>Discord ... クローズゆえの安心感があり結構使っている</li>
+        </ul>
+        <p>《kbaba1001|/img/kitsune-kamen.jpg|一番活発に投稿しているのがこのブログだったりします。》</p>
+        <p>《kbaba1001|/img/kitsune-kamen.jpg|そして、この度ヘッダーに <a href="https://www.kbaba1001.com/timeline/">Timeline</a> が追加されました。》</p>
+        <p>今日はこれの話をします。</p>
+        <h2>Timelineとは何なのか</h2>
+        <p>《kbaba1001|/img/kitsune-kamen.jpg|私の一人Twitterです》</p>
+        <p>他の人の投稿は出てきませんし、リプライやいいねとかもないです。
+        頑張ればMastodon経由でなにかアクションできるのかもしれませんが、ちょっとこの辺は後で説明します。</p>
+        <p>《kbaba1001|/img/kitsune-kamen.jpg|私の近況がわかる。それだけです。》</p>
+        <p>正しく MicroBlog というわけです。</p>
+        <h2>どうやって投稿しているの？</h2>
+        <p><img src="https://www.kbaba1001.com/img/posts/202504152005/phanpy-social.png" alt="投稿画面"></p>
+        <p>こんな感じの投稿用の画面というかアプリというかがあります。
+        これは私にしか見えません。</p>
+        <h2>技術的な話</h2>
+        <p>さて、そろそろこれが実態として何なのかを説明しましょう。</p>
+        <p>タイトルにもある通り、<a href="https://joinmastodon.org/">Mastodon</a> です。</p>
+        <p>ただし、お一人様用の Mastodon 互換サーバーを作れる <a href="https://docs.hollo.social/">Hollo</a> というソフトを使っています。</p>
+        <p>《kbaba1001|/img/kitsune-kamen.jpg|自宅サーバーで <a href="https://docs.hollo.social/">Hollo</a> を Self-Hosting しました。》</p>
+        <h3>Hollo が Mastodon 互換APIを持つので Mastodon ツールが使える</h3>
+        <p><a href="https://docs.hollo.social/clients/">Hollo の Clients</a> 紹介のページに書かれているようなクライアントが使えます。</p>
+        <p>《kbaba1001|/img/kitsune-kamen.jpg|先程の投稿アプリのスクショも <a href="https://phanpy.social/">Phanpy</a> というMastodonクライアントです》</p>
+        <p>これはなんだか Clojure で Java や JavaScript のリソースを利用している事に似ています。
+        プロトコルに依存するとエコシステムを拝借できるという利点がありますね。</p>
+        <p>そして、ブログに投稿を埋め込むためのライブラリとして <a href="https://gitlab.com/idotj/mastodon-embed-timeline">mastodon-embed-timeline</a> というのを見つけたので
+        <strong>これを使えば簡単に投稿を表示できるわけです</strong>。</p>
+        <p>《kbaba1001|/img/kitsune-kamen.jpg|が、だめ。。。動かない！》</p>
+        <h3>Mastodo embed timeline が動かない</h3>
+        <p>何度やってもTimelineを取得するAPIが 401 を返します。</p>
+        <p><a href="https://docs.joinmastodon.org/methods/accounts/#statuses">Mastodon の API の仕様</a> を確認すると Public な投稿では認証が不要ということになっていますが、
+        どうも Hollo では認証が必須になっているようです。</p>
+        <h4>オープンソース (AGPL) バンザイ</h4>
+        <p>《kbaba1001|/img/kitsune-kamen.jpg|だめなときは改造しよう》</p>
+        <p>オープンソースは素晴らしい。Hollo は AGPL ライセンスなので、改造したらそのソースコードも公開する必要があります。
+        というわけで主に次の改造を行いました。</p>
+        <p><a href="https://github.com/kbaba1001/hollo/commit/621baadade5b3297bcfd4fa15c953b9cbd82d61f"><img src="https://www.kbaba1001.com/img/posts/202504152005/statuses.png" alt="diff"><br>コミット</a></p>
+        <p>少々荒っぽいですが、認証部分を削除してAPIが動くようにしました。
+        これで無事に Mastodo embed timeline が動くようになりました。</p>
+        <h2>今のところの感想</h2>
+        <p>さて、なんとなく気づかれたかと思いますが、別に私はMastodonやMisskeyでの交流は目的としていないので、
+        Holloでさえオーバースペックです。
+        単に Google Form + Google SpreadSheet とかでデータ作って表示するだけくらいでも良かった気はします。</p>
+        <p>ただ、まぁ、Mastodonの資産を使えるのはそれなりに楽な気もします。</p>
+        <p>恥ずかしながら今回のことで初めて ActivityPub という概念も知りました。
+        これは Mastodon, Misskey, 意外にも Threads などで投稿などを共有できるプロトコルです。</p>
+        <p>《kbaba1001|/img/kitsune-kamen.jpg|Mastodon って結構な発明だったんですね...》</p>
+        <p>ところで BlueSky が ActivityPub ではない独自のプロトコルを使っているということで、
+        なんかそんなところでいがみ合っている場合ではないような気もしました…。
+        BlueSkyなりにActivityPubが気に入らない点がなにかあるんでしょうけど。</p>
+        <p>《kbaba1001|/img/kitsune-kamen.jpg|それで言えば一人BlueSkyサーバーを建てるという手もありましたねぇ。》</p>
+        <p>とりあえず Hollo で作ってしまったのでしばらくはこれを使ってみようと思います。</p>
+        <p>引き続き若干 Hollo の挙動が怪しいところがあるので fork したリポジトリで直して、
+        余裕があれば本家にも Pull Request しようと思います。</p>
+        ]]>
+      </content:encoded>
+      <pubDate>Tue, 15 Apr 2025 20:05:40 GMT</pubDate>
+    </item>
+    <item>
       <title>コメントできるようになりました</title>
       <link>https://www.kbaba1001.com/posts/202504131130_you-can-comment-in-this-blog/</link>
       <guid isPermaLink="false">https://www.kbaba1001.com/posts/202504131130_you-can-comment-in-this-blog/</guid>
@@ -345,587 +419,6 @@
         ]]>
       </content:encoded>
       <pubDate>Tue, 07 Jan 2025 15:00:01 GMT</pubDate>
-    </item>
-    <item>
-      <title>Deno, Web Streams API で Local LLM と音声通話するWebシステムを開発している</title>
-      <link>https://www.kbaba1001.com/posts/202412140705_making-a-talk-with-local-llm-system-with-deno-web-streams-api/</link>
-      <guid isPermaLink="false">https://www.kbaba1001.com/posts/202412140705_making-a-talk-with-local-llm-system-with-deno-web-streams-api/</guid>
-      <content:encoded>
-        <![CDATA[<h2>開発中のもの</h2>
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/LLjdWHjzwQU?si=YYHC0dihp1bLUwsT" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        <p>最近時々見かけるようになった、AIと音声通話できるやつを作ってみた。</p>
-        <p>既存サービスとの違い、特徴としては</p>
-        <ul>
-        <li>外部APIを使わず、自宅サーバーのローカルGPUのみで動作</li>
-        <li>Web Streams API を活用してリアルタイム処理を実現</li>
-        <li>Backend: Deno, Hono, Kysely, PostgreSQL</li>
-        <li>Frontend: Node, Vite, React</li>
-        </ul>
-        <h2>大まかなロジック</h2>
-        <ul>
-        <li>人間の声をブラウザのマイク機能で取得してサーバーに Web Streams で送る</li>
-        <li>サーバー側で音声データを Faster Whisper を用いてテキスト化する</li>
-        <li>テキストをリアルタイムにフロントエンドで取得</li>
-        <li>テキストをローカルLLM (Ollama) にプロンプトとして渡す</li>
-        <li>ローカルLLMからの実行結果をリアルタイムにフロントエンドに送信</li>
-        <li>フロントエンドでテキストを読み上げ</li>
-        </ul>
-        <h2>リアルタイム処理</h2>
-        <p>同期処理とかストリーミング処理などともいう。
-        フロントエンドとバックエンドでデータのやり取りをする際に、少しずつデータを送ることでタイムラグを少なくしてシステムが動くようにする技術のこと。</p>
-        <h3>リアルタイム処理の実装方法</h3>
-        <p>Webシステムのリアルタイム処理について調べると WebSocket に関する情報がたくさん出てくる。</p>
-        <h4>WebSocket のメリット・デメリット</h4>
-        <ul>
-        <li>WebSocket のメリット
-        <ul>
-        <li>sockert io などのライブラリを使うと簡単に実装できる</li>
-        <li>古いブラウザでも動く</li>
-        <li>使っている人が多いのかドキュメントが豊富</li>
-        </ul>
-        </li>
-        <li>WebSocket のデメリット
-        <ul>
-        <li>双方向通信なので通信量が多い</li>
-        <li>ws/wssというプロトコルを使うのでサーバー側で http/https とは別の設計が必要になる</li>
-        </ul>
-        </li>
-        </ul>
-        <h4>WebStreams のメリット・デメリット</h4>
-        <ul>
-        <li>WebStreams のメリット
-        <ul>
-        <li>単方向通信なので通信量を抑えることができる</li>
-        <li>http/https で扱うことができるのでサーバーに特別な実装が不要</li>
-        </ul>
-        </li>
-        <li>WebStreams のデメリット
-        <ul>
-        <li>使ってる人が少ないのかドキュメントが少ない（ほとんどMDNだけかも）</li>
-        <li>古いブラウザでは動かないことがある</li>
-        </ul>
-        </li>
-        </ul>
-        <h4>今回は WebStreams を採用</h4>
-        <p>WebStreams を使ったことがなかったのでやってみたかったというのが一番大きな理由（というかそのためにこのシステムを作っている）なのだが、WebSocketsは意外と気難しいやつだと思っていて、一見気楽に実装できて良いのだが本番環境まで含めて考えると通信量などの問題もあり使いこなすのが難しいという感触がある。</p>
-        <h2>WebStreams API とは何か？</h2>
-        <ul>
-        <li>Readable Stream, Writable Stream, Transform Stream を使ってデータのやり取りができる。</li>
-        <li>これらの Stream はシェルコマンドのように pipe してつなげることができるため、すっきりしたコードを書くことができて嬉しい。</li>
-        <li>Web標準の機能であるから今どきのブラウザ、そしてDenoで活用することができる
-        <ul>
-        <li>Node.js は歴史的な経緯により Deno ほど綺麗な実装になっていない</li>
-        </ul>
-        </li>
-        </ul>
-        <p>詳しくは MDN 参照 <a href="https://developer.mozilla.org/en-US/docs/Web/API/Streams_API">https://developer.mozilla.org/en-US/docs/Web/API/Streams_API</a></p>
-        <h2>WebStreams API はどこで使われているか？</h2>
-        <ul>
-        <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Response">fetch の Response Body</a></li>
-        <li><a href="https://hono.dev/docs/helpers/streaming">Hono の Streaming Helper</a></li>
-        <li>Deno の IO や HTTP リクエストなど</li>
-        </ul>
-        <h2>作成するシステムの概要</h2>
-        <p><img src="https://www.kbaba1001.com/img/posts/202412140705/design.png" alt="システムの概要図"></p>
-        <h3>人の声をテキスト化する部分</h3>
-        <p>フロント側の処理。音声データを取得してバックエンドに ReadableStream を使って送信する。</p>
-        <pre><code class="language-ts">import { jwtTokenAtom } from &quot;@/atoms/current-user&quot;;
-        import { httpClient } from &quot;@/libs/http-client&quot;;
-        import { Box, Button } from &quot;@chakra-ui/react&quot;;
-        import { useMutation } from &quot;@tanstack/react-query&quot;;
-        import { useAtom } from &quot;jotai&quot;;
-        import { useRef } from &quot;react&quot;;
-        
-        type AudioStreamerProps = {
-        talkId: string;
-        };
-        
-        export const AudioStreamer = ({ talkId }: AudioStreamerProps) =&gt; {
-        // 音声データの取得用の Ref
-        const mediaRecorderRef = useRef&lt;MediaRecorder | null&gt;(null);
-        const streamControllerRef =
-        useRef&lt;ReadableStreamDefaultController&lt;Uint8Array&gt; | null&gt;(null);
-        const [jwtToken] = useAtom(jwtTokenAtom);
-        
-        const { mutate, isPending } = useMutation({
-        mutationFn: async (audioStream: ReadableStream&lt;Uint8Array&gt;) =&gt; {
-        return await httpClient({ jwtToken })
-        .post(`talks/${talkId}/stream`, {
-        body: audioStream,
-        timeout: false,
-        })
-        .text();
-        },
-        onSuccess: (data) =&gt; {
-        console.log(data);
-        },
-        onError: (error) =&gt; {
-        console.error(error);
-        },
-        });
-        
-        // 音声データを取得してサーバーにリクエストする
-        const startRecording = async () =&gt; {
-        try {
-        // マイクへのアクセスをリクエスト
-        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-        
-        // MediaRecorderの作成
-        const options = {
-        mimeType: &quot;audio/webm; codecs=opus&quot;, // サポートされているmimeTypeを指定
-        };
-        const mediaRecorder = new MediaRecorder(stream, options);
-        
-        mediaRecorderRef.current = mediaRecorder;
-        
-        // ReadableStreamの作成
-        const audioStream = new ReadableStream&lt;Uint8Array&gt;({
-        start(controller) {
-        // コントローラを保存して、後でデータをエンキューする
-        streamControllerRef.current = controller;
-        },
-        });
-        
-        // dataavailableイベントのハンドリング
-        mediaRecorder.addEventListener(&quot;dataavailable&quot;, async (event) =&gt; {
-        if (event.data &amp;&amp; event.data.size &gt; 0) {
-        // BlobをArrayBufferに変換
-        const arrayBuffer = await event.data.arrayBuffer();
-        // ArrayBufferをUint8Arrayに変換
-        const chunk = new Uint8Array(arrayBuffer);
-        // ReadableStreamにチャンクをエンキュー
-        streamControllerRef.current?.enqueue(chunk);
-        }
-        });
-        
-        // stopイベントのハンドリング
-        mediaRecorder.addEventListener(&quot;stop&quot;, () =&gt; {
-        // ReadableStreamをクローズ
-        streamControllerRef.current?.close();
-        });
-        
-        // 録音開始（100msごとにデータを収集）
-        mediaRecorder.start(100);
-        
-        // ReadableStreamをAPIに送信
-        mutate(audioStream);
-        } catch (error) {
-        console.error(&quot;マイクへのアクセスエラー:&quot;, error);
-        }
-        };
-        
-        const stopRecording = () =&gt; {
-        mediaRecorderRef.current?.stop();
-        };
-        
-        return (
-        &lt;Box&gt;
-        &lt;Button colorScheme=&quot;red&quot; onClick={startRecording} isLoading={isPending}&gt;
-        録音
-        &lt;/Button&gt;
-        &lt;Button
-        colorScheme=&quot;blue&quot;
-        onClick={stopRecording}
-        isDisabled={!isPending}
-        &gt;
-        停止
-        &lt;/Button&gt;
-        &lt;/Box&gt;
-        );
-        };
-        </code></pre>
-        <p>バックエンドでは、ReadableStreamを受け取って <a href="https://github.com/ufal/whisper_streaming">whisper_streaming</a> のサーバー（これは別途立ち上げておく）に音声データを渡し、テキストデータを受け取る。</p>
-        <pre><code class="language-ts">app.post(&quot;/:id/stream&quot;, permissionChecker(&quot;talks&quot;), async (c) =&gt; {
-        // 音声データをReadableStreamで取得する
-        const stream = c.req.raw.body as ReadableStream;
-        const talkId = Number(c.req.param(&quot;id&quot;));
-        const user = c.get(&quot;currentUser&quot;);
-        
-        if (stream) {
-        // whisper streaming は サンプリングレートなどに指定があるため FFmpeg で変換する
-        // これは Web Streams API でパイプできる
-        const ffmpeg = new Deno.Command(&quot;ffmpeg&quot;, {
-        args: [
-        &quot;-i&quot;,
-        &quot;pipe:0&quot;, // 標準入力からデータを受け取る
-        &quot;-ar&quot;,
-        &quot;16000&quot;, // サンプリングレートを16000Hzに設定
-        &quot;-ac&quot;,
-        &quot;1&quot;, // モノラルに設定
-        &quot;-sample_fmt&quot;,
-        &quot;s16&quot;, // サンプルフォーマットをs16に設定
-        &quot;-f&quot;,
-        &quot;wav&quot;, // 出力フォーマットをWAVに設定
-        &quot;pipe:1&quot;, // 標準出力にデータを出力
-        ],
-        stdin: &quot;piped&quot;,
-        stdout: &quot;piped&quot;,
-        stderr: &quot;piped&quot;,
-        });
-        const ffmpegProcess = ffmpeg.spawn();
-        
-        stream.pipeTo(ffmpegProcess.stdin);
-        
-        const convertedAudioStream = ffmpegProcess.stdout;
-        
-        // WhipserStreamingServer は TCP サーバーなので Deno.connect で接続できる
-        // これも Web Streams でパイプできる
-        const whisper = await Deno.connect({
-        hostname: Deno.env.get(&quot;WHISPER_HOST&quot;) || &quot;localhost&quot;,
-        port: Number(Deno.env.get(&quot;WHISPER_PORT&quot;)) || 43001,
-        });
-        
-        convertedAudioStream.pipeTo(whisper.writable);
-        
-        const reader = whisper.readable.getReader();
-        const decoder = new TextDecoder(&quot;utf-8&quot;);
-        let sentence = &quot;&quot;;
-        const sentenceIdentifier = crypto.randomUUID();
-        
-        try {
-        // Streams からテキストデータを受け取って、DBに保存したり通知したりする
-        while (true) {
-        const { done, value } = await reader.read();
-        if (done) {
-        break;
-        }
-        const text = decoder.decode(value);
-        // 先頭に数字が入っているので削除
-        const wordText = text.replace(/^[\d\s]+/, &quot;&quot;).replace(/\n/g, &quot;&quot;);
-        
-        if (wordText.length &gt; 0) {
-        sentence += wordText;
-        // 後述のGETリクエストでテキストデータを取得できるようにするためにNotifyする
-        await notify(&quot;words_inserted&quot;, {
-        id: crypto.randomUUID(),
-        talkId,
-        userId: user.id,
-        words: wordText,
-        sentenceIdentifier,
-        });
-        await modelWords.create({
-        talkId,
-        userId: user.id,
-        words: wordText,
-        sentenceIdentifier,
-        });
-        }
-        }
-        } catch (error) {
-        if (error instanceof Deno.errors.Interrupted) {
-        customLogger(&quot;POST クライアントが接続を閉じました。&quot;);
-        }
-        }
-        
-        return c.text(&quot;completed&quot;, 200);
-        }
-        
-        return c.text(&quot;ストリームが存在しません&quot;, 400);
-        });
-        </code></pre>
-        <h3>新しいテキストができた時にフロントで取得する部分</h3>
-        <p>フロントではAIと話すページを開いたときにバックエンドに対してGETリクエストを出して、
-        過去の会話履歴を取得するようにしている。
-        このリクエストをStreamで繋いだままにしておいて、新しいデータが入れば取得するようにしておく</p>
-        <pre><code class="language-ts">	const [words, setWords] = useState&lt;Word[]&gt;([]);
-        
-        useEffect(() =&gt; {
-        const fetchStream = async () =&gt; {
-        // 次のエンドポイントはReadableStreamを返す
-        const response = await httpClient({ jwtToken }).get(
-        `talks/${talkId}/stream`,
-        );
-        const stream = response.body;
-        
-        if (!stream) {
-        console.error(&quot;このブラウザはストリーミングをサポートしていません。&quot;);
-        return;
-        }
-        
-        const reader = stream.getReader();
-        const decoder = new TextDecoder(&quot;utf-8&quot;);
-        try {
-        while (true) {
-        const { done, value } = await reader.read();
-        if (done) {
-        console.log(&quot;done!&quot;);
-        break;
-        }
-        
-        // 新しいデータを受け取ったら Words 配列にいれる
-        // (なるべく連続するデータは同じフキダシに入れたいのでちょっとコードがごちゃごちゃしている)
-        const chunk = decoder.decode(value, { stream: true });
-        const json = JSON.parse(chunk);
-        const lastWord = json[0];
-        if (lastWord?.assistantId != null) {
-        speak(lastWord.words);
-        }
-        setWords((prev) =&gt; {
-        const newArray = [...json, ...prev];
-        const result = newArray.reduce((acc, cur) =&gt; {
-        const key = cur.sentenceIdentifier;
-        acc[key] = {
-        id: key,
-        userId: cur.userId,
-        talkId: cur.talkId,
-        words: acc[key]
-        ? `${cur.words}${acc[key].words}`.replace(/\n/g, &quot;&quot;)
-        : cur.words.replace(/\n/g, &quot;&quot;),
-        sentenceIdentifier: key,
-        };
-        
-        return acc;
-        }, {});
-        return Object.values(result);
-        });
-        }
-        } catch (error) {
-        console.error(&quot;ストリームの読み取り中にエラーが発生しました:&quot;, error);
-        }
-        };
-        
-        fetchStream();
-        }, [jwtToken, talkId]);
-        
-        // words 配列を表示する処理が続く
-        </code></pre>
-        <p>バックエンドでは PostgreSQL の <a href="https://www.postgresql.org/docs/current/sql-notify.html">Notify/Listen</a> 機能を使って
-        Channel のようなことをする。
-        これにより、新しいデータが追加されたらフロントエンドに送る。</p>
-        <pre><code class="language-ts">app.get(&quot;/:id/stream&quot;, permissionChecker(&quot;talks&quot;), async (c) =&gt; {
-        const talkId = Number(c.req.param(&quot;id&quot;));
-        
-        const words = await modelWords.findAllByTalkId(talkId);
-        const wordsJson = JSON.stringify(words);
-        
-        // stream を返すのでクライアントが接続を切らない限りデータを渡し続けることができる。
-        return streamText(c, async (s) =&gt; {
-        await s.writeln(wordsJson);
-        // words_insterted という channel にJSONテキストが入ってくるのでそれを監視する
-        // WARN channel 名に talkId を入れたほうが他の会話のデータを誤って取得せずに済みそう
-        await listen(&quot;listen words_inserted&quot;, async (msg) =&gt; {
-        if (msg.channel !== &quot;words_inserted&quot;) {
-        return;
-        }
-        
-        const word = JSON.parse(msg.payload);
-        await s.write(JSON.stringify([word]));
-        });
-        
-        s.onAbort(() =&gt; {
-        customLogger(&quot;GET クライアントが接続を閉じました。&quot;);
-        });
-        
-        while (true) {
-        await s.sleep(1000);
-        }
-        });
-        });
-        </code></pre>
-        <p>listen と notify 関数の実装は次のような感じ</p>
-        <pre><code class="language-ts">import { CamelCasePlugin, Kysely, PostgresDialect, sql } from &quot;kysely&quot;;
-        import Pool from &quot;pg-pool&quot;;
-        import type { DB } from &quot;./database-types.ts&quot;;
-        import { clerk } from &quot;./libs/clerk.ts&quot;;
-        
-        export const pool = new Pool({
-        connectionString:
-        Deno.env.get(&quot;DENO_ENV&quot;) === &quot;test&quot;
-        ? Deno.env.get(&quot;TEST_DB_URL&quot;)
-        : Deno.env.get(&quot;DATABASE_URL&quot;),
-        max: 20,
-        idleTimeoutMillis: 30000,
-        connectionTimeoutMillis: 2000,
-        });
-        
-        const dialect = new PostgresDialect({
-        pool,
-        });
-        
-        export const db = new Kysely&lt;DB&gt;({
-        dialect,
-        plugins: [new CamelCasePlugin()],
-        log: (log) =&gt; {
-        if (log.level === &quot;query&quot;) {
-        clerk.info(&quot;SQL&quot;, log.query.sql);
-        }
-        },
-        });
-        
-        export async function notify(channel: string, obj: object) {
-        return await sql`select pg_notify(${channel}, ${JSON.stringify(obj)})`.execute(
-        db,
-        );
-        }
-        
-        export async function listen(
-        listenChannel: string,
-        callback: (msg: { channel: string; payload: string }) =&gt; void,
-        ) {
-        const pgClient = await pool.connect();
-        pgClient.on(&quot;notification&quot;, callback);
-        
-        return await pgClient.query(listenChannel);
-        }
-        </code></pre>
-        <h3>Local LLM へのリクエストとレスポンス</h3>
-        <p>会話データができたので、これをもとにプロンプトを作成してローカルLLMにリクエストする。</p>
-        <pre><code class="language-ts">import { Button } from &quot;@chakra-ui/react&quot;;
-        
-        export function TalkToAI({
-        assistantMutate,
-        assistantIsPending,
-        }: { assistantMutate: () =&gt; void; assistantIsPending: boolean }) {
-        return (
-        &lt;Button
-        colorScheme=&quot;blue&quot;
-        onClick={() =&gt; assistantMutate()}
-        isLoading={assistantIsPending}
-        &gt;
-        AIをよびだす
-        &lt;/Button&gt;
-        );
-        }
-        
-        // assistantMutate の中身
-        const { mutate: assistantMutate, isPending: assistantIsPending } =
-        useMutation({
-        mutationFn: async () =&gt;
-        await httpClient({ jwtToken }).post(`talks/${talkId}/assistant_chat`, {
-        timeout: false,
-        }),
-        onSuccess: () =&gt; {
-        //
-        console.log(&quot;ok&quot;);
-        },
-        onError: (error) =&gt; {
-        console.error(error);
-        },
-        });
-        </code></pre>
-        <p>現状、AI呼び出しのトリガーはボタンにしてある。
-        将来的にはユーザーが話し終わったら自動で処理するようにしたい。</p>
-        <p>バックエンドでは <code>talks/${talkId}/assistant_chat</code> にリクエストがあると、次の処理を行う。</p>
-        <ul>
-        <li>次の情報からLLMのプロンプトを作成する
-        <ul>
-        <li>直近数回の人間とAIの会話データ</li>
-        <li>AIの人格設定データ</li>
-        </ul>
-        </li>
-        <li>ローカルLLMサーバー (Ollama を使用) にプロンプトを投げる</li>
-        <li>レスポンスをStreamで受け取り、DBにNotify、保存</li>
-        </ul>
-        <pre><code class="language-ts">app.post(&quot;/:id/assistant_chat&quot;, permissionChecker(&quot;talks&quot;), async (c) =&gt; {
-        const talkId = Number(c.req.param(&quot;id&quot;));
-        const user = c.get(&quot;currentUser&quot;);
-        const talk = await modelTalks.findById({
-        talkId,
-        userId: user.id,
-        });
-        
-        if (!talk) {
-        return c.json({ message: &quot;Talk not found&quot; }, 404);
-        }
-        
-        // 直近数回の会話を取得
-        const words = await modelWords.findLatestByTalkId(talkId);
-        
-        // 人間とAIの会話によって role を切り替えながらLLMのプロンプトを作成
-        let messages = words
-        .map((word) =&gt; ({
-        role: word.userId == null ? &quot;assistant&quot; : &quot;user&quot;,
-        content: `${word.words}`,
-        }))
-        .reverse();
-        
-        // AIの人格設定は system role で渡す
-        messages = [
-        ...messages,
-        { role: &quot;system&quot;, content: talk.assistant.personality },
-        ];
-        
-        // Ollama で動いているローカルLLMにリクエストする
-        const response = await ky.post(`${Deno.env.get(&quot;OLLAMA_URL&quot;)}/api/chat`, {
-        json: {
-        model: talk.assistant.model,
-        messages,
-        stream: true,
-        },
-        });
-        
-        // ローカルLLMサーバーからのレスポンスをchannelに通知したり、保存したりする
-        const reader = response.body?.getReader();
-        const decoder = new TextDecoder(&quot;utf-8&quot;);
-        const sentenceIdentifier = crypto.randomUUID();
-        let text = &quot;&quot;;
-        let textChank = &quot;&quot;;
-        while (reader &amp;&amp; true) {
-        const { done, value } = await reader.read();
-        if (done) {
-        break;
-        }
-        const jsonText = decoder.decode(value, { stream: true });
-        const json = JSON.parse(jsonText);
-        
-        textChank += json.message.content;
-        if (textChank.length &gt; 20) {
-        await notify(&quot;words_inserted&quot;, {
-        id: crypto.randomUUID(),
-        talkId: talk.id,
-        assistantId: talk.assistantId,
-        words: textChank,
-        sentenceIdentifier,
-        });
-        
-        text += textChank;
-        textChank = &quot;&quot;;
-        }
-        }
-        
-        if (textChank.length &gt; 0) {
-        await notify(&quot;words_inserted&quot;, {
-        id: crypto.randomUUID(),
-        talkId: talk.id,
-        assistantId: talk.assistantId,
-        words: textChank,
-        sentenceIdentifier,
-        });
-        
-        text += textChank;
-        textChank = &quot;&quot;;
-        
-        await modelWords.create({
-        talkId,
-        assistantId: talk.assistantId,
-        words: text,
-        sentenceIdentifier,
-        });
-        }
-        
-        return c.json({ msg: text });
-        });
-        </code></pre>
-        <h3>AIからのレスポンステキストの読み上げ</h3>
-        <p>ひとまずブラウザの機能で読み上げているだけ</p>
-        <pre><code class="language-ts">function speak(text: string) {
-        // SpeechSynthesisUtteranceのインスタンスを作成
-        const utterance = new SpeechSynthesisUtterance();
-        utterance.text = text;
-        utterance.lang = &quot;ja-JP&quot;;
-        // 音声を再生
-        window.speechSynthesis.speak(utterance);
-        }
-        </code></pre>
-        <p>新しいテキストを取得した際に、AIからの発言であれば上記の関数を使って読み上げる。</p>
-        <h2>今後の展望</h2>
-        <p>テキスト読み上げが地味なので <a href="https://github.com/VOICEVOX/voicevox_engine">VOICEVOX</a> などをつかって音声データをサーバーで作成し、
-        フロントに送るようにしたい。
-        これもStreamを利用してリアルタイムにやりたいので、そんな感じの仕組みを作成中。</p>
-        <p>すべてのソースコードの公開は全体が完成したらします。</p>
-        ]]>
-      </content:encoded>
-      <pubDate>Sat, 14 Dec 2024 07:05:34 GMT</pubDate>
     </item>
   </channel>
 </rss>
