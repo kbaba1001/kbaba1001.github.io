@@ -51,8 +51,21 @@
     }
   </script>
   <script>!function (e, n) { for (var o = 0; o < e.length; o++) { var r = n.createElement("script"), c = ".js", d = n.head || n.body; "noModule" in r ? (r.type = "module", c = ".mjs") : r.async = !0, r.defer = !0, r.src = remark_config.host + "/web/" + e[o] + c, d.appendChild(r) } }(remark_config.components || ["embed"], document);</script>
-
   <title>Microblog - ハッカーと漫画家</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@idotj/mastodon-embed-timeline@4.7.0/dist/mastodon-timeline.min.css" integrity="sha256-Qi3H+bdH6RuMuyR1trAlG5bMWJGl9y3jPiTc1PWQFpI=" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/@idotj/mastodon-embed-timeline@4.7.0/dist/mastodon-timeline.umd.js" integrity="sha256-p6Xvd6OVSoasRG8M7ct20nnzGdnFMVapWyp9PGpW2Uo=" crossorigin="anonymous"></script>
+<script>
+  window.addEventListener("load", () => {
+    const myTimeline = new MastodonTimeline.Init({
+      instanceUrl: "https://hollo.neumann.work",
+      timelineType: "profile",
+      userId: "c367a97e-fb5b-414b-a96a-1d652829debb",
+      profileName: "@kbaba1001",
+    });
+  });
+</script>
+
 </head>
 
 <body class="layout">
@@ -85,7 +98,11 @@
   </div>
 </header>
 <div class="layout-main">
-  <main class="layout-main-center"><iframe src="https://hollo.neumann.work/@kbaba1001" title="kbaba1001 timeline" style="width: 100%; height: 93vh; border: none; overflow: hidden;"></iframe>
+  <main class="layout-main-center"><div id="mt-container" class="mt-container">
+  <div class="mt-body" role="feed">
+    <div class="mt-loading-spinner"></div>
+  </div>
+</div>
 </main>
 </div>
 
