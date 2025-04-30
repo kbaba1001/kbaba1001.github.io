@@ -95,7 +95,7 @@ code.hljs{font-family:Source Code Pro,monospace;font-size:1rem}
 .fukidashi-container{align-items:center;width:100%;display:flex}
 .fukidashi-image-container{flex-direction:column;align-items:center;width:100px;display:flex}
 .fukidashi-avatar{-o-object-fit:cover;object-fit:cover;border-radius:50%;width:76px;height:76px}
-.fukidashi-left{color:#555;box-sizing:border-box;background:#fff;border:3px solid #555;border-radius:1rem;flex:1;margin:1.5rem 0 1.5rem 15px;padding:1rem;font-size:1.5rem;display:inline-block;position:relative}
+.fukidashi-left{color:#555;box-sizing:border-box;background:#fff;border:3px solid #555;border-radius:1rem;flex:1;margin:1.5rem 0 1.5rem 15px;padding:1rem;font-size:1.3rem;display:inline-block;position:relative}
 .fukidashi-left:before{content:"";z-index:2;border:12px solid transparent;border-right-color:#fff;margin-top:-12px;position:absolute;top:50%;left:-24px}
 .fukidashi-left:after{content:"";z-index:1;border:14px solid transparent;border-right-color:#555;margin-top:-14px;position:absolute;top:50%;left:-30px}
 .fukidashi-left .serifu{white-space:pre-line;margin:0;padding:0}
