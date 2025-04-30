@@ -1,11 +1,11 @@
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
-@font-face{font-family:Source Code Pro;font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/sourcecodepro/v23/HI_diYsKILxRpg3hIP6sJ7fM7PqPMcMnZFqUwX28DMyQtMRrSlcZZJmOpwVS.woff)format("woff");unicode-range:U+460-52F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F}
+@font-face{font-family:Source Code Pro;font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/sourcecodepro/v23/HI_diYsKILxRpg3hIP6sJ7fM7PqPMcMnZFqUwX28DMyQtMRrSlcZZJmOpwVS.woff)format("woff");unicode-range:U+460-52F,U+1C80-1C88,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F}
 @font-face{font-family:Source Code Pro;font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/sourcecodepro/v23/HI_diYsKILxRpg3hIP6sJ7fM7PqPMcMnZFqUwX28DMyQtM1rSlcZZJmOpwVS.woff)format("woff");unicode-range:U+301,U+400-45F,U+490-491,U+4B0-4B1,U+2116}
 @font-face{font-family:Source Code Pro;font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/sourcecodepro/v23/HI_diYsKILxRpg3hIP6sJ7fM7PqPMcMnZFqUwX28DMyQtMVrSlcZZJmOpwVS.woff)format("woff");unicode-range:U+1F??}
-@font-face{font-family:Source Code Pro;font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/sourcecodepro/v23/HI_diYsKILxRpg3hIP6sJ7fM7PqPMcMnZFqUwX28DMyQtMprSlcZZJmOpwVS.woff)format("woff");unicode-range:U+370-377,U+37A-37F,U+384-38A,U+38C,U+38E-3A1,U+3A3-3FF}
+@font-face{font-family:Source Code Pro;font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/sourcecodepro/v23/HI_diYsKILxRpg3hIP6sJ7fM7PqPMcMnZFqUwX28DMyQtMprSlcZZJmOpwVS.woff)format("woff");unicode-range:U+370-3FF}
 @font-face{font-family:Source Code Pro;font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/sourcecodepro/v23/HI_diYsKILxRpg3hIP6sJ7fM7PqPMcMnZFqUwX28DMyQtMZrSlcZZJmOpwVS.woff)format("woff");unicode-range:U+102-103,U+110-111,U+128-129,U+168-169,U+1A0-1A1,U+1AF-1B0,U+300-301,U+303-304,U+308-309,U+323,U+329,U+1EA0-1EF9,U+20AB}
-@font-face{font-family:Source Code Pro;font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/sourcecodepro/v23/HI_diYsKILxRpg3hIP6sJ7fM7PqPMcMnZFqUwX28DMyQtMdrSlcZZJmOpwVS.woff)format("woff");unicode-range:U+100-2BA,U+2BD-2C5,U+2C7-2CC,U+2CE-2D7,U+2DD-2FF,U+304,U+308,U+329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
-@font-face{font-family:Source Code Pro;font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/sourcecodepro/v23/HI_diYsKILxRpg3hIP6sJ7fM7PqPMcMnZFqUwX28DMyQtMlrSlcZZJmOpw.woff)format("woff");unicode-range:U+??,U+131,U+152-153,U+2BB-2BC,U+2C6,U+2DA,U+2DC,U+304,U+308,U+329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:Source Code Pro;font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/sourcecodepro/v23/HI_diYsKILxRpg3hIP6sJ7fM7PqPMcMnZFqUwX28DMyQtMdrSlcZZJmOpwVS.woff)format("woff");unicode-range:U+100-2AF,U+304,U+308,U+329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:Source Code Pro;font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/sourcecodepro/v23/HI_diYsKILxRpg3hIP6sJ7fM7PqPMcMnZFqUwX28DMyQtMlrSlcZZJmOpw.woff)format("woff");unicode-range:U+??,U+131,U+152-153,U+2BB-2BC,U+2C6,U+2DA,U+2DC,U+304,U+308,U+329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 pre code.hljs{padding:1em;display:block;overflow-x:auto}
 code.hljs{padding:3px 5px}
 .hljs{color:#24292e;background:#fff}
@@ -95,7 +95,7 @@ code.hljs{font-family:Source Code Pro,monospace;font-size:1rem}
 .fukidashi-container{align-items:center;width:100%;display:flex}
 .fukidashi-image-container{flex-direction:column;align-items:center;width:100px;display:flex}
 .fukidashi-avatar{-o-object-fit:cover;object-fit:cover;border-radius:50%;width:76px;height:76px}
-.fukidashi-left{color:#555;box-sizing:border-box;background:#fff;border:3px solid #555;border-radius:1rem;min-width:120px;max-width:100%;margin:1.5rem 0 1.5rem 15px;padding:1rem;font-size:1.5rem;display:inline-block;position:relative}
+.fukidashi-left{color:#555;box-sizing:border-box;background:#fff;border:3px solid #555;border-radius:1rem;flex:1;margin:1.5rem 0 1.5rem 15px;padding:1rem;font-size:1.5rem;display:inline-block;position:relative}
 .fukidashi-left:before{content:"";z-index:2;border:12px solid transparent;border-right-color:#fff;margin-top:-12px;position:absolute;top:50%;left:-24px}
 .fukidashi-left:after{content:"";z-index:1;border:14px solid transparent;border-right-color:#555;margin-top:-14px;position:absolute;top:50%;left:-30px}
 .fukidashi-left .serifu{white-space:pre-line;margin:0;padding:0}
