@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <link rel="stylesheet" href="/styles.css">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <meta name="author" content="kbaba1001">
+  <meta property="og:title" content="『プロジェクト・ヘイル・メアリー』を読んでほしい - ハッカーと漫画家">
+  <meta property="og:url" content="https://www.kbaba1001.com/posts/202504290909_project-hail-mary/">
+  <meta property="og:image" content="https://www.kbaba1001.com/img/posts/202504290909_project-hail-mary.png">
+  <meta property="twitter:image:src" content="https://www.kbaba1001.com/img/posts/202504290909_project-hail-mary.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <meta property="og:type" content="website">
+  <meta name="description" content="Clojure と漫画が好きな kbaba1001 のブログです。">
+  <meta property="og:description" content="Clojure と漫画が好きな kbaba1001 のブログです。">
+  <meta property="og:locale" content="ja_JP">
+
+  <!-- はてなブックマークのコメントをさせない -->
+  <meta name="Hatena::Bookmark" content="nocomment">
+
+  <!-- Google tag (gtag.js) -->
+  <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-MJ8FZT12VZ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+
+    gtag("config", "G-MJ8FZT12VZ");
+  </script>
+
+  
+  <script defer="" src="https://cloud.umami.is/script.js" data-website-id="1d979a64-b23d-4d05-9d8d-49f64f022ece"></script>
+
+  <!-- remark42 -->
+  <script>
+    var remark_config = {
+      host: 'https://remark42.neumann.work',
+      site_id: 'kbaba1001_com',
+      components: ['embed', 'last-comments', 'counter'],
+      max_shown_comments: 100,
+      locale: 'ja',
+      show_email_subscription: false,
+      simple_view: true,
+      no_footer: false
+    }
+  </script>
+  <script>!function (e, n) { for (var o = 0; o < e.length; o++) { var r = n.createElement("script"), c = ".js", d = n.head || n.body; "noModule" in r ? (r.type = "module", c = ".mjs") : r.async = !0, r.defer = !0, r.src = remark_config.host + "/web/" + e[o] + c, d.appendChild(r) } }(remark_config.components || ["embed"], document);</script>
+  <title>『プロジェクト・ヘイル・メアリー』を読んでほしい - ハッカーと漫画家</title>
+
+  
+</head>
+
+<body class="layout">
+  <header class="layout-header">
+  <div class="header">
+    <div class="grid-header-title"><div class="header-title">
+  <img src="/img/kitsune-kamen.jpg" alt="ハッカーと漫画家" loading="lazy" class="header-title-logo">
+  <a href="/" class="header-title-link">ハッカーと漫画家</a>
+</div>
+</div>
+    <div class="grid-header-nav"><nav class="header-nav-container">
+  <ul class="header-nav-list">
+    <li>
+      <a href="/timeline" class="header-nav-list-link">Timeline</a>
+    </li>
+    <li>
+      <a href="/about" class="header-nav-list-link"> About </a>
+    </li>
+    <li>
+      <a href="https://github.com/kbaba1001/kbaba1001.github.io" class="header-nav-list-link" target="_blank">
+        GitHub
+      </a>
+    </li>
+    <li>
+      <a href="/feed.rss" class="header-nav-list-link"> RSS </a>
+    </li>
+  </ul>
+</nav>
+</div>
+  </div>
+</header>
+<div class="layout-main">
+  <main class="layout-main-center"><div class="post">
+  <div>
+    <div class="post-date">2025-04-29</div>
+    
+    <div class="post-tag" data-pagefind-filter="tag">日常</div>
+    
+  </div>
+  <h1 class="post-title">『プロジェクト・ヘイル・メアリー』を読んでほしい</h1>
+  <div class="post-main"><p><div class="fukidashi-container">
+<div class="fukidashi-image-container">
+  <img src="/img/kitsune-kamen.jpg" alt="香月" class="fukidashi-avatar" />
+	<span>香月</span>
+</div>
+<div class="fukidashi-left"><div class="fukidashi-serifu">めちゃくちゃ面白いからとにかく読んでくれ！</div></div></div></p>
+<p><div class="fukidashi-container">
+<div class="fukidashi-image-container">
+  <img src="/img/characters/haruka/normal.jpg" alt="はるか" class="fukidashi-avatar" />
+	<span>はるか</span>
+</div>
+<div class="fukidashi-left"><div class="fukidashi-serifu">突然どうしたんですか？</div></div></div></p>
+<p>ここはある開発会社のオフィス。</p>
+<p>シニアエンジニア、香月(かづき)の声が響き渡る。</p>
+<p>半年前に入社したはるかは香月の奇行に慣れつつあった。</p>
+<p><div class="fukidashi-container">
+<div class="fukidashi-image-container">
+  <img src="/img/kitsune-kamen.jpg" alt="香月" class="fukidashi-avatar" />
+	<span>香月</span>
+</div>
+<div class="fukidashi-left"><div class="fukidashi-serifu">『プロジェクト・ヘイル・メアリー』を読んでくれ！</div></div></div></p>
+<p><a href="https://amzn.asia/d/7iq9v0N"><img src="/img/posts/202504290909/project-hail-mary.png" alt="project hail mary"></a></p>
+<p><div class="fukidashi-container">
+<div class="fukidashi-image-container">
+  <img src="/img/characters/haruka/normal.jpg" alt="はるか" class="fukidashi-avatar" />
+	<span>はるか</span>
+</div>
+<div class="fukidashi-left"><div class="fukidashi-serifu">お！小説ですか？SF？</div></div></div></p>
+<p><div class="fukidashi-container">
+<div class="fukidashi-image-container">
+  <img src="/img/kitsune-kamen.jpg" alt="香月" class="fukidashi-avatar" />
+	<span>香月</span>
+</div>
+<div class="fukidashi-left"><div class="fukidashi-serifu">そう！めちゃくちゃ面白い！今までで読んだどの本より面白い！</div></div></div></p>
+<p><div class="fukidashi-container">
+<div class="fukidashi-image-container">
+  <img src="/img/characters/haruka/normal.jpg" alt="はるか" class="fukidashi-avatar" />
+	<span>はるか</span>
+</div>
+<div class="fukidashi-left"><div class="fukidashi-serifu">そんなに！？でもSFって難しくて苦手なんですよね</div></div></div></p>
+<p><div class="fukidashi-container">
+<div class="fukidashi-image-container">
+  <img src="/img/kitsune-kamen.jpg" alt="香月" class="fukidashi-avatar" />
+	<span>香月</span>
+</div>
+<div class="fukidashi-left"><div class="fukidashi-serifu">僕もSFは普段読まないけど、全然大丈夫だった！最初のページから一気に引き込まれてずっと面白い</div></div></div></p>
+<p><div class="fukidashi-container">
+<div class="fukidashi-image-container">
+  <img src="/img/characters/haruka/normal.jpg" alt="はるか" class="fukidashi-avatar" />
+	<span>はるか</span>
+</div>
+<div class="fukidashi-left"><div class="fukidashi-serifu">どういう話なんですか？</div></div></div></p>
+<p>ハイテンションだった香月が突然静止して沈黙する。</p>
+<p><div class="fukidashi-container">
+<div class="fukidashi-image-container">
+  <img src="/img/kitsune-kamen.jpg" alt="香月" class="fukidashi-avatar" />
+	<span>香月</span>
+</div>
+<div class="fukidashi-left"><div class="fukidashi-serifu">それは言えない</div></div></div></p>
+<p><div class="fukidashi-container">
+<div class="fukidashi-image-container">
+  <img src="/img/characters/haruka/normal.jpg" alt="はるか" class="fukidashi-avatar" />
+	<span>はるか</span>
+</div>
+<div class="fukidashi-left"><div class="fukidashi-serifu">はぁ？</div></div></div></p>
+<p><div class="fukidashi-container">
+<div class="fukidashi-image-container">
+  <img src="/img/kitsune-kamen.jpg" alt="香月" class="fukidashi-avatar" />
+	<span>香月</span>
+</div>
+<div class="fukidashi-left"><div class="fukidashi-serifu">何を言ってもネタバレになる。</div></div></div></p>
+<p><div class="fukidashi-container">
+<div class="fukidashi-image-container">
+  <img src="/img/kitsune-kamen.jpg" alt="香月" class="fukidashi-avatar" />
+	<span>香月</span>
+</div>
+<div class="fukidashi-left"><div class="fukidashi-serifu">まず主人公は記憶を失っていてどこかもわからない場所で目覚めるところから始まる</div></div></div></p>
+<p><div class="fukidashi-container">
+<div class="fukidashi-image-container">
+  <img src="/img/characters/haruka/naruhodo.jpg" alt="はるか" class="fukidashi-avatar" />
+	<span>はるか</span>
+</div>
+<div class="fukidashi-left"><div class="fukidashi-serifu">あ！そういう系なんですね</div></div></div></p>
+<h3>プロジェクト・ヘイル・メアリーの概要</h3>
+<p>主人公は記憶を失っていてどこかもわからない場所で目覚めるところから始まる。
+このため何を言ってもネタバレになるため、あえてどのようなストーリーかは説明しない。
+とはいえそれでは魅力が伝わらないので少し説明する。</p>
+<p>表紙からわかるように宇宙に関する話ではある（これももはやネタバレである）。
+この小説を楽しむにはとにかくネタバレをさけることが重要だ。
+普通なら本を買うときに概要を読んだり、人によってはあとがきや謝辞などを読む人もいると思う。</p>
+<p>しかしこの本に関してはそういうことを一切しないでほしい。</p>
+<p><div class="fukidashi-container">
+<div class="fukidashi-image-container">
+  <img src="/img/kitsune-kamen.jpg" alt="香月" class="fukidashi-avatar" />
+	<span>香月</span>
+</div>
+<div class="fukidashi-left"><div class="fukidashi-serifu">とにかく第１章の１行目から読み始めてほしい。</div></div></div></p>
+<p>主人公はめちゃくちゃポジティブで少しずつ自分が誰でどこにいるのか、
+何をしなければならないのかを思い出していく。</p>
+<p>そしてある危機に立ち向かう。たいへん規模の大きな危機で全人類を巻き込むような話になる。</p>
+<h3>プロジェクト・ヘイル・メアリーの魅力</h3>
+<p><div class="fukidashi-container">
+<div class="fukidashi-image-container">
+  <img src="/img/kitsune-kamen.jpg" alt="香月" class="fukidashi-avatar" />
+	<span>香月</span>
+</div>
+<div class="fukidashi-left"><div class="fukidashi-serifu">作者は映画『オデッセイ』の原作『火星の人』のアンディ・ウィアー！</div></div></div></p>
+<p><div class="fukidashi-container">
+<div class="fukidashi-image-container">
+  <img src="/img/characters/haruka/normal.jpg" alt="はるか" class="fukidashi-avatar" />
+	<span>はるか</span>
+</div>
+<div class="fukidashi-left"><div class="fukidashi-serifu">映画『オデッセイ』は見たことあります！火星に宇宙飛行士が取り残されてしまって、色々頑張って地球に帰ろうとする話でしたね！面白かったです！</div></div></div></p>
+<p><div class="fukidashi-container">
+<div class="fukidashi-image-container">
+  <img src="/img/kitsune-kamen.jpg" alt="香月" class="fukidashi-avatar" />
+	<span>香月</span>
+</div>
+<div class="fukidashi-left"><div class="fukidashi-serifu">そう！『火星の人』も面白いんだけど、『プロジェクト・ヘイル・メアリー』はそれ以上！<a href="https://theriver.jp/phm-wrap/">映画化も進行中とのこと！</a></div></div></div></p>
+<p><div class="fukidashi-container">
+<div class="fukidashi-image-container">
+  <img src="/img/characters/haruka/normal.jpg" alt="はるか" class="fukidashi-avatar" />
+	<span>はるか</span>
+</div>
+<div class="fukidashi-left"><div class="fukidashi-serifu">映画やるなら映画見てから読もうかなぁ</div></div></div></p>
+<p><div class="fukidashi-container">
+<div class="fukidashi-image-container">
+  <img src="/img/kitsune-kamen.jpg" alt="香月" class="fukidashi-avatar" />
+	<span>香月</span>
+</div>
+<div class="fukidashi-left"><div class="fukidashi-serifu">その気持ちはすごくわかる！でもできれば先に小説を読んでほしい！</div></div></div></p>
+<p><div class="fukidashi-container">
+<div class="fukidashi-image-container">
+  <img src="/img/characters/haruka/normal.jpg" alt="はるか" class="fukidashi-avatar" />
+	<span>はるか</span>
+</div>
+<div class="fukidashi-left"><div class="fukidashi-serifu">どうしてですか？？</div></div></div></p>
+<p><div class="fukidashi-container">
+<div class="fukidashi-image-container">
+  <img src="/img/kitsune-kamen.jpg" alt="香月" class="fukidashi-avatar" />
+	<span>香月</span>
+</div>
+<div class="fukidashi-left"><div class="fukidashi-serifu">なんでもネタバレになっちゃうから、映像になる前に想像力で楽しんでほしい</div></div></div></p>
+<p><div class="fukidashi-container">
+<div class="fukidashi-image-container">
+  <img src="/img/characters/haruka/normal.jpg" alt="はるか" class="fukidashi-avatar" />
+	<span>はるか</span>
+</div>
+<div class="fukidashi-left"><div class="fukidashi-serifu">わかりました！買います！読みます！</div></div></div></p>
+<p>はるかは仕事終わりに書店に向かうことを決めた。</p>
+</div>
+  <!-- <hr />
+<div class="comment-button-container">
+  <a
+    href="https://github.com/kbaba1001/kbaba1001.github.io/discussions"
+    target="_blank"
+    class="comment-button"
+  >
+    掲示板にコメントする
+  </a>
+  <div class="comment-note">
+    ※どの記事のコメントかわかるように本文に記事タイトルなどを入れてください。
+  </div>
+</div>
+ -->
+  <div id="remark42"></div>
+  <a href="/" class="post-index-link">一覧に戻る</a>
+</div>
+</main>
+</div>
+
+
+
+
+</body></html>
