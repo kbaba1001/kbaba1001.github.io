@@ -9,6 +9,88 @@
     <language>ja_JP</language>
     <generator>Lume v2.0.1</generator>
     <item>
+      <title>仲間内でもくもく会を開いている件</title>
+      <link>https://www.kbaba1001.com/posts/202505030959_mokumoku-kai/</link>
+      <guid isPermaLink="false">https://www.kbaba1001.com/posts/202505030959_mokumoku-kai/</guid>
+      <content:encoded>
+        <![CDATA[<p>《香月|/img/kitsune-kamen.jpg|最近友達ともくもく会を開いているんだ》</p>
+        <p>《はるか|/img/characters/haruka/normal.jpg|もくもく会って何ですか？》</p>
+        <div><div class="characters-panel">
+        <h3 class="characters-heading">■登場人物</h3>
+        
+        <div class="characters-card">
+        <div class="characters-images-container">
+        <img src="https://www.kbaba1001.com/img/kitsune-kamen.jpg" class="characters-image" alt="馬場 香月" loading="lazy" />
+        <div class="characters-name">
+        馬場 香月
+        </div>
+        </div>
+        <div class="characters-profile">
+        フルスタックエンジニア。<br/> 最近ハマっていることは中森明菜トリビュートアルバム『明響』を聞くこと
+        </div>
+        </div>
+        
+        <div class="characters-card">
+        <div class="characters-images-container">
+        <img src="https://www.kbaba1001.com/img/characters/haruka/normal.jpg" class="characters-image" alt="弥生 はるか" loading="lazy" />
+        <div class="characters-name">
+        弥生 はるか
+        </div>
+        </div>
+        <div class="characters-profile">
+        新米エンジニア。<br/> 最近ハマっていることはディズニーランドに行くこと
+        </div>
+        </div>
+        
+        </div>
+        </div>
+        <p>《香月|/img/kitsune-kamen.jpg|もくもく会はIT勉強会の一種だけど、テーマとか発表資料とかは用意しなくて、各自もくもくと自分の作業をする会。おしゃべりはOKな会とNGな会がある》</p>
+        <p>《はるか|/img/characters/haruka/normal.jpg|そういうのもあるんですね！エンジニアの人たちって不思議です！》</p>
+        <p>《香月|/img/kitsune-kamen.jpg|君もエンジニアでしょ！》</p>
+        <h3>プライベートなもくもく会</h3>
+        <p>数名の旧友と数ヶ月に１回集まってもくもく会をしています。
+        今年に入ってからすでに２回開催していて、良いペース。</p>
+        <p>参加者は私も含めて良い歳なので、家庭を持っていたり仕事が忙しかったりして、
+        なかなか集中して個人的な開発をするような時間が取れていないらしく、
+        もくもく会で旧交を温めながら開発をするのは良い刺激になっているように思います。</p>
+        <h3>街中のもくもく会とは別の楽しさ</h3>
+        <p><a href="https://connpass.com/">connpass</a> 等で募集されているオープンなもくもく会も
+        知らない人と話せて楽しいのですが、プライベートなもくもく会には別の楽しさがあるように思います。</p>
+        <p>街中のもくもく会では初心者が結構来るので、ディープな話をしたいときにちょっと物足りないなと思うことが多くなりました。
+        それは私の技術力が以前より上がったことやマニアックになったことが原因なので、
+        同世代の友人と話すほうがディープな話はしやすくて良いなぁと感じています。</p>
+        <p>単純に近況を共有するだけでも楽しいですし、プライベートなので細かいことを気にする必要もありません。
+        気のおけない関係というのは良いですね。</p>
+        <h3>どこで集まるか問題</h3>
+        <p>日程を決めて少人数で集まって 2 〜 4 時間くらい作業するとなると、どこで集まるのかが問題になります。</p>
+        <ul>
+        <li>日程を決めて確実に開催したいので、お店に予約をしたい</li>
+        <li>居酒屋等はうるさすぎるし PC を広げるのに向いていない</li>
+        <li>ファミレスやカフェは時間制限９０分の場所が多い</li>
+        <li>参加者の家が離れているのでそれなりに全員が集まりやすい場所（山手線沿いが理想）</li>
+        </ul>
+        <p>この辺を考慮すると結局コワーキングスペースかなぁという結論になりました。</p>
+        <p>都内にはそれなりに料金の安いコワーキングスペースがあるので活用しています。</p>
+        <p>あるいは、時間制限がないファミレスを探して作業するみたいな感じです。</p>
+        <p>インターネットで人を集めて集会を開くわけではないので選択肢はまだ多いですが、多少お金はかかりますね。
+        こういうとき会社のオフィスを借りて開催している勉強会は羨ましいです。</p>
+        <p>《はるか|/img/characters/haruka/normal.jpg|勉強会って場所探しが大変なんですね！》</p>
+        <p>《香月|/img/kitsune-kamen.jpg|勉強会を定期的に開催している方には頭が下がります》</p>
+        <h3>Discordの活用</h3>
+        <p>もくもく会の連絡などを行うために Discord サーバーを作って仲間内だけで招待して使っています。
+        案外こういうグループチャット的なものを作るだけでも日頃から技術的な話ができていい感じです。</p>
+        <h3>グローバルからローカルへ</h3>
+        <p>《香月|/img/kitsune-kamen.jpg|こういう「友達と会う」みたいな一番古典的なことが結局一番楽しいというか、インターネットの広い世界に疲れたというか。。。》</p>
+        <p>《はるか|/img/characters/haruka/normal.jpg|先輩、何を言っているんですか？》</p>
+        <p>《香月|/img/kitsune-kamen.jpg|コロナ禍ではオンラインイベントが積極的に開催されたけど、最近ではオフラインイベントに回帰しているように思う》</p>
+        <p>《香月|/img/kitsune-kamen.jpg|それはSNSの炎上とかポリコレみたいなことにみんな疲れて、もっと小規模なつながりを求めた結果なのかもしれない》</p>
+        <p>《はるか|/img/characters/haruka/normal.jpg|なんか、おじさんくさーい！》</p>
+        <p>《香月|/img/kitsune-kamen.jpg|うっ。。。》</p>
+        <p>みんなもしばらく会ってない人に連絡とったりしてみよう！</p>]]>
+      </content:encoded>
+      <pubDate>Sat, 03 May 2025 09:59:53 GMT</pubDate>
+    </item>
+    <item>
       <title>トイカメラのある生活</title>
       <link>https://www.kbaba1001.com/posts/202505021400_toy-camera/</link>
       <guid isPermaLink="false">https://www.kbaba1001.com/posts/202505021400_toy-camera/</guid>
@@ -377,26 +459,6 @@
         ]]>
       </content:encoded>
       <pubDate>Fri, 28 Feb 2025 10:07:42 GMT</pubDate>
-    </item>
-    <item>
-      <title>透明水彩の練習</title>
-      <link>https://www.kbaba1001.com/posts/202501300821_practice-of-water-color-painting/</link>
-      <guid isPermaLink="false">https://www.kbaba1001.com/posts/202501300821_practice-of-water-color-painting/</guid>
-      <content:encoded>
-        <![CDATA[<h2>透明水彩によるカラーデッサン</h2>
-        <p><img src="https://www.kbaba1001.com/img/posts/202501300821/color1.jpg" alt="color1"></p>
-        <p><img src="https://www.kbaba1001.com/img/posts/202501300821/color2.jpg" alt="color2"></p>
-        <p>こんな感じで透明水彩を練習中。
-        濃い色を出すのが思ったより難しいが、慣れてきた。
-        ただ、自分の性格上パキッとした絵を描きたいので、
-        不透明水彩のほうが向いている気がする。</p>
-        <p>水彩紙も手持ちのものがすべて細目だったので、中目くらいのやつを買っておきたい。</p>
-        <h2>モノクロデッサン</h2>
-        <p><img src="https://www.kbaba1001.com/img/posts/202501300821/monochrome.jpg" alt="monochrome"></p>
-        <p>鉛筆デッサンも相変わらずやっている。</p>
-        ]]>
-      </content:encoded>
-      <pubDate>Thu, 30 Jan 2025 08:21:32 GMT</pubDate>
     </item>
   </channel>
 </rss>
