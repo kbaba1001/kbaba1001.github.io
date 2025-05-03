@@ -11,6 +11,7 @@ import date from "lume/plugins/date.ts";
 import feed from "lume/plugins/feed.ts";
 import jsx from "lume/plugins/jsx.ts";
 import lightningCss from "lume/plugins/lightningcss.ts";
+import mdx from "lume/plugins/mdx.ts";
 import pagefind from "lume/plugins/pagefind.ts";
 import postcss from "lume/plugins/postcss.ts";
 import sitemap from "lume/plugins/sitemap.ts";
@@ -72,6 +73,7 @@ site.use(lightningCss());
 site.use(postcss());
 site.use(terser());
 site.use(sitemap());
+site.use(mdx());
 
 const fukidashi = (content) => {
 	const newline = (text) => {
@@ -90,7 +92,7 @@ const fukidashi = (content) => {
 		)}</div></div></div>`,
 	);
 };
-site.process([".md"], (pages) => {
+site.process([".md", ".mdx"], (pages) => {
 	for (const page of pages) {
 		page.content = fukidashi(page.content);
 	}

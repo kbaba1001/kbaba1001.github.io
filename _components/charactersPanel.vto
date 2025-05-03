@@ -1,0 +1,16 @@
+<div class="characters-panel">
+  <h3 class="characters-heading">■登場人物</h3>
+  {{ for character of characters }}
+  <div class="characters-card">
+    <div class="characters-images-container">
+      <img src="{{ character.image }}" class="characters-image" alt="{{ character.name }}" loading="lazy" />
+      <div class="characters-name">
+        {{ character.name }}
+      </div>
+    </div>
+    <div class="characters-profile">
+      {{ character.description |> safe }}
+    </div>
+  </div>
+  {{ /for }}
+</div>

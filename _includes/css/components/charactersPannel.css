@@ -1,0 +1,42 @@
+.characters-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem 4rem;
+  background-color: var(--header-bg-color);
+  border-radius: 3rem;
+}
+
+.characters-heading {
+  margin: 0;
+  padding: 0;
+}
+
+.characters-card {
+  display: flex;
+  gap: 1rem;
+}
+
+.characters-images-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 120px;
+}
+
+.characters-image {
+  width: 98px;
+  height: 98px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.characters-name {
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.characters-profile {
+  padding-top: 1rem;
+}
