@@ -105,7 +105,8 @@ code.hljs{font-family:Source Code Pro,monospace;font-size:1rem}
 .characters-images-container{flex-direction:column;align-items:center;width:120px;display:flex}
 .characters-image{-o-object-fit:cover;object-fit:cover;border-radius:50%;width:98px;height:98px}
 .characters-name{text-align:center;font-size:1.2rem;font-weight:700}
-.characters-profile{padding-top:1rem}
+.characters-profile{flex:1;padding-top:1rem}
+@media only screen and (max-width:800px){.characters-panel{gap:1rem;padding:1rem}.characters-card{gap:.5rem}}
 .top{margin:1rem 0}
 .top-h1{font-size:1.5rem}
 .blog{margin:1rem 0}

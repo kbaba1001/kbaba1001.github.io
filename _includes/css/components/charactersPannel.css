@@ -39,4 +39,16 @@
 
 .characters-profile {
   padding-top: 1rem;
+  flex: 1;
+}
+
+@media only screen and (max-width: 800px) {
+  .characters-panel {
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .characters-card {
+    gap: 0.5rem;
+  }
 }
