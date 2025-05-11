@@ -11,7 +11,7 @@ tags:
 
 実写版映画『[ゴールデンカムイ](https://kamuy-movie.com)』を見てきた。
 
-<div class="post-learge-font">
+<div class="post-large-font">
 ほんま、ありがとう！ 最高でした
 </div>
 

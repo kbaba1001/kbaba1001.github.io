@@ -25,7 +25,7 @@ $ docker context create remote --docker "host=ssh://user@remotemachine"
 $ docker --context remote compose up -d
 ```
 
-<div class="post-learge-font">
+<div class="post-large-font">
 便利すぎでは～！！
 </div>
 

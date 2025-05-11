@@ -7,11 +7,13 @@
   align-items: center;
   gap: 1rem;
 }
+
 .post-date {
   font-size: 1rem;
   color: var(--feeble-color);
   display: inline-block;
 }
+
 .post-tag {
   display: inline-block;
   background-color: var(--tag-bg-color);
@@ -41,7 +43,7 @@
   max-width: 100%;
 }
 
-.post-learge-font {
+.post-large-font {
   font-size: 2rem;
 }
 

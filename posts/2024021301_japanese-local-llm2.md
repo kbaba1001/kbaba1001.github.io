@@ -31,7 +31,7 @@ ELYZA 社の上記のモデル。
 
 ![ELYZA](/img/posts/2024021301/elyza.png)
 
-<div class="post-learge-font">
+<div class="post-large-font">
 まともな回答してる！
 
 これだよ、これ！！

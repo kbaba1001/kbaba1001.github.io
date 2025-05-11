@@ -71,7 +71,7 @@ TinyLLM には [chat.py](https://github.com/jasonacox/TinyLLM/blob/main/chat.py)
 
 ![swallow-llm.png](/img/posts/2024020902/swallow-llm.png)
 
-<div class="post-learge-font">
+<div class="post-large-font">
 Σ(･ω･ﾉ)ﾉ ！？
 </div>
 

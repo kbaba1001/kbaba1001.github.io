@@ -9,7 +9,7 @@ tags:
 
 ![AtCoder](/img/posts/2024012902/atcoder.png)
 
-<div class="post-learge-font">
+<div class="post-large-font">
 
 いつの間にか [AtCoder](https://atcoder.jp/) で
 [Babashka](https://github.com/babashka/babashka) が使えるようになっている！！！
@@ -28,7 +28,7 @@ AtCoder 始めます！！
 の実行環境で、これが AtCoder で使えたらいいのになぁと多くの Clojurians
 は思ってました。
 
-<div class="post-learge-font">
+<div class="post-large-font">
 
 で、それが叶いました。
 
