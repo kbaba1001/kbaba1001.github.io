@@ -9,6 +9,62 @@
     <language>ja_JP</language>
     <generator>Lume v2.0.1</generator>
     <item>
+      <title>2025年10月の積読</title>
+      <link>https://www.kbaba1001.com/posts/202510021755_Oct2025-books/</link>
+      <guid isPermaLink="false">https://www.kbaba1001.com/posts/202510021755_Oct2025-books/</guid>
+      <content:encoded>
+        <![CDATA[<p>《香月|/img/kitsune-kamen.jpg|最近もたくさん本を買っちゃったよ！》</p>
+        <p><img src="https://www.kbaba1001.com/img/posts/202510021755/small-books.jpg" alt="books"></p>
+        <h2>Rust 系の本</h2>
+        <p>《香月|/img/kitsune-kamen.jpg|あんま時間取れなくてRust勉強進められてません！》</p>
+        <p>『プログラミングRust』を少し読んだ。ほかはまだ読めてない。</p>
+        <h2>RAG・AIエージェント</h2>
+        <p>良い本だと思うので旬を逃さず読みたいが、後回しになっている。</p>
+        <p>ローカルLLMが微妙なこと、RAG使わなくてもいいケースが多いことなどで後手に回しているうちに、
+        本当にRAGという概念すらいらなくなるかもしれない</p>
+        <h2>DuckDB 実践入門</h2>
+        <p>時雨堂のV氏が勧めていたので買ってみた。
+        グラフDBっぽいやつがAI関係で結構使われ始めている印象。</p>
+        <h2>K8s本</h2>
+        <p>ざっくり流し読みはした。
+        自宅サーバーのk8sクラスタ化のための準備。
+        これもあまり時間取れておらず。</p>
+        <h2>Go 関係の本</h2>
+        <p>Goに再入門したくて次の本を買ってみた</p>
+        <ul>
+        <li>効率的なGo</li>
+        <li>Go言語プログラミングエッセンス（改定新版）</li>
+        </ul>
+        <p>後者は今日発売したばかりの新刊。</p>
+        <p>かつて「 Go を嫌う６つの理由」というタイトルでブログを書いたら炎上してしまって、
+        今となっては反省している。</p>
+        <p>ただ、Goは欠点も多い言語だという認識は変わっておらず、とはいえGenericなどGo自体の機能が増えたり、
+        AIで補完が楽になったりと時代の変化もあるので、Goと和解する話は同人誌などで書きたいところ。</p>
+        <h2>並行処理プログラミング</h2>
+        <p>これも Go の理解のために買ってみた。
+        ただ、本書のソースコードは Python のようだ。</p>
+        <p>Clojure の core.async で channel の扱いには慣れているが、あんま理論部分がわかってないので勉強する予定。</p>
+        <h2>データビジュアライゼーションの基礎</h2>
+        <p>これも V 氏おすすめの本。
+        データをどう見せるかが全てとのこと。
+        そこまで言われたら買うしかない。</p>
+        <h2>OSのしくみ</h2>
+        <p>自作OSをRustで作るという本。
+        自作OSもそのうちチャレンジしたい</p>
+        <h2>ISUCON 本</h2>
+        <p>これはたまたま写り込んだだけで中身はすでに読んでいる。
+        パフォーマンスチューニング本として非常に良いのでおすすめ。</p>
+        <p>《香月|/img/kitsune-kamen.jpg|以上。頑張って読みます。》</p>
+        <h2>本を買うことについて</h2>
+        <p>最近以前より技術書を買っている。
+        知りたいことが増えた。良いことだ。</p>
+        <p>出版業界はなかなか厳しいようなので、なるべく買って応援したい。
+        Web+DB ples のような雑誌が休刊になったことが寂しい。</p>
+        ]]>
+      </content:encoded>
+      <pubDate>Thu, 02 Oct 2025 17:55:21 GMT</pubDate>
+    </item>
+    <item>
       <title>JUKI SL-700EXで裁縫を始めた</title>
       <link>https://www.kbaba1001.com/posts/202508251543_i-started-crafting-by-JUKI-SL-700EX/</link>
       <guid isPermaLink="false">https://www.kbaba1001.com/posts/202508251543_i-started-crafting-by-JUKI-SL-700EX/</guid>
@@ -483,35 +539,6 @@
         ]]>
       </content:encoded>
       <pubDate>Sun, 30 Mar 2025 11:21:49 GMT</pubDate>
-    </item>
-    <item>
-      <title>このブログをリニューアルしたい</title>
-      <link>https://www.kbaba1001.com/posts/202503291209_idea-of-new-blog/</link>
-      <guid isPermaLink="false">https://www.kbaba1001.com/posts/202503291209_idea-of-new-blog/</guid>
-      <content:encoded>
-        <![CDATA[<p>表題の通りだが、ブログのリニューアルを考えている。</p>
-        <p>現状、 <a href="https://lume.land/">Lume</a> で静的なHTMLを生成して Github Pages で公開しているのだが、
-        流石にファイルが増えてきたし読者からの反応を得るための機能をなにか入れたくなってきた。</p>
-        <p>リニューアル後の想定:</p>
-        <ul>
-        <li>TwitterみたいなMicropost機能を入れたい</li>
-        <li>読者からのリアクション（絵文字とかスタンプとか）を得られるようにしたい</li>
-        <li>読者からのコメント機能（一旦設置して様子見。治安悪かったら削除）</li>
-        <li>管理画面</li>
-        </ul>
-        <p>みたいなことがしたいので、 Headless CMS の利用を検討している。</p>
-        <p>Headless CMS は管理画面とAPIが用意されていて、フロントは自分でReactとかで作れるというもの。</p>
-        <ul>
-        <li>無料で使える</li>
-        <li>セルフホストできる</li>
-        <li>できればNodeなどの自分が知っている言語製</li>
-        </ul>
-        <p>という条件で考えた結果、<a href="https://strapi.io/">Strapi</a> を使ってみようと思っている。</p>
-        <p>今回はちゃんとデータ移行したいけどどうやろうねぇ。
-        Markdownと画像ファイルのパスだけDBに入れるような仕組みが作れるといいんだけど。</p>
-        ]]>
-      </content:encoded>
-      <pubDate>Sat, 29 Mar 2025 12:09:14 GMT</pubDate>
     </item>
   </channel>
 </rss>
