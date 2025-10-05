@@ -9,6 +9,109 @@
     <language>ja_JP</language>
     <generator>Lume v2.0.1</generator>
     <item>
+      <title>Linuxでよく使うソフト2025年10月版</title>
+      <link>https://www.kbaba1001.com/posts/202510031002_my-favorite-apps-in-linux/</link>
+      <guid isPermaLink="false">https://www.kbaba1001.com/posts/202510031002_my-favorite-apps-in-linux/</guid>
+      <content:encoded>
+        <![CDATA[<p>《はるか|/img/characters/haruka/normal.jpg|なんで先輩の使っているパソコンはMacじゃないんですか？》</p>
+        <p>《香月|/img/kitsune-kamen.jpg|Webプログラマが皆Macを使っていると思ったら大間違いだ！》</p>
+        <p>もう十年以上前からWebエンジニアの間ではMacを使うことが常識のようになっていて、誠に遺憾である。
+        Dockerは遅いしCUDAは使えないし、Windowsと比べてもデフォルトで Clipboard History や画面分割機能がないのは
+        使い勝手が悪いし、ターミナルコマンドは微妙に Linux とは違うし、私としては Mac が好きではない。</p>
+        <p>ここ数年は Windows + WSL での開発環境に満足していたが、Microsoft Office が Web ブラウザでも使えるようになって、
+        Windows を使う理由が一つ減ったので、また Linux デスクトップの世界に帰ってきた。</p>
+        <p>《香月|/img/kitsune-kamen.jpg|若手エンジニアにはぜひともLinuxデスクトップで開発を経験してほしい》</p>
+        <p>Linuxはプログラミングをするのに最適なOSだ。どんなプログラミング言語でも簡単にインストールできるし、
+        どうせサーバーはLinuxなのだからLinuxデスクトップを使うことでLinuxの知識を増やすことは役に立つ。</p>
+        <p>《はるか|/img/characters/haruka/normal.jpg|えー！でもなんか難しそう！画面古臭いし》</p>
+        <p><img src="https://www.kbaba1001.com/img/posts/202510031002/desktop.jpg" alt="desktop.jpg">
+        <strong>香月のデスクトップ</strong></p>
+        <p>《香月|/img/kitsune-kamen.jpg|うっ！これは私の好みで古くしているだけで、もっと今風のもあるぞ！！》</p>
+        <h2>自分のLinuxデスクトップ環境のこだわり</h2>
+        <p>《香月|/img/kitsune-kamen.jpg|Linuxデスクトップはどこまでも自分好みにカスタマイズできることが最大の魅力で楽しさだ》</p>
+        <p>わかりやすいところでいうと、 Window Manager を気軽に変更できる。
+        Window Manager は GUI の使い勝手そのものだ。多くの Linux ディストリビューションは
+        デフォルトの Window Manager を持っているが、カスタマイズの第一歩は Window Manager を変えてみることだ。</p>
+        <p>《香月|/img/kitsune-kamen.jpg|なるべく必要最小限の構成にしたい》</p>
+        <p>最近のマシンスペックを考えれば KDE や Gnome を動かすことになんの支障もないのだが、
+        昔からジャンクPCでLinuxを使っていた経験上、すっかり Xorg だけでなんとかする力がついてしまった。
+        むしろ Xorg から外れて KDE や Gnome 専用の操作を覚えることは億劫で、今でも軽量な Window Manager ばかり使っている。</p>
+        <p>そんなわけで、おおむねのこだわりをまとめると</p>
+        <ul>
+        <li>Wayland はまだイマイチ不安なので Xorg を使う</li>
+        <li>Xorg の起動は <code>startx</code> コマンドで行う（ログインマネージャは入れない）</li>
+        <li>Window Manager はタイル型が良いので i3</li>
+        <li>できるだけ Xorg, GTK, QT に依存して Gnome や KDE への依存は減らす</li>
+        <li>Systemd をうまく使う</li>
+        </ul>
+        <p>という感じでやっている。</p>
+        <p>この辺のこだわりをいい感じに反映するには、やはり Gentoo Linux が一番よい。</p>
+        <h2>Gentoo Linux のよさ</h2>
+        <p>《香月|/img/kitsune-kamen.jpg|久しぶりにGentoo Linuxを使ってみたら案外良かった》</p>
+        <p>長年 Debian を最小限でインストールして Xorg のインストールなどを手動でやっていたのだが、
+        最近の Debian は結構おせっかいで、 Xorg をインストールしたらログインマネージャも一緒に
+        インストールされてしまったので、使う気が失せてしまった。</p>
+        <p>試しに入れてみた Gentoo Linux が案外良かったので、手持ちのマシンをほとんど Gentoo Linux に
+        してしまった。</p>
+        <p>《はるか|/img/characters/haruka/normal.jpg|Gentoo Linux ってなんですか？》</p>
+        <p>Gentoo Linux は <code>emerge</code> というパッケージマネージャでインストールするソフトを管理できる。
+        <code>emerge</code> はバイナリインストールもできるが基本的にはソースコードからビルドをするということが特徴で、
+        さらに依存関係も <code>USE</code> フラグというものを管理することで簡単に制御できる。
+        この機能がこだわりの強い人にとってはありがたく、例えば Wayland をインストールしたくない場合、
+        <code>Use=&quot;-wayland&quot;</code> のように設定するだけでよい。</p>
+        <p><code>emerge</code> はソースコードをベースとして持ってくるので最新バージョンに近いものをインストールすることが
+        できるため、マシンを常に最新に保つことができる。
+        さらに使えるパッケージの量が多く、 Debian の場合は APT と Homebrew (と Snapcraft) を併用するような運用に
+        しないといまいち便利にならないのだが、 Gentoo なら <code>emerge</code> だけでよい。これが楽。</p>
+        <p>また Gentoo Linux はデフォルトのGUI環境を持っていないので、自前でインストールできる。
+        私が使う i3 の場合は、デフォルトのWindow Manager は使わないのでこのような仕様はありがたい。</p>
+        <h2>その他使っているソフト</h2>
+        <p>おおむね使っているソフトをまとめてみる。</p>
+        <ul>
+        <li>Linux: Gentoo Linux</li>
+        <li>Terminal: <a href="https://alacritty.org/config-alacritty.html">Alacritty</a>
+        <ul>
+        <li>URxvt を使っていたのだが Clipboard 周りが不便なので Alacritty に変えてみた</li>
+        </ul>
+        </li>
+        <li>Editor: VS Code, vim</li>
+        <li>ブートローダー: systemd-boot (not grub)
+        <ul>
+        <li>試しに使ってみた systemd-boot が案外良かった。起動が早い気がする</li>
+        </ul>
+        </li>
+        <li>GUI: X (not wayland)</li>
+        <li>Window Manager: i3</li>
+        <li>Screen: tmux</li>
+        <li>Browser: Brave
+        <ul>
+        <li>Chrome は広告が多いので乗り換え</li>
+        </ul>
+        </li>
+        <li>Clipboard History: clipmenud
+        <ul>
+        <li>dmenu で使えるので i3 と相性が良い</li>
+        </ul>
+        </li>
+        <li>IM: fcitx5 + Mozc</li>
+        <li>display management: arandr</li>
+        <li>Audio Mixer: alsamixer</li>
+        <li>TUI Apps
+        <ul>
+        <li>enhancd ... cd の改良版</li>
+        <li>bat ... cat, less の改良版</li>
+        <li>ripgrep ... grep の改良版</li>
+        <li>safe-rm ... rm の改良版</li>
+        <li>fzf ... インクリメンタルサーチできるやつ</li>
+        <li>keychain ... ssh や gpg のキーを記録できるやつ</li>
+        </ul>
+        </li>
+        </ul>
+        ]]>
+      </content:encoded>
+      <pubDate>Fri, 03 Oct 2025 10:02:39 GMT</pubDate>
+    </item>
+    <item>
       <title>2025年10月の積読</title>
       <link>https://www.kbaba1001.com/posts/202510021755_Oct2025-books/</link>
       <guid isPermaLink="false">https://www.kbaba1001.com/posts/202510021755_Oct2025-books/</guid>
@@ -514,31 +617,6 @@
         ]]>
       </content:encoded>
       <pubDate>Tue, 08 Apr 2025 13:33:24 GMT</pubDate>
-    </item>
-    <item>
-      <title>技術書典18にサークル「さ19：ノイマンパブリッシング」として参加します</title>
-      <link>https://www.kbaba1001.com/posts/202503301121_techbookfest18/</link>
-      <guid isPermaLink="false">https://www.kbaba1001.com/posts/202503301121_techbookfest18/</guid>
-      <content:encoded>
-        <![CDATA[<p><a href="https://techbookfest.org/event/tbf18">技術書典18</a> にサークル名「ノイマンパブリッシング」として参加します。場所は「さ１９」です。</p>
-        <p><img src="https://www.kbaba1001.com/img/posts/202503301121/tech18-place.jpg" alt="place"></p>
-        <h2>頒布予定の本</h2>
-        <ul>
-        <li>誰も教えてくれなかったビデオ会議システムの作り方（新刊）
-        <ul>
-        <li>TypeScript でオンラインミーティングツールを作ります</li>
-        </ul>
-        </li>
-        <li>自宅サーバー関係のエッセイ漫画（Assam著）（新刊）</li>
-        <li>自宅サーバーでグループウェアを動かす本（既刊）</li>
-        </ul>
-        <p>新刊に関しては絶賛執筆中です。
-        というよりビデオ会議システムを作っていることろです。
-        イベントは６月１日なので４月中旬にはシステムを完成させて、５月中旬までに執筆を終えたいです。
-        かなりのボリュームの本になりそうなので果たして間に合うのか。。。</p>
-        ]]>
-      </content:encoded>
-      <pubDate>Sun, 30 Mar 2025 11:21:49 GMT</pubDate>
     </item>
   </channel>
 </rss>

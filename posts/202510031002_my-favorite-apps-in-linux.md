@@ -88,20 +88,24 @@ Gentoo Linux は `emerge` というパッケージマネージャでインスト
 
 * Linux: Gentoo Linux
 * Terminal: [Alacritty](https://alacritty.org/config-alacritty.html)
+  * URxvt を使っていたのだが Clipboard 周りが不便なので Alacritty に変えてみた
 * Editor: VS Code, vim
 * ブートローダー: systemd-boot (not grub)
+  * 試しに使ってみた systemd-boot が案外良かった。起動が早い気がする
 * GUI: X (not wayland)
 * Window Manager: i3
 * Screen: tmux
 * Browser: Brave
+  * Chrome は広告が多いので乗り換え
 * Clipboard History: clipmenud
+  * dmenu で使えるので i3 と相性が良い
 * IM: fcitx5 + Mozc
 * display management: arandr
 * Audio Mixer: alsamixer
 * TUI Apps
-  * enhancd
-  * bat
-  * ripgrep
-  * safe-rm
-  * fzf
-  * keychain
+  * enhancd ... cd の改良版
+  * bat ... cat, less の改良版
+  * ripgrep ... grep の改良版
+  * safe-rm ... rm の改良版
+  * fzf ... インクリメンタルサーチできるやつ
+  * keychain ... ssh や gpg のキーを記録できるやつ

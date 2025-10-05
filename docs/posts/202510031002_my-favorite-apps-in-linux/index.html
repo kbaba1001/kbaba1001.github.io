@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <link rel="stylesheet" href="/styles.css">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <meta name="author" content="kbaba1001">
+  <meta property="og:title" content="Linuxでよく使うソフト2025年10月版 - ハッカーと漫画家">
+  <meta property="og:url" content="https://www.kbaba1001.com/posts/202510031002_my-favorite-apps-in-linux/">
+  <meta property="og:image" content="https://www.kbaba1001.com/img/posts/202510031002_my-favorite-apps-in-linux.png">
+  <meta property="twitter:image:src" content="https://www.kbaba1001.com/img/posts/202510031002_my-favorite-apps-in-linux.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <meta property="og:type" content="website">
+  <meta name="description" content="Clojure と漫画が好きな kbaba1001 のブログです。">
+  <meta property="og:description" content="Clojure と漫画が好きな kbaba1001 のブログです。">
+  <meta property="og:locale" content="ja_JP">
+
+  <!-- はてなブックマークのコメントをさせない -->
+  <meta name="Hatena::Bookmark" content="nocomment">
+
+  <!-- Google tag (gtag.js) -->
+  <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-MJ8FZT12VZ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+
+    gtag("config", "G-MJ8FZT12VZ");
+  </script>
+
+  
+  <script defer="" src="https://cloud.umami.is/script.js" data-website-id="1d979a64-b23d-4d05-9d8d-49f64f022ece"></script>
+
+  <!-- remark42 -->
+  <script>
+    var remark_config = {
+      host: 'https://remark42.neumann.work',
+      site_id: 'kbaba1001_com',
+      components: ['embed', 'last-comments', 'counter'],
+      max_shown_comments: 100,
+      locale: 'ja',
+      show_email_subscription: false,
+      simple_view: true,
+      no_footer: false
+    }
+  </script>
+  <script>!function (e, n) { for (var o = 0; o < e.length; o++) { var r = n.createElement("script"), c = ".js", d = n.head || n.body; "noModule" in r ? (r.type = "module", c = ".mjs") : r.async = !0, r.defer = !0, r.src = remark_config.host + "/web/" + e[o] + c, d.appendChild(r) } }(remark_config.components || ["embed"], document);</script>
+  <title>Linuxでよく使うソフト2025年10月版 - ハッカーと漫画家</title>
+
+  
+</head>
+
+<body class="layout">
+  <header class="layout-header">
+  <div class="header">
+    <div class="grid-header-title"><div class="header-title">
+  <img src="/img/kitsune-kamen.jpg" alt="ハッカーと漫画家" loading="lazy" class="header-title-logo">
+  <a href="/" class="header-title-link">ハッカーと漫画家</a>
+</div>
+</div>
+    <div class="grid-header-nav"><nav class="header-nav-container">
+  <ul class="header-nav-list">
+    <li>
+      <a href="/timeline" class="header-nav-list-link">Timeline</a>
+    </li>
+    <li>
+      <a href="/about" class="header-nav-list-link"> About </a>
+    </li>
+    <li>
+      <a href="https://github.com/kbaba1001/kbaba1001.github.io" class="header-nav-list-link" target="_blank">
+        GitHub
+      </a>
+    </li>
+    <li>
+      <a href="/feed.rss" class="header-nav-list-link"> RSS </a>
+    </li>
+  </ul>
+</nav>
+</div>
+  </div>
+</header>
+<div class="layout-main">
+  <main class="layout-main-center"><div class="post">
+  <div>
+    <div class="post-date">2025-10-03</div>
+    
+    <div class="post-tag" data-pagefind-filter="tag">Tech</div>
+    
+  </div>
+  <h1 class="post-title">Linuxでよく使うソフト2025年10月版</h1>
+  <div class="post-main"><p><div class="fukidashi-container">
+<div class="fukidashi-image-container">
+  <img src="/img/characters/haruka/normal.jpg" alt="はるか" class="fukidashi-avatar" />
+	<span>はるか</span>
+</div>
+<div class="fukidashi-left"><div class="fukidashi-serifu">なんで先輩の使っているパソコンはMacじゃないんですか？</div></div></div></p>
+<p><div class="fukidashi-container">
+<div class="fukidashi-image-container">
+  <img src="/img/kitsune-kamen.jpg" alt="香月" class="fukidashi-avatar" />
+	<span>香月</span>
+</div>
+<div class="fukidashi-left"><div class="fukidashi-serifu">Webプログラマが皆Macを使っていると思ったら大間違いだ！</div></div></div></p>
+<p>もう十年以上前からWebエンジニアの間ではMacを使うことが常識のようになっていて、誠に遺憾である。
+Dockerは遅いしCUDAは使えないし、Windowsと比べてもデフォルトで Clipboard History や画面分割機能がないのは
+使い勝手が悪いし、ターミナルコマンドは微妙に Linux とは違うし、私としては Mac が好きではない。</p>
+<p>ここ数年は Windows + WSL での開発環境に満足していたが、Microsoft Office が Web ブラウザでも使えるようになって、
+Windows を使う理由が一つ減ったので、また Linux デスクトップの世界に帰ってきた。</p>
+<p><div class="fukidashi-container">
+<div class="fukidashi-image-container">
+  <img src="/img/kitsune-kamen.jpg" alt="香月" class="fukidashi-avatar" />
+	<span>香月</span>
+</div>
+<div class="fukidashi-left"><div class="fukidashi-serifu">若手エンジニアにはぜひともLinuxデスクトップで開発を経験してほしい</div></div></div></p>
+<p>Linuxはプログラミングをするのに最適なOSだ。どんなプログラミング言語でも簡単にインストールできるし、
+どうせサーバーはLinuxなのだからLinuxデスクトップを使うことでLinuxの知識を増やすことは役に立つ。</p>
+<p><div class="fukidashi-container">
+<div class="fukidashi-image-container">
+  <img src="/img/characters/haruka/normal.jpg" alt="はるか" class="fukidashi-avatar" />
+	<span>はるか</span>
+</div>
+<div class="fukidashi-left"><div class="fukidashi-serifu">えー！でもなんか難しそう！画面古臭いし</div></div></div></p>
+<p><img src="/img/posts/202510031002/desktop.jpg" alt="desktop.jpg">
+<strong>香月のデスクトップ</strong></p>
+<p><div class="fukidashi-container">
+<div class="fukidashi-image-container">
+  <img src="/img/kitsune-kamen.jpg" alt="香月" class="fukidashi-avatar" />
+	<span>香月</span>
+</div>
+<div class="fukidashi-left"><div class="fukidashi-serifu">うっ！これは私の好みで古くしているだけで、もっと今風のもあるぞ！！</div></div></div></p>
+<h2>自分のLinuxデスクトップ環境のこだわり</h2>
+<p><div class="fukidashi-container">
+<div class="fukidashi-image-container">
+  <img src="/img/kitsune-kamen.jpg" alt="香月" class="fukidashi-avatar" />
+	<span>香月</span>
+</div>
+<div class="fukidashi-left"><div class="fukidashi-serifu">Linuxデスクトップはどこまでも自分好みにカスタマイズできることが最大の魅力で楽しさだ</div></div></div></p>
+<p>わかりやすいところでいうと、 Window Manager を気軽に変更できる。
+Window Manager は GUI の使い勝手そのものだ。多くの Linux ディストリビューションは
+デフォルトの Window Manager を持っているが、カスタマイズの第一歩は Window Manager を変えてみることだ。</p>
+<p><div class="fukidashi-container">
+<div class="fukidashi-image-container">
+  <img src="/img/kitsune-kamen.jpg" alt="香月" class="fukidashi-avatar" />
+	<span>香月</span>
+</div>
+<div class="fukidashi-left"><div class="fukidashi-serifu">なるべく必要最小限の構成にしたい</div></div></div></p>
+<p>最近のマシンスペックを考えれば KDE や Gnome を動かすことになんの支障もないのだが、
+昔からジャンクPCでLinuxを使っていた経験上、すっかり Xorg だけでなんとかする力がついてしまった。
+むしろ Xorg から外れて KDE や Gnome 専用の操作を覚えることは億劫で、今でも軽量な Window Manager ばかり使っている。</p>
+<p>そんなわけで、おおむねのこだわりをまとめると</p>
+<ul>
+<li>Wayland はまだイマイチ不安なので Xorg を使う</li>
+<li>Xorg の起動は <code>startx</code> コマンドで行う（ログインマネージャは入れない）</li>
+<li>Window Manager はタイル型が良いので i3</li>
+<li>できるだけ Xorg, GTK, QT に依存して Gnome や KDE への依存は減らす</li>
+<li>Systemd をうまく使う</li>
+</ul>
+<p>という感じでやっている。</p>
+<p>この辺のこだわりをいい感じに反映するには、やはり Gentoo Linux が一番よい。</p>
+<h2>Gentoo Linux のよさ</h2>
+<p><div class="fukidashi-container">
+<div class="fukidashi-image-container">
+  <img src="/img/kitsune-kamen.jpg" alt="香月" class="fukidashi-avatar" />
+	<span>香月</span>
+</div>
+<div class="fukidashi-left"><div class="fukidashi-serifu">久しぶりにGentoo Linuxを使ってみたら案外良かった</div></div></div></p>
+<p>長年 Debian を最小限でインストールして Xorg のインストールなどを手動でやっていたのだが、
+最近の Debian は結構おせっかいで、 Xorg をインストールしたらログインマネージャも一緒に
+インストールされてしまったので、使う気が失せてしまった。</p>
+<p>試しに入れてみた Gentoo Linux が案外良かったので、手持ちのマシンをほとんど Gentoo Linux に
+してしまった。</p>
+<p><div class="fukidashi-container">
+<div class="fukidashi-image-container">
+  <img src="/img/characters/haruka/normal.jpg" alt="はるか" class="fukidashi-avatar" />
+	<span>はるか</span>
+</div>
+<div class="fukidashi-left"><div class="fukidashi-serifu">Gentoo Linux ってなんですか？</div></div></div></p>
+<p>Gentoo Linux は <code>emerge</code> というパッケージマネージャでインストールするソフトを管理できる。
+<code>emerge</code> はバイナリインストールもできるが基本的にはソースコードからビルドをするということが特徴で、
+さらに依存関係も <code>USE</code> フラグというものを管理することで簡単に制御できる。
+この機能がこだわりの強い人にとってはありがたく、例えば Wayland をインストールしたくない場合、
+<code>Use="-wayland"</code> のように設定するだけでよい。</p>
+<p><code>emerge</code> はソースコードをベースとして持ってくるので最新バージョンに近いものをインストールすることが
+できるため、マシンを常に最新に保つことができる。
+さらに使えるパッケージの量が多く、 Debian の場合は APT と Homebrew (と Snapcraft) を併用するような運用に
+しないといまいち便利にならないのだが、 Gentoo なら <code>emerge</code> だけでよい。これが楽。</p>
+<p>また Gentoo Linux はデフォルトのGUI環境を持っていないので、自前でインストールできる。
+私が使う i3 の場合は、デフォルトのWindow Manager は使わないのでこのような仕様はありがたい。</p>
+<h2>その他使っているソフト</h2>
+<p>おおむね使っているソフトをまとめてみる。</p>
+<ul>
+<li>Linux: Gentoo Linux</li>
+<li>Terminal: <a href="https://alacritty.org/config-alacritty.html">Alacritty</a>
+<ul>
+<li>URxvt を使っていたのだが Clipboard 周りが不便なので Alacritty に変えてみた</li>
+</ul>
+</li>
+<li>Editor: VS Code, vim</li>
+<li>ブートローダー: systemd-boot (not grub)
+<ul>
+<li>試しに使ってみた systemd-boot が案外良かった。起動が早い気がする</li>
+</ul>
+</li>
+<li>GUI: X (not wayland)</li>
+<li>Window Manager: i3</li>
+<li>Screen: tmux</li>
+<li>Browser: Brave
+<ul>
+<li>Chrome は広告が多いので乗り換え</li>
+</ul>
+</li>
+<li>Clipboard History: clipmenud
+<ul>
+<li>dmenu で使えるので i3 と相性が良い</li>
+</ul>
+</li>
+<li>IM: fcitx5 + Mozc</li>
+<li>display management: arandr</li>
+<li>Audio Mixer: alsamixer</li>
+<li>TUI Apps
+<ul>
+<li>enhancd ... cd の改良版</li>
+<li>bat ... cat, less の改良版</li>
+<li>ripgrep ... grep の改良版</li>
+<li>safe-rm ... rm の改良版</li>
+<li>fzf ... インクリメンタルサーチできるやつ</li>
+<li>keychain ... ssh や gpg のキーを記録できるやつ</li>
+</ul>
+</li>
+</ul>
+</div>
+  <!-- <hr />
+<div class="comment-button-container">
+  <a
+    href="https://github.com/kbaba1001/kbaba1001.github.io/discussions"
+    target="_blank"
+    class="comment-button"
+  >
+    掲示板にコメントする
+  </a>
+  <div class="comment-note">
+    ※どの記事のコメントかわかるように本文に記事タイトルなどを入れてください。
+  </div>
+</div>
+ -->
+  <div id="remark42"></div>
+  <a href="/" class="post-index-link">一覧に戻る</a>
+</div>
+</main>
+</div>
+
+
+
+
+</body></html>
