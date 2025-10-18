@@ -9,6 +9,33 @@
     <language>ja_JP</language>
     <generator>Lume v2.0.1</generator>
     <item>
+      <title>Go言語と和解せよ</title>
+      <link>https://www.kbaba1001.com/posts/202510181505_make-peace-with-go/</link>
+      <guid isPermaLink="false">https://www.kbaba1001.com/posts/202510181505_make-peace-with-go/</guid>
+      <content:encoded>
+        <![CDATA[<p>『Go言語と和解せよ　〜Goが嫌いな人向けの再入門書〜』というタイトルの本が <a href="https://techbookfest.org/event/tbf19">技術書典19</a> で出ます（たぶん）。
+        頑張って書いておりますので、間に合わせたいところです。</p>
+        <h2>目次</h2>
+        <p>執筆中の目次です。</p>
+        <p><img src="https://www.kbaba1001.com/img/posts/202510181505/mokuji.png" alt="Go言語と和解せよ目次"></p>
+        <h2>執筆に至る経緯</h2>
+        <p>2021年ごろに『Go言語を嫌う6つの理由』というタイトルでブログ記事を書いたことがありましたが、
+        炎上してしまったので今は非公開にしています。</p>
+        <p>Go は結構欠点が多い言語だと思うのですが、あまりそういう捉え方をしている人が自分の周りでは多くなく、
+        上記の記事を書いたのですが、今回はその反省も踏まえて改善点も上げていこうという本になります。</p>
+        <p>正直今でもGo言語のことはあまり好きではありません。
+        記述量が多くてかったるい言語だと思います。</p>
+        <p>まぁでもどんな言語にも欠点はあります。</p>
+        <p>JavaScript や Python には多くの欠点があることを皆知っていますが、皆使っています。
+        （Clojure や Haskell には欠点が少ないのに皆使わないのはなぜでしょうか？）</p>
+        <p>時代も変わり、Goのベストプラクティスをまとめたドキュメントも増え、AIの進歩でコーディングも楽になりました。</p>
+        <p>Goのことも「まぁ使ってやってもいいかな」くらいの気持ちです。</p>
+        <p>追加情報があればまたお知らせします。</p>
+        ]]>
+      </content:encoded>
+      <pubDate>Sat, 18 Oct 2025 15:05:33 GMT</pubDate>
+    </item>
+    <item>
       <title>秒速5センチメートルのアニメ版を刀だとしたら、実写版は鞘</title>
       <link>https://www.kbaba1001.com/posts/202510111401_movie_5cm/</link>
       <guid isPermaLink="false">https://www.kbaba1001.com/posts/202510111401_movie_5cm/</guid>
@@ -662,27 +689,6 @@
         ]]>
       </content:encoded>
       <pubDate>Tue, 15 Apr 2025 20:05:40 GMT</pubDate>
-    </item>
-    <item>
-      <title>コメントできるようになりました</title>
-      <link>https://www.kbaba1001.com/posts/202504131130_you-can-comment-in-this-blog/</link>
-      <guid isPermaLink="false">https://www.kbaba1001.com/posts/202504131130_you-can-comment-in-this-blog/</guid>
-      <content:encoded>
-        <![CDATA[<p>ブログの各ページでコメントができるようになりました。</p>
-        <p>《kbaba1001|/img/kitsune-kamen.jpg|ようやくという感じですね、おまたせしました》</p>
-        <h2>技術的な話</h2>
-        <p><a href="https://remark42.com/">Remark42</a> というオープンソースのコメント埋め込みを使いました。
-        Remark42 のサーバーはいつものように自宅サーバーで動いています。</p>
-        <p>むかしは DISQUS というサービスでこういうコメントがつけれていろいろなブログで使われていた印象ですが、
-        最近はあまり見なくなったように思います。
-        そもそも Qiita とか Zenn.dev とか使わずに個人でブログ書いている人も少ないですけど。</p>
-        <p>Remark42 はバックエンドは docker ですぐに動き、
-        フロントエンドも少しタグを設定するだけだったので導入は楽でした。
-        認証した人のみコメントできるようにしています。</p>
-        <p>Remark42 は認証周りで少しはまりましたが、これはいつものことなので比較的簡単に設定できてよかったかなと思います。</p>
-        ]]>
-      </content:encoded>
-      <pubDate>Sun, 13 Apr 2025 11:30:25 GMT</pubDate>
     </item>
   </channel>
 </rss>
