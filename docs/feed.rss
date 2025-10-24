@@ -9,6 +9,31 @@
     <language>ja_JP</language>
     <generator>Lume v2.0.1</generator>
     <item>
+      <title>技術書典19、お16:ノイマンパブリッシング</title>
+      <link>https://www.kbaba1001.com/posts/202510240859_techbook_19_neumann_publishing/</link>
+      <guid isPermaLink="false">https://www.kbaba1001.com/posts/202510240859_techbook_19_neumann_publishing/</guid>
+      <content:encoded>
+        <![CDATA[<p><a href="https://techbookfest.org/event/tbf19">技術書典19</a> に参加します。</p>
+        <h2>サークルの場所</h2>
+        <p>サークルの場所は「お16: ノイマンパブリッシング」です。</p>
+        <p><img src="https://www.kbaba1001.com/img/posts/202510240859/circle-layout.png" alt="サークル場所"></p>
+        <p>今回は前回よりも入口に近いですね。</p>
+        <h2>頒布予定の本</h2>
+        <p>今回の新刊は <a href="https://www.kbaba1001.com/posts/202510181505_make-peace-with-go">Go言語と和解せよ 〜Goが嫌いな人向けの再入門書〜</a> です。
+        目次や概要などはリンク先をご確認ください。</p>
+        <p>既刊として、次の本などを持っていく予定です。</p>
+        <ul>
+        <li>誰も教えてくれなかったビデオ会議システムの作り方</li>
+        <li>自宅サーバーでグループウェアを動かす本</li>
+        <li>旅するエンジニア3</li>
+        <li>らんげ〜じ</li>
+        </ul>
+        <p>お品書きはまた後日作成します。</p>
+        ]]>
+      </content:encoded>
+      <pubDate>Fri, 24 Oct 2025 08:59:28 GMT</pubDate>
+    </item>
+    <item>
       <title>Go言語と和解せよ</title>
       <link>https://www.kbaba1001.com/posts/202510181505_make-peace-with-go/</link>
       <guid isPermaLink="false">https://www.kbaba1001.com/posts/202510181505_make-peace-with-go/</guid>
@@ -615,80 +640,6 @@
         ]]>
       </content:encoded>
       <pubDate>Tue, 29 Apr 2025 09:09:53 GMT</pubDate>
-    </item>
-    <item>
-      <title>自宅サーバーにぼっちMastdon (Hollo) を建てた。SNSの終焉</title>
-      <link>https://www.kbaba1001.com/posts/202504152005_the-end-of-sns/</link>
-      <guid isPermaLink="false">https://www.kbaba1001.com/posts/202504152005_the-end-of-sns/</guid>
-      <content:encoded>
-        <![CDATA[<p><img src="https://www.kbaba1001.com/img/posts/202504152005_the-end-of-sns.png" alt="終焉"></p>
-        <p>《kbaba1001|/img/kitsune-kamen.jpg|私の中のSNSを終わらせました》</p>
-        <h2>背景</h2>
-        <p>私がX（Twitter）に失望してアカウントを消してしまったことは以前<a href="https://www.kbaba1001.com/posts/202404011858_baba-diary-03/">漫画にも描いた</a>とおりです。
-        しばし、紙の日記や別のSNSなどいろいろ試してきましたが、最近はだいたい次のような感じで落ち着いています。</p>
-        <ul>
-        <li>紙の日記 ... １日数回～週に数回程度の頻度で徒然なる思いを書く</li>
-        <li>BlueSky ... ほぼ閲覧専用。投稿はほとんど告知のみ。</li>
-        <li>X ... サークル用にアカウントを作り直したけど正直あんま使ってない</li>
-        <li>Instagram ... 同上</li>
-        <li>Facebook ... 友だちとのつながりのためにアカウント残してるだけという感じ</li>
-        <li>Discord ... クローズゆえの安心感があり結構使っている</li>
-        </ul>
-        <p>《kbaba1001|/img/kitsune-kamen.jpg|一番活発に投稿しているのがこのブログだったりします。》</p>
-        <p>《kbaba1001|/img/kitsune-kamen.jpg|そして、この度ヘッダーに <a href="https://www.kbaba1001.com/timeline/">Timeline</a> が追加されました。》</p>
-        <p>今日はこれの話をします。</p>
-        <h2>Timelineとは何なのか</h2>
-        <p>《kbaba1001|/img/kitsune-kamen.jpg|私の一人Twitterです》</p>
-        <p>他の人の投稿は出てきませんし、リプライやいいねとかもないです。
-        頑張ればMastodon経由でなにかアクションできるのかもしれませんが、ちょっとこの辺は後で説明します。</p>
-        <p>《kbaba1001|/img/kitsune-kamen.jpg|私の近況がわかる。それだけです。》</p>
-        <p>正しく MicroBlog というわけです。</p>
-        <h2>どうやって投稿しているの？</h2>
-        <p><img src="https://www.kbaba1001.com/img/posts/202504152005/phanpy-social.png" alt="投稿画面"></p>
-        <p>こんな感じの投稿用の画面というかアプリというかがあります。
-        これは私にしか見えません。</p>
-        <h2>技術的な話</h2>
-        <p>さて、そろそろこれが実態として何なのかを説明しましょう。</p>
-        <p>タイトルにもある通り、<a href="https://joinmastodon.org/">Mastodon</a> です。</p>
-        <p>ただし、お一人様用の Mastodon 互換サーバーを作れる <a href="https://docs.hollo.social/">Hollo</a> というソフトを使っています。</p>
-        <p>《kbaba1001|/img/kitsune-kamen.jpg|自宅サーバーで <a href="https://docs.hollo.social/">Hollo</a> を Self-Hosting しました。》</p>
-        <h3>Hollo が Mastodon 互換APIを持つので Mastodon ツールが使える</h3>
-        <p><a href="https://docs.hollo.social/clients/">Hollo の Clients</a> 紹介のページに書かれているようなクライアントが使えます。</p>
-        <p>《kbaba1001|/img/kitsune-kamen.jpg|先程の投稿アプリのスクショも <a href="https://phanpy.social/">Phanpy</a> というMastodonクライアントです》</p>
-        <p>これはなんだか Clojure で Java や JavaScript のリソースを利用している事に似ています。
-        プロトコルに依存するとエコシステムを拝借できるという利点がありますね。</p>
-        <p>そして、ブログに投稿を埋め込むためのライブラリとして <a href="https://gitlab.com/idotj/mastodon-embed-timeline">mastodon-embed-timeline</a> というのを見つけたので
-        <strong>これを使えば簡単に投稿を表示できるわけです</strong>。</p>
-        <p>《kbaba1001|/img/kitsune-kamen.jpg|が、だめ。。。動かない！》</p>
-        <h3>Mastodo embed timeline が動かない</h3>
-        <p>何度やってもTimelineを取得するAPIが 401 を返します。</p>
-        <p><a href="https://docs.joinmastodon.org/methods/accounts/#statuses">Mastodon の API の仕様</a> を確認すると Public な投稿では認証が不要ということになっていますが、
-        どうも Hollo では認証が必須になっているようです。</p>
-        <h4>オープンソース (AGPL) バンザイ</h4>
-        <p>《kbaba1001|/img/kitsune-kamen.jpg|だめなときは改造しよう》</p>
-        <p>オープンソースは素晴らしい。Hollo は AGPL ライセンスなので、改造したらそのソースコードも公開する必要があります。
-        というわけで主に次の改造を行いました。</p>
-        <p><a href="https://github.com/kbaba1001/hollo/commit/621baadade5b3297bcfd4fa15c953b9cbd82d61f"><img src="https://www.kbaba1001.com/img/posts/202504152005/statuses.png" alt="diff"><br>コミット</a></p>
-        <p>少々荒っぽいですが、認証部分を削除してAPIが動くようにしました。
-        これで無事に Mastodo embed timeline が動くようになりました。</p>
-        <h2>今のところの感想</h2>
-        <p>さて、なんとなく気づかれたかと思いますが、別に私はMastodonやMisskeyでの交流は目的としていないので、
-        Holloでさえオーバースペックです。
-        単に Google Form + Google SpreadSheet とかでデータ作って表示するだけくらいでも良かった気はします。</p>
-        <p>ただ、まぁ、Mastodonの資産を使えるのはそれなりに楽な気もします。</p>
-        <p>恥ずかしながら今回のことで初めて ActivityPub という概念も知りました。
-        これは Mastodon, Misskey, 意外にも Threads などで投稿などを共有できるプロトコルです。</p>
-        <p>《kbaba1001|/img/kitsune-kamen.jpg|Mastodon って結構な発明だったんですね...》</p>
-        <p>ところで BlueSky が ActivityPub ではない独自のプロトコルを使っているということで、
-        なんかそんなところでいがみ合っている場合ではないような気もしました…。
-        BlueSkyなりにActivityPubが気に入らない点がなにかあるんでしょうけど。</p>
-        <p>《kbaba1001|/img/kitsune-kamen.jpg|それで言えば一人BlueSkyサーバーを建てるという手もありましたねぇ。》</p>
-        <p>とりあえず Hollo で作ってしまったのでしばらくはこれを使ってみようと思います。</p>
-        <p>引き続き若干 Hollo の挙動が怪しいところがあるので fork したリポジトリで直して、
-        余裕があれば本家にも Pull Request しようと思います。</p>
-        ]]>
-      </content:encoded>
-      <pubDate>Tue, 15 Apr 2025 20:05:40 GMT</pubDate>
     </item>
   </channel>
 </rss>
