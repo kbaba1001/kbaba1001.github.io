@@ -4,6 +4,7 @@ date: 2025-11-23 11:47:15
 ogimage: /img/posts/202511231147_i-learned-how-to-use-the-codex.png
 tags:
   - Tech
+draft: true
 ---
 
 最近は Codex の plus プランと Github Copilot で開発をしている。
