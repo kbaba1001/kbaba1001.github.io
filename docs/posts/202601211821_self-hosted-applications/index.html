@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <link rel="stylesheet" href="/styles.css">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <meta name="author" content="kbaba1001">
+  <meta property="og:title" content="自宅サーバーに self-hosted アプリを入れまくっている - ハッカーと漫画家">
+  <meta property="og:url" content="https://www.kbaba1001.com/posts/202601211821_self-hosted-applications/">
+  <meta property="og:image" content="https://www.kbaba1001.com/img/posts/202601211821_self-hosted-applications.png">
+  <meta property="twitter:image:src" content="https://www.kbaba1001.com/img/posts/202601211821_self-hosted-applications.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <meta property="og:type" content="website">
+  <meta name="description" content="プログラマで同人漫画家の kbaba1001 のブログです。">
+  <meta property="og:description" content="プログラマで同人漫画家の kbaba1001 のブログです。">
+  <meta property="og:locale" content="ja_JP">
+
+  <!-- はてなブックマークのコメントをさせない -->
+  <meta name="Hatena::Bookmark" content="nocomment">
+
+  <!-- Google tag (gtag.js) -->
+  <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-MJ8FZT12VZ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+
+    gtag("config", "G-MJ8FZT12VZ");
+  </script>
+
+  
+  <script defer="" src="https://cloud.umami.is/script.js" data-website-id="1d979a64-b23d-4d05-9d8d-49f64f022ece"></script>
+
+  <!-- remark42 -->
+  <script>
+    var remark_config = {
+      host: 'https://remark42.neumann.work',
+      site_id: 'kbaba1001_com',
+      components: ['embed', 'last-comments', 'counter'],
+      max_shown_comments: 100,
+      locale: 'ja',
+      show_email_subscription: false,
+      simple_view: true,
+      no_footer: false
+    }
+  </script>
+  <script>!function (e, n) { for (var o = 0; o < e.length; o++) { var r = n.createElement("script"), c = ".js", d = n.head || n.body; "noModule" in r ? (r.type = "module", c = ".mjs") : r.async = !0, r.defer = !0, r.src = remark_config.host + "/web/" + e[o] + c, d.appendChild(r) } }(remark_config.components || ["embed"], document);</script>
+  <title>自宅サーバーに self-hosted アプリを入れまくっている - ハッカーと漫画家</title>
+
+  
+</head>
+
+<body class="layout">
+  <header class="layout-header">
+  <div class="header">
+    <div class="grid-header-title"><div class="header-title">
+  <img src="/img/kitsune-kamen.jpg" alt="ハッカーと漫画家" loading="lazy" class="header-title-logo">
+  <a href="/" class="header-title-link">ハッカーと漫画家</a>
+</div>
+</div>
+    <div class="grid-header-nav"><nav class="header-nav-container">
+  <ul class="header-nav-list">
+    <li>
+      <a href="/about" class="header-nav-list-link"> About </a>
+    </li>
+    <li>
+      <a href="https://github.com/kbaba1001/kbaba1001.github.io" class="header-nav-list-link" target="_blank">
+        GitHub
+      </a>
+    </li>
+    <li>
+      <a href="/feed.rss" class="header-nav-list-link"> RSS </a>
+    </li>
+  </ul>
+</nav>
+</div>
+  </div>
+</header>
+<div class="layout-main">
+  <main class="layout-main-center"><div class="post">
+  <div>
+    <div class="post-date">2026-01-22</div>
+    
+    <div class="post-tag" data-pagefind-filter="tag">Tech</div>
+    
+    <div class="post-tag" data-pagefind-filter="tag">自宅サーバー</div>
+    
+  </div>
+  <h1 class="post-title">自宅サーバーに self-hosted アプリを入れまくっている</h1>
+  <div class="post-main"><h2>物理的な整理</h2>
+<p>自宅サーバーの話は度々しているが、年末年始に次の変更を行いました。</p>
+<ul>
+<li>OSのクリーンインストールしました
+<ul>
+<li>色々とごちゃっとしていたので整理する目的で一度リセットしました</li>
+</ul>
+</li>
+<li>OSは M2SSD にインストール、データ保存用の HDD を SATA SSD に換装しました
+<ul>
+<li>HDD が思ったよりうるさいので SATA SSD を買いました</li>
+<li>4TB の SATA SSD を 2 枚買って RAID1 (mirroring) しています</li>
+</ul>
+</li>
+</ul>
+<p>前からやりたかったことがようやくできました。
+特に、 4TB の領域は今まで活用できずに眠らせていたので、今回使えるようになって嬉しいです。</p>
+<h2>自宅サーバーでのアプリの実行</h2>
+<p>次の方針で行っています。</p>
+<ul>
+<li>アプリ本体は Docker Compose で動かす。
+<ul>
+<li>restart always にして再起動時に自動的に立ち上がるようにしておく</li>
+</ul>
+</li>
+<li>インターネットに公開するサービスは <a href="/posts/2024022301_frp/">frp</a> で公開する</li>
+<li>ローカルIPだけで使うサービスは Caddy で reverse proxy を設定する</li>
+</ul>
+<p>インターネットに公開して使いたいサービスと、LAN内だけで使えれば良いサービスがあることもわかってきました。
+そのため、後者については <code>/etc/hosts</code> とかで適当に名前解決しつつ Caddy で reverse proxy を設定するだけにしました。</p>
+<h2>セットアップしたアプリ</h2>
+<h3>Gitea</h3>
+<p><img src="/img/posts/202601211821/app1.png" alt="gitea"></p>
+<p><a href="https://about.gitea.com/">Gitea</a> は lightweight な GitHub 的なアプリで Self-hosted できます。
+Docker だけでセットアップできて、 ssh での git アクセスもセットアップできます。</p>
+<p>git lfs も対応しているようなので重めのファイルもアップロードできるのではないかと期待しています。</p>
+<p>GitLab なども検討しましたが、 Gitea が新しめで使いやすそうだったのでこれにしました。</p>
+<h3>Immich</h3>
+<p><img src="/img/posts/202601211821/app2.png" alt="immich"></p>
+<p><a href="https://immich.app/">Immich</a> は Google Photo 的なサービスで、スマホアプリもあります。
+スマホで撮影した画像のバックアップを google に任せるのが嫌になってきたので導入しました。
+google photo 同様に単語で画像を検索する機能も immich でちゃんと動いていて驚きました。
+完成度が高いアプリだと感じています</p>
+<h3>RustFS</h3>
+<p><img src="/img/posts/202601211821/app3.png" alt="rustfs"></p>
+<p><a href="https://github.com/rustfs/rustfs">RustFS</a> は S3 Alternative で、ファイルのアップロードに便利そうなので導入してみました。
+これは他のアプリ（自作も含む）からアクセスできるようにして汎用的に使うつもりです。</p>
+<h2>今後セットアップする予定のアプリ</h2>
+<h3>Dokploy</h3>
+<p><a href="https://dokploy.com/">Dokploy</a> は DockerCompose でシステムをデプロイ出来る Self-hosted 可能なツールです。</p>
+<p>基本的に DockerCompose でアプリを動かしているので管理をするのに便利そうです。</p>
+<h3>Rocket Chat</h3>
+<p><a href="https://www.rocket.chat/">Rocket Chat</a> は Slack のようなチャットシステムです。
+現状、家族とのやり取りは Nextcloud のチャットツールで行っているのですが、
+Nextcloud はちょっと大掛かりすぎる気がしているので、移行しようと思っています。
+チャット以外使っていないし。</p>
+<h3>Zitadel</h3>
+<p><a href="https://zitadel.com/">Zitadel</a> は認証基盤システムで、いわゆる Auth0 や Firebase Authenticate のようなアプリです。
+アプリを作るときに認証システムを自作で組み込むことが多かったので、外部に切り出そうとしています。
+認証基盤自体自作しようと思いましたが、自分の時間が確保できなくて進められないので既存のサービスを使うことにしました。</p>
+<p>認証基盤システムはOpenSource、 Self-Hosted 可能なものがたくさんありましたが、ドキュメントのわかりやすさや使用言語などを考慮して Zitadel が良いのではないかと思っています。</p>
+</div>
+  <!-- <hr />
+<div class="comment-button-container">
+  <a
+    href="https://github.com/kbaba1001/kbaba1001.github.io/discussions"
+    target="_blank"
+    class="comment-button"
+  >
+    掲示板にコメントする
+  </a>
+  <div class="comment-note">
+    ※どの記事のコメントかわかるように本文に記事タイトルなどを入れてください。
+  </div>
+</div>
+ -->
+  <div id="remark42"></div>
+  <a href="/" class="post-index-link">一覧に戻る</a>
+</div>
+</main>
+</div>
+
+
+
+
+</body></html>

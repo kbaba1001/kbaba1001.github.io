@@ -9,6 +9,76 @@
     <language>ja_JP</language>
     <generator>Lume v2.0.1</generator>
     <item>
+      <title>自宅サーバーに self-hosted アプリを入れまくっている</title>
+      <link>https://www.kbaba1001.com/posts/202601211821_self-hosted-applications/</link>
+      <guid isPermaLink="false">https://www.kbaba1001.com/posts/202601211821_self-hosted-applications/</guid>
+      <content:encoded>
+        <![CDATA[<h2>物理的な整理</h2>
+        <p>自宅サーバーの話は度々しているが、年末年始に次の変更を行いました。</p>
+        <ul>
+        <li>OSのクリーンインストールしました
+        <ul>
+        <li>色々とごちゃっとしていたので整理する目的で一度リセットしました</li>
+        </ul>
+        </li>
+        <li>OSは M2SSD にインストール、データ保存用の HDD を SATA SSD に換装しました
+        <ul>
+        <li>HDD が思ったよりうるさいので SATA SSD を買いました</li>
+        <li>4TB の SATA SSD を 2 枚買って RAID1 (mirroring) しています</li>
+        </ul>
+        </li>
+        </ul>
+        <p>前からやりたかったことがようやくできました。
+        特に、 4TB の領域は今まで活用できずに眠らせていたので、今回使えるようになって嬉しいです。</p>
+        <h2>自宅サーバーでのアプリの実行</h2>
+        <p>次の方針で行っています。</p>
+        <ul>
+        <li>アプリ本体は Docker Compose で動かす。
+        <ul>
+        <li>restart always にして再起動時に自動的に立ち上がるようにしておく</li>
+        </ul>
+        </li>
+        <li>インターネットに公開するサービスは <a href="https://www.kbaba1001.com/posts/2024022301_frp/">frp</a> で公開する</li>
+        <li>ローカルIPだけで使うサービスは Caddy で reverse proxy を設定する</li>
+        </ul>
+        <p>インターネットに公開して使いたいサービスと、LAN内だけで使えれば良いサービスがあることもわかってきました。
+        そのため、後者については <code>/etc/hosts</code> とかで適当に名前解決しつつ Caddy で reverse proxy を設定するだけにしました。</p>
+        <h2>セットアップしたアプリ</h2>
+        <h3>Gitea</h3>
+        <p><img src="https://www.kbaba1001.com/img/posts/202601211821/app1.png" alt="gitea"></p>
+        <p><a href="https://about.gitea.com/">Gitea</a> は lightweight な GitHub 的なアプリで Self-hosted できます。
+        Docker だけでセットアップできて、 ssh での git アクセスもセットアップできます。</p>
+        <p>git lfs も対応しているようなので重めのファイルもアップロードできるのではないかと期待しています。</p>
+        <p>GitLab なども検討しましたが、 Gitea が新しめで使いやすそうだったのでこれにしました。</p>
+        <h3>Immich</h3>
+        <p><img src="https://www.kbaba1001.com/img/posts/202601211821/app2.png" alt="immich"></p>
+        <p><a href="https://immich.app/">Immich</a> は Google Photo 的なサービスで、スマホアプリもあります。
+        スマホで撮影した画像のバックアップを google に任せるのが嫌になってきたので導入しました。
+        google photo 同様に単語で画像を検索する機能も immich でちゃんと動いていて驚きました。
+        完成度が高いアプリだと感じています</p>
+        <h3>RustFS</h3>
+        <p><img src="https://www.kbaba1001.com/img/posts/202601211821/app3.png" alt="rustfs"></p>
+        <p><a href="https://github.com/rustfs/rustfs">RustFS</a> は S3 Alternative で、ファイルのアップロードに便利そうなので導入してみました。
+        これは他のアプリ（自作も含む）からアクセスできるようにして汎用的に使うつもりです。</p>
+        <h2>今後セットアップする予定のアプリ</h2>
+        <h3>Dokploy</h3>
+        <p><a href="https://dokploy.com/">Dokploy</a> は DockerCompose でシステムをデプロイ出来る Self-hosted 可能なツールです。</p>
+        <p>基本的に DockerCompose でアプリを動かしているので管理をするのに便利そうです。</p>
+        <h3>Rocket Chat</h3>
+        <p><a href="https://www.rocket.chat/">Rocket Chat</a> は Slack のようなチャットシステムです。
+        現状、家族とのやり取りは Nextcloud のチャットツールで行っているのですが、
+        Nextcloud はちょっと大掛かりすぎる気がしているので、移行しようと思っています。
+        チャット以外使っていないし。</p>
+        <h3>Zitadel</h3>
+        <p><a href="https://zitadel.com/">Zitadel</a> は認証基盤システムで、いわゆる Auth0 や Firebase Authenticate のようなアプリです。
+        アプリを作るときに認証システムを自作で組み込むことが多かったので、外部に切り出そうとしています。
+        認証基盤自体自作しようと思いましたが、自分の時間が確保できなくて進められないので既存のサービスを使うことにしました。</p>
+        <p>認証基盤システムはOpenSource、 Self-Hosted 可能なものがたくさんありましたが、ドキュメントのわかりやすさや使用言語などを考慮して Zitadel が良いのではないかと思っています。</p>
+        ]]>
+      </content:encoded>
+      <pubDate>Wed, 21 Jan 2026 18:21:32 GMT</pubDate>
+    </item>
+    <item>
       <title>読書の秋2025</title>
       <link>https://www.kbaba1001.com/posts/202510251643_reading-books-fall-2025/</link>
       <guid isPermaLink="false">https://www.kbaba1001.com/posts/202510251643_reading-books-fall-2025/</guid>
@@ -596,39 +666,6 @@
         <p>みんなもしばらく会ってない人に連絡とったりしてみよう！</p>]]>
       </content:encoded>
       <pubDate>Sat, 03 May 2025 09:59:53 GMT</pubDate>
-    </item>
-    <item>
-      <title>トイカメラのある生活</title>
-      <link>https://www.kbaba1001.com/posts/202505021400_toy-camera/</link>
-      <guid isPermaLink="false">https://www.kbaba1001.com/posts/202505021400_toy-camera/</guid>
-      <content:encoded>
-        <![CDATA[<h2>トイカメラを買ってみた</h2>
-        <p>《香月|/img/kitsune-kamen.jpg|カチッ、カチッ、カチッ》</p>
-        <p>《はるか|/img/characters/haruka/normal.jpg|先輩！何しているんですか？》</p>
-        <p>《香月|/img/kitsune-kamen.jpg|トイカメラを買ってみたんだ》</p>
-        <p>香月は手のひらサイズのカメラを見せる</p>
-        <p><img src="https://www.kbaba1001.com/img/posts/202505021400/toy-camera001.jpg" alt="toy-camera001.jpg"></p>
-        <p>《はるか|/img/characters/haruka/normal.jpg|わー！小さいですね！かわいい！》</p>
-        <p>《香月|/img/kitsune-kamen.jpg|小さいけどちゃんと撮影できるんだ。SDカードに保存される》</p>
-        <p>《香月|/img/kitsune-kamen.jpg|キーホルダーサイズのSDカードリーダーも買ってみたから、すぐにスマホで確認できる》</p>
-        <p>《はるか|/img/characters/haruka/normal.jpg|カメラにはディスプレイがついてないんですね。勘で撮る感じですか？》</p>
-        <p>《香月|/img/kitsune-kamen.jpg|そうだね。ファインダーも意味ないし》</p>
-        <h2>写真例</h2>
-        <p><img src="https://www.kbaba1001.com/img/posts/202505021400/toy-camera002.jpg" alt="toy-camera002.jpg">
-        <img src="https://www.kbaba1001.com/img/posts/202505021400/toy-camera003.jpg" alt="toy-camera003.jpg"></p>
-        <p>《香月|/img/kitsune-kamen.jpg|デジカメ黎明期のような画質がたまらない！》</p>
-        <p>《はるか|/img/characters/haruka/normal.jpg|エモいですねー！平成レトロですね》</p>
-        <p><img src="https://www.kbaba1001.com/img/posts/202505021400/toy-camera004.jpg" alt="toy-camera004.jpg"></p>
-        <p>《香月|/img/kitsune-kamen.jpg|食べ物の写真はサイバーパンク感ある》</p>
-        <p><img src="https://www.kbaba1001.com/img/posts/202505021400/toy-camera005.jpg" alt="toy-camera005.jpg">
-        <img src="https://www.kbaba1001.com/img/posts/202505021400/toy-camera006.jpg" alt="toy-camera006.jpg"></p>
-        <p>《はるか|/img/characters/haruka/normal.jpg|人物を撮ると古い映画みたいですね！》</p>
-        <p><img src="https://www.kbaba1001.com/img/posts/202505021400/toy-camera007.jpg" alt="toy-camera007.jpg">
-        <img src="https://www.kbaba1001.com/img/posts/202505021400/toy-camera008.jpg" alt="toy-camera008.jpg"></p>
-        <p>《香月|/img/kitsune-kamen.jpg|日常の風景がひと味違う風景に！》</p>
-        ]]>
-      </content:encoded>
-      <pubDate>Fri, 02 May 2025 14:00:50 GMT</pubDate>
     </item>
   </channel>
 </rss>
