@@ -9,6 +9,78 @@
     <language>ja_JP</language>
     <generator>Lume v2.0.1</generator>
     <item>
+      <title>確定申告を国税庁のサイトでやった</title>
+      <link>https://www.kbaba1001.com/posts/202601290723_tax-retarn/</link>
+      <guid isPermaLink="false">https://www.kbaba1001.com/posts/202601290723_tax-retarn/</guid>
+      <content:encoded>
+        <![CDATA[<p>《香月|/img/kitsune-kamen.jpg|はるか君、年が明けたらやることは何かわかるかい？》</p>
+        <p>《はるか|/img/characters/haruka/normal.jpg|え？ 羽つきとかですか？》</p>
+        <p>《香月|/img/kitsune-kamen.jpg|違う！確定申告だ！》</p>
+        <div><div class="characters-panel">
+        <h3 class="characters-heading">■登場人物</h3>
+        
+        <div class="characters-card">
+        <div class="characters-images-container">
+        <img src="https://www.kbaba1001.com/img/kitsune-kamen.jpg" class="characters-image" alt="馬場 香月" loading="lazy" />
+        <div class="characters-name">
+        馬場 香月
+        </div>
+        </div>
+        <div class="characters-profile">
+        フルスタックエンジニア。<br/> 年末年始は自宅サーバーのメンテと飲酒で過ごした
+        </div>
+        </div>
+        
+        <div class="characters-card">
+        <div class="characters-images-container">
+        <img src="https://www.kbaba1001.com/img/characters/haruka/normal.jpg" class="characters-image" alt="弥生 はるか" loading="lazy" />
+        <div class="characters-name">
+        弥生 はるか
+        </div>
+        </div>
+        <div class="characters-profile">
+        新米エンジニア。<br/> 年末年始は実家で犬のさんぽ
+        </div>
+        </div>
+        
+        </div>
+        </div>
+        <p>《はるか|/img/characters/haruka/normal.jpg|確定申告って何ですか？》</p>
+        <p>《香月|/img/kitsune-kamen.jpg|はるかさんは会社員で複業もやってないから年末調整だけでいいか…。でも納税を意識するためにも確定申告を自分でやるのはいいぞ。》</p>
+        <p>確定申告が何かについては他のサイトのほうが詳しいと思うのでここでは省略します。</p>
+        <p>《香月|/img/kitsune-kamen.jpg|確定申告をすると払いすぎた税金が戻って来たりして得なこともあるぞ！》</p>
+        <h3>確定申告を国税庁のサイトでやる</h3>
+        <p>《はるか|/img/characters/haruka/normal.jpg|確定申告はどうやってやるんですか？なんだか難しそう》</p>
+        <p>《香月|/img/kitsune-kamen.jpg|最近は<a href="https://www.keisan.nta.go.jp/kyoutu/ky/sm/top#bsctrl">国税庁のサイト</a>から作成できるぞ》</p>
+        <p>少し前まで、 freee などの会計ソフトを使って申告書を作って電子申請や郵送で申告していましたが、
+        気がつけば <a href="https://www.keisan.nta.go.jp/kyoutu/ky/sm/top#bsctrl">国税庁のサイト</a> でいい感じの申告書作成機能ができていました。</p>
+        <p>《香月|/img/kitsune-kamen.jpg|これの良いところは、以前は必要だったアカウントの登録が不要になって、マイナンバーカードがあれば誰でも使えるようになったことだ！》</p>
+        <p>以前はマイナンバーカードだけではだめで、事前に税務署に行ってアカウントを発行する必要がありましたが、不要になったようです！素晴らしい！！</p>
+        <h3>使ってみた感想</h3>
+        <p>《香月|/img/kitsune-kamen.jpg|使ってみた感想としては、すごく楽に確定申告できるようになっていると感じた》</p>
+        <p>自力で確定申告をやったことがある人ならわかると思いますが、税務署から送られてくる申告書を自力で記入するのはかなり困難です。
+        計算も正確に行わなければならないし、そもそもどこに何を書けばいいのかわからない人も多いと思います（私を含めて）。</p>
+        <p>国税庁のサイトでは、項目ごとに必要な値を入れれば申告書を生成してくれるので、
+        計算は不要でした。
+        入力の手間はかかるものの、会計ソフトで申告書を作るのと同じくらいの手間、
+        人によっては年末調整と同じくらいの手間ですむと思います。</p>
+        <p>数年前までお金を払って会計ソフトを買って申告書を作って郵送する、
+        なんてことをしていたわけで、それに比べれば申告書を作ってそのまま電子申請できるのは
+        本当に楽です。無料だし。</p>
+        <p>今回はパソコンにつなげるICカードリーダーがなかったので、スマホで行いました。
+        マイナポータルのアプリをインストールする必要がありましたが、
+        私はもともとインストールしてあったので、この手間も少なかったです。
+        家族の分（扶養）も一緒に申告したので、その設定も含めて何度かマイナンバーカードを
+        スマホに押し付ける作業が必要でしたが、読み取りだけで終わるのはかえって楽でした。</p>
+        <p>売上・経費がたくさんある人はそこの計算は事前に行う必要がありますが、
+        例えば給与をもらっていてふるさと納税などのために自分で確定申告しているような
+        人の場合は国税庁のサイトだけで十分だと感じました。</p>
+        <p>《香月|/img/kitsune-kamen.jpg|国の納税させようという意識を感じる…》</p>
+        <p>《はるか|/img/characters/haruka/normal.jpg|便利になるのはいいことですね！》</p>]]>
+      </content:encoded>
+      <pubDate>Thu, 29 Jan 2026 07:23:12 GMT</pubDate>
+    </item>
+    <item>
       <title>自宅サーバーに self-hosted アプリを入れまくっている</title>
       <link>https://www.kbaba1001.com/posts/202601211821_self-hosted-applications/</link>
       <guid isPermaLink="false">https://www.kbaba1001.com/posts/202601211821_self-hosted-applications/</guid>
@@ -584,88 +656,6 @@
         ]]>
       </content:encoded>
       <pubDate>Sun, 11 May 2025 08:43:50 GMT</pubDate>
-    </item>
-    <item>
-      <title>仲間内でもくもく会を開いている件</title>
-      <link>https://www.kbaba1001.com/posts/202505030959_mokumoku-kai/</link>
-      <guid isPermaLink="false">https://www.kbaba1001.com/posts/202505030959_mokumoku-kai/</guid>
-      <content:encoded>
-        <![CDATA[<p>《香月|/img/kitsune-kamen.jpg|最近友達ともくもく会を開いているんだ》</p>
-        <p>《はるか|/img/characters/haruka/normal.jpg|もくもく会って何ですか？》</p>
-        <div><div class="characters-panel">
-        <h3 class="characters-heading">■登場人物</h3>
-        
-        <div class="characters-card">
-        <div class="characters-images-container">
-        <img src="https://www.kbaba1001.com/img/kitsune-kamen.jpg" class="characters-image" alt="馬場 香月" loading="lazy" />
-        <div class="characters-name">
-        馬場 香月
-        </div>
-        </div>
-        <div class="characters-profile">
-        フルスタックエンジニア。<br/> 最近ハマっていることは中森明菜トリビュートアルバム『明響』を聞くこと
-        </div>
-        </div>
-        
-        <div class="characters-card">
-        <div class="characters-images-container">
-        <img src="https://www.kbaba1001.com/img/characters/haruka/normal.jpg" class="characters-image" alt="弥生 はるか" loading="lazy" />
-        <div class="characters-name">
-        弥生 はるか
-        </div>
-        </div>
-        <div class="characters-profile">
-        新米エンジニア。<br/> 最近ハマっていることはディズニーランドに行くこと
-        </div>
-        </div>
-        
-        </div>
-        </div>
-        <p>《香月|/img/kitsune-kamen.jpg|もくもく会はIT勉強会の一種だけど、テーマとか発表資料とかは用意しなくて、各自もくもくと自分の作業をする会。おしゃべりはOKな会とNGな会がある》</p>
-        <p>《はるか|/img/characters/haruka/normal.jpg|そういうのもあるんですね！エンジニアの人たちって不思議です！》</p>
-        <p>《香月|/img/kitsune-kamen.jpg|君もエンジニアでしょ！》</p>
-        <h3>プライベートなもくもく会</h3>
-        <p>数名の旧友と数ヶ月に１回集まってもくもく会をしています。
-        今年に入ってからすでに２回開催していて、良いペース。</p>
-        <p>参加者は私も含めて良い歳なので、家庭を持っていたり仕事が忙しかったりして、
-        なかなか集中して個人的な開発をするような時間が取れていないらしく、
-        もくもく会で旧交を温めながら開発をするのは良い刺激になっているように思います。</p>
-        <h3>街中のもくもく会とは別の楽しさ</h3>
-        <p><a href="https://connpass.com/">connpass</a> 等で募集されているオープンなもくもく会も
-        知らない人と話せて楽しいのですが、プライベートなもくもく会には別の楽しさがあるように思います。</p>
-        <p>街中のもくもく会では初心者が結構来るので、ディープな話をしたいときにちょっと物足りないなと思うことが多くなりました。
-        それは私の技術力が以前より上がったことやマニアックになったことが原因なので、
-        同世代の友人と話すほうがディープな話はしやすくて良いなぁと感じています。</p>
-        <p>単純に近況を共有するだけでも楽しいですし、プライベートなので細かいことを気にする必要もありません。
-        気のおけない関係というのは良いですね。</p>
-        <h3>どこで集まるか問題</h3>
-        <p>日程を決めて少人数で集まって 2 〜 4 時間くらい作業するとなると、どこで集まるのかが問題になります。</p>
-        <ul>
-        <li>日程を決めて確実に開催したいので、お店に予約をしたい</li>
-        <li>居酒屋等はうるさすぎるし PC を広げるのに向いていない</li>
-        <li>ファミレスやカフェは時間制限９０分の場所が多い</li>
-        <li>参加者の家が離れているのでそれなりに全員が集まりやすい場所（山手線沿いが理想）</li>
-        </ul>
-        <p>この辺を考慮すると結局コワーキングスペースかなぁという結論になりました。</p>
-        <p>都内にはそれなりに料金の安いコワーキングスペースがあるので活用しています。</p>
-        <p>あるいは、時間制限がないファミレスを探して作業するみたいな感じです。</p>
-        <p>インターネットで人を集めて集会を開くわけではないので選択肢はまだ多いですが、多少お金はかかりますね。
-        こういうとき会社のオフィスを借りて開催している勉強会は羨ましいです。</p>
-        <p>《はるか|/img/characters/haruka/normal.jpg|勉強会って場所探しが大変なんですね！》</p>
-        <p>《香月|/img/kitsune-kamen.jpg|勉強会を定期的に開催している方には頭が下がります》</p>
-        <h3>Discordの活用</h3>
-        <p>もくもく会の連絡などを行うために Discord サーバーを作って仲間内だけで招待して使っています。
-        案外こういうグループチャット的なものを作るだけでも日頃から技術的な話ができていい感じです。</p>
-        <h3>グローバルからローカルへ</h3>
-        <p>《香月|/img/kitsune-kamen.jpg|こういう「友達と会う」みたいな一番古典的なことが結局一番楽しいというか、インターネットの広い世界に疲れたというか。。。》</p>
-        <p>《はるか|/img/characters/haruka/normal.jpg|先輩、何を言っているんですか？》</p>
-        <p>《香月|/img/kitsune-kamen.jpg|コロナ禍ではオンラインイベントが積極的に開催されたけど、最近ではオフラインイベントに回帰しているように思う》</p>
-        <p>《香月|/img/kitsune-kamen.jpg|それはSNSの炎上とかポリコレみたいなことにみんな疲れて、もっと小規模なつながりを求めた結果なのかもしれない》</p>
-        <p>《はるか|/img/characters/haruka/normal.jpg|なんか、おじさんくさーい！》</p>
-        <p>《香月|/img/kitsune-kamen.jpg|うっ。。。》</p>
-        <p>みんなもしばらく会ってない人に連絡とったりしてみよう！</p>]]>
-      </content:encoded>
-      <pubDate>Sat, 03 May 2025 09:59:53 GMT</pubDate>
     </item>
   </channel>
 </rss>
