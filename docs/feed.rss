@@ -9,6 +9,26 @@
     <language>ja_JP</language>
     <generator>Lume v2.0.1</generator>
     <item>
+      <title>SSDを買ったけどすぐに壊れた話</title>
+      <link>https://www.kbaba1001.com/posts/202602170945_broken-ssd/</link>
+      <guid isPermaLink="false">https://www.kbaba1001.com/posts/202602170945_broken-ssd/</guid>
+      <content:encoded>
+        <![CDATA[<p>2025年末に自宅サーバー用に 4TB の SATA SSD を 2 枚購入したのだが、
+        一ヶ月くらい使っていたら１枚めが壊れてしまった。</p>
+        <pre><code class="language-bash">sudo smartctl -a /dev/sda
+        </code></pre>
+        <p>でチェックしたところ <code>FAILED!</code> が表示されたので、普通に壊れてそう。</p>
+        <p>メーカーに問い合わせたところ、保証期間内だったので返金するという話になった。
+        できれば交換してくれたほうが良かったのだが、年末に購入したときより１万円も
+        高くなっているのでしょうがない。</p>
+        <p>SSD 2 枚を RAID 1 していたのだが、SSD 1枚と HDD 2枚の3枚 RAID 1 構成にすることにした。</p>
+        <p>残念だ。。。</p>
+        <p>HDDがうるさい問題は、どうやらケースファンの不調だったようなのでそのファンを止めたらそんなにうるさくなくなった。</p>
+        ]]>
+      </content:encoded>
+      <pubDate>Tue, 17 Feb 2026 09:45:43 GMT</pubDate>
+    </item>
+    <item>
       <title>確定申告を国税庁のサイトでやった</title>
       <link>https://www.kbaba1001.com/posts/202601290723_tax-retarn/</link>
       <guid isPermaLink="false">https://www.kbaba1001.com/posts/202601290723_tax-retarn/</guid>
@@ -592,70 +612,6 @@
         ]]>
       </content:encoded>
       <pubDate>Mon, 25 Aug 2025 15:43:17 GMT</pubDate>
-    </item>
-    <item>
-      <title>君は魂の代弁者「うぴ子」を知っているか！？</title>
-      <link>https://www.kbaba1001.com/posts/202505110843_upiko/</link>
-      <guid isPermaLink="false">https://www.kbaba1001.com/posts/202505110843_upiko/</guid>
-      <content:encoded>
-        <![CDATA[<p>まずはこれを聞いてほしい。</p>
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/0-40A3xSEx0?si=kY_qK-LZNXTLkrEd" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        <p>《香月|/img/kitsune-kamen.jpg|この令和の時代にしぶすぎる！！》</p>
-        <h2>魂の代弁者と昭和J-POP</h2>
-        <p>昭和のJ-POPの世界には魂の代弁者と言うべきミュージシャンがたくさんいた。
-        それは中島みゆきや尾崎豊かもしれないしブルーハーツかもしれない。</p>
-        <p>魂に響くメッセージ性の強い歌詞を書くミュージシャンたちが、リスナーの心を打っていた。</p>
-        <p>しかし、そういうミュージシャンはだんだん減っていって、
-        音楽はどんどんPOPになっていった。</p>
-        <p>それはそれでいいんだけど、この殺伐とした時代・令和にも魂の代弁者は必要だと思う。</p>
-        <h2>うぴ子の魅力</h2>
-        <p>うぴ子は声がいいね。魂に訴えかけるような歌い方。なかなかこんな歌い方ができる人はいない。
-        ギター一本で声量をしっかり出して歌うスタイル。
-        最近のマイクに唇をくっつけてボソボソ歌うスタイルじゃない感じ。</p>
-        <p>個人的に平成の魂の代弁者は大森靖子あたりだと思うのだが、
-        彼女の場合メンヘラやインターネット文化といういかにも平成文化を
-        ベースにしていたのに対して、うぴ子はもっと昭和っぽいというか
-        本質的原理主義的な感じがする。</p>
-        <h2>魂の代弁者ってなんだよ</h2>
-        <p>さっきから言ってる「魂の代弁者」ってなんだよ。</p>
-        <p>究極的に人間の問は「生きるとはなにか」だと思う。
-        でもこの問は強すぎて何も言えなくなる。</p>
-        <p>例えば、 <a href="https://anpan-movie.com/2025/">映画『それいけ！アンパンマン　チャポンのヒーロー！』のホームページ</a> には次のような記載がある。</p>
-        <p><img src="https://www.kbaba1001.com/img/posts/202505110843/anpan-movie.png" alt="スクリーンショット"></p>
-        <p>《アンパンマン|/img/posts/202505110843/anpanman.png|なんのために生まれて、なにをして生きるのかー。》</p>
-        <p>《香月|/img/kitsune-kamen.jpg|ちょっと重すぎませんか...》</p>
-        <p>ものすごく本質的で表現すべきものってこれ以外ないんじゃないかってくらい究極的なんだけど、
-        ちょっと強くて重くて何も言えなくなるほどパワーがあって、少し苦しい。</p>
-        <h2>うぴ子はなぜ流行ってないのか</h2>
-        <p>あまりにも魂入りすぎ、１曲に詰め込みすぎな感じが否めない。
-        この辺が、もう少しわかりやすくてキャッチーな歌詞になると爆発的に流行る気がする。
-        というか流行ってくれ。</p>
-        <p>みんな聞いてくれ、彼女の魂の歌を。</p>
-        <h2>歌詞のキャッチーさ</h2>
-        <p>《香月|/img/kitsune-kamen.jpg|キャッチーな歌詞ってよく聞くけど結局なんやねん。》</p>
-        <p>中島みゆきはこのへんのバランスがいい。うぴ子が中島みゆきのカバーしてるやつ最高だね。</p>
-        <p><strong>■ファイト</strong></p>
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/oU3b88onij4?si=3VgFIvQlMCQA6tFt" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        <p><strong>■化粧</strong></p>
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/fpPMcmcxdyY?si=3zGz3emfvGu7QgNU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        <p>選曲の渋さがいい。ファイトも化粧も中島みゆきの歌の中では、
-        悪女とか時代とかに比べるとちょっとマイナーよりだと思うけど、
-        心に響く歌詞がいい。私としても好きな曲だ。</p>
-        <p>うぴ子の「カラス」に比べると「化粧」のほうが歌詞がシンプルと言うか
-        ストーリー性が一貫していて想像しやすい。
-        逆に言うとカラスは結構歌詞の内容があっちこっち行っていて、詰め込みすぎな印象があり、
-        一つ一つのパートでの印象はいいんだけど全体で見ると記憶に残りづらい。
-        この辺のバランスが今後よくなるといいなぁ。</p>
-        <p>歌詞にキャッチーさはやはり米津玄師なんかはめちゃくちゃ上手くて、
-        例えば「まちがいさがし」の歌詞なんかは歌い出しは後ろ向きなんだけど、
-        それをくるっと反転させて肯定的になるのが見事だ。</p>
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/ltobydRIQGE?si=mAdXTCwRx8G-fvhX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        <p>こういう歌詞のストーリー性みたいなのは、やはり売れている人の歌には
-        必ずあるような気がしていて、案外歌詞の良さというのは歌にとって
-        重要だなぁと思う。</p>
-        ]]>
-      </content:encoded>
-      <pubDate>Sun, 11 May 2025 08:43:50 GMT</pubDate>
     </item>
   </channel>
 </rss>
