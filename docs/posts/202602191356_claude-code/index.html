@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <link rel="stylesheet" href="/styles.css">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <meta name="author" content="kbaba1001">
+  <meta property="og:title" content="自分なりのClaudCodeの使い方 - ハッカーと漫画家">
+  <meta property="og:url" content="https://www.kbaba1001.com/posts/202602191356_claude-code/">
+  <meta property="og:image" content="https://www.kbaba1001.com/img/posts/202602191356_claude-code.png">
+  <meta property="twitter:image:src" content="https://www.kbaba1001.com/img/posts/202602191356_claude-code.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <meta property="og:type" content="website">
+  <meta name="description" content="プログラマで同人漫画家の kbaba1001 のブログです。">
+  <meta property="og:description" content="プログラマで同人漫画家の kbaba1001 のブログです。">
+  <meta property="og:locale" content="ja_JP">
+
+  <!-- はてなブックマークのコメントをさせない -->
+  <meta name="Hatena::Bookmark" content="nocomment">
+
+  <!-- Google tag (gtag.js) -->
+  <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-MJ8FZT12VZ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+
+    gtag("config", "G-MJ8FZT12VZ");
+  </script>
+
+  
+  <script defer="" src="https://cloud.umami.is/script.js" data-website-id="1d979a64-b23d-4d05-9d8d-49f64f022ece"></script>
+
+  <!-- remark42 -->
+  <script>
+    var remark_config = {
+      host: 'https://remark42.neumann.work',
+      site_id: 'kbaba1001_com',
+      components: ['embed', 'last-comments', 'counter'],
+      max_shown_comments: 100,
+      locale: 'ja',
+      show_email_subscription: false,
+      simple_view: true,
+      no_footer: false
+    }
+  </script>
+  <script>!function (e, n) { for (var o = 0; o < e.length; o++) { var r = n.createElement("script"), c = ".js", d = n.head || n.body; "noModule" in r ? (r.type = "module", c = ".mjs") : r.async = !0, r.defer = !0, r.src = remark_config.host + "/web/" + e[o] + c, d.appendChild(r) } }(remark_config.components || ["embed"], document);</script>
+  <title>自分なりのClaudCodeの使い方 - ハッカーと漫画家</title>
+
+  
+</head>
+
+<body class="layout">
+  <header class="layout-header">
+  <div class="header">
+    <div class="grid-header-title"><div class="header-title">
+  <img src="/img/kitsune-kamen.jpg" alt="ハッカーと漫画家" loading="lazy" class="header-title-logo">
+  <a href="/" class="header-title-link">ハッカーと漫画家</a>
+</div>
+</div>
+    <div class="grid-header-nav"><nav class="header-nav-container">
+  <ul class="header-nav-list">
+    <li>
+      <a href="/about" class="header-nav-list-link"> About </a>
+    </li>
+    <li>
+      <a href="https://github.com/kbaba1001/kbaba1001.github.io" class="header-nav-list-link" target="_blank">
+        GitHub
+      </a>
+    </li>
+    <li>
+      <a href="/feed.rss" class="header-nav-list-link"> RSS </a>
+    </li>
+  </ul>
+</nav>
+</div>
+  </div>
+</header>
+<div class="layout-main">
+  <main class="layout-main-center"><div class="post">
+  <div>
+    <div class="post-date">2026-02-19</div>
+    
+    <div class="post-tag" data-pagefind-filter="tag">Tech</div>
+    
+  </div>
+  <h1 class="post-title">自分なりのClaudCodeの使い方</h1>
+  <div class="post-main"><p>ClaudeCodeの詳しい使い方は他の方が山ほど書いている気がするけど自分なりにまとめてみる</p>
+<h2>MCP</h2>
+<p>まず使っている MCP は次のもの:</p>
+<ul>
+<li><a href="https://github.com/oraios/serena">serena</a> ... トークンが節約できるし賢くなるっぽい。ローカル動作なので安心</li>
+<li><a href="https://help.figma.com/hc/en-us/articles/32132100833559-Guide-to-the-Figma-MCP-server">Figma MCP</a> ... Figma でデザインされていたら必須</li>
+<li><a href="https://context7.com/">Context7</a> ... ドキュメント参照が便利。特に Web 系の開発では役立つ</li>
+</ul>
+<h2><a href="http://AGENTS.md">AGENTS.md</a>, <a href="http://CLAUDE.md">CLAUDE.md</a></h2>
+<p><a href="http://AGENTS.md">AGENTS.md</a> や <a href="http://CLAUDE.md">CLAUDE.md</a> は <code>/init</code> コマンドで生成したものをそのまま使っている。たまに更新する程度。</p>
+<p>だいたい次の内容は含めるようにしている</p>
+<pre><code>## Primary Directive
+
+- Think in English, interact with the user in Japanese
+- GitHub へのアクセスが必要な場合、は gh コマンドを用いてアクセスしてください
+- find, grep の代わりに rg コマンドを使ってください
+
+### git commit
+
+- タスクのフェーズ毎に git commit を行うようにしてください
+- git commit の本文には、 400 文字程度で変更内容の要約を入れてください
+
+### コードレビュー
+
+すべてのタスクが完了したら、親ブランチとの差分を取ってコードレビューしてください。
+それで見つけた問題点を修正し、 git commit してください。
+</code></pre>
+<h2>タスク</h2>
+<p>要件については <a href="http://AGENTS-next.md">AGENTS-next.md</a> というファイルを作ってその中に都度要件を書いて ClaudeCode に読んでもらっている。</p>
+<p>ただ、もう少しAIに開発を任せるなら</p>
+<ul>
+<li>Tasks
+<ul>
+<li>todo</li>
+<li>doing</li>
+<li>done</li>
+</ul>
+</li>
+</ul>
+<p>みたいなディレクトリ構成を作って、タスクも markdown ファイルで残すようにしたほうが無難な気がする。</p>
+<h2>settings.json の設定</h2>
+<p>ripgrep はローカルにインストールしているもの使うほうが速いようなので、そのように設定する。</p>
+<pre><code>{
+  "env": {
+    "USE_BUILTIN_RIPGREP": "0"
+  },
+}
+</code></pre>
+<h2>思うこと</h2>
+<p>半年くらい Codex や Claude Code を試してきたけど、自分としては Claude Code Max プランが一番いい。
+なんか Codex は人当たりが悪いし遅いし微妙...。</p>
+</div>
+  <!-- <hr />
+<div class="comment-button-container">
+  <a
+    href="https://github.com/kbaba1001/kbaba1001.github.io/discussions"
+    target="_blank"
+    class="comment-button"
+  >
+    掲示板にコメントする
+  </a>
+  <div class="comment-note">
+    ※どの記事のコメントかわかるように本文に記事タイトルなどを入れてください。
+  </div>
+</div>
+ -->
+  <div id="remark42"></div>
+  <a href="/" class="post-index-link">一覧に戻る</a>
+</div>
+</main>
+</div>
+
+
+
+
+</body></html>

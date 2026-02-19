@@ -9,6 +9,66 @@
     <language>ja_JP</language>
     <generator>Lume v2.0.1</generator>
     <item>
+      <title>自分なりのClaudCodeの使い方</title>
+      <link>https://www.kbaba1001.com/posts/202602191356_claude-code/</link>
+      <guid isPermaLink="false">https://www.kbaba1001.com/posts/202602191356_claude-code/</guid>
+      <content:encoded>
+        <![CDATA[<p>ClaudeCodeの詳しい使い方は他の方が山ほど書いている気がするけど自分なりにまとめてみる</p>
+        <h2>MCP</h2>
+        <p>まず使っている MCP は次のもの:</p>
+        <ul>
+        <li><a href="https://github.com/oraios/serena">serena</a> ... トークンが節約できるし賢くなるっぽい。ローカル動作なので安心</li>
+        <li><a href="https://help.figma.com/hc/en-us/articles/32132100833559-Guide-to-the-Figma-MCP-server">Figma MCP</a> ... Figma でデザインされていたら必須</li>
+        <li><a href="https://context7.com/">Context7</a> ... ドキュメント参照が便利。特に Web 系の開発では役立つ</li>
+        </ul>
+        <h2><a href="http://agents.md/">AGENTS.md</a>, <a href="http://claude.md/">CLAUDE.md</a></h2>
+        <p><a href="http://agents.md/">AGENTS.md</a> や <a href="http://claude.md/">CLAUDE.md</a> は <code>/init</code> コマンドで生成したものをそのまま使っている。たまに更新する程度。</p>
+        <p>だいたい次の内容は含めるようにしている</p>
+        <pre><code>## Primary Directive
+        
+        - Think in English, interact with the user in Japanese
+        - GitHub へのアクセスが必要な場合、は gh コマンドを用いてアクセスしてください
+        - find, grep の代わりに rg コマンドを使ってください
+        
+        ### git commit
+        
+        - タスクのフェーズ毎に git commit を行うようにしてください
+        - git commit の本文には、 400 文字程度で変更内容の要約を入れてください
+        
+        ### コードレビュー
+        
+        すべてのタスクが完了したら、親ブランチとの差分を取ってコードレビューしてください。
+        それで見つけた問題点を修正し、 git commit してください。
+        </code></pre>
+        <h2>タスク</h2>
+        <p>要件については <a href="http://agents-next.md/">AGENTS-next.md</a> というファイルを作ってその中に都度要件を書いて ClaudeCode に読んでもらっている。</p>
+        <p>ただ、もう少しAIに開発を任せるなら</p>
+        <ul>
+        <li>Tasks
+        <ul>
+        <li>todo</li>
+        <li>doing</li>
+        <li>done</li>
+        </ul>
+        </li>
+        </ul>
+        <p>みたいなディレクトリ構成を作って、タスクも markdown ファイルで残すようにしたほうが無難な気がする。</p>
+        <h2>settings.json の設定</h2>
+        <p>ripgrep はローカルにインストールしているもの使うほうが速いようなので、そのように設定する。</p>
+        <pre><code>{
+        &quot;env&quot;: {
+        &quot;USE_BUILTIN_RIPGREP&quot;: &quot;0&quot;
+        },
+        }
+        </code></pre>
+        <h2>思うこと</h2>
+        <p>半年くらい Codex や Claude Code を試してきたけど、自分としては Claude Code Max プランが一番いい。
+        なんか Codex は人当たりが悪いし遅いし微妙...。</p>
+        ]]>
+      </content:encoded>
+      <pubDate>Thu, 19 Feb 2026 13:56:43 GMT</pubDate>
+    </item>
+    <item>
       <title>SSDを買ったけどすぐに壊れた話</title>
       <link>https://www.kbaba1001.com/posts/202602170945_broken-ssd/</link>
       <guid isPermaLink="false">https://www.kbaba1001.com/posts/202602170945_broken-ssd/</guid>
@@ -527,91 +587,6 @@
         ]]>
       </content:encoded>
       <pubDate>Thu, 02 Oct 2025 17:55:21 GMT</pubDate>
-    </item>
-    <item>
-      <title>JUKI SL-700EXで裁縫を始めた</title>
-      <link>https://www.kbaba1001.com/posts/202508251543_i-started-crafting-by-JUKI-SL-700EX/</link>
-      <guid isPermaLink="false">https://www.kbaba1001.com/posts/202508251543_i-started-crafting-by-JUKI-SL-700EX/</guid>
-      <content:encoded>
-        <![CDATA[<p>我が家には数年前に購入した職業用ミシン JUKI SL-700EX が眠っていた。</p>
-        <p><img src="https://www.kbaba1001.com/img/posts/202508251543/crafting001.jpg" alt="crafting001.jpg"></p>
-        <p>このミシンは結構良い値段がするので活用したいと思っていたのだが、
-        私自身がそこまで裁縫に興味がなかったことと、
-        もともとこのミシンがほしいと言ったのは妻であるということが主な原因で
-        ２年以上ほぼ使われずに段ボールの中にしまわれていた。</p>
-        <p>で、先日ようやく重い腰を上げてこのミシンでなにか作ろうという事になった。</p>
-        <p>職業用ミシンというのは家庭用ミシンとはモーターのパワーが段違いで、
-        SL-700EXであれば革だろうがデニムだろうが縫えるという
-        かなり最強マシンである。</p>
-        <h2>合皮のポーチを作る</h2>
-        <p>まずは手始めに簡単そうなものを作ろうということで、
-        以前作ったことのあるポーチを作成した。</p>
-        <p><img src="https://www.kbaba1001.com/img/posts/202508251543/crafting001-1.jpg" alt="crafting001-1.jpg"></p>
-        <p>合皮なので見栄えが良く、意外と簡単に作れる。
-        深夜に１時間くらいで作った。</p>
-        <h2>ステテコ</h2>
-        <p>初めての試みとして、服を作ってみたいということで、
-        一番簡単そうなステテコを作ることにした。</p>
-        <p><img src="https://www.kbaba1001.com/img/posts/202508251543/crafting002.jpg" alt="crafting002.jpg">
-        <img src="https://www.kbaba1001.com/img/posts/202508251543/crafting003.jpg" alt="crafting003.jpg"></p>
-        <p>写真は出来上がったもの。</p>
-        <p>こうかくとあっさり簡単にできた感じだが、
-        実は写真のものは３着目で、ようやく形が整ってきたもの。</p>
-        <p>多くの失敗をした。</p>
-        <ul>
-        <li>腰の部分を開かないように縫い合わせてしまった</li>
-        <li>左右のパーツではなく、右足用のパーツを２つ作ってしまった</li>
-        <li>ゴム紐を通す穴を開け忘れた</li>
-        </ul>
-        <p>などなど。</p>
-        <p>やはり実際に作ってみると難しい。</p>
-        <h3>ロックミシンがない問題</h3>
-        <p>布を切ったときにそのまま縫い合わせただけではほつれてしまうので、
-        何かしらの工夫が必要。</p>
-        <ul>
-        <li>ロックミシンでしっかりと端処理をする
-        <ul>
-        <li>最強だがロックミシンが20万、30万くらいするので高い</li>
-        </ul>
-        </li>
-        <li>家庭用ミシンのジグザグ縫いを使う
-        <ul>
-        <li>家庭用ミシンは価格的には安いが、性能的に厚手の布などは対応できないので却下</li>
-        </ul>
-        </li>
-        <li>ジグザグのハサミで布を切る
-        <ul>
-        <li>ほつれ対策としてはあまり強くないが、最も安価。</li>
-        </ul>
-        </li>
-        </ul>
-        <p>職業用ミシンである SL-700EX は真っ直ぐ縫うことしか出来ないので、
-        家庭用ミシンで行うようなジグザグ縫い機能がない。
-        今回はジグザグハサミで処理することにした。</p>
-        <p><img src="https://www.kbaba1001.com/img/posts/202508251543/scissors.jpg" alt="scissors.jpg"></p>
-        <h2>ナップサック</h2>
-        <p><img src="https://www.kbaba1001.com/img/posts/202508251543/crafting004.jpg" alt="crafting004.jpg"></p>
-        <p>小学生の時作ったようなナップサックを作りたかった。</p>
-        <p>手芸ショップでださいドラゴンの柄の布を探したが、見つからず。。。
-        残念だ。</p>
-        <p>参考にした型紙が子供サイズだったようで、小ぶりになってしまった。</p>
-        <h2>ショルダーバッグ</h2>
-        <p><img src="https://www.kbaba1001.com/img/posts/202508251543/crafting005.jpg" alt="crafting005.jpg"></p>
-        <p>ナップサックがいまいちだったので、残った布でショルダーバッグにしてみた。</p>
-        <p><img src="https://www.kbaba1001.com/img/posts/202508251543/crafting006.jpg" alt="crafting006.jpg"></p>
-        <p>底が三角形になっていて、それなりに量がはいるようにしてある。
-        こういうのは型紙がなくても作れるようになってきた。</p>
-        <h2>ブックカバー</h2>
-        <p><img src="https://www.kbaba1001.com/img/posts/202508251543/crafting009.jpg" alt="crafting009.jpg">
-        <img src="https://www.kbaba1001.com/img/posts/202508251543/crafting010.jpg" alt="crafting010.jpg">
-        <img src="https://www.kbaba1001.com/img/posts/202508251543/crafting007.jpg" alt="crafting007.jpg">
-        <img src="https://www.kbaba1001.com/img/posts/202508251543/crafting008.jpg" alt="crafting008.jpg"></p>
-        <p>手持ちのブックカバーを参考にして作成したもの。
-        裏地をつけると一気に商品っぽくなって、気持ちが上がる。
-        細かい裁縫にもだいぶ慣れてきた。</p>
-        ]]>
-      </content:encoded>
-      <pubDate>Mon, 25 Aug 2025 15:43:17 GMT</pubDate>
     </item>
   </channel>
 </rss>
