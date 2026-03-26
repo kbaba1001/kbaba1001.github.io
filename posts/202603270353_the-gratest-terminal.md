@@ -16,8 +16,9 @@ tags:
 
 - ターミナル: [ghostty](https://ghostty.org/)
   - yazi で画像を表示できるターミナル
-- 分割: [tmux](https://github.com/tmux/tmux)
-  - 説明不要
+- 分割: [tmux](https://github.com/tmux/tmux) + [tmuxp](https://github.com/tmux-python/tmuxp)
+  - tmuxは画面分割の定番
+  - tmuxp は session を yaml ファイルで管理できるツール
 - TUI ファイルマネージャー: [yazi](https://github.com/sxyazi/yazi)
   - nnn とか ranger で苦労していたのは何だったのかと思うほど楽
 - GIT クライアント: [lazygit](https://github.com/jesseduffield/lazygit)

@@ -23,9 +23,10 @@
         <li>yazi で画像を表示できるターミナル</li>
         </ul>
         </li>
-        <li>分割: <a href="https://github.com/tmux/tmux">tmux</a>
+        <li>分割: <a href="https://github.com/tmux/tmux">tmux</a> + <a href="https://github.com/tmux-python/tmuxp">tmuxp</a>
         <ul>
-        <li>説明不要</li>
+        <li>tmuxは画面分割の定番</li>
+        <li>tmuxp は session を yaml ファイルで管理できるツール</li>
         </ul>
         </li>
         <li>TUI ファイルマネージャー: <a href="https://github.com/sxyazi/yazi">yazi</a>
