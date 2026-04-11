@@ -1,0 +1,228 @@
+---
+title: 自分が聞きたくてTech系AI Podcast/YouTubeをはじめた
+date: 2026-04-10 14:20:56
+ogimage: /img/posts/202604101420_why-did-i-start-ai-podcast-and-youtube.png
+tags:
+  - Tech
+---
+
+## Tech系Podcast を自作するのは難しい
+
+Tech系Podcastというジャンルをご存知でしょうか？
+IT系の技術や話題について話すPodcastチャンネルのことで、昔からやっている人だと [rebuild.fm](https://rebuild.fm/) が有名です。
+
+以前から私も Tech系Podcast をやってみたいと思っています。少し試したこともありますが、いかんせんしゃべるのが難しいと感じています。
+
+どうしても自分１人でしゃべるとテンションが上がらずぼそぼそ喋ってしまうし、複数人でやるとなると予定が合わなかったりして自然消滅しがちです。
+
+ところで、先日 [Notebook LM](https://notebooklm.google/) に自分の作った技術同人誌をインポートしてPodcastモードで音声にしてみたところ、
+
+《香月|/img/kitsune-kamen.jpg|え、これもう人間が喋ってるのと、かわりないじゃん》
+
+という感想になりました。
+
+もう Notebook LM の Podcast 機能が出来て１年くらいたっているので使ったことがある人も多いと思いますが、
+フィラー（「えーと」とか「あのー」みたいな言葉）や息継ぎも入っていて、まるで人間が話しているかのような違和感のなさを感じました！
+
+《香月|/img/kitsune-kamen.jpg|もう、これでいいや》
+
+正直、私のような喋りの素人が話すより聞き取りやすいし、何も調整しなくても台本も良く出来ているし、十分に満足できるクオリティです。
+むしろ、私のようなおっさんが低いテンションでマニアックな話ししているやつより、こういうのを聞きたいと思ってしまいました。
+
+## どんな番組を作るか
+
+### 声
+
+Techについて女性声のAI二人が喋っているような番組を作りたいと思いました。
+Tech系PodcastやYouTubeはだいたい男性が喋っているので、女性の方が珍しく特徴がでると思ったからです。
+
+《香月|/img/kitsune-kamen.jpg|あと、単純に私が聞きたい》
+
+### 内容
+
+トレンドトピックを８割話して、残り２割で私が好きなマイナートピックについて話すような番組にしたいと思いました。
+
+私が好きな Clojure とか SolidJS とかに関する話は、マニアック過ぎて単に話すだけでは誰も聞いてくれません。
+なので、前半８割は流行の話題をして、残り２割で本当に私が話したい話をAIにしてもらうことにしました。
+
+## 技術的なフロー
+
+いろいろ試した結果、次のようなフローで動画を作ることにしました。
+
+![フロー](/img/posts/202604101420/podcast-ai.png)
+
+まず、ClaudeCodeで原稿を作成して、次のようなJSONで書き出します。
+
+```json
+[
+  {
+    "talk_id": "000001",
+    "speaker_name": "アリス",
+    "speaker_id": "10004",
+    "text": "こんにちは、アリスです"
+  },
+  {
+    "talk_id": "000002",
+    "speaker_name": "ボブ",
+    "speaker_id": "10001",
+    "text": "こんにちは、ボブです"
+  }
+]
+```
+
+- **talk_id** ６桁の連番の数値です
+- **speaker_name** 話者のキャラクター名です
+- **speaker_id** ElevenLabs 上の話者IDです
+- **text** セリフの本文です
+
+TTSはいちいちAIでやるよりバルク処理したほうが速いと思ったので、このようなJSONを入力して要素毎に音声にしてくれるスクリプトを Python で作成しました。
+
+で、作成したセリフごとの wav を ffmpeg で結合して Podcast 用の音声が完成です。
+Podcast の配信はとりあえず Spotify でやることにしました。
+
+しかし、メインのアップロード先としてはYouTubeを使いたいので、動画も用意します。
+
+画像生成は Gemini が強いと思ったので Gemini で作成した後、 Inkscape や GIMP を使って文字を入れます。
+これでサムネイルが出来ました。動画中もサムネイルをずっと表示するだけにしました。
+ゆくゆくは [AITuberKit](https://docs.aituberkit.com/) など使って動きをつけるかもしれませんが、
+今のところは静止画です。
+
+静止画と音声を FFmpeg で結合すればYouTube用の動画も完成です。
+
+## いろいろな TTS を試す
+
+悩んだというか、こだわったのは TTS のクオリティです。
+TTS はかなり進歩していますが、まだまだ「コンピュータが読み上げている感じ」を払拭するのは難しいところです。
+なるべく自然に、人間が読んでいる形に近いものを探しました。
+
+### Wondercraft AI
+
+AI に Podcast を作るためにどんなAIが使えるか聞いてみたところ、 [Wondercraft AI](https://www.wondercraft.ai) というサービスを教えてもらいました
+
+これは動画やPodcast、音楽や画像生成に特化したサービスとのことでした。
+
+試してみたところ、かなり Notebook LM に近い感覚で使えることがわかりました。
+一方で次のような機能もありました。
+
+- 音声を変えることができる
+- 台本を編集できる
+- ブラウザ上で動画編集できる
+
+台本、読み上げともに満足できるクオリティでした。しかし、UIがやや重たい感じがしたのが少し使いにくさを感じました。
+
+率直な感想として、使いこなせればかなり強そうですが、月 $20 かかるのがやや高いのと、若干Podcastを作るだけならオーバースペックな感じがしたので、別のやり方も検討することにしました。
+
+### VOICEVOX で読み上げる
+
+日本語TTSの定番といえば [VOICEVOX](https://voicevox.hiroshiba.jp/) でしょう。
+ずんだもんボイスなどが有名ですが、今回は [VOICEVOX Nemo](https://voicevox.hiroshiba.jp/nemo) を試すことにしました。
+これは通常版よりもライセンスがわかりやすく、緩めで、ナレーションボイスとして使いやすいエンジンです。
+
+無料で使えて読み上げ生成の速度も早く、かなり満足できるクオリティでした。
+しかし、NotebookLMの読み上げクオリティに比べると、やはり機械音声っぽさを拭い捨てきれず、他のサービスを使うことにしました。
+
+### Irodori-TTS
+
+[Irodori-TTS](https://github.com/Aratako/Irodori-TTS) というのが X で話題になっていたので試してみました。これもローカルで動作できます。
+
+Irodori-TTS の最大の特徴は、もととなる音声データが不要であることです。
+例えば、「２０代後半の落ち着いた女性の声」みたいな指定をするとそれっぽい声を作ってくれます。すごい。
+
+TTSも結構良いという評判でしたが、私が試した感じ、 VOICEVOX と同じくらいでしょうか。
+日本に混ざった英単語の読み上げが、ちょっと変な感じだったので不採用としました。
+
+### OpenAI
+
+ローカルでの読み上げはいったん諦めて、有料サービスを試すことにしました。
+まずは OpenAI です。
+
+安くてクオリティが高いという評判でしたが、結果的には
+
+- 声の種類が少ない
+- おそらく英語で学習していて、日本語で読み上げるには声が低すぎる
+- 男性声を作るには良いが女性声として使うには微妙
+- NotebookLM ほどの自然さはない
+
+という感じでイマイチでした。
+
+### Gemini-TTS
+
+《香月|/img/kitsune-kamen.jpg|最高！》
+
+次に試したのが Gemini-TTS です。流石に NotebookLM を作っている google だけあって、読み上げのクオリティが高かったです。
+
+音声も１０種類くらい選べて、女性声もきれいでした。
+
+しかし Rate Limit が低すぎます。Tier1 の場合、 Gemini 2.5 Pro TTS は 50 回/日 しか使えませんでした。
+３０分くらいの Podcast を作るには、１度の原稿で 120 個ほどのセリフが必要であり、全然たりません。
+
+泣く泣く不採用となりました。
+
+### Eleven Labs
+
+Eleven Labs も 動画や音声の生成に特化したAIサービスです。
+Wondercraft AI のようにブラウザ上での動画編集機能はありませんが、その分価格がやすかったので、結果的にこれを採用しました。
+
+まず、声の選択がかなり多いのが良かったです。おそらく Wondercraft AI も内部では Eleven Labs を使っているのではないでしょうか。
+
+日本語に混ざった英単語の読み上げも、最新の eleven_v3 なら問題ありませんでした。
+（逆にいればこれより前のモデルでは若干不十分でした）
+
+月 $6 のサブスクリプションでも週１回くらいのPodcast音声を作ることはできそうなので、 Wondercraft に比べるとかなり安いです。
+
+## 完成したYouTube / Podcast
+
+というわけで下記の番組が出来ました。
+
+タイトルは『アリスとボブのTechラジオ！』です。
+
+[アリスとボブ](https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%AA%E3%82%B9%E3%81%A8%E3%83%9C%E3%83%96) は昔からIT業界でよく使われるキャラクターなので、Tech系とわかりやすいかなと思ってつけました。
+（ボブって男性名だと思うけど、このラジオでは女性キャラです）
+
+### YouTube
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/DibrAtxZr9Y?si=PSICqDchOlD6Er2i" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+### Spotify
+
+<iframe data-testid="embed-iframe" src="https://open.spotify.com/embed/episode/2xXX5OJ4YvRIAY2hO0dQCw?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+
+## キャラクター紹介
+
+キャラクターも Gemini にデザインしてもらいました（自分で描けよ）。
+
+正直私の絵は古臭いので、こういうVTuberっぽいキャラを描くには向いていないんですよねぇ…。
+
+### アリス
+
+![alice](/img/posts/202604101420/alice.png)
+
+- 名前：アリス
+- 性別（ジェンダー）：女性
+- 年齢：24歳
+- 性格：
+  - 新人エンジニアなのでボブほどTechのことに詳しくないが開発の経験はある
+  - 好奇心旺盛で陽気な性格。
+  - 明るくしゃべる。
+  - ボブのことは「ボブ先輩」と呼ぶ
+  - ボブのことを尊敬している
+
+### ボブ
+
+![bob](/img/posts/202604101420/bob.png)
+
+- 名前：ボブ
+- 性別（ジェンダー）：女性
+- 年齢：33歳
+- 性格：
+  - 熟練のエンジニアでTechのことに詳しい
+  - 技術オタクで技術の話題になると暴走しがち
+  - 明るくはきはきとしゃべる。
+  - アリスのことは「アリスさん」と呼ぶ
+  - アリスのことは可愛い後輩だと思っている
+
+## 今後について
+
+[![アリスとボブのTechラジオ！](/img/posts/202604101420/podcast_banner.png)](https://www.youtube.com/@alice-and-bob-tech-radio)
+
+というわけで『アリスとボブのTechラジオ！』は毎週月・金曜で更新していくつもりなので、引き続きよろしくおねがいします。

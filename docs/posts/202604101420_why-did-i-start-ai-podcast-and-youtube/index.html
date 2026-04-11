@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <link rel="stylesheet" href="/styles.css">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <meta name="author" content="kbaba1001">
+  <meta property="og:title" content="自分が聞きたくてTech系AI Podcast/YouTubeをはじめた - ハッカーと漫画家">
+  <meta property="og:url" content="https://www.kbaba1001.com/posts/202604101420_why-did-i-start-ai-podcast-and-youtube/">
+  <meta property="og:image" content="https://www.kbaba1001.com/img/posts/202604101420_why-did-i-start-ai-podcast-and-youtube.png">
+  <meta property="twitter:image:src" content="https://www.kbaba1001.com/img/posts/202604101420_why-did-i-start-ai-podcast-and-youtube.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <meta property="og:type" content="website">
+  <meta name="description" content="プログラマで同人漫画家の kbaba1001 のブログです。">
+  <meta property="og:description" content="プログラマで同人漫画家の kbaba1001 のブログです。">
+  <meta property="og:locale" content="ja_JP">
+
+  <!-- はてなブックマークのコメントをさせない -->
+  <meta name="Hatena::Bookmark" content="nocomment">
+
+  <!-- Google tag (gtag.js) -->
+  <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-MJ8FZT12VZ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+
+    gtag("config", "G-MJ8FZT12VZ");
+  </script>
+
+  
+  <script defer="" src="https://cloud.umami.is/script.js" data-website-id="1d979a64-b23d-4d05-9d8d-49f64f022ece"></script>
+
+  <!-- remark42 -->
+  <script>
+    var remark_config = {
+      host: 'https://remark42.neumann.work',
+      site_id: 'kbaba1001_com',
+      components: ['embed', 'last-comments', 'counter'],
+      max_shown_comments: 100,
+      locale: 'ja',
+      show_email_subscription: false,
+      simple_view: true,
+      no_footer: false
+    }
+  </script>
+  <script>!function (e, n) { for (var o = 0; o < e.length; o++) { var r = n.createElement("script"), c = ".js", d = n.head || n.body; "noModule" in r ? (r.type = "module", c = ".mjs") : r.async = !0, r.defer = !0, r.src = remark_config.host + "/web/" + e[o] + c, d.appendChild(r) } }(remark_config.components || ["embed"], document);</script>
+  <title>自分が聞きたくてTech系AI Podcast/YouTubeをはじめた - ハッカーと漫画家</title>
+
+  
+</head>
+
+<body class="layout">
+  <header class="layout-header">
+  <div class="header">
+    <div class="grid-header-title"><div class="header-title">
+  <img src="/img/kitsune-kamen.jpg" alt="ハッカーと漫画家" loading="lazy" class="header-title-logo">
+  <a href="/" class="header-title-link">ハッカーと漫画家</a>
+</div>
+</div>
+    <div class="grid-header-nav"><nav class="header-nav-container">
+  <ul class="header-nav-list">
+    <li>
+      <a href="/about" class="header-nav-list-link"> About </a>
+    </li>
+    <li>
+      <a href="https://github.com/kbaba1001/kbaba1001.github.io" class="header-nav-list-link" target="_blank">
+        GitHub
+      </a>
+    </li>
+    <li>
+      <a href="/feed.rss" class="header-nav-list-link"> RSS </a>
+    </li>
+  </ul>
+</nav>
+</div>
+  </div>
+</header>
+<div class="layout-main">
+  <main class="layout-main-center"><div class="post">
+  <div>
+    <div class="post-date">2026-04-10</div>
+    
+    <div class="post-tag" data-pagefind-filter="tag">Tech</div>
+    
+  </div>
+  <h1 class="post-title">自分が聞きたくてTech系AI Podcast/YouTubeをはじめた</h1>
+  <div class="post-main"><h2>Tech系Podcast を自作するのは難しい</h2>
+<p>Tech系Podcastというジャンルをご存知でしょうか？
+IT系の技術や話題について話すPodcastチャンネルのことで、昔からやっている人だと <a href="https://rebuild.fm/">rebuild.fm</a> が有名です。</p>
+<p>以前から私も Tech系Podcast をやってみたいと思っています。少し試したこともありますが、いかんせんしゃべるのが難しいと感じています。</p>
+<p>どうしても自分１人でしゃべるとテンションが上がらずぼそぼそ喋ってしまうし、複数人でやるとなると予定が合わなかったりして自然消滅しがちです。</p>
+<p>ところで、先日 <a href="https://notebooklm.google/">Notebook LM</a> に自分の作った技術同人誌をインポートしてPodcastモードで音声にしてみたところ、</p>
+<p><div class="fukidashi-container">
+<div class="fukidashi-image-container">
+  <img src="/img/kitsune-kamen.jpg" alt="香月" class="fukidashi-avatar" />
+	<span>香月</span>
+</div>
+<div class="fukidashi-left"><div class="fukidashi-serifu">え、これもう人間が喋ってるのと、かわりないじゃん</div></div></div></p>
+<p>という感想になりました。</p>
+<p>もう Notebook LM の Podcast 機能が出来て１年くらいたっているので使ったことがある人も多いと思いますが、
+フィラー（「えーと」とか「あのー」みたいな言葉）や息継ぎも入っていて、まるで人間が話しているかのような違和感のなさを感じました！</p>
+<p><div class="fukidashi-container">
+<div class="fukidashi-image-container">
+  <img src="/img/kitsune-kamen.jpg" alt="香月" class="fukidashi-avatar" />
+	<span>香月</span>
+</div>
+<div class="fukidashi-left"><div class="fukidashi-serifu">もう、これでいいや</div></div></div></p>
+<p>正直、私のような喋りの素人が話すより聞き取りやすいし、何も調整しなくても台本も良く出来ているし、十分に満足できるクオリティです。
+むしろ、私のようなおっさんが低いテンションでマニアックな話ししているやつより、こういうのを聞きたいと思ってしまいました。</p>
+<h2>どんな番組を作るか</h2>
+<h3>声</h3>
+<p>Techについて女性声のAI二人が喋っているような番組を作りたいと思いました。
+Tech系PodcastやYouTubeはだいたい男性が喋っているので、女性の方が珍しく特徴がでると思ったからです。</p>
+<p><div class="fukidashi-container">
+<div class="fukidashi-image-container">
+  <img src="/img/kitsune-kamen.jpg" alt="香月" class="fukidashi-avatar" />
+	<span>香月</span>
+</div>
+<div class="fukidashi-left"><div class="fukidashi-serifu">あと、単純に私が聞きたい</div></div></div></p>
+<h3>内容</h3>
+<p>トレンドトピックを８割話して、残り２割で私が好きなマイナートピックについて話すような番組にしたいと思いました。</p>
+<p>私が好きな Clojure とか SolidJS とかに関する話は、マニアック過ぎて単に話すだけでは誰も聞いてくれません。
+なので、前半８割は流行の話題をして、残り２割で本当に私が話したい話をAIにしてもらうことにしました。</p>
+<h2>技術的なフロー</h2>
+<p>いろいろ試した結果、次のようなフローで動画を作ることにしました。</p>
+<p><img src="/img/posts/202604101420/podcast-ai.png" alt="フロー"></p>
+<p>まず、ClaudeCodeで原稿を作成して、次のようなJSONで書き出します。</p>
+<pre><code class="language-json hljs"><span class="hljs-punctuation">[</span>
+  <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"talk_id"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"000001"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"speaker_name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"アリス"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"speaker_id"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"10004"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"text"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"こんにちは、アリスです"</span>
+  <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"talk_id"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"000002"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"speaker_name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"ボブ"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"speaker_id"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"10001"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"text"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"こんにちは、ボブです"</span>
+  <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">]</span>
+</code></pre>
+<ul>
+<li><strong>talk_id</strong> ６桁の連番の数値です</li>
+<li><strong>speaker_name</strong> 話者のキャラクター名です</li>
+<li><strong>speaker_id</strong> ElevenLabs 上の話者IDです</li>
+<li><strong>text</strong> セリフの本文です</li>
+</ul>
+<p>TTSはいちいちAIでやるよりバルク処理したほうが速いと思ったので、このようなJSONを入力して要素毎に音声にしてくれるスクリプトを Python で作成しました。</p>
+<p>で、作成したセリフごとの wav を ffmpeg で結合して Podcast 用の音声が完成です。
+Podcast の配信はとりあえず Spotify でやることにしました。</p>
+<p>しかし、メインのアップロード先としてはYouTubeを使いたいので、動画も用意します。</p>
+<p>画像生成は Gemini が強いと思ったので Gemini で作成した後、 Inkscape や GIMP を使って文字を入れます。
+これでサムネイルが出来ました。動画中もサムネイルをずっと表示するだけにしました。
+ゆくゆくは <a href="https://docs.aituberkit.com/">AITuberKit</a> など使って動きをつけるかもしれませんが、
+今のところは静止画です。</p>
+<p>静止画と音声を FFmpeg で結合すればYouTube用の動画も完成です。</p>
+<h2>いろいろな TTS を試す</h2>
+<p>悩んだというか、こだわったのは TTS のクオリティです。
+TTS はかなり進歩していますが、まだまだ「コンピュータが読み上げている感じ」を払拭するのは難しいところです。
+なるべく自然に、人間が読んでいる形に近いものを探しました。</p>
+<h3>Wondercraft AI</h3>
+<p>AI に Podcast を作るためにどんなAIが使えるか聞いてみたところ、 <a href="https://www.wondercraft.ai">Wondercraft AI</a> というサービスを教えてもらいました</p>
+<p>これは動画やPodcast、音楽や画像生成に特化したサービスとのことでした。</p>
+<p>試してみたところ、かなり Notebook LM に近い感覚で使えることがわかりました。
+一方で次のような機能もありました。</p>
+<ul>
+<li>音声を変えることができる</li>
+<li>台本を編集できる</li>
+<li>ブラウザ上で動画編集できる</li>
+</ul>
+<p>台本、読み上げともに満足できるクオリティでした。しかし、UIがやや重たい感じがしたのが少し使いにくさを感じました。</p>
+<p>率直な感想として、使いこなせればかなり強そうですが、月 $20 かかるのがやや高いのと、若干Podcastを作るだけならオーバースペックな感じがしたので、別のやり方も検討することにしました。</p>
+<h3>VOICEVOX で読み上げる</h3>
+<p>日本語TTSの定番といえば <a href="https://voicevox.hiroshiba.jp/">VOICEVOX</a> でしょう。
+ずんだもんボイスなどが有名ですが、今回は <a href="https://voicevox.hiroshiba.jp/nemo">VOICEVOX Nemo</a> を試すことにしました。
+これは通常版よりもライセンスがわかりやすく、緩めで、ナレーションボイスとして使いやすいエンジンです。</p>
+<p>無料で使えて読み上げ生成の速度も早く、かなり満足できるクオリティでした。
+しかし、NotebookLMの読み上げクオリティに比べると、やはり機械音声っぽさを拭い捨てきれず、他のサービスを使うことにしました。</p>
+<h3>Irodori-TTS</h3>
+<p><a href="https://github.com/Aratako/Irodori-TTS">Irodori-TTS</a> というのが X で話題になっていたので試してみました。これもローカルで動作できます。</p>
+<p>Irodori-TTS の最大の特徴は、もととなる音声データが不要であることです。
+例えば、「２０代後半の落ち着いた女性の声」みたいな指定をするとそれっぽい声を作ってくれます。すごい。</p>
+<p>TTSも結構良いという評判でしたが、私が試した感じ、 VOICEVOX と同じくらいでしょうか。
+日本に混ざった英単語の読み上げが、ちょっと変な感じだったので不採用としました。</p>
+<h3>OpenAI</h3>
+<p>ローカルでの読み上げはいったん諦めて、有料サービスを試すことにしました。
+まずは OpenAI です。</p>
+<p>安くてクオリティが高いという評判でしたが、結果的には</p>
+<ul>
+<li>声の種類が少ない</li>
+<li>おそらく英語で学習していて、日本語で読み上げるには声が低すぎる</li>
+<li>男性声を作るには良いが女性声として使うには微妙</li>
+<li>NotebookLM ほどの自然さはない</li>
+</ul>
+<p>という感じでイマイチでした。</p>
+<h3>Gemini-TTS</h3>
+<p><div class="fukidashi-container">
+<div class="fukidashi-image-container">
+  <img src="/img/kitsune-kamen.jpg" alt="香月" class="fukidashi-avatar" />
+	<span>香月</span>
+</div>
+<div class="fukidashi-left"><div class="fukidashi-serifu">最高！</div></div></div></p>
+<p>次に試したのが Gemini-TTS です。流石に NotebookLM を作っている google だけあって、読み上げのクオリティが高かったです。</p>
+<p>音声も１０種類くらい選べて、女性声もきれいでした。</p>
+<p>しかし Rate Limit が低すぎます。Tier1 の場合、 Gemini 2.5 Pro TTS は 50 回/日 しか使えませんでした。
+３０分くらいの Podcast を作るには、１度の原稿で 120 個ほどのセリフが必要であり、全然たりません。</p>
+<p>泣く泣く不採用となりました。</p>
+<h3>Eleven Labs</h3>
+<p>Eleven Labs も 動画や音声の生成に特化したAIサービスです。
+Wondercraft AI のようにブラウザ上での動画編集機能はありませんが、その分価格がやすかったので、結果的にこれを採用しました。</p>
+<p>まず、声の選択がかなり多いのが良かったです。おそらく Wondercraft AI も内部では Eleven Labs を使っているのではないでしょうか。</p>
+<p>日本語に混ざった英単語の読み上げも、最新の eleven_v3 なら問題ありませんでした。
+（逆にいればこれより前のモデルでは若干不十分でした）</p>
+<p>月 $6 のサブスクリプションでも週１回くらいのPodcast音声を作ることはできそうなので、 Wondercraft に比べるとかなり安いです。</p>
+<h2>完成したYouTube / Podcast</h2>
+<p>というわけで下記の番組が出来ました。</p>
+<p>タイトルは『アリスとボブのTechラジオ！』です。</p>
+<p><a href="https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%AA%E3%82%B9%E3%81%A8%E3%83%9C%E3%83%96">アリスとボブ</a> は昔からIT業界でよく使われるキャラクターなので、Tech系とわかりやすいかなと思ってつけました。
+（ボブって男性名だと思うけど、このラジオでは女性キャラです）</p>
+<h3>YouTube</h3>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/DibrAtxZr9Y?si=PSICqDchOlD6Er2i" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+<h3>Spotify</h3>
+<iframe data-testid="embed-iframe" src="https://open.spotify.com/embed/episode/2xXX5OJ4YvRIAY2hO0dQCw?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+<h2>キャラクター紹介</h2>
+<p>キャラクターも Gemini にデザインしてもらいました（自分で描けよ）。</p>
+<p>正直私の絵は古臭いので、こういうVTuberっぽいキャラを描くには向いていないんですよねぇ…。</p>
+<h3>アリス</h3>
+<p><img src="/img/posts/202604101420/alice.png" alt="alice"></p>
+<ul>
+<li>名前：アリス</li>
+<li>性別（ジェンダー）：女性</li>
+<li>年齢：24歳</li>
+<li>性格：
+<ul>
+<li>新人エンジニアなのでボブほどTechのことに詳しくないが開発の経験はある</li>
+<li>好奇心旺盛で陽気な性格。</li>
+<li>明るくしゃべる。</li>
+<li>ボブのことは「ボブ先輩」と呼ぶ</li>
+<li>ボブのことを尊敬している</li>
+</ul>
+</li>
+</ul>
+<h3>ボブ</h3>
+<p><img src="/img/posts/202604101420/bob.png" alt="bob"></p>
+<ul>
+<li>名前：ボブ</li>
+<li>性別（ジェンダー）：女性</li>
+<li>年齢：33歳</li>
+<li>性格：
+<ul>
+<li>熟練のエンジニアでTechのことに詳しい</li>
+<li>技術オタクで技術の話題になると暴走しがち</li>
+<li>明るくはきはきとしゃべる。</li>
+<li>アリスのことは「アリスさん」と呼ぶ</li>
+<li>アリスのことは可愛い後輩だと思っている</li>
+</ul>
+</li>
+</ul>
+<h2>今後について</h2>
+<p><a href="https://www.youtube.com/@alice-and-bob-tech-radio"><img src="/img/posts/202604101420/podcast_banner.png" alt="アリスとボブのTechラジオ！"></a></p>
+<p>というわけで『アリスとボブのTechラジオ！』は毎週月・金曜で更新していくつもりなので、引き続きよろしくおねがいします。</p></div>
+  <!-- <hr />
+<div class="comment-button-container">
+  <a
+    href="https://github.com/kbaba1001/kbaba1001.github.io/discussions"
+    target="_blank"
+    class="comment-button"
+  >
+    掲示板にコメントする
+  </a>
+  <div class="comment-note">
+    ※どの記事のコメントかわかるように本文に記事タイトルなどを入れてください。
+  </div>
+</div>
+ -->
+  <div id="remark42"></div>
+  <a href="/" class="post-index-link">一覧に戻る</a>
+</div>
+</main>
+</div>
+
+
+
+
+</body></html>
